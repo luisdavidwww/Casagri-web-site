@@ -54,9 +54,9 @@ const Navbar = () => {
 
             <div className='desktopNav__lower'>
 
-              <ul className='desktopNav__linkContainer mvl-flyout--active'>
+              <ul className='desktopNav__linkContainer mvl-flyout'>
 
-                <li className='desktopNav__linkContainer mvl-flyout--active'>
+                <li className='desktopNav__linkContainer mvl-flyout'>
 
                   <a id="" class="desktopNav__link mvl-flyout-button" href="/articles">News</a>
 
