@@ -8,12 +8,23 @@ const Navbar = () => {
 
   const AgroMax = "images/icon/agromax2.png";
 
-
+  //Estado del click que inicia en falso
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
-  const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
+
+  //use state de el navbar
+  const [isHover, setIsHover] = useState(false);
+
+   const handleMouseEnter = () => {
+      setIsHover(true);
+   };
+
+   const handleMouseLeave = () => {
+      setIsHover(false);
+   };
+
+
 
   //hook que utilizo para llevar el scroll a la parte superior en cada Router
   let location = useLocation();
@@ -40,36 +51,52 @@ const Navbar = () => {
   return (
     <>
       <nav className='navbar'>
-
         <div className='navigation__container--navs'>
+
           <section id="mobile-nav" >
-
           </section>
-          <section id="desktopNav__container" >
 
-            <div className="desktopNav__upper">
-              <div className="desktopNav__linkWrapper" >
+          <section id="desktopNav__container" >
+            <div className="desktopNav">
+              <div className="desktopNav__upper">
+                <div className="desktopNav__linkWrapper" >
+                </div>
+              </div>
+
+              <div className='desktopNav__lower'>
+                <ul className='desktopNav__linkContainer'>
+                  <li 
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
+                      className={isHover ? 'desktopNav__linkWrapper-mvl-flyout--active ' : 'desktopNav__linkWrapper'
+                    }>
+                    
+                      <a id="" className="desktopNav__link desktopNav__link-title" href="/">Articulo 2</a>
+
+                    <div 
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                        className={isHover ? 'desktopNav__flyout-container-active' : 'desktopNav__flyout-container'}>
+                          
+                              <h1>hola</h1>
+                              <h1>hola</h1>
+                              <h1>hola</h1>
+                              <h1>hola</h1>
+                        
+                    </div>
+                  </li> 
+                  <li className='desktopNav__linkWrapper mvl-flyout'>
+                    <a id="" className="desktopNav__link mvl-flyout-button" href="/">Articulo 3</a>
+                  </li> 
+                  <li className='desktopNav__linkWrapper mvl-flyout'>
+                    <a id="" className="desktopNav__link mvl-flyout-button" href="/">Articulo 4</a>
+                  </li> 
+                  <li className='desktopNav__linkWrapper mvl-flyout'>
+                    <a id="" className="desktopNav__link mvl-flyout-button" href="/">Articulo 5</a>
+                  </li>        
+                </ul>
               </div>
             </div>
-
-            <div className='desktopNav__lower'>
-
-              <ul className='desktopNav__linkContainer mvl-flyout'>
-
-                <li className='desktopNav__linkContainer mvl-flyout'>
-
-                  <a id="" class="desktopNav__link mvl-flyout-button" href="/articles">News</a>
-
-                  <div className='desktopNav__flyout-container nav-flyout-container-0'>
-                    <div id="nav-flyout-0" className='mvl-flyout mobile-hide'>
-                    </div>
-                  </div>
-
-                </li>
-              </ul>
-            </div>
-
-
           </section>
 
 

@@ -1,0 +1,41 @@
+/*PRINCIPAL NAV BAR*/
+
+.navbar {
+  background: linear-gradient(90deg, rgb(2, 2, 2) 0%, rgb(3, 3, 3)  100%);
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  display: list-item;
+}
+
+
+/*----------DESKTOP NAV----------*/
+
+.desktopNav__container-prueba{
+  background-color: black;
+}
+
+.desktopNav__container {
+  display: absolute;
+  width: 100%;
+  top: 20;
+  left: 0;
+  visibility: hidden;
+}
+
+.desktopNav__container--active{
+  visibility: visible;
+  background-color: blue;
+}
+
+.desktopNav__col{
+  display: inline-flex;
+}
