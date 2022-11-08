@@ -21,6 +21,7 @@ const Navbar = () => {
 
    const handleMouseLeave = () => {
       setIsHover(false);
+      setHeading("true");
    };
 
 
@@ -32,58 +33,63 @@ const Navbar = () => {
           <section id="desktopNav__container" >
             <div className="desktopNav">
               <div className='desktopNav__lower'>
-
+                
       {links.map((link) => (
-        <div
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              className={isHover ? 'desktopNav__container-prueba ' : 'desktopNav__container-prueba'
-              }>
+        <div className='luis'>
           <h1
               onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              className={isHover ? 'desktopNav__container-prueba ' : 'desktopNav__container-prueba'
-              }
-              onClick={() => {
+              className={isHover ? 'desktopNav__container-prueba ' : 'desktopNav__container-prueba'}
+              onMouseOver={() => {
                 heading !== link.name ? setHeading(link.name) : setHeading("");
-                setSubHeading("");
+                setSubHeading(link.name);
               }}
-            >
+          >
               {link.name}
-            </h1>
-
-          <div 
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className={isHover ? 'desktopNav__container--active ' : 'desktopNav__container'
-            }>
-            {link.submenu && (
-              <div  onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              className={isHover ? 'desktopNav__container--active ' : 'desktopNav__container'
-              }>
-                    {link.sublinks.map((mysublinks) => (
-                      <div className="desktopNav__col" >
-                        <h1 className="">
-                          {mysublinks.Head}
-                        </h1>
-                        {mysublinks.sublink.map((slink) => (
-                          <li className="">
-                            <Link
-                              to={slink.link}
-                              className=""
-                            >
-                              {slink.name}
-                            </Link>
-                          </li>
+    
+          </h1>
+        
+          {isHover ? (
+            <div className='luis2'>
+              {link.submenu && (
+                      <div
+                        onMouseEnter={handleMouseEnter}  
+                        onMouseLeave={handleMouseLeave}  
+                        className={heading == link.name ? 'desktopNav__container--active' : 'desktopNav__container'}
+                        
+                      >
+                        {link.sublinks.map((mysublinks) => (
+                          <div className="desktopNav__col" >
+                            <h1 className="">
+                              {mysublinks.Head}
+                            </h1>
+                            {mysublinks.sublink.map((slink) => (
+                              <li className="">
+                                <Link
+                                  to={slink.link}
+                                  className=""
+                                >
+                                  {slink.name}
+                                </Link>
+                              </li>
+                            ))}
+                          </div>
                         ))}
                       </div>
-                    ))}
-              </div>
-            )}
-          </div>
+                      )}
+            </div>
+          ):null}
+
         </div>
       ))}
+
+
+
+
+
+
+
+
+
 
 
               </div>

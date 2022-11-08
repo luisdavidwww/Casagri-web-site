@@ -4,7 +4,7 @@ export const links = [
     submenu: true,
     sublinks: [
       {
-        Head: "Topwear",
+        Head: "Men 1",
         sublink: [
           { name: "T-shirt", link: "/" },
           { name: "Casual shirts", link: "/" },
@@ -14,7 +14,7 @@ export const links = [
         ],
       },
       {
-        Head: "Bottomwear",
+        Head: "Men 2",
         sublink: [
           { name: "T-shirt", link: "/" },
           { name: "Casual shirts", link: "/" },
@@ -24,7 +24,7 @@ export const links = [
         ],
       },
       {
-        Head: "innerwear",
+        Head: "Men 3",
         sublink: [
           { name: "T-shirt", link: "/" },
           { name: "Casual shirts", link: "/" },
@@ -35,7 +35,7 @@ export const links = [
       },
 
       {
-        Head: "sleepwear",
+        Head: "Men 4",
         sublink: [
           { name: "T-shirt", link: "/" },
           { name: "Casual shirts", link: "/" },
@@ -45,7 +45,7 @@ export const links = [
         ],
       },
       {
-        Head: "footwear",
+        Head: "Men 5",
         sublink: [
           { name: "T-shirt", link: "/" },
           { name: "Casual shirts", link: "/" },
@@ -61,7 +61,7 @@ export const links = [
     submenu: true,
     sublinks: [
       {
-        Head: "Topwear",
+        Head: "Women",
         sublink: [
           { name: "T-shirt", link: "/" },
           { name: "Casual shirts", link: "/" },
@@ -71,7 +71,7 @@ export const links = [
         ],
       },
       {
-        Head: "Bottomwear",
+        Head: "Women",
         sublink: [
           { name: "T-shirt", link: "/" },
           { name: "Casual shirts", link: "/" },
@@ -81,7 +81,7 @@ export const links = [
         ],
       },
       {
-        Head: "innerwear",
+        Head: "Women",
         sublink: [
           { name: "T-shirt", link: "/" },
           { name: "Casual shirts", link: "/" },
@@ -92,7 +92,7 @@ export const links = [
       },
 
       {
-        Head: "sleepwear",
+        Head: "Women",
         sublink: [
           { name: "T-shirt", link: "/" },
           { name: "Casual shirts", link: "/" },
@@ -102,7 +102,7 @@ export const links = [
         ],
       },
       {
-        Head: "footwear",
+        Head: "Women",
         sublink: [
           { name: "T-shirt", link: "/" },
           { name: "Casual shirts", link: "/" },
