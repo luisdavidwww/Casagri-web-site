@@ -1,22 +1,21 @@
 export const links = [
   {
-    name: "Men",
+    name: "Agroindustrial",
     submenu: true,
     sublinks: [
       {
-        Head: "Men 1",
+        Head: "Agroquímicos",
         sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
+          { name: "Insecticidas", link: "/" },
+          { name: "Herbicidas", link: "/" },
+          { name: "Fungicidas", link: "/" },
+          { name: "Otro", link: "/" },
         ],
       },
       {
-        Head: "Men 2",
+        Head: "Semillas",
         sublink: [
-          { name: "T-shirt", link: "/" },
+          { name: "Frutas y Hortalizas", link: "/" },
           { name: "Casual shirts", link: "/" },
           { name: "formal shirts", link: "/" },
           { name: "formal shirts", link: "/" },
@@ -57,7 +56,7 @@ export const links = [
     ],
   },
   {
-    name: "Women",
+    name: "Maquinarias",
     submenu: true,
     sublinks: [
       {
@@ -114,7 +113,7 @@ export const links = [
     ],
   },
   {
-    name: "Kid's",
+    name: "Salud Animal",
     submenu: true,
     sublinks: [
       {
@@ -160,6 +159,32 @@ export const links = [
       },
       {
         Head: "footwear",
+        sublink: [
+          { name: "T-shirt", link: "/" },
+          { name: "Casual shirts", link: "/" },
+          { name: "formal shirts", link: "/" },
+          { name: "formal shirts", link: "/" },
+          { name: "formal shirts", link: "/" },
+        ],
+      },
+    ],
+  },
+  {
+    name: "SALUD PÚBLICA",
+    submenu: true,
+    sublinks: [
+      {
+        Head: "Control de Plaga",
+        sublink: [
+          { name: "T-shirt", link: "/" },
+          { name: "Casual shirts", link: "/" },
+          { name: "formal shirts", link: "/" },
+          { name: "formal shirts", link: "/" },
+          { name: "formal shirts", link: "/" },
+        ],
+      },
+      {
+        Head: "Desinfectantes",
         sublink: [
           { name: "T-shirt", link: "/" },
           { name: "Casual shirts", link: "/" },

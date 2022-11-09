@@ -1,11 +1,12 @@
 /*PRINCIPAL NAV BAR*/
 
 .navbar {
-  background: linear-gradient(90deg, rgb(2, 2, 2) 0%, rgb(3, 3, 3)  100%);
+  background: rgb(224, 224, 224);
   height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
 }
 
 ul {
@@ -19,33 +20,45 @@ li {
 
 /*----------DESKTOP NAV----------*/
 
-.desktopNav__container-prueba{
-  background-color: black;
+.desktopNav__container--navbar{
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
 }
+
+
+.desktopNav__container-title{
+  color: black;
+  font-family: Roboto,Trebuchet MS,Helvetica,Arial,sans-serif;
+  font-size: 12px;
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 100px;
+}
+
 
 .desktopNav__container {
   display: absolute;
   top: 20;
-  left: 0;
   visibility: hidden;
 }
 
 .desktopNav__container--active{
+  position: absolute;
   visibility: visible;
-  background-color: rgb(219, 219, 255);
+  padding-top: 20px;
+  padding-left: 20%;
+  padding-right: 20%;
+  background-color: rgb(247, 247, 247);
+}
+.desktopNav__container-Drowbox{
+  display: block;
+
 }
 
 .desktopNav__col{
   display: inline-flex;
-}
-.luis{
-  width: 100px;
-}
-
-.luis2{
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  display: block;
-  width: 1200px;
+  font-family: Roboto,Trebuchet MS,Helvetica,Arial,sans-serif;
+  font-size: 10px;
 }
