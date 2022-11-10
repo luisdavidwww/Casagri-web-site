@@ -14,7 +14,7 @@ export const links = [
         ],
       },
       {
-        Head: "Semillas",
+        Head: "Semillass",
         subitem: true,
         sublink: [
           { name: "Frutas y Hortalizas", link: "/" },
