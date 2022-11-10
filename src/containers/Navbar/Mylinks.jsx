@@ -1,10 +1,11 @@
 export const links = [
   {
-    name: "Agroindustrial",
+    name: "AGROINDUSTRIAL",
     submenu: true,
     sublinks: [
       {
         Head: "Agroquímicos",
+        subitem: true,
         sublink: [
           { name: "Insecticidas", link: "/" },
           { name: "Herbicidas", link: "/" },
@@ -14,53 +15,37 @@ export const links = [
       },
       {
         Head: "Semillas",
+        subitem: true,
         sublink: [
           { name: "Frutas y Hortalizas", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
+          { name: "Pasto", link: "/" },
+          { name: "Maiz", link: "/" },
+          { name: "Bandejas de Germinación", link: "/" },
+          { name: "Sustratos", link: "/" },
         ],
       },
       {
-        Head: "Men 3",
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
+        Head: "Fertilizantes",
+        subitem: false,
       },
 
       {
-        Head: "Men 4",
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
+        Head: "Sacos, cabuyas y cordeles",
+        subitem: false,
       },
       {
-        Head: "Men 5",
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
+        Head: "Cercas de alambre y eléctricas",
+        subitem: false,
       },
     ],
   },
   {
-    name: "Maquinarias",
+    name: "MAQUINARIAS",
     submenu: true,
     sublinks: [
       {
         Head: "Women",
+        subitem: true,
         sublink: [
           { name: "T-shirt", link: "/" },
           { name: "Casual shirts", link: "/" },
@@ -71,6 +56,7 @@ export const links = [
       },
       {
         Head: "Women",
+        subitem: true,
         sublink: [
           { name: "T-shirt", link: "/" },
           { name: "Casual shirts", link: "/" },
@@ -81,6 +67,7 @@ export const links = [
       },
       {
         Head: "Women",
+        subitem: true,
         sublink: [
           { name: "T-shirt", link: "/" },
           { name: "Casual shirts", link: "/" },
@@ -92,6 +79,7 @@ export const links = [
 
       {
         Head: "Women",
+        subitem: true,
         sublink: [
           { name: "T-shirt", link: "/" },
           { name: "Casual shirts", link: "/" },
@@ -102,6 +90,7 @@ export const links = [
       },
       {
         Head: "Women",
+        subitem: true,
         sublink: [
           { name: "T-shirt", link: "/" },
           { name: "Casual shirts", link: "/" },
@@ -113,11 +102,12 @@ export const links = [
     ],
   },
   {
-    name: "Salud Animal",
+    name: "SALUD ANIMAL",
     submenu: true,
     sublinks: [
       {
         Head: "Topwear",
+        subitem: true,
         sublink: [
           { name: "T-shirt", link: "/" },
           { name: "Casual shirts", link: "/" },
@@ -128,6 +118,7 @@ export const links = [
       },
       {
         Head: "Bottomwear",
+        subitem: true,
         sublink: [
           { name: "T-shirt", link: "/" },
           { name: "Casual shirts", link: "/" },
@@ -138,6 +129,7 @@ export const links = [
       },
       {
         Head: "innerwear",
+        subitem: true,
         sublink: [
           { name: "T-shirt", link: "/" },
           { name: "Casual shirts", link: "/" },
@@ -149,6 +141,7 @@ export const links = [
 
       {
         Head: "sleepwear",
+        subitem: true,
         sublink: [
           { name: "T-shirt", link: "/" },
           { name: "Casual shirts", link: "/" },
@@ -159,6 +152,7 @@ export const links = [
       },
       {
         Head: "footwear",
+        subitem: true,
         sublink: [
           { name: "T-shirt", link: "/" },
           { name: "Casual shirts", link: "/" },
@@ -170,29 +164,18 @@ export const links = [
     ],
   },
   {
+    name: "FERRETERÍA",
+    submenu: true,
+    sublinks: [
+      { Head: "Ferretería Agrícola", subitem: false, },
+    ],
+  },
+  {
     name: "SALUD PÚBLICA",
     submenu: true,
     sublinks: [
-      {
-        Head: "Control de Plaga",
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
-      },
-      {
-        Head: "Desinfectantes",
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
-      },
+      { Head: "Control de Plaga", subitem: false, },
+      { Head: "Desinfectantes", subitem: false },
     ],
   },
 ];

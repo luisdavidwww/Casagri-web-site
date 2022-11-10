@@ -1,12 +1,21 @@
 import React, { useState, useEffect  } from 'react';
 import { Link } from "react-router-dom";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
 import { useLocation } from 'react-router-dom';
 import { links } from "./Mylinks";
 import './Navbar2.css';
 
 
 
+
+
+
 const Navbar = () => {
+
+  useEffect(() => { 
+    AOS.init({duration:1500});
+    },[]);
 
   const [heading, setHeading] = useState("");
   const [subHeading, setSubHeading] = useState("");
@@ -56,27 +65,45 @@ const Navbar = () => {
                       <div
                         onMouseEnter={() => {setSubHeading(link.name)}}  
                         onMouseLeave={() => {setSubHeading("")}}  
-                        className={subHeading == link.name ? 'desktopNav__container--active' : 'desktopNav__container'}
+                        className={subHeading == link.name ? 'desktopNav__container--active'  : 'desktopNav__container'}
                         
                       >
-                        <div className="desktopNav__container-Drowbox">
-                            {link.sublinks.map((mysublinks) => (
-                              <div className="desktopNav__col" >
-                                <h1 className="">
-                                  {mysublinks.Head}
-                                </h1>
-                                {mysublinks.sublink.map((slink) => (
-                                  <li className="">
-                                    <Link
-                                      to={slink.link}
-                                      className=""
-                                    >
-                                      {slink.name}
-                                    </Link>
-                                  </li>
+                        <div className="desktopNav__container-Drowbox-container">
+                          <div className="desktopNav__container-Drowbox-">
+                              {link.sublinks.map((mysublinks) => (
+                                  <div className="desktopNav__Lines" >
+                                    <div className="desktopNav__Lines-Title">
+                                      <h1>
+                                        <Link
+                                            to=""
+                                            className=""
+                                            style={{ textDecoration: 'none', color:'black', }}
+                                          >
+                                          {mysublinks.Head}     
+                                        </Link>
+                                      </h1>
+                                    </div>
+                                    
+                                    { mysublinks.subitem == true ?
+                                      (
+                                        <div className="desktopNav__Lines-subLines">
+                                        {mysublinks.sublink.map((slink) => (   
+                                            <li className="desktopNav__Lines-subLines-List">
+                                                <Link
+                                                  to={slink.link}
+                                                  className=""
+                                                  style={{ textDecoration: 'none', color:'black' }}
+                                                >
+                                                  {slink.name}
+                                                </Link>
+                                            </li>            
+                                          ))}
+                                    </div>
+                                      ):null
+                                    }
+                                  </div>
                                 ))}
-                              </div>
-                            ))}
+                          </div>
                         </div>
                       </div>
                       )}

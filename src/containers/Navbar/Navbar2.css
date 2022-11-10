@@ -14,7 +14,7 @@ ul {
 }
 
 li {
-  display: list-item;
+  list-style: none;
 }
 
 
@@ -23,6 +23,7 @@ li {
 .desktopNav__container--navbar{
   position: absolute;
   left: 50%;
+  right: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
 }
@@ -46,19 +47,52 @@ li {
 
 .desktopNav__container--active{
   position: absolute;
+  display: block;
   visibility: visible;
   padding-top: 20px;
-  padding-left: 20%;
-  padding-right: 20%;
+  padding-bottom: 50px;
+  padding-left: 50%;
+  padding-right: 50%;
+  cursor: pointer;
+  background-color: rgb(247, 247, 247);
+}
+
+.desktopNav__container-Drowbox-container{
+  width: 850px;
+  left: 50%;
+  margin-left: -425px;
   background-color: rgb(247, 247, 247);
 }
 .desktopNav__container-Drowbox{
-  display: block;
-
+  display:inline-block;
+  align-content: flex-start;
 }
 
-.desktopNav__col{
-  display: inline-flex;
+.desktopNav__Lines{
+  display: inline-block;
+  vertical-align:top;
   font-family: Roboto,Trebuchet MS,Helvetica,Arial,sans-serif;
-  font-size: 10px;
+  font-size: 12px;
+  margin: 0 auto;
+
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.desktopNav__Lines-Title{
+  display: block;
+  width: auto;
+  text-align: start;
+}
+.desktopNav__Lines-subLines{
+  display: block;
+  justify-content: start;
+  text-align: start;
+  margin-top: 10px;
+  
+}
+
+.desktopNav__Lines-subLines-List{
+  margin-top: 10px;
+  padding-top: 10px;
 }
