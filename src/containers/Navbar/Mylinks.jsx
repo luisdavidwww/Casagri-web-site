@@ -4,7 +4,7 @@ export const links = [
     submenu: true,
     sublinks: [
       {
-        Head: "Agroquímicos",
+        Head: "AGROQUÍMICOS",
         subitem: true,
         sublink: [
           { name: "Insecticidas", link: "/" },
@@ -14,7 +14,7 @@ export const links = [
         ],
       },
       {
-        Head: "Semillass",
+        Head: "SEMILLAS",
         subitem: true,
         sublink: [
           { name: "Frutas y Hortalizas", link: "/" },
@@ -25,16 +25,16 @@ export const links = [
         ],
       },
       {
-        Head: "Fertilizantes",
+        Head: "FERTILIZANTES",
         subitem: false,
       },
 
       {
-        Head: "Sacos, cabuyas y cordeles",
+        Head: "SACOS, CABUYAS Y CORDELES",
         subitem: false,
       },
       {
-        Head: "Cercas de alambre y eléctricas",
+        Head: "CERCAS DE ALAMBRE Y ELÉCTRICAS",
         subitem: false,
       },
     ],
@@ -44,60 +44,32 @@ export const links = [
     submenu: true,
     sublinks: [
       {
-        Head: "Women",
+        Head: "EQUIPOS AGRÍCOLAS",
         subitem: true,
         sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
+          { name: "Asperjadoras", link: "/" },
+          { name: "Abonadoras, Sembradoras y Cosechadoras", link: "/" },
+          { name: "Desmalezadoras", link: "/" },
+          { name: "Motosierras", link: "/" },
+          { name: "Motocultores", link: "/" },
         ],
       },
       {
-        Head: "Women",
+        Head: "BOMBAS DE AGUA",
         subitem: true,
         sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
+          { name: "Alta presión", link: "/" },
+          { name: "Baja presión", link: "/" },
         ],
       },
       {
-        Head: "Women",
-        subitem: true,
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
+        Head: "GENERADORES",
+        subitem: false,
       },
 
       {
-        Head: "Women",
-        subitem: true,
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
-      },
-      {
-        Head: "Women",
-        subitem: true,
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
+        Head: "MOTORES",
+        subitem: false,
       },
     ],
   },
@@ -106,7 +78,7 @@ export const links = [
     submenu: true,
     sublinks: [
       {
-        Head: "Topwear",
+        Head: "MEDICINA VETERINARIA",
         subitem: true,
         sublink: [
           { name: "T-shirt", link: "/" },
@@ -117,7 +89,7 @@ export const links = [
         ],
       },
       {
-        Head: "Bottomwear",
+        Head: "INSTRUMENTAL VETERINARIO",
         subitem: true,
         sublink: [
           { name: "T-shirt", link: "/" },
@@ -128,30 +100,7 @@ export const links = [
         ],
       },
       {
-        Head: "innerwear",
-        subitem: true,
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
-      },
-
-      {
-        Head: "sleepwear",
-        subitem: true,
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
-      },
-      {
-        Head: "footwear",
+        Head: "MANEJO E IDENTIFICADORES",
         subitem: true,
         sublink: [
           { name: "T-shirt", link: "/" },
