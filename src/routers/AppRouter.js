@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import  Navbar  from 'containers/Navbar/Navbar';
-import  Navbar2  from 'containers/Navbar/Navbar2';
+import Top_header from 'containers/Top_Header/Top_header'
 
 import { Home } from 'pages/Home';
 
@@ -12,7 +12,8 @@ export const AppRouter = () => {
     return (
         <Router>
             <div>
-                <Navbar2/>
+                <Top_header/>
+                <Navbar/>
                 <Routes>  
                     <Route path="/" element={ <Home/> }></Route>
                 </Routes>

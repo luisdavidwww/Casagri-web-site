@@ -1,0 +1,47 @@
+.Top_header-Container-Copy {
+    display: block;
+    background: rgb(255, 255, 255);
+    height: 80px;
+    display: flex;
+    align-items: center;
+    font-family: 'Roboto';
+    }
+
+    .ContainerHeader {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        max-width: 1000px;
+        margin-left: 80px;
+      }
+  
+    .content-Top{
+      text-align: start;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.8px;
+      padding-top: 0px;
+      margin-left: 25px;
+    }
+
+    .Link-Top-Header {
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+      }
+
+    .Linea {
+        display: block;
+        border-top: 0.5px solid rgb(245, 245, 245);
+        height: 0px;
+        max-width: 100%;
+        padding: 0;
+        margin-bottom: 5px ;
+      }
+  
+    @media screen and (max-width: 960px) {
+      .Top_header-Container-Copy {
+          display: flex;
+          height: 0px;
+          }
+    }
+    

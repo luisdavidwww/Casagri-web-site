@@ -92,25 +92,11 @@ export const links = [
       },
       {
         Head: "INSTRUMENTAL VETERINARIO",
-        subitem: true,
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
+        subitem: false,
       },
       {
         Head: "MANEJO E IDENTIFICADORES",
-        subitem: true,
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
+        subitem: false,
       },
     ],
   },
@@ -118,15 +104,17 @@ export const links = [
     name: "FERRETERÍA",
     submenu: true,
     sublinks: [
-      { Head: "Ferretería Agrícola", subitem: false, },
+      { Head: "FERRETERÍA AGRICOLA", subitem: false, },
+      { Head: "ELECTRICIDAD", subitem: false, },
+      { Head: "OTROS PRODUCTOS", subitem: false, },
     ],
   },
   {
     name: "SALUD PÚBLICA",
     submenu: true,
     sublinks: [
-      { Head: "Control de Plaga", subitem: false, },
-      { Head: "Desinfectantes", subitem: false },
+      { Head: "CONTROL DE PLAGA", subitem: false, },
+      { Head: "DESINFECTANTE", subitem: false },
     ],
   },
 ];
