@@ -1,14 +1,9 @@
 import React, { useState, useEffect  } from 'react';
 import { Link } from "react-router-dom";
+import { links } from "./Mylinks";
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
-import { useLocation } from 'react-router-dom';
-import { links } from "./Mylinks";
 import './Navbar2.css';
-
-
-
-
 
 
 const Navbar = () => {
@@ -17,21 +12,30 @@ const Navbar = () => {
     AOS.init({duration:1500});
     },[]);
 
+  
+  //estados para el dropdown
   const [heading, setHeading] = useState("");
-  const [subHeading, setSubHeading] = useState("");
+  const [hover, setHover] = useState(false);
+  const [dropdown, setDropdown] = useState(false);
 
-  //use state de el navbar
-  const [isHover, setIsHover] = useState(false);
 
-   const handleMouseEnter = () => {
-      setIsHover(true);
-   };
-
-   const handleMouseLeave = () => {
-      setIsHover(false);
-      setHeading("");
-   };
-
+  
+  //cursor activo sobre el elemento
+  const onMouseEnter = () => {
+    if (window.innerWidth < 960) {
+      setDropdown(false);
+    } else {
+      setDropdown(true);
+    }
+  };
+  //cursor desactivado al salir del elemento
+  const onMouseLeave = () => {
+    if (window.innerWidth < 960) {
+      setDropdown(false);
+    } else {
+      setDropdown(false);
+    }
+  };
 
 
   return (
@@ -39,97 +43,104 @@ const Navbar = () => {
       <nav className='navbar'>
         <div className='navigation__container--navs'>
           <section id="desktopNav__container" >
-              <div className='desktopNav__lower'>
-                
-      {links.map((link) => (
-        <div className=''>
-          <h1
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              className='desktopNav__container-title '
-              onMouseOver={() => {
-                setHeading(link.name);
-              }}
-              onMouseOut={() => {
-                setSubHeading(link.name);
-                setHeading("");
-              }}
-          >
-              {link.name}
-    
-          </h1>
-        
-          {heading == link.name || subHeading == link.name ? (
-            <div className='desktopNav__container--navbar'>
-              {link.submenu && (
-                      <div
-                        onMouseEnter={() => {setSubHeading(link.name)}}  
-                        onMouseLeave={() => {setSubHeading("")}}  
-                        className={subHeading == link.name ? 'desktopNav__container--active'  : 'desktopNav__container'}
-                        
-                      >
-                        <div className="desktopNav__container-Drowbox-container">
-                          <div className="desktopNav__container-Drowbox-">
-                              {link.sublinks.map((mysublinks) => (
-                                  <div className="desktopNav__Lines" >
-                                    <div className="desktopNav__Lines-Title">
-                                      <h1>
-                                        <Link
-                                            to=""
-                                            className=""
-                                            style={{ textDecoration: 'none', color:'black', }}
-                                          >
-                                          {mysublinks.Head}     
-                                        </Link>
-                                      </h1>
-                                    </div>
-                                    
-                                    { mysublinks.subitem == true ?
-                                      (
-                                        <div className="desktopNav__Lines-subLines">
-                                        {mysublinks.sublink.map((slink) => (   
-                                            <li className="desktopNav__Lines-subLines-List">
+            <div className='desktopNav__lower'>
+
+              {/* Recorrido de la lista: LINEAS DE PRODUCTOS CASAGRI*/}
+              {links.map((link) => (
+              <div
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
+                >
+
+                  {/* Lineas de Producto en el Navbar*/}
+                  <div className={heading == link.name ? 'desktopNav__container-line-hover' : 'desktopNav__container-line' }>
+                    <h1
+                        className='desktopNav__container-line-title'
+                        onMouseOver={() => {
+                          setHeading(link.name);
+                        }}
+                    >
+                        {link.name}
+                    </h1>
+                  </div>
+
+                  {/* Sublineas de Productos */}
+                  {dropdown ? (
+                    <div className='desktopNav__container--navbar'>
+
+                      {/* Validación del nombre la Línea y si posee sublineas activas */}
+                        {heading == link.name && link.submenu && (
+                              <div className='desktopNav__container--active'>
+                                <div className="desktopNav__container-Drowbox-container">
+                                  <div 
+                                  className="desktopNav__container-Drowbox-"
+                                  >
+
+
+                                    {/* Recorrido de las sublineas */}
+                                      {link.sublinks.map((mysublinks) => (
+                                          <div className="desktopNav__SubLines" >
+                                            <div className="desktopNav__SubLines-Title">
+                                              <div>
                                                 <Link
-                                                  to={slink.link}
-                                                  className=""
-                                                  style={{ textDecoration: 'none', color:'black' }}
-                                                >
-                                                  {slink.name}
+                                                    to=""
+                                                    className=""
+                                                    style={{ textDecoration: 'none', color:'rgb(55, 55, 55)', }}
+                                                  >
+                                                  {mysublinks.Head}     
                                                 </Link>
-                                            </li>            
-                                          ))}
-                                    </div>
-                                      ):null
-                                    }
+                                              </div>
+                                            </div>
+                                            
+
+                                          {/* Validación si las sublineas tienen categorias activas */}
+                                            { mysublinks.subitem == true ?
+                                              (
+                                                <div className="desktopNav__Container-Lines-subLines">
+                                                  {mysublinks.sublink.map((slink) => (   
+                                                      <li className="desktopNav__Container-Lines-subLines-List">
+                                                          <div
+                                                            to={slink.link}
+                                                            className=""
+                                                            style={{  fontFamily:'Gotham', color:'rgb(70, 70, 70)'  }}
+                                                          >
+                                                            {slink.name}
+                                                          </div>
+                                                      </li>            
+                                                    ))}
+                                                  </div>
+                                              ):null
+                                            }
+
+
+                                          </div>
+                                        ))}
+
+
+
                                   </div>
-                                ))}
-                          </div>
-                        </div>
+                                </div>
+                              </div>
+
+
+
+                        )}
                       </div>
-                      )}
+
+
+
+                  ):null}
+                </div>
+
+
+              ))}
+
+
             </div>
-          ):null}
-
-        </div>
-      ))}
-
-
-
-
-
-
-
-
-
-
-
-              </div>
-
           </section>
         </div>
       </nav>
     </>
-    
   );
 }
 
