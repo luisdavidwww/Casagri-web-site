@@ -11,7 +11,7 @@ import { Home } from 'pages/Home';
 export const AppRouter = () => {
     return (
         <Router>
-            <div>
+            <div style={{  display:'block' }}>
                 <Top_header/>
                 <Navbar/>
                 <Routes>  

@@ -11,7 +11,9 @@ const Top_header = () => {
             <div className='ContainerHeader'>
                 <div className='content-Top'>
                     <div>
-                      <Logo/>
+                        <Link to='/' className='Link-Top-Header'>
+                            <Logo/>
+                        </Link> 
                     </div>
                     <Link to='#' className='Link-Top-Header'>
                         <span >0251 - 8149220 </span>
