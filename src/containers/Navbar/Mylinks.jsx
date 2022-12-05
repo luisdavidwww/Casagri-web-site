@@ -1,10 +1,10 @@
 export const links = [
   {
-    name: "AGROINDUSTRIAL",
+    name: "Agroindustrial",
     submenu: true,
     sublinks: [
       {
-        Head: "AGROQUÍMICOS",
+        Head: "Agroquímicos",
         subitem: true,
         sublink: [
           { name: "Insecticidas", link: "/" },
@@ -14,7 +14,7 @@ export const links = [
         ],
       },
       {
-        Head: "SEMILLAS",
+        Head: "Semillas",
         subitem: true,
         sublink: [
           { name: "Frutas y Hortalizas", link: "/" },
@@ -24,26 +24,26 @@ export const links = [
         ],
       },
       {
-        Head: "FERTILIZANTES",
+        Head: "Fertilizantes",
         subitem: false,
       },
 
       {
-        Head: "SACOS, CABUYAS Y CORDELES",
+        Head: "Sacos, Cabuyas y Cordeles",
         subitem: false,
       },
       {
-        Head: "CERCAS DE ALAMBRE Y ELÉCTRICAS",
+        Head: "Cercas de Alambre y Eléctricas",
         subitem: false,
       },
     ],
   },
   {
-    name: "MAQUINARIAS",
+    name: "Maquinarias",
     submenu: true,
     sublinks: [
       {
-        Head: "EQUIPOS AGRÍCOLAS",
+        Head: "Equípos Agrícolas",
         subitem: true,
         sublink: [
           { name: "Asperjadoras", link: "/" },
@@ -54,7 +54,7 @@ export const links = [
         ],
       },
       {
-        Head: "BOMBAS DE AGUA",
+        Head: "Bombas de Agua",
         subitem: true,
         sublink: [
           { name: "Alta presión", link: "/" },
@@ -62,22 +62,22 @@ export const links = [
         ],
       },
       {
-        Head: "GENERADORES",
+        Head: "Generadores",
         subitem: false,
       },
 
       {
-        Head: "MOTORES",
+        Head: "Motores",
         subitem: false,
       },
     ],
   },
   {
-    name: "SALUD ANIMAL",
+    name: "Salud Animal",
     submenu: true,
     sublinks: [
       {
-        Head: "MEDICINA VETERINARIA",
+        Head: "Medicina Veterinaria",
         subitem: true,
         sublink: [
           { name: "Antibióticos", link: "/" },
@@ -91,30 +91,30 @@ export const links = [
         ],
       },
       {
-        Head: "INSTRUMENTAL VETERINARIO",
+        Head: "Instrumental Veterinario",
         subitem: false,
       },
       {
-        Head: "MANEJO E IDENTIFICADORES",
+        Head: "Manejo e Identificadores",
         subitem: false,
       },
     ],
   },
   {
-    name: "FERRETERÍA",
+    name: "Ferretería",
     submenu: true,
     sublinks: [
-      { Head: "FERRETERÍA AGRICOLA", subitem: false, },
-      { Head: "ELECTRICIDAD", subitem: false, },
-      { Head: "OTROS PRODUCTOS", subitem: false, },
+      { Head: "Ferretería Agrícola", subitem: false, },
+      { Head: "Electricidad", subitem: false, },
+      { Head: "Otros Productos", subitem: false, },
     ],
   },
   {
-    name: "SALUD PÚBLICA",
+    name: "Salud Pública",
     submenu: true,
     sublinks: [
-      { Head: "CONTROL DE PLAGA", subitem: false, },
-      { Head: "DESINFECTANTE", subitem: false },
+      { Head: "Control De Plaga", subitem: false, },
+      { Head: "Desinfectante", subitem: false },
     ],
   },
 ];

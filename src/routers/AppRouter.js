@@ -12,7 +12,6 @@ export const AppRouter = () => {
     return (
         <Router>
             <div style={{  display:'block' }}>
-                <Top_header/>
                 <Navbar/>
                 <Routes>  
                     <Route path="/" element={ <Home/> }></Route>
