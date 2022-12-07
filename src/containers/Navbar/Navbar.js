@@ -187,15 +187,13 @@ const Navbar = () => {
                                       {link.sublinks.map((mysublinks) => (
                                           <div className="desktopNav__SubLines" >
                                             <div className="desktopNav__SubLines-Title">
-                                              <div>
                                                 <Link
                                                     to=""
-                                                    className=""
-                                                    style={{ textDecoration: 'none', color:'rgb(55, 55, 55)', }}
+                                                    className="desktopNav__SubLines-Title-link"
+                                                    style={{ textDecoration: 'none' }}
                                                   >
                                                   {mysublinks.Head}     
                                                 </Link>
-                                              </div>
                                             </div>
                                             
 
@@ -206,8 +204,7 @@ const Navbar = () => {
                                                   {mysublinks.sublink.map((slink) => (   
                                                       <li className="desktopNav__Container-Lines-subLines-List">
                                                           <div
-                                                            className=""
-                                                            style={{  fontFamily:'Gotham', color:'rgb(70, 70, 70)'  }}
+                                                            className="desktopNav__Container-Lines-subLines-List-Products" 
                                                           >
                                                             {slink.name}
                                                           </div>

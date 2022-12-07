@@ -167,6 +167,14 @@ li {
   text-transform: uppercase;
 }
 
+.desktopNav__SubLines-Title-link{
+  color: #1f1f1f;
+}
+
+.desktopNav__SubLines-Title-link:hover{
+  color: #049e1e;
+}
+
 .desktopNav__Container-Lines-subLines{
   display: block;
   justify-content: start;
@@ -185,8 +193,12 @@ li {
   padding-top: 5px;
 }
 
+.desktopNav__Container-Lines-subLines-List{
+  color: rgb(70, 70, 70);
+}
+
 .desktopNav__Container-Lines-subLines-List:hover{
-  color: #C5CF2F;;
+  color: rgb(5, 172, 28);
   cursor: pointer;
 }
 
@@ -307,10 +319,12 @@ li {
     transition: all 0.5s ease;
     z-index: 1;
   }
+
   .david{
     display: none;
     background-color: #049e1e;
   }
+  
   .movilNav-SubLines{
     display: flex;
     justify-content: center;
@@ -318,10 +332,17 @@ li {
     width: 100%;
     height: 70px;   
     text-decoration: none;
-    background-color: rgb(247, 247, 247);
+    background-color: rgb(250, 250, 250);
     border-bottom: 1px solid rgb(230, 230, 230);
     color: rgb(75, 75, 75);
     
+  }
+
+  .movilNav-SubLines:focus{
+    text-decoration: none;
+    background-color: #049e1e;
+    border-bottom: 1px solid rgb(230, 230, 230);
+    color: rgb(255, 255, 255);
   }
 
   .movilNav-SubLines-title{
