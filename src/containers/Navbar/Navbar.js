@@ -6,14 +6,11 @@ import AOS from 'aos';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import 'aos/dist/aos.css'; 
 import './Navbar.css';
-import './NavbarL.css';
 
 
 
 const Navbar = () => {
 
-  
-  //estados para el dropdown
   const [heading, setHeading] = useState("");
   const [hover, setHover] = useState(false);
   const [dropdown, setDropdown] = useState(false);
@@ -25,7 +22,6 @@ const Navbar = () => {
 
   //Acción Click
   const handleClick = () => setClick(!click);
-
 
   //cursor activo sobre el elemento Navbar
   const onMouseEnter = () => {
@@ -56,7 +52,7 @@ const Navbar = () => {
   const SubLinesOut = () => setHeading("");
 
   
-
+  //Metodo para mostrar y ocultar Pestaña de SubLineas Movil
   const dropdownBoxMovil = (props:string) => {
     
     if (dropdownMovil && props == line ) {
@@ -83,7 +79,47 @@ const Navbar = () => {
     }
   };
 
-  
+  //Metodo para mostrar y ocultar Pestaña de SubLineas Desktop
+  const dropdownBoxDesktop = (props:string) => {
+    
+    if (dropdown && props == heading ) {
+      setDropdown(false);
+      setErclick(false);
+      setHeading("");
+    } 
+
+    if (dropdown && props != heading ) {
+      setDropdown(false);
+      setErclick(false);
+      setDropdown(true);
+      setErclick(true);
+      setHeading(props);
+    } 
+    
+    if (!dropdown) {
+      setDropdown(true);
+      setErclick(true);
+      setHeading(props);
+    }
+  };
+
+  //Constante Auxiliar
+  const refOne = useRef(null);
+
+  const handleclickOutside = (e) => {
+    if (!refOne.current.contains(e.target)){
+      setDropdown(false);
+      console.log("/////////////////////////");
+      console.log("cerrar");
+      setErclick(false);
+      setHeading("");
+      console.log(heading);
+    } else{
+      console.log("////////////////////////");
+      console.log("abrir");
+      console.log(heading);
+    }
+  }
 
   useEffect(() => { 
     AOS.init({duration:500});
@@ -96,29 +132,10 @@ const Navbar = () => {
     }, []);
 
 
-      const refOne = useRef(null);
-
-      const handleclickOutside = (e) => {
-        if (!refOne.current.contains(e.target)){
-          setDropdown(false);
-          console.log("/////////////////////////");
-          console.log("cerrar");
-          setErclick(false);
-          setHeading("");
-          console.log(heading);
-        } else{
-          console.log("////////////////////////");
-          console.log("abrir");
-          console.log(heading);
-        }
-      }
-
-
-
   return (
     <>
 
-      <div onClick={() => {setDropdown(false); setHeading("");}} >
+      <div>
         {/* Navbar Superior*/}
         <Top_header/>
         <div className='menu-icon' onClick={() => { handleClick(); SubLinesOut();}}>
@@ -135,13 +152,13 @@ const Navbar = () => {
 
               {/* Recorrido de la lista: LINEAS DE PRODUCTOS CASAGRI*/}
               {links.map((link) => (
-              <div onClick={() => { dropdownBoxMovil(link.name); setDropdown(true); }}>
+              <div onClick={() => { dropdownBoxDesktop(link.name);}}>
 
                   {/* Condicional Título de Lineas de Producto en el Navbar */}
                   { heading == link.name ? 
                     (
                       <div className='desktopNav__container-line-hover' >
-                        <h1 className='desktopNav__container-line-title'>
+                        <h1 className='desktopNav__container-line-title-hover'>
                             {link.name}
                         </h1>
                       </div>
@@ -155,16 +172,14 @@ const Navbar = () => {
                     )
                   }
                   {/* Sublineas de Productos */}
-
                   {dropdown && link.submenu && heading == link.name && erclick ? (
                     <div  className='desktopNav__container--navbar'
-                    onMouseLeave={() => {
-                      setHeading(link.name);
-                    }}
+                          onMouseLeave={() => { setHeading(link.name);}}
                     >
                       {/* Validación del nombre la Línea y si posee sublineas activas */}
                         {heading == link.name && link.submenu && (
-                              <div className='desktopNav__container--active'>
+                              <div 
+                              className='desktopNav__container--active'>
                                 <div className="desktopNav__container-Drowbox-container">
                                   <div className="desktopNav__container-Drowbox-">
 
@@ -245,7 +260,7 @@ const Navbar = () => {
                                           }
                                     </h1>             
                                 </div> 
-                        </Link>
+                      </Link>
                     )
                     : 
                     (   
@@ -263,7 +278,7 @@ const Navbar = () => {
                                           }
                                     </h1>             
                                 </div>  
-                        </Link>
+                      </Link>
                     )
                   }
                       {/* SubLíneas de Productos*/}

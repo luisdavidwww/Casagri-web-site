@@ -25,11 +25,13 @@ li {
   display: none;
 }
 
-/*----------DESKTOP NAV----------*/
+
+/*----------DESKTOP NAVBAR----------*/
 
 .movilNav__container{
   display:none;
 }
+
 .movilNav__lower{
   display: none;
 }
@@ -66,16 +68,15 @@ li {
     display: flex;
     width: 100%;
     height: 50px;   
+    cursor: pointer;
 }
 
 .desktopNav__container-line-hover {
-  color: rgb(8, 8, 8);
+  color: rgb(5, 172, 28);
   text-decoration: none;
   transition: 0.1s;
   border-bottom: 4px solid  rgb(5, 172, 28);
-  cursor: pointer;
 }
-
 
 .desktopNav__container-line-title{
   color: black;
@@ -83,12 +84,34 @@ li {
   font-size: 14px;
   letter-spacing: 1px;
   text-transform: uppercase;
+  cursor: pointer;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 18px;
+}
+.desktopNav__container-line-title-hover{
+  color: rgb(5, 172, 28);
+  font-family: 'Gotham Light', sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
   margin-left: 20px;
   margin-right: 20px;
   margin-top: 18px;
 }
 
-
+.desktopNav__container-line-title:hover{
+  color: rgb(5, 172, 28);
+  font-family: 'Gotham Light', sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 18px;
+}
 
 .desktopNav__container {
   display: absolute;
@@ -106,7 +129,7 @@ li {
   padding-left: 50%;
   padding-right: 50%;
   background-color: rgb(255, 255, 255);
-  transition: 0.9;
+  transition: all 5s ease;
   -webkit-box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.09);
   -moz-box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.09);
   box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.09);
@@ -117,12 +140,11 @@ li {
   left: 50%;
   margin-left: -600px;
 }
+
 .desktopNav__container-Drowbox{
   display:inline-block;
   align-content: flex-start;
 }
-
-
 
 .desktopNav__SubLines{
   display: inline-block;
@@ -145,14 +167,12 @@ li {
   text-transform: uppercase;
 }
 
-
 .desktopNav__Container-Lines-subLines{
   display: block;
   justify-content: start;
   line-height: 13px;
   text-align: start;
   margin-top: 25px;
-  
 }
 
 .desktopNav__Container-Lines-subLines-List{
@@ -171,8 +191,8 @@ li {
 }
 
 
-
 @media screen and (max-width: 960px) {
+
 
   /*----------MENU ICON----------*/
   .menu-icon {
@@ -186,7 +206,6 @@ li {
     margin-top: 0.5rem;
     cursor: pointer;
   }
-
 
   /*----------MOVIL NAV----------*/
   .navbar {
@@ -203,7 +222,6 @@ li {
   .desktopNav__lower{
     display: none;
   }
-
 
   .movilNav__container{
     position: absolute;
@@ -242,7 +260,6 @@ li {
     border-bottom: 1px solid rgb(235, 235, 235);
   }
 
-
   .movilNav__container-line-title{
     font-family: 'Gotham Light', sans-serif;
     font-size: 14px;
@@ -250,7 +267,6 @@ li {
     text-transform: uppercase;
     letter-spacing: 1px;
   }
-
 
   .movilNav__container-line-icon{
     position: absolute;
@@ -260,7 +276,6 @@ li {
     z-index: 1;
     cursor: pointer;
   }
-
 
   /*----------NAVBAR ACTIVE----------*/
   .navbar {
@@ -334,7 +349,6 @@ li {
     font-family: 'PT Sans', sans-serif;
   }
   
-
   .dropdown-menu.clicked {
     display: none;
   }
