@@ -53,7 +53,7 @@ const Navbar = () => {
 
   
   //Metodo para mostrar y ocultar Pestaña de SubLineas Movil
-  const dropdownBoxMovil = (props:string) => {
+  const dropdownBoxMovil = (props) => {
     
     if (dropdownMovil && props == line ) {
       setDropdownMovil(false);
@@ -80,7 +80,7 @@ const Navbar = () => {
   };
 
   //Metodo para mostrar y ocultar Pestaña de SubLineas Desktop
-  const dropdownBoxDesktop = (props:string) => {
+  const dropdownBoxDesktop = (props) => {
     
     if (dropdown && props == heading ) {
       setDropdown(false);
@@ -178,8 +178,7 @@ const Navbar = () => {
                     >
                       {/* Validación del nombre la Línea y si posee sublineas activas */}
                         {heading == link.name && link.submenu && (
-                              <div 
-                              className='desktopNav__container--active'>
+                              <div className='desktopNav__container--active'>
                                 <div className="desktopNav__container-Drowbox-container">
                                   <div className="desktopNav__container-Drowbox-">
 

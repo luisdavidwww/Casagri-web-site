@@ -1,6 +1,6 @@
 
   .header-container {
-    background-image: url('../../../public/images/home011.jpg');
+    background-image: url('../../../public/images/home.jpg');
     background-color: rgba(0,0,0,0.4);
     background-size: cover;
     background-repeat: no-repeat;
@@ -16,12 +16,12 @@
 
   .home-img-wrapper {
     max-width: 150px;
-    margin-right: 580px;
+    margin-right: 800px;
     align-items: flex-start;
     color: rgb(0, 0, 0);
     font-family: 'Gotham ', sans-serif;
     font-weight: bold;
-    font-size: 50px;
+    font-size: 100px;
   }
   
   .home-message {

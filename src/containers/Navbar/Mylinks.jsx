@@ -10,7 +10,7 @@ export const links = [
           { name: "Insecticidas", link: "/" },
           { name: "Herbicidas", link: "/" },
           { name: "Fungicidas", link: "/" },
-          { name: "OtroS", link: "/" },
+          { name: "Otros", link: "/" },
         ],
       },
       {
@@ -19,7 +19,7 @@ export const links = [
         sublink: [
           { name: "Frutas y Hortalizas", link: "/" },
           { name: "Pasto", link: "/" },
-          { name: "Maiz", link: "/" },
+          { name: "Maíz", link: "/" },
           { name: "Sustratos", link: "/" },
         ],
       },
