@@ -1,12 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Logo from '../../assets/Logo';
 import LogoCasagri from "static/casagri-logo-01.svg";
-import LogoCasagri2 from "static/casagri-logo-04-04.svg";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee, faPhone } from '@fortawesome/free-solid-svg-icons';
+
+/*Icons*/
+import { BsCart3 } from "react-icons/bs";
+import { SlUser } from "react-icons/sl";
 
 import './Top_header.css';
 
 const Top_header = () => {
+
+    const element = <FontAwesomeIcon icon={faCoffee} />
+
   return (
     <>
         <div className='Top_header-Container-Copy'>
@@ -20,7 +27,38 @@ const Top_header = () => {
                         </Link> 
                     </div>
                 </div>
-            </div>     
+                <div className='content-Top-Op'>
+                <div className='content-Top-options'>
+                    <div className='content-Top-options-list'>
+                        <Link to='/' className='content-Top-options-list-link' style={{ textDecoration: 'none'}}>
+                            Home
+                        </Link>   
+                    </div>
+                    <div className='content-Top-options-list'>
+                        <Link to='/' className='content-Top-options-list-link' style={{ textDecoration: 'none'}}>
+                            Nosotros
+                        </Link> 
+                    </div>
+                    <div className='content-Top-options-list'>
+                        <Link to="/Contact" className='content-Top-options-list-link' style={{ textDecoration: 'none'}}>
+                            Contactanos
+                        </Link> 
+                    </div>
+
+                    {/* Opcones de Icons */}
+                    <div className='content-Top-options-list-icons-set'>
+                        <Link to='/' className='content-Top-options-list-link' style={{ textDecoration: 'none', fontSize: '18.6px'}}>
+                            <BsCart3 />
+                        </Link> 
+                    </div>
+                    <div className='content-Top-options-list-icons'>
+                        <Link to='/' className='content-Top-options-list-link' style={{ textDecoration: 'none', fontSize: '18px'}}>
+                            <SlUser />
+                        </Link> 
+                    </div>
+                </div>
+            </div> 
+            </div>    
         </div>
         
     </>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { links } from "./Mylinks";
 import Top_header from 'containers/Top_Header/Top_header';
 import AOS from 'aos';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+/*import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'*/
 import 'aos/dist/aos.css'; 
 import './Navbar.css';
 

@@ -12,7 +12,7 @@ export const BannerMain = () => {
     <>
     <div className='header-container'>
         <div className='home-img-wrapper'>
-          <p className='home-message'>Título de Banner Casagri</p>
+          <p className='home-message'></p>
         </div>
     </div>
     </>

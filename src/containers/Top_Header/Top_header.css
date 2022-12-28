@@ -1,7 +1,7 @@
     .Top_header-Container-Copy {
     display: block;
     background: rgb(255, 255, 255);
-    height: 90px;
+    height: 110px;
     width: 100%;
     align-items: center;
     font-family: 'Roboto';
@@ -26,9 +26,9 @@
     }
 
     .navbar-logo {
-      margin-top: 0.8rem;
+      margin-top: 1rem;
       height: 1.8rem;
-      width: 3.8rem;
+      width: 4.5rem;
       margin-left: 3rem;
     }
 
@@ -45,7 +45,55 @@
         padding: 0;
         margin-bottom: 5px ;
       }
-  
+
+    /*--------------------- Opciones Derecha ----------------------*/
+    .content-Top-Op{
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: row;
+      position: absolute;
+      width: 90%;
+    }
+
+    .content-Top-options{
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: row;
+      margin-right: 3rem;
+    }
+
+    .content-Top-options-list{
+      margin-top: 2.5rem;
+      padding: 10px;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    .content-Top-options-list-icons-set{
+      margin-top: 2.5rem;
+      margin-left: 15px;
+      padding: 10px;
+    }
+
+    .content-Top-options-list-icons{
+      margin-top: 2.5rem;
+      padding: 10px;
+    }
+
+    .content-Top-options-list-link{
+      color:black;
+      font-family: 'Gotham', sans-serif;
+      font-size: 14px;
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+
+    .content-Top-options-list-link:hover{
+      color:#049e1e;
+    }
+
+
+
+
     @media screen and (max-width: 960px) {
 
       .Top_header-Container-Copy {
@@ -71,5 +119,12 @@
         width: 3.7rem;
         margin-left: 0.7rem;
       }
+
+      /*------------------lista de Opciones---------------*/
+
+      .content-Top-Op{
+        display: none;
+      }
+
     }
     
