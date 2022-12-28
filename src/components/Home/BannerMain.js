@@ -15,6 +15,9 @@ export const BannerMain = () => {
           <p className='home-message'></p>
         </div>
     </div>
+    <div>
+      img
+    </div>
     </>
     
     

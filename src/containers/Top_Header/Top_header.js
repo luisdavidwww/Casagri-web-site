@@ -1,18 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LogoCasagri from "static/casagri-logo-01.svg";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee, faPhone } from '@fortawesome/free-solid-svg-icons';
+
 
 /*Icons*/
 import { BsCart3 } from "react-icons/bs";
 import { SlUser } from "react-icons/sl";
 
+//estilos
 import './Top_header.css';
+import '../../Styles/GlobalStyles.css'
 
 const Top_header = () => {
 
-    const element = <FontAwesomeIcon icon={faCoffee} />
 
   return (
     <>
@@ -22,7 +22,7 @@ const Top_header = () => {
                     <div>
                         <Link to='/' className='Link-Top-Header'>
                             <div className='navbar-logo' >
-                                <img src={ LogoCasagri } alt="Casagri" />
+                                <img href='/' src={ LogoCasagri } alt="Casagri" />
                             </div> 
                         </Link> 
                     </div>
@@ -31,17 +31,17 @@ const Top_header = () => {
                 <div className='content-Top-options'>
                     <div className='content-Top-options-list'>
                         <Link to='/' className='content-Top-options-list-link' style={{ textDecoration: 'none'}}>
-                            Home
+                            Inicio
                         </Link>   
                     </div>
                     <div className='content-Top-options-list'>
-                        <Link to='/' className='content-Top-options-list-link' style={{ textDecoration: 'none'}}>
-                            Nosotros
+                        <Link to='/Company' className='content-Top-options-list-link' style={{ textDecoration: 'none'}}>
+                            Empresa
                         </Link> 
                     </div>
                     <div className='content-Top-options-list'>
                         <Link to="/Contact" className='content-Top-options-list-link' style={{ textDecoration: 'none'}}>
-                            Contactanos
+                            Contacto
                         </Link> 
                     </div>
 

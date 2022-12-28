@@ -7,18 +7,11 @@ export const Home = () => {
     <div>
       <BannerMain/>
       <div>
-        <p>Luis david</p>
-        <p>Luis david</p>
-        <p>Luis david</p>
-        <p>Luis david</p>
-        <p>Luis david</p>
-        <p>Luis david</p>
-        <p>Luis david</p>
-        <p>Luis david</p>
-        <p>Luis david</p>
-        <p>Luis david</p>
-        <p>Luis david</p>
-        <p>Luis david</p>
+        <p>Home</p>
+        <p>Home</p>
+        <p>Home</p>
+        <p>Home</p>
+        <p>Home</p>
       </div>
     </div>
   )

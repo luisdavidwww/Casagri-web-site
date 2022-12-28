@@ -1,8 +1,5 @@
 /*PRINCIPAL NAV BAR*/
 
-*{
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-}
 
 .navbar {
   background: rgb(255, 255, 255);
@@ -23,6 +20,11 @@ ul {
 
 li {
   list-style: none;
+}
+
+/*----------NAVBAR OPTION top Header----------*/
+.movilNav-option-main{
+  display: none;  
 }
 
 /*----------MENU ICON----------*/
@@ -220,12 +222,12 @@ li {
   .menu-icon {
     display: block;
     position: absolute;
-    color: #47A01A;
+    color: #272727;
     top: 0;
     right: 0;
     transform: translate(-100%, 60%);
-    font-size: 1.8rem;
-    margin-top: 0.5rem;
+    font-size: 2rem;
+    margin-top: 0.1rem;
     cursor: pointer;
   }
 
@@ -236,6 +238,7 @@ li {
     border-bottom: 0px solid rgb(235, 235, 235);
     border-top: 0px solid rgb(235, 235, 235);
   }
+  
 
   .desktopNav__container--navbar{
     display: none;
@@ -252,12 +255,20 @@ li {
 
   .movilNav__lower{
     display: block;
+    position: absolute;
     text-align: center;
     border-radius: 4px;
     width: 100%;
     text-decoration: none;
     color: #fff;
     font-size: 1.7rem;
+  }
+  .movilNav__container-line-top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-top: 1px solid rgb(235, 235, 235);
   }
   
   .movilNav__container-line{
@@ -299,6 +310,31 @@ li {
     cursor: pointer;
   }
 
+  /*----------MOBIL NAVBAR OPTION----------*/
+  .movilNav-option-main{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 30px;
+    margin-top: 1.2rem;
+    margin-bottom: 0.5rem;
+    
+  }
+  .movilNav-option-container{
+    display: flex;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+  }
+  .movilNav-option-text{
+    color:#47A01A;
+    font-family: 'Gotham', sans-serif;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 1px;
+  }
+
   /*----------NAVBAR ACTIVE----------*/
   .navbar {
     display: block;
@@ -323,17 +359,13 @@ li {
 
 
   /*----------DROPDOWN MENU----------*/
-  .luis{
+  .movilNav-drop{
     display: block;
     opacity: 1;
     transition: all 0.5s ease;
     z-index: 1;
   }
 
-  .david{
-    display: none;
-    background-color: #47A01A;
-  }
   
   .movilNav-SubLines{
     display: flex;
@@ -342,7 +374,7 @@ li {
     width: 100%;
     height: 70px;   
     text-decoration: none;
-    background-color: rgb(250, 250, 250);
+    background-color: rgb(253, 253, 253);
     border-bottom: 1px solid rgb(230, 230, 230);
     color: rgb(75, 75, 75);
     

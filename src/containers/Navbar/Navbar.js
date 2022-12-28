@@ -1,11 +1,24 @@
 import React, { useState, useEffect, useRef  } from 'react';
 import { Link } from "react-router-dom";
-import { links } from "./Mylinks";
+
+//Componentes
 import Top_header from 'containers/Top_Header/Top_header';
+
+// Listas de datos 
+import { links } from "./Mylinks";
+import { op } from "./Options";
+
+// transiciones diseño
 import AOS from 'aos';
-/*import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'*/
-import 'aos/dist/aos.css'; 
+import 'aos/dist/aos.css';
+
+//estilos
 import './Navbar.css';
+import '../../Styles/GlobalStyles.css'
+
+//icons
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { IoCloseOutline, IoMenuOutline } from "react-icons/io5";
 
 
 
@@ -138,8 +151,15 @@ const Navbar = () => {
       <div>
         {/* Navbar Superior*/}
         <Top_header/>
+
+        {/* Icono Menú Opciones*/}
         <div className='menu-icon' onClick={() => { handleClick(); SubLinesOut();}}>
-          <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+          {click ?
+          (<IoCloseOutline/>)
+          :
+          (<IoMenuOutline/>)
+          }
+          {/*<i className={click ? 'fas fa-times' : 'fas fa-bars'} />*/}
         </div>
       </div>
 
@@ -234,9 +254,26 @@ const Navbar = () => {
 
           {/*---------------------------------Navbar Movil--------------------------------------*/}
           <section id="movilNav__container">
-            <div className='movilNav__lower'>
+            
+            {/*Opciones de politica de la empresa*/}
+            <div className='movilNav-option-main'>
+              {op.map((option) => (
+                    <div className='movilNav-option-container'>
+                      <Link to={option.href}  
+                      className='movilNav-option-text' 
+                      style={{ textDecoration: 'none', textAlign:'center'}}
+                      onClick={() => { setClick(false) }}
+                      >
+                        {/**/}
+                        {option.option} 
+                      </Link>
+                    </div>
+              ))}
+              </div>
 
+            <div className='movilNav__lower'>
               {/* Recorrido de la lista: LINEAS DE PRODUCTOS CASAGRI*/}
+              <div className='movilNav__container-line-top'></div>
               {links.map((link) => (
               <div>
                   {/* Condicional para hover de las líneas */}
@@ -279,7 +316,7 @@ const Navbar = () => {
                   }
                       {/* SubLíneas de Productos*/}
                         {dropdownMovil && link.submenu && heading == link.name && erclick && (
-                          <div data-aos="fade-left" className='luis'>
+                          <div data-aos="fade-left" className='movilNav-drop'>
                                 {link.sublinks.map((mysublinks) => {
                                   return (
                                     <div>
