@@ -122,15 +122,9 @@ const Navbar = () => {
   const handleclickOutside = (e) => {
     if (!refOne.current.contains(e.target)){
       setDropdown(false);
-      console.log("/////////////////////////");
-      console.log("cerrar");
       setErclick(false);
       setHeading("");
-      console.log(heading);
     } else{
-      console.log("////////////////////////");
-      console.log("abrir");
-      console.log(heading);
     }
   }
 
@@ -282,7 +276,7 @@ const Navbar = () => {
                       <Link to='' className='movilNav__container-line-hover'
                           onClick={() => { dropdownBoxMovil(link.name); }}
                         >
-                          {/* Lineas de Producto en el Navbar*/}
+                          {/* Lineas de Producto en el Navbar hover*/}
                               <div>
                                     <h1 className='movilNav__container-line-title'>
                                         {link.name} 

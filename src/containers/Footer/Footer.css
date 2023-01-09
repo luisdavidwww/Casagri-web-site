@@ -1,0 +1,83 @@
+ /*-----------Banner-----------*/
+
+ .Banner-Main-Movil{
+  display: none;
+}
+
+.container-Banner-Main{
+  display: inline-flex;
+  width: 100%;
+  /*height: 100%;*/
+  height: 28rem;
+}
+
+.banner-img{
+  display: flex;
+  object-fit: cover;
+  width:100%;
+  height:100%;
+  z-index: 5;
+}
+.banner-img:hover{
+  cursor: pointer;
+}
+
+.container-Banner-Main-Content{
+  display: flex;
+  position: absolute;
+  justify-content: flex-start;
+  margin-left: 15%;
+  margin-top: 6%;
+}
+
+.container-Banner-Main-Content-title {
+  display: flex;
+  justify-content: center;
+  width: 500px;
+  z-index: 10;
+  font-size: 3rem;
+  line-height: 50px;
+  color: rgb(34, 34, 34);
+}
+
+
+
+
+@media screen and (max-width: 960px) {
+
+  .Banner-Main-Desktop{
+    display: none;
+  }
+
+  .Banner-Main-Movil{
+    display: inline-block;
+  }
+
+  .container-Banner-Main-Movil{
+    display: block;
+    width: 100%;
+    height: 18rem;
+  }
+
+  .banner-img-Movil{
+    display: inline-block;
+    object-fit: cover;
+    width:100%;
+    height: 100%;
+  }
+  .container-Banner-Main-Content-Movil{
+    display: flex;
+    width: 85%;
+    margin: auto;
+  }
+  .container-Banner-Main-Content-title-Movil {
+    display: block;
+    position: static;
+    text-align: center;
+    font-size: 1.9rem;
+    letter-spacing: 0.05rem;
+    line-height: 2.5rem;
+    width: 100%;
+    color: rgb(8, 8, 8);
+  }
+}

@@ -1,0 +1,138 @@
+
+  .contact-container {
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'PT Sans', sans-serif;
+    margin-top: 50px;
+    margin-bottom: 70px;
+  }
+  
+  
+  .sede-container {
+    display: row;
+    align-items: center;
+    max-width: 1500px;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 15px;
+  }
+  
+  .sede-wrap {
+    position: relative;
+    display: inline-block;
+    flex-direction: column;
+    width: 50%;
+    height: 45%;
+    padding-top: 35%;
+    overflow: hidden;
+  }
+  
+  .sede-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 7px;
+    transition: all 0.2s linear;
+  }
+
+  .sede-img:hover {
+    transform: scale(1.1);
+  }
+
+
+  .sede-wrap-Info {
+    position: absolute;
+    display: inline-block;
+    flex-direction: column;
+    overflow: hidden;
+    margin-left: 50px;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+  }
+  
+  .sede-title{
+    text-align: start;
+    align-items: center;
+    color: #0C572F;
+    margin-top: 10px;
+    font-size: 35px;
+  }
+  
+  .sede-text{
+    text-align: start;
+    color: rgb(56, 56, 56);
+    font-family: 'Roboto';
+    margin-top: 20px;
+    letter-spacing: 0.2px;
+  }
+  
+  @media screen and (max-width: 960px) {
+
+    .sede-container {
+        display: row;
+        width: 80%;
+        margin-top: 15px;
+        margin-bottom: 150px;
+    }
+
+    .sede-wrap{
+        display: block;
+        justify-content: center;
+        align-items: center;
+        padding-top: 70%;
+        width: 100%;
+    }
+
+
+    .sede-img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 7px;
+        transition: all 0.2s linear;
+      }
+
+    .sede-wrap-Info {
+        position: absolute;
+        width: 80%;
+        display: inline-block;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 0px;
+
+      }
+      .sede-title{
+        text-align: center;
+        font-size: 35px;
+        color: #0C572F;
+        margin-top: 20px;
+      }
+
+      .sede-text{
+        text-align: center;
+        font-size: 16px;
+        color: rgb(46, 46, 46);
+        margin-top: 20px;
+        letter-spacing: 0.2px;
+      }
+  
+}

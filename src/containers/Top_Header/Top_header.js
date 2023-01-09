@@ -22,7 +22,7 @@ const Top_header = () => {
                     <div>
                         <Link to='/' className='Link-Top-Header'>
                             <div className='navbar-logo' >
-                                <img href='/' src={ LogoCasagri } alt="Casagri" />
+                                <img src={ LogoCasagri } alt="Casagri" />
                             </div> 
                         </Link> 
                     </div>
