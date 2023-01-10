@@ -1,5 +1,6 @@
 
   /*----------------------- Elementos diagramados en la pagina ------------------------------------*/
+
   .mainContainer{
     display: inline-block;
     position: relative;
@@ -16,6 +17,9 @@
     width:100%;
     /*height: 100%;*/
     height: 28rem;
+  }
+  .mainContainer-Movil{
+    display: none;
   }
 
 
@@ -51,7 +55,7 @@
   .slick-next{
     margin-right: 10%;
     z-index: 5;
-    opacity: 0.3;
+    opacity: 0.7;
   }
   .slick-next:hover{
     opacity: 1;
@@ -60,7 +64,7 @@
   .slick-prev{
     margin-left: 10%;
     z-index: 10;
-    opacity: 0.3;
+    opacity: 0.7;
   }
   .slick-prev:hover{
     opacity: 1;
@@ -71,21 +75,24 @@
 
     /*----Contenedor Principal----*/
     .mainContainer{
-      z-index: 5;
+     display: none;
     }
-
-    .container{
-      width: 100%;
-      margin: 0;
-      height: 18.75rem;
-    }
-
-    .container-img{
+    
+    .mainContainer-Movil{
       display: inline-block;
+      width: 100%;
+    }
+    .container-Movil{
+      display: inline-flex;
+      width: 100%;
+      padding-top: 80px;
+      height: 30rem;
+    }
+    .container-img-Movil{
+      display: flex;
       object-fit: cover;
       width:100%;
       height: 100%;
-      height: 18rem;
     }
 
 
@@ -100,13 +107,13 @@
     .slick-next{
       margin-right: 10%;
       z-index: 15;
-      opacity: 0.2;
+      opacity: 0.7;
     }
 
     /*-----Boton next------*/
     .slick-prev{
       margin-left: 10%;
       z-index: 10;
-      opacity: 0.2;
+      opacity: 0.7;
     }
   }

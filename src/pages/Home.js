@@ -1,6 +1,9 @@
 import React from 'react';
 import { CarruselDiscover } from 'components/CarruselDiscover/CarruselDiscover';
-import { BannerMain } from 'components/BannerMain/BannerMain';
+
+//componentes
+import  Cards  from 'components/Cards/Cards';
+import  AboutUsHome  from 'components/Home/AboutUsHome'
 
 //Datos para los banners
 import { BannerData } from '../data/BannerData';
@@ -22,24 +25,8 @@ export const Home = () => {
   return (
     <div>
       <CarruselDiscover/>
-      <div>
-        <h1>SOMOS CASAGRI</h1>
-        <h1>SOMOS CASAGRI</h1>
-        <h1>SOMOS CASAGRI</h1>
-        <h1>SOMOS CASAGRI</h1>
-        <h1>SOMOS CASAGRI</h1>
-        <h1>SOMOS CASAGRI</h1>
-        <h1>SOMOS CASAGRI</h1>
-        <h1>SOMOS CASAGRI</h1>
-        <h1>SOMOS CASAGRI</h1>
-        <h1>SOMOS CASAGRI</h1>
-        <h1>SOMOS CASAGRI</h1>
-        <h1>SOMOS CASAGRI</h1>
-        <h1>SOMOS CASAGRI</h1>
-        <h1>SOMOS CASAGRI</h1>
-        <h1>SOMOS CASAGRI</h1>
-        <h1>SOMOS CASAGRI</h1>
-      </div>
+      <AboutUsHome/>
+      <Cards/>
     </div>
   )
 }

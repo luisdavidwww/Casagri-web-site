@@ -14,43 +14,20 @@ export const Company = () => {
 
   //Img del banner principal  
   const bannerImg =  listaDatos.map(item => item.img);
+  const bannerImgMini =  listaDatos.map(item => item.miniimg);
+
   //Titulo del banner principal  
   const bannerTitle =  listaDatos.map(item => item.title);
 
   //Convertimos a strings para las props
   const img =  bannerImg.toString();
+  const imgMini =  bannerImgMini.toString();
   const tit =  bannerTitle.toString();
 
   return (
     <>
-      <BannerMain image={img} title={tit}/>
-      <div>Company</div>
-      <div>Company</div>
-      <div>Company</div>
-      <div>Company</div>
-      <div>Company</div>
-      <div>Company</div>
-      <div>Company</div>
-      <div>Company</div>
-      <div>Company</div>
-      <div>Company</div>
-      <div>Company</div>
-      <div>Company</div>
-      <div>Company</div>
-      <div>Company</div>
-      <div>Company</div>
-      <div>Company</div>
-      <div>Company</div>
-      <div>Company</div>
-      <div>Company</div>
-      <div>Company</div>
-      <div>Company</div>
-      <div>Company</div>
-      <div>Company</div>
-      <div>Company</div>
-      <div>Company</div>
-      <div>Company</div>
-      <div>Company</div>
+      <BannerMain image={img} imageMini={imgMini} title={tit}/>
+      
     </>
   )
 }

@@ -1,0 +1,179 @@
+.body-container {
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'PT Sans', sans-serif;
+    margin-top: 50px;
+    margin-bottom: 70px;
+  }
+
+  .us-container {
+    display: row;
+    align-items: center;
+    justify-content: center;
+    max-width: 1500px;
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+  
+  .us-wrap {
+    position: relative;
+    display: inline-block;
+    flex-direction: column;
+    width: 40%;
+    padding-top: 15%;
+    padding-bottom: 15%;
+    overflow: hidden;
+    transition: all 0.3s linear;
+  }
+
+  .us-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0px;
+    transition: all 0.5s linear;
+  }
+
+
+
+  .us-wrap-Info {
+    position: absolute;
+    display: inline-block;
+    flex-direction: column;
+    overflow: hidden;
+    width: 30%;
+    max-width: 600px;
+    margin-top: 1%;
+    margin-left: 50px;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+  }
+  
+  .us-title{
+    text-align: start;
+    align-items: center;
+    color: #0C572F;
+    margin-top: 10px;
+    font-size: 35px;
+  }
+  
+  .us-text{
+    text-align: start;
+    text-justify: distribute;
+    color: rgb(46, 46, 46);
+    font-family: 'Roboto';
+    margin-top: 20px;
+    line-height: 22px;
+    letter-spacing: 0.2px;
+  }
+
+
+
+
+
+  .Philosophy-container{
+    display: row;
+    align-items: center;
+    justify-content: center;
+    max-width: 1500px;
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 15px;
+  }
+
+  .Philosophy-wrap {
+    position: relative;
+    display: inline-block;
+    flex-direction: column;
+    width: 40%;
+    padding-top: 15%;
+    padding-bottom: 15%;
+    margin-left: 500px;
+    overflow: hidden;
+    transition: all 0.3s linear;
+  }
+
+  .Philosophy-wrap-Info {
+    position: absolute;
+    display: inline-block;
+    flex-direction: column;
+    overflow: hidden;
+    width: 30%;
+    max-width: 600px;
+    margin-right: 500px;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+  }
+
+
+  @media screen and (max-width: 960px) {
+
+    .us-container {
+        display: row;
+        width: 80%;
+        margin-top: 15px;
+        margin-bottom: 240px;
+    }
+
+    .us-wrap{
+        display: block;
+        justify-content: center;
+        align-items: center;
+        padding-top: 70%;
+        width: 100%;
+        transition: all 0.3s linear;
+    }
+
+
+    .us-img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: block;
+        object-fit: cover;
+        border-radius: 7px;
+        transition: all 0.2s linear;
+      }
+
+    .us-wrap-Info {
+        position: absolute;
+        width: 80%;
+        display: block;
+        justify-content: center;
+        align-items: center;
+        margin-left: 0px;
+        margin-bottom: 25px;
+      }
+      .us-title{
+        text-align: center;
+        font-size: 40px;
+        color: #0C572F;
+        margin-top: 20px;
+      }
+
+      .us-text{
+        text-align: initial;
+        font-size: 16px;
+        color: rgb(46, 46, 46);
+        margin-top: 15px;
+        line-height: 25px;
+      }
+  
+}

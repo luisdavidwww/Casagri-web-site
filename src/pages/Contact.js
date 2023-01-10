@@ -10,18 +10,21 @@ const listaDatos = BannerData.filter(element => element.id === 2);
 
 //Img del banner principal  
 const bannerImg =  listaDatos.map(item => item.img);
+const bannerImgMini =  listaDatos.map(item => item.miniimg);
+
 //Titulo del banner principal  
 const bannerTitle =  listaDatos.map(item => item.title);
 
 //Convertimos a strings para las props
 const img =  bannerImg.toString();
+const imgMini =  bannerImgMini.toString()
 const tit =  bannerTitle.toString();
 
 export const Contact = () => {
   return (
     <>
       <div>
-        <BannerMain image={img} title={tit}/>
+        <BannerMain image={img} imageMini={imgMini} title={tit}/>
         <Location/>
         <h1>Contacto</h1>
       </div>

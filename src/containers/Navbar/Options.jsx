@@ -2,7 +2,8 @@ export const op = [
   {
     option: "Inicio",
     value: true,
-    href:'/'
+    href:'/',
+    icon:'BsCart3'
   },
   {
     option: "Empresa",

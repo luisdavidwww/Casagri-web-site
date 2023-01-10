@@ -1,6 +1,8 @@
 
 import bannerCompany from '../assets/img/banner06.jpg'
+import bannerCompanyMini from '../assets/img/banner06mini.jpg'
 import bannerContact from '../assets/img/banner07.jpg'
+import bannerContactMini from '../assets/img/banner07mini.jpg'
 import bannerHome from '../assets/img/banner00.jpg'
 
 
@@ -16,16 +18,16 @@ export const BannerData = [
     {
         id:1,
         img:bannerCompany,
-        miniimg:bannerCompany,
-        title:'La compañía para la agroindustria',
+        miniimg:bannerCompanyMini,
+        title:'Acerca de Nosotros',
         subTitle:"",
         href:'/'
     },
     {
         id:2,
         img:bannerContact,
-        miniimg:bannerContact,
-        title:'Te Damos la Bienvenida',
+        miniimg:bannerContactMini,
+        title:'Contactanos',
         subTitle:"",
         href:'/'
     }

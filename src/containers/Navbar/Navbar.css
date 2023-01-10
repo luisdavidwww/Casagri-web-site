@@ -37,6 +37,10 @@ li {
   display: none;
 }
 
+.icon-container{
+  display: none; 
+}
+
 
 /*----------DESKTOP NAVBAR----------*/
 
@@ -377,14 +381,14 @@ li {
     justify-content: center;
     width: 100%;
     height: 30px;
-    padding-top: 1rem;
+    padding-top: 1.6rem;
     margin-bottom: 0.5rem;
     
   }
   .movilNav-option-container{
     display: flex;
-    margin-right: 0.5rem;
-    margin-left: 0.5rem;
+    margin-right: 0.9rem;
+    margin-left: 0.9rem;
   }
   .movilNav-option-text{
     color:#47A01A;

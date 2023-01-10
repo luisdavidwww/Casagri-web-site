@@ -19,6 +19,7 @@ import '../../Styles/GlobalStyles.css'
 //icons
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { IoCloseOutline, IoMenuOutline } from "react-icons/io5";
+import { BsCart3 } from "react-icons/bs";
 
 
 
@@ -282,7 +283,6 @@ const Navbar = () => {
                       style={{ textDecoration: 'none', textAlign:'center'}}
                       onClick={() => { setClick(false) }}
                       >
-                        {/**/}
                         {option.option} 
                       </Link>
                     </div>
@@ -293,6 +293,7 @@ const Navbar = () => {
               {/* Recorrido de la lista: LINEAS DE PRODUCTOS CASAGRI*/}
 
               <div className='movilNav__container-line-top'></div>
+              
               {links.map((link) => (
               <div>
                   {/* Condicional para hover de las líneas */}
