@@ -129,7 +129,7 @@ const Navbar = () => {
   }
 
   useEffect(() => { 
-    AOS.init({duration:500});
+    AOS.init({duration:100});
     },[]);
   useEffect(() => {
     showButton();
@@ -142,20 +142,44 @@ const Navbar = () => {
   return (
     <>
 
-      <div>
-        {/* Navbar Superior*/}
-        <Top_header/>
 
-        {/* Icono Menú Opciones*/}
-        <div className='menu-icon' onClick={() => { handleClick(); SubLinesOut();}}>
-          {click ?
-          (<IoCloseOutline/>)
-          :
-          (<IoMenuOutline/>)
-          }
-          {/*<i className={click ? 'fas fa-times' : 'fas fa-bars'} />*/}
+       {/* Navbar Superior*/}
+       <Top_header/>
+
+       {/* Icon del NavBar */}
+       <div className='icon-container'>
+            <div className='icon-container-main'>
+                <div className=''>
+                  <div className='icon-container-main-def' onClick={() => { handleClick(); SubLinesOut();}}>
+                    {click ?
+                    (<IoCloseOutline/>)
+                    :
+                    (<IoMenuOutline/>)
+                    }
+                    {/*<i className={click ? 'fas fa-times' : 'fas fa-bars'} />*/}
+                  </div>
+                </div>
+            </div>    
         </div>
-      </div>
+
+       {/*
+            Version anterior del Icono Responsive
+
+          <div className='icon-def'>
+            <div className='icon-def-container'>
+              <div className='menu-icon ' onClick={() => { handleClick(); SubLinesOut();}}>
+                {click ?
+                (<IoCloseOutline/>)
+                :
+                (<IoMenuOutline/>)
+                }
+                
+              </div>
+            </div>
+          </div>
+
+       */}
+       
 
       <nav className={click ? 'navbar active' : 'navbar'} ref={refOne}>
         <div className='navigation__container--navs'>
@@ -263,10 +287,11 @@ const Navbar = () => {
                       </Link>
                     </div>
               ))}
-              </div>
+            </div>
 
             <div className='movilNav__lower'>
               {/* Recorrido de la lista: LINEAS DE PRODUCTOS CASAGRI*/}
+
               <div className='movilNav__container-line-top'></div>
               {links.map((link) => (
               <div>

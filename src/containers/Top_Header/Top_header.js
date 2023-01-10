@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {  useEffect  } from 'react';
 import { Link } from 'react-router-dom';
 import LogoCasagri from "static/casagri-logo-01.svg";
+import { useLocation } from 'react-router-dom';
 
 
 /*Icons*/
@@ -12,6 +13,13 @@ import './Top_header.css';
 import '../../Styles/GlobalStyles.css'
 
 const Top_header = () => {
+
+ //hook que utilizo para llevar el scroll a la parte superior en cada Router
+  let location = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [location]);
+
 
 
   return (
@@ -28,36 +36,36 @@ const Top_header = () => {
                     </div>
                 </div>
                 <div className='content-Top-Op'>
-                <div className='content-Top-options'>
-                    <div className='content-Top-options-list'>
-                        <Link to='/' className='content-Top-options-list-link' style={{ textDecoration: 'none'}}>
-                            Inicio
-                        </Link>   
-                    </div>
-                    <div className='content-Top-options-list'>
-                        <Link to='/Company' className='content-Top-options-list-link' style={{ textDecoration: 'none'}}>
-                            Empresa
-                        </Link> 
-                    </div>
-                    <div className='content-Top-options-list'>
-                        <Link to="/Contact" className='content-Top-options-list-link' style={{ textDecoration: 'none'}}>
-                            Contacto
-                        </Link> 
-                    </div>
+                    <div className='content-Top-options'>
+                        <div className='content-Top-options-list'>
+                            <Link to='/' className='content-Top-options-list-link' style={{ textDecoration: 'none'}}>
+                                Inicio
+                            </Link>   
+                        </div>
+                        <div className='content-Top-options-list'>
+                            <Link to='/Company' className='content-Top-options-list-link' style={{ textDecoration: 'none'}}>
+                                Empresa
+                            </Link> 
+                        </div>
+                        <div className='content-Top-options-list'>
+                            <Link to="/Contact" className='content-Top-options-list-link' style={{ textDecoration: 'none'}}>
+                                Contacto
+                            </Link> 
+                        </div>
 
-                    {/* Opcones de Icons */}
-                    <div className='content-Top-options-list-icons-set'>
-                        <Link to='/' className='content-Top-options-list-link' style={{ textDecoration: 'none', fontSize: '18.6px'}}>
-                            <BsCart3 />
-                        </Link> 
+                        {/* Opcones de Icons */}
+                        <div className='content-Top-options-list-icons-set'>
+                            <Link to='/' className='content-Top-options-list-link' style={{ textDecoration: 'none', fontSize: '18.6px'}}>
+                                <BsCart3 />
+                            </Link> 
+                        </div>
+                        <div className='content-Top-options-list-icons'>
+                            <Link to='/' className='content-Top-options-list-link' style={{ textDecoration: 'none', fontSize: '18px'}}>
+                                <SlUser />
+                            </Link> 
+                        </div>
                     </div>
-                    <div className='content-Top-options-list-icons'>
-                        <Link to='/' className='content-Top-options-list-link' style={{ textDecoration: 'none', fontSize: '18px'}}>
-                            <SlUser />
-                        </Link> 
-                    </div>
-                </div>
-            </div> 
+                </div> 
             </div>    
         </div>
         

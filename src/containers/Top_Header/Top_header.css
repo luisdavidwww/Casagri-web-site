@@ -96,20 +96,27 @@
 
     @media screen and (max-width: 960px) {
 
+  
+
       .Top_header-Container-Copy {
         display: block;
+        position: fixed;
+        top: 0;
         background: rgb(255, 255, 255);
         height: 80px;
+        z-index: 10;
         }
 
         .ContainerHeader {
           display: flex;
           flex-direction: row;
+          
           height: 100%;
           justify-content: flex-start;
           max-width: 1000px;
           margin-left: 10px;
         }
+
 
       .navbar-logo {
         display: block;
