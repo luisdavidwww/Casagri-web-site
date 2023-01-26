@@ -235,7 +235,7 @@ li {
   .icon-def{
     display: block;
     position: fixed;
-    background-color: #f5a1a1;
+    background-color: #ffffff;
     z-index: 150 !important;
     color: #272727;
     width: 100%;

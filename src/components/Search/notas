@@ -1,0 +1,202 @@
+{/* 
+
+import React, { useEffect, useState, useMemo } from 'react';
+import { useParams, useLocation, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useForm } from '../../hooks/useForm';
+import { getProductByName } from '../../selectors/getProductByName';
+import queryString from 'query-string';
+
+
+//importacion de datos de productos
+import { featuredProducts } from "../assets/data/featuredProducts";
+
+
+//componentes
+import  ProductContainerNew  from "../Search/ProductContainerNew";
+import  SearchScreen  from "../Search/SearchScreen";
+
+
+const Search = ({ history }) => {
+
+    
+
+    //constantes
+    const { consulta } = useParams();
+    const location = useLocation();
+    const { q = '' } = queryString.parse( location.search );
+
+
+    //usamos el hook del formulario 
+    const [ formValues, handleInputChange ] = useForm({
+        searchText: q
+    });
+    const { searchText } = formValues;
+
+    const heroesFiltered = useMemo(() => getProductByName( searchText ))
+
+    //metodo del formulario para 
+    const handleSearch = (e) => {
+        e.preventDefault();
+        history.push(`?q=${ searchText }`);
+    }
+
+
+    //constante que almacena todas las categorias
+    const allCategories = [
+		'All',
+		...new Set(featuredProducts.map(products => products.category)),
+	];
+
+    //evalua la prop de URL, 
+    const productsMain = () => {
+        if (consulta === 'All'){
+			setProducts(featuredProducts);
+			return
+		}
+        else {
+		    compare();
+			return
+		}
+    }
+
+    //compara la props de URL con las categorias existentes
+    const compare = () => {
+        let compareData = featuredProducts.filter((e) => {
+          return e.category == consulta;
+        })
+        setProducts(compareData);
+      }
+
+
+    //metodo para aplicar los filtros de busqueda
+    const filterCategory = (category, consulta) => {
+		if (category === 'All'){
+			compare()
+			return
+		}
+        if (consulta === 'Agroindustrial'){
+			compare()
+			return
+		}
+        else{
+            const filteredData = featuredProducts.filter(products => products.category === category);
+		    setProducts(filteredData)
+        }
+        
+    }
+    
+    
+
+    const [products, setProducts] = useState([]);
+    const [categories, setCategories] = useState(allCategories);
+
+
+
+
+    //use effects general
+    useEffect(() => {
+        productsMain();
+    }, [q])
+
+
+  return (
+    <div>
+        <div>Search</div>
+        <div className="">
+            {
+                allCategories.map((category) =>
+                    <div> 
+                        <Link to={`/search/${category}`}>
+                            {category}
+                        </Link>
+                    </div>
+                )
+            }
+
+            <div>
+            
+
+            <h4 > Search Form </h4>
+                    <hr />
+
+                    <form onSubmit={ handleSearch }>
+                        <input 
+                            type="text"
+                            placeholder="escribe un producto"
+                            className="form-control"
+                            name="searchText"
+                            autoComplete="off"
+                            value={ searchText }
+                            onChange={ handleInputChange }
+                        />
+
+                        <button type="submit"> Search...</button>
+                    </form>
+
+            <div className="">
+                    { 
+                        (q ==='') 
+                        && 
+                        <div className="alert alert-info">
+                            Busca un producto
+                        </div>
+                    }
+
+                    { 
+                        ( heroesFiltered.length === 0 && q !==''  ) 
+                            && 
+                            <div className="alert alert-danger">
+                                Lo sentimos no existe el producto: { q }
+                            </div>
+                    }
+
+                    {
+                        heroesFiltered.map( item => (
+                            <ProductContainerNew 
+                            key={item.index}
+                            id={item.id}
+                            imgUrl={item.imgUrl}
+                            title={item.title}
+                            price={item.price}
+                            presentacion={item.presentation}
+                            />
+                        ))
+                    }
+
+
+
+                {
+                    products.map((product, index) => {
+                        return (
+                            <ProductContainerNew 
+                            key={index}
+                            id={product.id}
+                            imgUrl={product.imgUrl}
+                            title={product.title}
+                            price={product.price}
+                            presentacion={product.presentation}
+                            />
+                        )
+                    })
+                    
+                }
+            </div>
+            
+
+            </div>
+           
+            
+           
+            
+        </div>
+    </div>
+  )
+}
+
+
+export default withRouter(Search);
+
+
+*/}
+

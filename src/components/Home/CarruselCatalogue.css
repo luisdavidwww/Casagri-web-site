@@ -1,0 +1,289 @@
+/*---------------------------Estilos de CARRUSEL PRODUCTS ---------------------------------*/
+
+.main-Container-Movil{
+  display: none;
+}
+
+.main-Container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.title-container-two{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 2rem;
+    padding-bottom: 1.5rem;
+}
+
+.title-basic-center-two{
+    color: #000000;
+    font-size: 35px;
+    line-height: 40px;
+    font-family: "Montserrat SemiBold";
+  }
+
+.container-Slick{
+    display: block;
+    justify-content: center;
+    width: 1000px;
+}
+
+/* Tarjeta Principal*/
+.cards__item-two{
+    width: 100%;
+    height: 100%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.5rem;
+    margin-bottom: 1rem;
+
+    transition: all 0.3s ease-in-out;
+}
+
+/*Movimiento hacia arriba*/
+.cards__item-two:hover{
+    width: 100%;
+    bottom: 5rem;
+    height: 100%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0rem;
+    transition: all 0.3s ease-in-out;
+    
+}
+
+/* Contenedor para Sombra */
+.cards__item__link-two {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    overflow: hidden;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    color: #000000;
+    box-shadow: 0px 6px 7px rgb(0, 0, 0, 0.04);
+  }
+  .cards__item__link-two:hover {
+    color: #000000;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.07);
+  }
+
+
+.cards__item__pic-wrap-two{
+    position: relative;
+    width: 100%;
+    padding-top: 67%;
+    overflow: hidden;
+    height: 280px;
+}
+
+.cards__item__img-two {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .cards__item__img-two:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+
+
+
+/*Btn Control Slick Carrusel*/
+
+.container-Control-Movil{
+  display: none;
+}
+
+.container-Control{
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.container-Control-Block
+{
+    width: 1000px;
+    margin: auto;
+}
+
+
+.container-tbn{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.container-btn-deg{
+  display: flex;
+  justify-content: center;
+  color: #47A01A;
+  border: 1px solid #47A01A;
+  border-radius: 2px;
+  padding: 0.5rem;
+  margin-left: 15px;
+  -webkit-transform: skewX(-15deg) translateX(12px);
+  -moz-transform: skewX(-15deg) translateX(12px);
+  -ms-transform: skewX(-15deg) translateX(12px);
+  transform: skewX(-15deg) translateX(12px);
+  transition: all 0.3s ease-in-out;
+}
+
+.container-btn-deg:hover{
+  display: flex;
+  color: #ffffff;
+  -webkit-transform: skewX(-15deg) translateX(12px);
+  -moz-transform: skewX(-15deg) translateX(12px);
+  -ms-transform: skewX(-15deg) translateX(12px);
+  transform: skewX(-15deg) translateX(12px) scale(1.1);
+  justify-content: center;
+  border: 1px solid #47A01A;
+  background-color: #47A01A;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+.btnPrevios{
+  display: flex;
+  justify-content: center;
+  width: 22px;
+  height: 18px;
+ /* margin-left: 22px; */
+    
+}
+
+.btnNext{
+    width: 22px;
+    height: 18px;
+    /* margin-left: 22px; */
+}
+
+
+
+
+
+
+
+
+/*---------------------------ESTILOS ITEM CARRUSEL ---------------------------------*/
+
+.cards__item__info-two {
+    display: flex;
+    justify-content: center;
+    padding: 20px 10px 20px !important;
+  }
+  
+  .cards__item__text-two {
+    font-family: 'Gotham Medium', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+
+
+
+
+  @media only screen and (max-width: 960px) {
+
+
+  .main-Container{
+    display: none;
+  }
+
+  .title-basic-center-two{
+    color: #000000;
+    font-size: 34px;
+    line-height: 40px;
+    font-family: "Montserrat SemiBold";
+  }
+
+  .main-Container-Movil{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .container-Slick{
+    display: block;
+    justify-content: center;
+    width: 100%;
+  }
+
+
+
+  /*---------------------------ESTILOS ITEM CARRUSEL ---------------------------------*/
+
+  .cards__item__info-two {
+    display: flex;
+    justify-content: center;
+    padding: 20px 10px 20px !important;
+  }
+
+  .cards__item__text-two {
+    color: black;
+    font-family: 'Gotham Medium', sans-serif;
+    font-size: 17px;
+    letter-spacing: 0px;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+
+  /* Botones */
+  .container-Control{
+    display: none;
+  }
+  .container-Control-Movil{
+    display: block;
+    padding-bottom: 2rem;
+    width: 100%;  
+  }
+  .container-Control-Block-Movil{
+    width: 100%;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+
+  .container-tbn-Movil{
+    display: flex;
+    justify-content: center;
+    margin-right: 2rem;
+  }
+
+  .container-btn-deg{
+    margin-right: 2px;
+    margin-right: 5px;
+  }
+
+
+  .btnPrevios{
+    width: 28px;
+    height: 28px;
+  }
+  .btnNext{
+    width: 28px;
+    height: 28px;
+  }
+  }

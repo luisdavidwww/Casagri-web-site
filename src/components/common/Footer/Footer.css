@@ -6,6 +6,8 @@ li a{
     text-decoration-line: none
 }
 
+
+
 /* Color del Footer*/
 .color__footer{
     background-color: #F3F3F3;
@@ -23,6 +25,7 @@ li a{
     width: 100%;
     padding: 2rem;
     padding-bottom: 5rem;
+    font-family: "Poppins"
 }
 
 
@@ -95,7 +98,6 @@ li a{
     margin-right: 5px;
     transition: all .25s ease-in-out;
     color: black;
-    font-family: "Poppins"
 }
 .footer__span:hover{
     color:#47A01A;
@@ -148,7 +150,6 @@ li a{
     width: 200px;
     margin-left: 1rem;
     font-size: 12px;
-    font-family: "Poppins";
 }
 .footer__contact__span:hover{
     cursor: pointer;
@@ -161,7 +162,6 @@ li a{
 .footer__btn__outline{
     display: flex;
     justify-content: center;
-    font-family: "Poppins";
     font-size: 13px;
     background-color: transparent;
     padding: 0.7rem 2rem;
@@ -173,12 +173,10 @@ li a{
     margin-top: 1rem;  
 }
 .footer__btn__outline:hover{
-    font-family: "Poppins";
     font-size: 13px;
     color: rgb(255, 255, 255);
     background-color: #47A01A;
     border: 1px solid #47A01A;
-    font-family: "Poppins";
 }
 
 
@@ -265,7 +263,6 @@ padding-bottom: 2rem;
     margin-left: 5px;
     margin-right: 5px;
     transition: all .25s ease-in-out;
-    font-family: "Poppins";
     text-decoration: none;
 }
 .footer__span:hover{

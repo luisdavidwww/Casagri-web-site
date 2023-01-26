@@ -11,13 +11,16 @@ import './Top_header.css'
 import { BsCart3,  BsSearch } from "react-icons/bs"
 
 
+
+
 const Top_header = () => {
 
+    //Constantes de todas las categorias
+    const allCategories = 'All';
 
-
- //hook que utilizo para llevar el scroll a la parte superior en cada Router
-let location = useLocation();
-useEffect(() => {
+    //hook que utilizo para llevar el scroll a la parte superior en cada Router
+    let location = useLocation();
+    useEffect(() => {
     window.scrollTo({ top: 0 });
   }, [location]);
 
@@ -69,7 +72,7 @@ useEffect(() => {
                         </div>
                         <div className='content-Top-options-list-icons' >
                             <div className='content-Top-options-list-link' style={{ textDecoration: 'none', fontSize: '18px'}}>
-                                <a href='/search/:categoria'>
+                                <a href={`/Category/${allCategories}`}>
                                     <BsSearch className='content-top__icon' />
                                 </a>
                             </div> 

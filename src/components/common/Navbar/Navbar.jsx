@@ -1,16 +1,14 @@
 import React, { useState, useEffect, useRef  } from 'react';
-import { motion, AnimatePresence } from "framer-motion"
+import { Link, Redirect } from "react-router-dom";
 
 
-//Estilos
-import './Navbar.css'
 // Listas de datos 
 import { links } from "./Mylinks";
 import { op } from "./Options";
 
-// transiciones diseño
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+// Estilos
+import "./Navbar.css"
+
 
 //componentes
 import Top_header from '../Top_Header/Top_header';
@@ -45,7 +43,6 @@ const Navbar = () => {
     } else {
       setDropdown(true);
     }
-    console.log("aqui");
   };
   //cursor desactivado al salir del elemento Navbar
   const onMouseLeave = () => {
@@ -133,9 +130,15 @@ const Navbar = () => {
      }
    }
 
-  useEffect(() => { 
-    AOS.init({duration:100});
-    },[]);
+
+   //constante para parametros de redirección
+   const Category = {
+    from:"Category",
+    message:"Enlace de las categorias",
+    timestamp: Date.now(),
+   };
+   const [subCategory, setSubCategory] = useState("SubCategory");
+
   useEffect(() => {
     showButton();
     }, []);
@@ -185,20 +188,23 @@ const Navbar = () => {
 
                   {/* Lineas de Producto en el Navbar*/}
                   <div className={heading == link.name && hover ? 'desktopNav__container-line-hover' : 'desktopNav__container-line' }>
-                    <h1
-                        className={ heading == link.name && hover ? 'desktopNav__container-line-title-hover' : 'desktopNav__container-line-title' }
-                        onMouseOver={() => {
-                          setHeading(link.name);
-                          setHover(true);
-                        }}
-                    >
-                        {link.name}
-                    </h1>
+                    <a href={`/Category/${link.name}`} >
+                      <h1
+                          className={ heading == link.name && hover ? 'desktopNav__container-line-title-hover' : 'desktopNav__container-line-title' }
+                          onMouseOver={() => {
+                            setHeading(link.name);
+                            setHover(true);
+                          }}
+                      >
+                          {link.name}
+                      </h1>
+                    </a>
+                    
                   </div>
 
                   {/* Sublineas de Productos */}
 
-                  <AnimatePresence>
+                  
 
                   {dropdown ? (
                     
@@ -207,11 +213,7 @@ const Navbar = () => {
                       {/* Validación del nombre la Línea y si posee sublineas activas */}
                         {heading == link.name && link.submenu && (
 
-                            <motion.div                  
-                            initial={{opacity:0,y:"-100%",}}
-                            animate={{opacity:1,y:"0%", transition:{duration:"0.50"}}}
-                            exit={{opacity:0,y:"-50%",transition:{duration:"0.35"}}}
-                            >
+                           
 
                               <div 
                                 onMouseLeave={() => {
@@ -232,12 +234,8 @@ const Navbar = () => {
                                           <div className="desktopNav__SubLines" key={link.id}>
                                             <div className="desktopNav__SubLines-Title">
                                               <div>
-                                                <a
-                                                    href=''
-                                                    className=""
-                                                    style={{ textDecoration: 'none', }}
-                                                  >
-                                                  {mysublinks.Head}     
+                                                <a href={`/Category/${mysublinks.Head}`} style={{ textDecoration: 'none', }}>
+                                                  {mysublinks.Head}  
                                                 </a>
                                               </div>
                                             </div>
@@ -249,13 +247,9 @@ const Navbar = () => {
                                                 <div className="desktopNav__Container-Lines-subLines">
                                                   {mysublinks.sublink.map((slink) => (   
                                                       <li className="desktopNav__Container-Lines-subLines-List" key={link.id}>
-                                                          <a
-                                                            href={slink.link}
-                                                            className=""
-                                                            style={{  fontFamily:'Gotham', }}
-                                                          >
+                                                          <a href={`/Category/${slink.name}`}>
                                                             {slink.name}
-                                                          </a>
+                                                          </a>   
                                                       </li>            
                                                     ))}
                                                   </div>
@@ -272,15 +266,12 @@ const Navbar = () => {
                                 </div>
                               </div>
 
-                            </motion.div>
+                            
                         )}
                       </div>
 
                   ):null}
 
-
-
-                  </AnimatePresence>
 
               </div>
 

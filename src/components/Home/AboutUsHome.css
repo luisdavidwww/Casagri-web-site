@@ -1,179 +1,249 @@
+/*Contenedor Principal*/
+
+.us-container-Movil{
+  display: none;
+}
 .body-container {
-    background-color: #fff;
+    background-color: rgb(255, 255, 255);
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: 'PT Sans', sans-serif;
-    margin-top: 50px;
-    margin-bottom: 70px;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 
+  /*Contenedor Secundario*/
   .us-container {
-    display: row;
+    display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 1500px;
-    width: 60%;
-    margin: 0 auto;
+    width: 80%;
+    margin: 0;
     margin-top: 50px;
     margin-bottom: 20px;
   }
   
+  /*--------Imagen Principal-----------*/
   .us-wrap {
     position: relative;
     display: inline-block;
     flex-direction: column;
-    width: 40%;
-    padding-top: 15%;
-    padding-bottom: 15%;
-    overflow: hidden;
-    transition: all 0.3s linear;
+    width: 30rem;
+    margin-left: 3rem;
   }
 
   .us-img {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
     display: block;
+    position: relative;
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 0px;
-    transition: all 0.5s linear;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .us-img:hover {
+    transform: scale(1.1);
   }
 
 
+  /*--------Contenido Información-----------*/
 
   .us-wrap-Info {
-    position: absolute;
+    position: relative;
     display: inline-block;
     flex-direction: column;
     overflow: hidden;
-    width: 30%;
+    width: 40rem;
     max-width: 600px;
-    margin-top: 1%;
+    margin-top: 0rem;
     margin-left: 50px;
     text-align: center;
     justify-content: center;
     align-content: center;
   }
   
-  .us-title{
+  .title-basic-start{
     text-align: start;
     align-items: center;
-    color: #0C572F;
-    margin-top: 10px;
-    font-size: 35px;
+    color: #000000;
+    font-size: 40px;
+    line-height: 45px;
+    font-family: "Montserrat SemiBold";
+    text-decoration-color: #00ff00;
   }
   
   .us-text{
+    width: 80%;
+  }
+
+  .text-basic{
     text-align: start;
-    text-justify: distribute;
-    color: rgb(46, 46, 46);
-    font-family: 'Roboto';
-    margin-top: 20px;
-    line-height: 22px;
-    letter-spacing: 0.2px;
+    font-family: "Poppins Regular";
+    margin-top: 1.5rem;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 23px
   }
 
 
-
-
-
-  .Philosophy-container{
-    display: row;
-    align-items: center;
-    justify-content: center;
-    max-width: 1500px;
-    width: 60%;
-    margin: 0 auto;
-    margin-top: 50px;
-    margin-bottom: 15px;
+  .us-text a{
+    text-decoration: none;
   }
 
-  .Philosophy-wrap {
-    position: relative;
-    display: inline-block;
-    flex-direction: column;
-    width: 40%;
-    padding-top: 15%;
-    padding-bottom: 15%;
-    margin-left: 500px;
-    overflow: hidden;
-    transition: all 0.3s linear;
-  }
+  .btn-outline{
+    display: flex;
+    background-color: transparent;
+    padding: 0.7rem 3rem;
+    border: 1px solid #47A01A;
+    transition: all 0.3s ease-out;
+    border-radius: 2px;
+    text-decoration-line: none;
+    outline: none;
+    cursor: pointer;
+    margin-top: 1rem;  
+}
 
-  .Philosophy-wrap-Info {
-    position: absolute;
-    display: inline-block;
-    flex-direction: column;
-    overflow: hidden;
-    width: 30%;
-    max-width: 600px;
-    margin-right: 500px;
-    text-align: center;
-    justify-content: center;
-    align-content: center;
-  }
+.btn-outline:hover{
+  color: rgb(255, 255, 255);
+  background-color: #47A01A;
+  border: 1px solid #47A01A;
+  font-family: "Gotham Medium";
+}
+
+.btn-text{
+  font-family: "Gotham";
+  text-align: center;
+  font-size: 15px;
+  letter-spacing: 0.4px;
+  line-height: 20px;
+  color: #47A01A;
+}
+
+
+
+
 
 
   @media screen and (max-width: 960px) {
 
+
     .us-container {
-        display: row;
-        width: 80%;
-        margin-top: 15px;
-        margin-bottom: 240px;
+      display: none;
     }
 
-    .us-wrap{
-        display: block;
+    .us-container-Movil {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 2%;
+    }
+
+
+    .us-wrap-Movil{
+      display: block;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      transition: all 0.3s linear;
+      margin: auto;
+  }
+
+  .us-img-Movil {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+      transition: all 0.2s linear;
+    }
+
+    .us-wrap-Info-Movil {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .title-basic-start-Movil{
+      text-align: center;
+      font-family: "Montserrat SemiBold";
+      font-size: 34px;
+      line-height: 45px;
+      color: #000000;
+      padding-top: 35px;
+      padding-bottom: 15px;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .us-text-Movil{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+      margin: 0 ;
+    }
+    
+    .text-basic-Movil{
+      text-align: center;
+      font-size: 15px;
+      font-family: "Poppins Regular";
+      color: rgb(0, 0, 0);
+      padding-top: 15px;
+      line-height: 26px;
+      padding-left: 1.3rem;
+      padding-right: 1.3rem;
+    }
+      .btn-Container{
+        display: flex;
         justify-content: center;
-        align-items: center;
-        padding-top: 70%;
+        flex-direction: column;
         width: 100%;
-        transition: all 0.3s linear;
-    }
-
-
-    .us-img {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        display: block;
-        object-fit: cover;
-        border-radius: 7px;
-        transition: all 0.2s linear;
       }
-
-    .us-wrap-Info {
-        position: absolute;
-        width: 80%;
-        display: block;
+      .btn-Container a{
+        display: flex;
         justify-content: center;
-        align-items: center;
-        margin-left: 0px;
-        margin-bottom: 25px;
+        flex-direction: column;
+        width: 100%;
+        text-decoration: none;
       }
-      .us-title{
-        text-align: center;
-        font-size: 40px;
-        color: #0C572F;
-        margin-top: 20px;
-      }
+      .btn-outline{
+        display: flex;
+        justify-content: center;
+        width: 87%;
+        background-color: transparent;
+        padding: 1.1rem 3rem;
+        border: 1.5px solid #47A01A;
+        transition: all 0.3s ease-out;
+        border-radius: 2px;
+        text-decoration-line: none;
+        outline: none;
+        cursor: pointer;  
+        margin: auto;
+        margin-top: 1.5rem;
+        
+    }
+    
+    .btn-outline:hover{
+      color: rgb(255, 255, 255);
+      background-color: #47A01A;
+      border: 1px solid #47A01A;
+      font-family: "Gotham Medium";
+    }
+    
+    .btn-text{
+      justify-content: center;
+      font-family: "Gotham";
+      text-align: center;
+      font-size: 16px;
+      letter-spacing: 0.4px;
+      line-height: 20px
+    }
+    
 
-      .us-text{
-        text-align: initial;
-        font-size: 16px;
-        color: rgb(46, 46, 46);
-        margin-top: 15px;
-        line-height: 25px;
-      }
+    
   
 }
