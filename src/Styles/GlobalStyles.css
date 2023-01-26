@@ -2,6 +2,19 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0);
   }
 
+/*Colores*/
+/*Theme and Colors*/
+
+.main-green{
+  color: #47A01A;
+}
+.secondary-green{
+  color: #1F4931;
+}
+
+
+
+
   /*Fuentes*/
 
   .Montserrat-Font{
@@ -41,6 +54,6 @@
     font-weight: bold;
   }
 
-/* Contexto de aplilamiento para elementos */
+
 
 

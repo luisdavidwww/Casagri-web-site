@@ -1,0 +1,84 @@
+ {/*------------------------------Navbar Escritorio------------------------------------*/}
+          <section id="desktopNav__container">
+            <div className='desktopNav__lower'>
+
+              {/* Recorrido de la lista: LINEAS DE PRODUCTOS CASAGRI*/}
+              {links.map((link) => (
+              <div onClick={() => { dropdownBoxDesktop(link.name);}}>
+
+                  {/* Condicional Título de Lineas de Producto en el Navbar */}
+                  { heading == link.name ? 
+                    (
+                      <div className='desktopNav__container-line-hover' >
+                        <h1 className='desktopNav__container-line-title-hover'>
+                            {link.name}
+                        </h1>
+                      </div>
+                    ):
+                    (
+                      <div className='desktopNav__container-line'>
+                        <h1 className='desktopNav__container-line-title'>
+                            {link.name}
+                        </h1>
+                      </div>
+                    )
+                  }
+                  {/* Sublineas de Productos */}
+                  {dropdown && link.submenu && heading == link.name && erclick ? (
+                    <div  className='desktopNav__container--navbar'
+                          onMouseLeave={() => { setHeading(link.name);}}
+                    >
+                      {/* Validación del nombre la Línea y si posee sublineas activas */}
+                        {heading == link.name && link.submenu && (
+                              <div className='desktopNav__container--active'>
+                                <div className="desktopNav__container-Drowbox-container">
+                                  <div className="desktopNav__container-Drowbox-">
+
+                                    {/* Recorrido de las sublineas */}
+                                      {link.sublinks.map((mysublinks) => (
+                                          <div className="desktopNav__SubLines" >
+                                            <div className="desktopNav__SubLines-Title">
+                                                <Link
+                                                    to=""
+                                                    className="desktopNav__SubLines-Title-link"
+                                                    style={{ textDecoration: 'none' }}
+                                                  >
+                                                  {mysublinks.Head}     
+                                                </Link>
+                                            </div>
+                                            
+
+                                          {/* Validación si las sublineas tienen categorias activas */}
+                                            { mysublinks.subitem  ?
+                                              (
+                                                <div className="desktopNav__Container-Lines-subLines">
+                                                  {mysublinks.sublink.map((slink) => (   
+                                                      <li className="desktopNav__Container-Lines-subLines-List">
+                                                          <div
+                                                            className="desktopNav__Container-Lines-subLines-List-Products" 
+                                                          >
+                                                            {slink.name}
+                                                          </div>
+                                                      </li>            
+                                                    ))}
+                                                  </div>
+                                              ):null
+                                            }
+
+                                          </div>
+                                        ))}
+
+                                  </div>
+                                </div>
+                              </div>
+
+                        )}
+                      </div>
+
+                  ):null}
+                </div>
+
+              ))}
+
+            </div>
+          </section>

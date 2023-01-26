@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import  Navbar  from 'containers/Navbar/Navbar';
-import { FooterContainer } from 'containers/Footer/Footer'
+import  Navbar  from 'components/common/Navbar/Navbar';
+import Footer from 'components/common/Footer/Footer'
 
 import { Home } from 'pages/Home';
 import { Contact } from 'pages/Contact';
@@ -22,7 +22,7 @@ export const AppRouter = () => {
                     <Route path="/Contact" element={ <Contact/> }></Route>
                     <Route path="/Company" element={ <Company/> }></Route>
                 </Routes>
-                <FooterContainer/>
+                <Footer/>
             </div>
         </Router>
     )
