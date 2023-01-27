@@ -1,5 +1,5 @@
-import React, {  useMemo } from 'react';
-import { useParams, useLocation } from "react-router-dom";
+import React, {  useMemo, useState, useEffect } from 'react';
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useForm } from '../../hooks/useForm';
 import { getProductByName } from '../../selectors/getProductByName';
@@ -8,6 +8,13 @@ import queryString from 'query-string';
 
 //componentes
 import  ProductContainerNew  from "../Search/ProductContainerNew";
+import CardItem from '../Cards/CardItem'
+
+//Estilos
+import './Search.css'
+
+//icons
+import { BsSearch } from "react-icons/bs"
 
 
 const Search = ({ history }) => {
@@ -15,6 +22,10 @@ const Search = ({ history }) => {
 
     //constantes
     const { query } = useParams();
+    const navigate = useNavigate();
+
+    //variables de estados
+    const [alert, setAlert] = useState("");
 
 
     //constantes
@@ -32,87 +43,88 @@ const Search = ({ history }) => {
     const heroesFiltered = useMemo(() => getProductByName( query ))
 
 
-    
-
-    
-   
-
     //metodo del formulario para 
     const handleSearch = (e) => {
-        e.preventDefault();
-        history.push(`?q=${ searchText }`);
+        if (searchText==='') {
+            e.preventDefault();
+            navigate(`/Category/All`);
+          }  
+          else{
+            e.preventDefault();
+            navigate(`/search/${ searchText }`);
+            setAlert(searchText);
+          }
+        
     }
 
 
-
   return (
-    <div>
-        <div>Search</div>
-        <div className="">
+<div className='Search__Background' >
 
-            <div>
-            
-
-            <h4 > Search Form </h4>
-                    <hr />
-
-                    <form>
+    {/* Formulario de Busqueda */}
+    <div className='Search__container__Active'>
+        <div className="container__Search__Active">
+                <form onSubmit={ handleSearch } className='Search__form'>
                         <input 
                             type="text"
-                            placeholder="escribe un producto"
-                            className="form-control"
+                            placeholder="Busca un producto"
+                            className='Search__imput'
                             name="searchText"
                             autoComplete="off"
                             value={ searchText }
                             onChange={ handleInputChange } 
                         />
-                        <Link to={`/search/${searchText}`}>
-                            <button > Search...</button>
-                        </Link>
                         
-                    </form>
+                        <button className='Search__btn' type='submit'><BsSearch className='Search__icon' /></button>
+                </form>
+        </div>
 
+            {/* Resultado de Busqueda */}
             <div className="">
-                    { 
-                        (searchText ==='') 
-                        && 
-                        <div className="alert alert-info">
-                            Busca un producto
-                        </div>
-                    }
-
-
                     {
-                        heroesFiltered.map( item => (
-                            <ProductContainerNew 
-                            key={item.index}
-                            id={item.id}
-                            imgUrl={item.imgUrl}
-                            title={item.title}
-                            price={item.price}
-                            presentacion={item.presentation}
-                            />
-                        ))
+                        (  heroesFiltered.length !== 0  ) 
+                        && 
+                        <>
+                        <div className="alert alert-danger">
+                                <h1>Resultado de Busqueda: { query }</h1>
+                        </div>
+                            <div className='cards'>
+                                <div className='cards__container'>
+                                    <div className='cards__wrapper'>
+                                    <ul className='cards__items'>
+                                    {heroesFiltered?.map((item) => (
+                                        <CardItem
+                                        key={item.id}
+                                        src={item.imgUrl}
+                                        title={item.title}
+                                        label=''
+                                        path={`/cart/${ item.id }`}
+                                        price={item.price}
+                                        presentation={item.presentation}
+                                        />
+                                    ))}
+                                    </ul>
+                                    </div>
+                                </div>       
+                            </div>
+                        </>
+                        
                     }
 
                     { 
-                        ( q !=='' && heroesFiltered.length !== 0  ) 
+                        ( heroesFiltered.length == 0 && query !== undefined && searchText == alert)  
                             && 
                             <div className="alert alert-danger">
-                                Lo sentimos no existe el producto: { q }
+                                <h1>Lo sentimos no existe el producto: { query }</h1>
                             </div>
                     }
 
-            </div>
-            
+
 
             </div>
-           
-            
-           
-            
-        </div>
     </div>
+</div>
+
   )
 }
 

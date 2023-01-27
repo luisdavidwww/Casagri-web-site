@@ -35,6 +35,9 @@
 /* Icon Heart */
 .icon-heart{
   display: flex;
+  position: absolute;
+  margin-left: 140px;
+  margin-top: 10px;
   z-index: 1;
   justify-content: flex-end;
   color: #cac7c7;
@@ -65,13 +68,14 @@
   position: absolute;
   z-index: 10;
   font-size: 13px;
+  font-family: "Montserrat";
   color: #ffffff;
   background: rgb(2,0,36, 0.9);
   padding: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
   position: absolute;
-  transform: translate( 5%, -120%);
+  transform: translate( 5%, -135%);
   opacity: 0.9;
 }
 
@@ -94,7 +98,7 @@
 
 /*Listado de Cards*/
 .cards__items {
-  display: flex;
+  display: inline-flex;
   margin-bottom: 24px;
   max-width: 100%;
   padding: 0px;
@@ -122,6 +126,7 @@
   padding: 0.5rem;
   border: 1px solid transparent;
   border: 1px solid rgb(223, 223, 223);
+  background-color: #ffffff;
 }
 .cards__item__link:hover{
   border: 1px solid #47A01A;
@@ -257,99 +262,6 @@ font-family: "Gotham Medium";
 
 
 
-@media only screen and (max-width: 1000px) {
-
-  /*--------Containers-------------*/
-  .cards{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 1rem;
-  }
-
-  /*Titulo Container*/
-  .title-container{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
-  .title-container-main{
-    display: block;
-    justify-content: flex-start;
-    width: 100%;
-  }
-  /* Fuente del Titulo*/
-  .title-basic-center{
-    color: #2b2b2b;
-    text-align: center;
-    font-size: 35px;
-    line-height: 40px;
-    font-family: "Montserrat SemiBold";
-  }
-
-
-  /*Contenedor Principal de las Cards*/
-  .cards__container{
-    display: flex;
-    justify-content: center;
-  }
-  .cards__wrapper {
-    position: relative;
-  }
-
-
-  /*Listado de Cards*/
-  .cards__items{
-    display: inline-block;
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 0px;
-  }
-  .cards__item {
-    display: inline-block;
-    justify-items: center;
-    width: 240px;
-    margin-bottom: 1rem;
-  }
-
-
-  /*Card individual de producto*/
-  .cards__item__link{
-    width: 180px;
-    height: 280px;
-  }
-
-
-  /*Imagen Principal de producto*/
-  .cards__item__pic-wrap{
-    display: flex;
-    position: relative;
-    overflow: hidden;
-    height: 200px !important;
-  }
-
-
-.cards__item__info-title{
-  height: 140px;
-  padding-top: 20px;
-}
-.cards__item__info-title{
-  height: 60px;
-}
-.cards__item__info{
-  padding: 0px;
-}
-
-
-
-  /* Boton */
-  .btn-outline-featuredProducts{
-    margin-bottom: 2rem;  
-  }
-  
-}
-
-
 
 @media only screen and (max-width: 960px) {
 
@@ -401,17 +313,23 @@ font-family: "Gotham Medium";
   .cards__items{
     display: inline-block; 
     justify-items: center;
-    width: 100%;
-    }
+  }
+
   .cards__item {
-    width: 160px;
+    display: inline-block;
+    width: 170px;
     margin-bottom: 1rem;
+    margin: 0px;
+    margin-left: 21px;
+    margin-bottom: 15px;
   }
 
   /*Card individual de producto*/
   .cards__item__link{
-    width: 160px;
+    
     margin: 1rem;
+    margin: 0px;
+    margin-left: 0px;
   }
 
   

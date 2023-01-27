@@ -1,0 +1,103 @@
+
+.Search__Background{
+    /*background-color: #f6f7f9;*/
+}
+
+.Search__container__Active{
+    display: inline-block;
+    position: relative;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 40px;
+    width: 100%;
+    /*background-color: #f6f7f9;*/
+}
+
+.Search__form{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+}
+.Search__imput{
+    width:300px;
+    margin: auto;
+    line-height: 30px;
+    border-radius: 8px;
+    border: 1px solid #e7e3e3;
+    margin: 0px;
+    font-family: "Montserrat";
+    font-weight: 500;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    letter-spacing: 0.3px;
+}
+
+.Search__imput:focus {
+    outline: none;
+  }
+  
+  .Search__imput:focus-within {
+    border: 1px solid #47A01A;;
+  }
+
+
+
+.Search__btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid  #e7e3e3;
+    background-color: #47A01A;
+    padding: 0rem 1rem 0rem 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+.Search__icon{
+    color: #fcfffc;
+    transition: all .25s ease-in-out;
+  }
+  .Search__icon:hover{
+    transform: scale(1.3);
+    color: #fcfffc;
+  }
+
+
+@media only screen and (max-width: 1000px) {
+
+
+    .Search__container__Active{
+        display: inline-block;
+        position: relative;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 100px;
+        width: 100%;
+    }
+
+    .Search__form{
+        display: flex;
+        position: relative;
+        justify-content: center;
+        flex-direction: row;
+        width: 100%;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+    .Search__imput{
+        width:250px;
+        margin: auto;
+        line-height: 30px;
+        border-radius: 8px;
+        border: 1px solid #e7e3e3;
+        margin: 0px;
+        font-family: "Montserrat";
+        font-weight: 500;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        letter-spacing: 0.3px;
+    }
+
+}

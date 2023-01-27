@@ -52,11 +52,8 @@ function CardItem(props) {
 
   return (
     <>
-      <li className='cards__item'
-      
-      onMouseLeave={onMouseLeave}
-      >
-        <a className='cards__item__link' to={props.path}>
+      <li className='cards__item' onMouseLeave={onMouseLeave}>
+        <div>
           
             <div className='icon-heart' onClick={() => { clickState()}}>
               {
@@ -92,39 +89,41 @@ function CardItem(props) {
               
             </div>
 
-          {/* Imagen del Producto */}
-          <figure className='cards__item__pic-wrap'>
+        <a className='cards__item__link'  href={props.path}>
+            {/* Imagen del Producto */}
+            <figure className='cards__item__pic-wrap'>
 
-              <img
-              className='cards__item__img'
-              alt='Travel Image'
-              src={imgL(`./${props.src}`)}
-              //src={image}
-              layout="fill"
-                      objectFit="cover"
-                      style={{
-                          marginLeft: "auto",
-                          marginRight: "auto",
-                          width: "100%",
-                          height: "5rem"
-                        }}
-                      />
-          </figure>
+                <img
+                className='cards__item__img'
+                alt='Travel Image'
+                src={imgL(`./${props.src}`)}
+                //src={image}
+                layout="fill"
+                        objectFit="cover"
+                        style={{
+                            marginLeft: "auto",
+                            marginRight: "auto",
+                            width: "100%",
+                            height: "5rem"
+                          }}
+                        />
+            </figure>
 
-          {/* Datos del Productos */}
-          <div className='cards__item__info-container'>
-              <div className='cards__item__info-title'>
-                <h5 className='cards__item__text-title'>{props.title}</h5>
-              </div>
-              <div className='cards__item__info'>
-                <h5 className='cards__item__text-presentation'>{props.presentation}</h5>
-              </div>
-              <div className='cards__item__info'>
-                <h5 className='cards__item__text-price'>{props.price}</h5>
-              </div>
-          </div>
-          
+            {/* Datos del Productos */}
+            <div className='cards__item__info-container'>
+                <div className='cards__item__info-title'>
+                  <h5 className='cards__item__text-title'>{props.title}</h5>
+                </div>
+                <div className='cards__item__info'>
+                  <h5 className='cards__item__text-presentation'>{props.presentation}</h5>
+                </div>
+                <div className='cards__item__info'>
+                  <h5 className='cards__item__text-price'>{props.price}</h5>
+                </div>
+            </div>
         </a>
+
+        </div>
       </li>
     </>
   );

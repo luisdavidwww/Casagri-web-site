@@ -1,4 +1,4 @@
-import { featuredProducts } from '../data/featuredProducts';
+import { featuredProductss } from '../data/featuredProductss';
 
 
 
@@ -9,6 +9,6 @@ export const getProductByName = ( name = '' ) => {
     }
 
     name = name.toLocaleLowerCase();
-    return featuredProducts.filter( products => products.title.toLocaleLowerCase().includes( name )  );
+    return featuredProductss.filter( products => products.title.toLocaleLowerCase().includes( name )  );
 
 }

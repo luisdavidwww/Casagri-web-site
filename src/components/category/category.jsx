@@ -1,33 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 
-
 //importacion de datos de productos
-import { featuredProducts } from "../../data/featuredProductss";
-
+import { featuredProductss } from "../../data/featuredProductss";
 
 //componentes
-import  ProductContainerNew  from "../Search/ProductContainerNew";
+import CardItem from '../Cards/CardItem'
 import  Search  from "../Search/Search";
+
+
 
 const Category = ({history}) => {
    
     //query de la url
     const { consulta } = useParams();
-    console.log("aqui va la query" + consulta);
   
     //constante que almacena todas las categorias
     const allCategories = [
 		'All',
-		...new Set(featuredProducts.map(products => products.category)),
+		...new Set(featuredProductss.map(products => products.category)),
   ];
 
     //constante que almacena todas las Subcategorias
     const allSubCategories = [
-      new Set(featuredProducts.map(products => products.subCategory)),
+      new Set(featuredProductss.map(products => products.subCategory)),
   ];
-
-
 
 
    const [products, setProducts] = useState([]);
@@ -37,16 +34,14 @@ const Category = ({history}) => {
     //evalua la prop de URL, 
     const productsMain = () => {
       if (consulta === 'All'){
-        setProducts(featuredProducts);
+        setProducts(featuredProductss);
         return
 		}
         else {
 		    compare();
-			return
+			  return
 		}
     }
-
-    
     //compara la props de URL con las categorias existentes
     const compare = () => {
 
@@ -55,7 +50,7 @@ const Category = ({history}) => {
           || consulta === 'Salud Animal' || consulta === 'Ferretería' 
           || consulta === 'Salud Pública')
       {
-        let compareData = featuredProducts.filter((e) => {
+        let compareData = featuredProductss.filter((e) => {
           return e.category == consulta;
         })
         setProducts(compareData);
@@ -75,7 +70,7 @@ const Category = ({history}) => {
       || consulta === 'Desinfectante'     
       )
       {
-        let compareData = featuredProducts.filter((e) => {
+        let compareData = featuredProductss.filter((e) => {
           return e.subCategory == consulta;
         })
         setProducts(compareData);
@@ -89,39 +84,33 @@ const Category = ({history}) => {
       || consulta === 'Baños, Ectoparasitarios y Matagusanos'   
       )
       {
-        let compareData = featuredProducts.filter((e) => {
+        let compareData = featuredProductss.filter((e) => {
           return e.TipoProducto == consulta;
         })
         setProducts(compareData);
       }
 
     }
-      
-
-
     //metodo para aplicar los filtros de busqueda
     const filterCategory = (category, consulta) => {
 		if (category === 'All'){
 			compare()
 			return
 		}
-        if (consulta === 'Agroindustrial'){
+      if (consulta === 'Agroindustrial'){
 			compare()
 			return
 		}
         else{
-            const filteredData = featuredProducts.filter(products => products.category === category);
+        const filteredData = featuredProductss.filter(products => products.category === category);
 		    setProducts(filteredData)
         }
         
     }
     
-    
 
    
     const [categories, setCategories] = useState(allCategories);
-
-
 
 
     //use effects general
@@ -133,7 +122,9 @@ const Category = ({history}) => {
 
   return (
     <>
-            {/*<Search/>*/}
+    
+
+            <Search/>
 
                 { 
                         ( products.length == 0  ) 
@@ -144,20 +135,29 @@ const Category = ({history}) => {
                 }
 
                 {
-                    products.map((product, index) => {
-                        return (
-                            <ProductContainerNew 
-                            key={index}
-                            id={product.id}
-                            imgUrl={product.imgUrl}
-                            title={product.title}
-                            price={product.price}
-                            presentacion={product.presentation}
-                            />
-                        )
-                    })
-                    
-                }
+                        (  products.length !== 0  ) 
+                        && 
+                            <div className='cards'>
+                                <div className='cards__container'>
+                                    <div className='cards__wrapper'>
+                                    <ul className='cards__items'>
+                                    {products?.map((item) => (
+                                        <CardItem
+                                        key={item.id}
+                                        src={item.imgUrl}
+                                        title={item.title}
+                                        label=''
+                                        path={`/cart/${ item.id }`}
+                                        price={item.price}
+                                        presentation={item.presentation}
+                                        />
+                                    ))}
+                                    </ul>
+                                    </div>
+                                </div>       
+                            </div>
+                        
+                    }
 
     </>
   )

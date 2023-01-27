@@ -1,4 +1,4 @@
-const featuredProducts = [
+const featuredProductss = [
 
     //Agroindustrial
     {
@@ -392,4 +392,4 @@ const featuredProducts = [
 
 ]
 
-export { featuredProducts }
+export { featuredProductss }
