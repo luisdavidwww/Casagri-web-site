@@ -317,10 +317,10 @@ font-family: "Gotham Medium";
 
   .cards__item {
     display: inline-block;
-    width: 170px;
+    width: 160px;
     margin-bottom: 1rem;
     margin: 0px;
-    margin-left: 21px;
+    margin-left: 20px;
     margin-bottom: 15px;
   }
 
