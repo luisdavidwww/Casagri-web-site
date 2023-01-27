@@ -149,19 +149,18 @@ export const CarruselCatalogue = () => {
     {/* Botones Controladores Desktop */}
     <div className='container-Control'>
       <div className='container-Control-Block'>
-      <div className='container-tbn'>
-        <div className='container-btn-deg' onClick={()=>gotoPrev()}>
-          <button >
-            <VscChevronLeft className='btnPrevios'/>
-          </button>
-        </div>
-        <div className='container-btn-deg' onClick={()=>gotoNext()}>
-          <button >
-            <VscChevronRight className='btnNext'/>
-          </button>
-        </div>
-      </div>
-        
+        <div className='container-tbn'>
+          <div className='container-btn-deg' onClick={()=>gotoPrev()}>
+            <button className='btn-deg'>
+              <VscChevronLeft className='btnPrevios'/>
+            </button>
+          </div>
+          <div className='container-btn-deg' onClick={()=>gotoNext()}>
+            <button className='btn-deg'>
+              <VscChevronRight className='btnNext'/>
+            </button>
+          </div>
+        </div>  
       </div>
     </div>
 
@@ -170,12 +169,12 @@ export const CarruselCatalogue = () => {
       <div className='container-Control-Block-Movil'>
       <div className='container-tbn-Movil'>
         <div className='container-btn-deg' >
-          <button  onClick={()=>gotoPrevMovil()} >
+          <button className='btn-deg' onClick={()=>gotoPrevMovil()} >
             <VscChevronLeft className='btnPrevios'/>
           </button>
         </div>
         <div className='container-btn-deg' >
-          <button  onClick={()=>gotoNextMovil()}>
+          <button className='btn-deg' onClick={()=>gotoNextMovil()}>
             <VscChevronRight className='btnNext'/>
           </button>
         </div>

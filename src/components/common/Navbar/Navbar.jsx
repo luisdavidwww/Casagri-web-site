@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef  } from 'react';
 import { Link, Redirect } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import AOS      from 'aos';
 
 
 // Listas de datos 
@@ -8,6 +10,7 @@ import { op } from "./Options";
 
 // Estilos
 import "./Navbar.css"
+import 'aos/dist/aos.css'; 
 
 
 //componentes
@@ -16,13 +19,14 @@ import Top_header from '../Top_Header/Top_header';
 
 //icons
 import { IoCloseOutline, IoMenuOutline } from "react-icons/io5";
-import { FaChevronDown } from "react-icons/fa";
-import { FaChevronUp } from "react-icons/fa";
+import { BsChevronDown } from "react-icons/bs";
+import { BsChevronUp } from "react-icons/bs";
 
 
 
 const Navbar = () => {
 
+  //Variables de entradas
   const [heading, setHeading] = useState("");
   const [hover, setHover] = useState(false);
   const [dropdown, setDropdown] = useState(false);
@@ -66,7 +70,6 @@ const Navbar = () => {
   //Metodo para ocultar  
   const SubLinesOut = () => setHeading("");
 
-  
   //Metodo para mostrar y ocultar Pestaña de SubLineas Movil
   const dropdownBoxMovil = (props) => {
     
@@ -145,6 +148,10 @@ const Navbar = () => {
   useEffect(() => {
     document.addEventListener("click", handleclickOutside, true);
     }, []);
+  useEffect(() => { 
+    AOS.init({duration:800});
+    },[]);
+  
 
 
   return (
@@ -167,7 +174,7 @@ const Navbar = () => {
                   </div>
                 </div>
             </div>    
-        </div>
+       </div>
 
        
 
@@ -180,13 +187,8 @@ const Navbar = () => {
 
               {/* Recorrido de la lista: LINEAS DE PRODUCTOS CASAGRI*/}
               {links.map((link) => (
-              <div
-                onMouseEnter={onMouseEnter}
-                onMouseLeave={onMouseLeave}
-                key={link.id}
-                >
-
-                  {/* Lineas de Producto en el Navbar*/}
+              <div key={link.id} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} >
+                  {/* Lineas de Producto en el Navbar */}
                   <div className={heading == link.name && hover ? 'desktopNav__container-line-hover' : 'desktopNav__container-line' }>
                     <a href={`/Category/${link.name}`} >
                       <h1
@@ -198,46 +200,35 @@ const Navbar = () => {
                       >
                           {link.name}
                       </h1>
-                    </a>
-                    
+                    </a>    
                   </div>
 
                   {/* Sublineas de Productos */}
 
-                  
+                  <AnimatePresence>
 
-                  {dropdown ? (
-                    
+                  {dropdown ? (    
                     <div  className='desktopNav__container--navbar'>
-
                       {/* Validación del nombre la Línea y si posee sublineas activas */}
                         {heading == link.name && link.submenu && (
 
-                           
+                           <motion.div                  
+                            initial={{opacity:0,y:"-100%",}}
+                            animate={{opacity:1,y:"0%", transition:{duration:"0.65"}}}
+                            exit={{opacity:0,y:"-10%",transition:{duration:"0.35"}}}
+                            >
 
-                              <div 
-                                onMouseLeave={() => {
-                                  setHover(false);
-                                }}
-                                className='desktopNav__container--active'
-                                
-                                
-                              >
+                              <div  onMouseLeave={() => {setHover(false);}} className='desktopNav__container--active'>
                                 <div className="desktopNav__container-Drowbox-container">
-                                  <div 
-                                  className="desktopNav__container-Drowbox-"
-                                  >
-
+                                  <div className="desktopNav__container-Drowbox-">
 
                                     {/* Recorrido de las sublineas */}
                                       {link.sublinks.map((mysublinks) => (
-                                          <div className="desktopNav__SubLines" key={link.id}>
-                                            <div className="desktopNav__SubLines-Title">
-                                              <div>
-                                                <a href={`/Category/${mysublinks.Head}`} style={{ textDecoration: 'none', }}>
+                                          <div key={link.id} className="desktopNav__SubLines" >
+                                            <div>
+                                                <a className="desktopNav__SubLines-Title" href={`/Category/${mysublinks.Head}`}>
                                                   {mysublinks.Head}  
                                                 </a>
-                                              </div>
                                             </div>
                                             
 
@@ -246,8 +237,8 @@ const Navbar = () => {
                                               (
                                                 <div className="desktopNav__Container-Lines-subLines">
                                                   {mysublinks.sublink.map((slink) => (   
-                                                      <li className="desktopNav__Container-Lines-subLines-List" key={link.id}>
-                                                          <a href={`/Category/${slink.name}`}>
+                                                      <li className='desktopNav__Container-Lines-subLines-tol' key={link.id}>
+                                                          <a className="desktopNav__Container-Lines-subLines-List" href={`/Category/${slink.name}`}>
                                                             {slink.name}
                                                           </a>   
                                                       </li>            
@@ -266,15 +257,19 @@ const Navbar = () => {
                                 </div>
                               </div>
 
+                              </motion.div>
                             
                         )}
                       </div>
 
                   ):null}
 
+                  </AnimatePresence>
+
 
               </div>
 
+              
 
               ))}
 
@@ -318,9 +313,9 @@ const Navbar = () => {
                                     <h1 className='movilNav__container-line-title'>
                                         {link.name} 
                                           { heading == link.name && line == link.name ? 
-                                          (  <FaChevronDown style={{marginLeft:'5px', paddingBottom:'3px', display:'inline-flex'}}/>  )
+                                          (  <BsChevronDown style={{marginLeft:'10px', paddingTop:'2px', display:'inline-flex'}}/>  )
                                           : 
-                                          (  <FaChevronUp style={{marginLeft:'5px', paddingBottom:'3px', display:'inline-flex'}}/>  )
+                                          (  <BsChevronUp style={{marginLeft:'10px', paddingTop:'2px', display:'inline-flex'}}/>  )
                                           }
                                     </h1>             
                                 </div> 
@@ -336,9 +331,9 @@ const Navbar = () => {
                                     <h1 className='movilNav__container-line-title'>
                                         {link.name} 
                                           { heading == link.name && line == link.name ? 
-                                          (  <FaChevronDown style={{marginLeft:'5px', paddingBottom:'3px', display:'inline-flex'}}/> )
+                                          (  <BsChevronDown style={{marginLeft:'10px', paddingTop:'2px', display:'inline-flex'}}/> )
                                           : 
-                                          (  <FaChevronUp style={{marginLeft:'5px', paddingBottom:'3px', display:'inline-flex'}}/>  )
+                                          (  <BsChevronUp style={{marginLeft:'10px', paddingTop:'2px', display:'inline-flex'}}/>  )
                                           }
                                     </h1>             
                                 </div>  
@@ -348,15 +343,15 @@ const Navbar = () => {
                       {/* SubLíneas de Productos*/}
                   
                         {dropdownMovil && link.submenu && heading == link.name && erclick && (
-                          <div /*data-aos="fade-left"*/ className='movilNav-drop'>
+                          <div className='movilNav-drop'>
                                 {link.sublinks.map((mysublinks) => {
                                   return (
                                     <div key={link.id}>
                                       <a
                                         className='movilNav-SubLines'
-                                        href='#'
+                                        href={`/Category/${mysublinks.Head}`}
                                       >
-                                        <div className='movilNav-SubLines-title'>
+                                        <div data-aos="fade-left" className='movilNav-SubLines-title'>
                                             {mysublinks.Head}
                                         </div>
                                       </a>

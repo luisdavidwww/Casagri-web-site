@@ -30,13 +30,11 @@ const Top_header = () => {
         <div className='Top_header-Container-Copy'>
             <div className='ContainerHeader'>
                 <div className='content-Top'>
-                    <div>
                         <a href='/' className='Link-Top-Header'>
                             <div className='navbar-logo' >
                                 <img src={ LogoCasagri } alt="Casagri" />
                             </div> 
                         </a> 
-                    </div>
                 </div>
                 <div className='content-Top-Op'>
                     <div className='content-Top-options'>

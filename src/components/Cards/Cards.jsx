@@ -56,7 +56,7 @@ const Cards = () =>  {
 
       { /*Btn de Funciones */ }
       <div className='btn-featuredProducts'>
-        <a href='/search' className=''>
+        <a href={`/Category/All`} className=''>
           <button className='btn-outline-featuredProducts btn-text'
             >Ver todos
           </button>

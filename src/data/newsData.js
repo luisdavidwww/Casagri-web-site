@@ -12,7 +12,7 @@ const newsData = [
         id: 1,
         imgUrl: "news01.jpg",
         sender: "Casagri Corporation",
-        title: "Se reanudan las operaciones comerciales",
+        title: "Se reanudan las operaciones",
         date: "09-ene-2023",
         url: "/news",
         description: "Celebramos el poder positivo de conectar a través de los juegos con un vistazo a cómo nuestra comunidad disfrutó de nuestros juegos en 2022."

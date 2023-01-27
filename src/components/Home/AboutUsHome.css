@@ -32,6 +32,7 @@
     flex-direction: column;
     width: 30rem;
     margin-left: 3rem;
+    overflow: hidden;
   }
 
   .us-img {
@@ -42,9 +43,12 @@
     object-fit: cover;
     border-radius: 0px;
     transition: all 0.3s ease-in-out;
+    cursor: pointer;
   }
 
   .us-img:hover {
+    width: 100%;
+    height: 100%;
     transform: scale(1.1);
   }
 
@@ -103,18 +107,18 @@
     text-decoration-line: none;
     outline: none;
     cursor: pointer;
-    margin-top: 1rem;  
+    margin-top: 1rem; 
 }
 
 .btn-outline:hover{
   color: rgb(255, 255, 255);
   background-color: #47A01A;
   border: 1px solid #47A01A;
-  font-family: "Gotham Medium";
 }
 
 .btn-text{
-  font-family: "Gotham";
+  font-family: "Montserrat"; 
+  font-weight: 500;
   text-align: center;
   font-size: 15px;
   letter-spacing: 0.4px;
@@ -174,9 +178,10 @@
       line-height: 45px;
       color: #000000;
       padding-top: 35px;
-      padding-bottom: 15px;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
+      padding-bottom: 1rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      margin: 0px;
     }
 
     .us-text-Movil{
@@ -190,12 +195,13 @@
     .text-basic-Movil{
       text-align: center;
       font-size: 15px;
+      line-height: 26px;
       font-family: "Poppins Regular";
       color: rgb(0, 0, 0);
-      padding-top: 15px;
-      line-height: 26px;
-      padding-left: 1.3rem;
-      padding-right: 1.3rem;
+      padding-top: 1rem;   
+      padding-left: 2rem;
+      padding-right: 2rem;
+      margin: 0px;
     }
       .btn-Container{
         display: flex;
@@ -213,7 +219,7 @@
       .btn-outline{
         display: flex;
         justify-content: center;
-        width: 87%;
+        width: 80%;
         background-color: transparent;
         padding: 1.1rem 3rem;
         border: 1.5px solid #47A01A;
@@ -224,6 +230,7 @@
         cursor: pointer;  
         margin: auto;
         margin-top: 1.5rem;
+        font-weight: 500;
         
     }
     

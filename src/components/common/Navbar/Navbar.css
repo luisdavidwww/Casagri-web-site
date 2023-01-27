@@ -22,6 +22,10 @@ li {
   list-style: none;
 }
 
+a{
+  text-decoration: none;
+}
+
 /*----------NAVBAR OPTION top Header----------*/
 .movilNav-option-main{
   display: none;  
@@ -91,6 +95,7 @@ li {
     margin-right: 15px;
 }
 
+
 .desktopNav__container-line-hover {
   color: #47A01A;
   text-decoration: none;
@@ -103,9 +108,10 @@ li {
 
 .desktopNav__container-line-title{
   color: black;
-  font-family: 'Gotham', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
   font-size: 14px;
-  letter-spacing: 0.1px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
   cursor: pointer;
   margin-left: 20px;
@@ -114,9 +120,10 @@ li {
 }
 .desktopNav__container-line-title-hover{
   color: #47A01A;
-  font-family: 'Gotham', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
   font-size: 14px;
-  letter-spacing: 0.1px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
   cursor: pointer;
   margin-left: 20px;
@@ -172,17 +179,18 @@ li {
   margin-right: 20px;
 }
 
-.desktopNav__SubLines-Title{
+.desktopNav__SubLines-Title {
   display: block;
-  font-family: 'Gotham Medium', sans-serif;
-  font-weight: 300;
+  font-family: 'Lexend', sans-serif;
+  font-weight: 400;
   font-size: 14px;
   max-width: 180px;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.5px;
   line-height: 17px;
   text-align: center;
   text-transform: uppercase;
   color:#0f0f0f;
+  transition: all .25s ease-in-out;
 }
 
 .desktopNav__SubLines-Title:hover{
@@ -205,6 +213,12 @@ li {
   margin-top: 25px;
 }
 
+.desktopNav__Container-Lines-subLines-tol{
+  width: 150px;
+  margin-top: 5px;
+  padding-top: 5px;
+}
+
 .desktopNav__Container-Lines-subLines-List{
   font-family: 'Gotham ', sans-serif;
   font-size: 15px;
@@ -213,10 +227,7 @@ li {
   line-height: 17px;
   margin-top: 5px;
   padding-top: 5px;
-}
-
-.desktopNav__Container-Lines-subLines-List{
-  color: rgb(70, 70, 70);
+  color: rgb(0, 0, 0);
 }
 
 .desktopNav__Container-Lines-subLines-List:hover{
@@ -330,7 +341,7 @@ li {
     justify-content: center;
     align-items: center;
     width: 100%;
-    border-top: 1px solid rgb(235, 235, 235);
+    border-top: 1px solid rgb(243, 242, 242);
   }
   
   .movilNav__container-line{
@@ -356,7 +367,8 @@ li {
   }
 
   .movilNav__container-line-title{
-    font-family: 'Gotham Light', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
     font-size: 14px;
     text-align: center;
     text-transform: uppercase;
@@ -445,9 +457,9 @@ li {
     width: 100%;
     height: 70px;   
     text-decoration: none;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(247, 247, 247);
     /*border-bottom: 1px solid rgb(230, 230, 230);*/ /* divisiones de sublineas de productos casagri */
-    color: rgb(51, 51, 51);
+    color: rgb(0, 0, 0);
   }
 
   .movilNav-SubLines:focus{

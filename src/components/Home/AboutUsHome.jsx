@@ -52,7 +52,7 @@ const AboutUsHome = () => {
             </div>
 
             {/* Imagen Principal */}
-            <div className='us-wrap' 
+            <a className='us-wrap' 
                   data-aos="fade-left"
                   data-aos-offset="200"
                   data-aos-easing="ease-in-sine"
@@ -62,7 +62,7 @@ const AboutUsHome = () => {
                   alt='Sede AgroMax'
                   src={ nosotros }
                 />
-            </div>
+            </a>
 
         </div>
 

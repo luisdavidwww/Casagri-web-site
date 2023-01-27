@@ -29,27 +29,26 @@
     display: block;
     justify-content: center;
     width: 1000px;
+    
 }
+.slick-track{
+  height: 400px;
 
+}
 /* Tarjeta Principal*/
 .cards__item-two{
-    width: 100%;
-    height: 100%;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    width: 220px;
+    height: 350px;
     padding-top: 0.5rem;
     margin-bottom: 1rem;
-
     transition: all 0.3s ease-in-out;
 }
 
 /*Movimiento hacia arriba*/
 .cards__item-two:hover{
-    width: 100%;
+    width: 220px;
+    height: 350px;
     bottom: 5rem;
-    height: 100%;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
     padding-top: 0rem;
     transition: all 0.3s ease-in-out;
     
@@ -64,33 +63,29 @@
     text-decoration: none;
     transition: all 0.3s ease-in-out;
     color: #000000;
-    box-shadow: 0px 6px 7px rgb(0, 0, 0, 0.04);
+    box-shadow: 0px 10px 10px rgb(0, 0, 0, 0.04);
   }
   .cards__item__link-two:hover {
     color: #000000;
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.07);
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.09);
   }
 
 
 .cards__item__pic-wrap-two{
+    display: flex;
     position: relative;
     width: 100%;
-    padding-top: 67%;
     overflow: hidden;
     height: 280px;
-}
+    margin: auto
+    ;}
 
 .cards__item__img-two {
-    position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     display: block;
-    width: 100%;
-    max-width: 100%;
-    height: 100%;
-    max-height: 100%;
     object-fit: cover;
     transition: all 0.2s ease-in-out;
   }
@@ -115,12 +110,14 @@
     flex-direction: row;
     width: 100%;
     justify-content: flex-end;
+    
 }
 
 .container-Control-Block
 {
     width: 1000px;
     margin: auto;
+    background-color: transparent;
 }
 
 
@@ -129,13 +126,30 @@
     justify-content: flex-end;
 }
 
+.btn-deg{
+  background-color: transparent;
+  border: transparent;
+  color: #47A01A;
+  border: 1px solid #47A01A;
+  padding: 0.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-deg:hover{
+  background-color: #47A01A;
+  border: transparent;
+  border: 1px solid #47A01A;
+  padding: 0.5rem;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
 .container-btn-deg{
   display: flex;
   justify-content: center;
   color: #47A01A;
-  border: 1px solid #47A01A;
   border-radius: 2px;
-  padding: 0.5rem;
   margin-left: 15px;
   -webkit-transform: skewX(-15deg) translateX(12px);
   -moz-transform: skewX(-15deg) translateX(12px);
@@ -152,9 +166,8 @@
   -ms-transform: skewX(-15deg) translateX(12px);
   transform: skewX(-15deg) translateX(12px) scale(1.1);
   justify-content: center;
-  border: 1px solid #47A01A;
   background-color: #47A01A;
-  border-radius: 4px;
+  color: #47A01A;
   cursor: pointer;
 }
 
@@ -186,17 +199,18 @@
 .cards__item__info-two {
     display: flex;
     justify-content: center;
-    padding: 20px 10px 20px !important;
   }
   
   .cards__item__text-two {
-    font-family: 'Gotham Medium', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     letter-spacing: 0px;
     text-transform: uppercase;
     cursor: pointer;
+    margin-top: 1.5rem;
     margin-left: 20px;
     margin-right: 20px;
+    margin-bottom: 1.5rem;
   }
   
 
@@ -227,8 +241,19 @@
     display: block;
     justify-content: center;
     width: 100%;
+    margin: auto;
   }
 
+  /* Tarjeta Principal*/
+.cards__item-two{
+  width: 300px;
+  height: 350px;
+  padding-top: 0.5rem;
+  margin-bottom: 1rem;
+  margin-right: 0rem;
+  margin-left: 2rem;
+  transition: all 0.3s ease-in-out;
+}
 
 
   /*---------------------------ESTILOS ITEM CARRUSEL ---------------------------------*/
@@ -245,8 +270,10 @@
     font-size: 17px;
     letter-spacing: 0px;
     cursor: pointer;
+    margin-top: 0.8rem;
     margin-left: 20px;
     margin-right: 20px;
+    margin-bottom: 0.8rem;
   }
 
 

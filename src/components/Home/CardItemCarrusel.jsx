@@ -40,6 +40,8 @@ function CardItemCarrusel(props) {
               className='cards__item__img-two'
               alt={props.text}
               src={imgL(`./${props.src}`)}
+              objectFit="cover"
+                      
                       />
           </figure>
           <div className='cards__item__info-two'>
