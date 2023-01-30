@@ -28,7 +28,7 @@ export const Home = () => {
     <div>
       <CarruselDiscover/>
       <AboutUsHome/>
-      <CarruselCatalogue/>
+
       <Cards/>
       <NewSection/>
     </div>

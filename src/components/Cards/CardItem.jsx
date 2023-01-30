@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+//components
+import StarRanking from "./starRanking";
+
 //icons 
 import { IoIosHeart } from "react-icons/io";
 
@@ -65,7 +68,9 @@ function CardItem(props) {
                         infoHeart ?
                         (
                           <>
+                          <div className='icon-heart-container-two'>
                             <div className='icon-heart-message'> Eliminar de favoritos </div>
+                          </div>
                           </>
                         ):null
                       }
@@ -78,7 +83,9 @@ function CardItem(props) {
                         infoHeart ?
                         (
                           <>
+                          <div className='icon-heart-container'>
                             <div className='icon-heart-message'> Anadir a favoritos </div>
+                          </div> 
                           </>
                         ):null
                       }
@@ -89,9 +96,11 @@ function CardItem(props) {
               
             </div>
 
-        <a className='cards__item__link'  href={props.path}>
+            
+
+        <a className='cards__item__link' href={props.path} >
             {/* Imagen del Producto */}
-            <figure className='cards__item__pic-wrap'>
+            <figure className='cards__item__pic-wrap' >
 
                 <img
                 className='cards__item__img'
@@ -111,14 +120,20 @@ function CardItem(props) {
 
             {/* Datos del Productos */}
             <div className='cards__item__info-container'>
+
+                
+
                 <div className='cards__item__info-title'>
                   <h5 className='cards__item__text-title'>{props.title}</h5>
                 </div>
+
+                <StarRanking className='container__star' ranking={props.ranking} card={true} href=''/>
+                
                 <div className='cards__item__info'>
                   <h5 className='cards__item__text-presentation'>{props.presentation}</h5>
                 </div>
                 <div className='cards__item__info'>
-                  <h5 className='cards__item__text-price'>{props.price}</h5>
+                  <h5 className='cards__item__text-price'>{props.price + '$'}</h5>
                 </div>
             </div>
         </a>
