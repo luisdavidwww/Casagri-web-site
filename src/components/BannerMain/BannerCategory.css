@@ -1,0 +1,106 @@
+ /*-----------Banner-----------*/
+
+  .Banner-Category-Movil{
+    display: none;
+  }
+
+  .container-Category-Main{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 15rem;
+  }
+
+  .banner-img{
+    display: flex;
+    object-fit: cover;
+    width:100%;
+    height:100%;
+    z-index: 5;
+  }
+  .banner-img:hover{
+    cursor: pointer;
+  }
+
+  .container-Category-Main-Content{
+    display: flex;
+    position: absolute;
+    justify-content: flex-start;
+    margin-left: 15%;
+    margin-top: 6%;
+  }
+
+  .container-Banner-Category-Content-title {
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    z-index: 10;
+    line-height: 50px;
+    color: rgb(34, 34, 34);
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 3rem;
+    line-height: 2.5rem;
+    letter-spacing: -1px;
+  }
+
+
+
+
+  @media screen and (max-width: 960px) {
+
+    .Banner-Category-Desktop{
+      display: none;
+    }
+    .container-Category-Main{
+      display: none;
+    }
+
+    .Banner-Category-Movil{
+      display: inline-block;
+      width: 100%;
+    }
+
+    .container-Category-Main-Movil{
+      display: inline-flex;
+      width: 100%;
+      padding-top: 80px;
+      height: 10rem;
+    }
+
+    .banner-img-Movil{
+      display: flex;
+      object-fit: cover;
+      width:100%;
+      height: 100%;
+    }
+
+
+    .container-Banner-Category-Content-Movil{
+      display: flex;
+      position: relative;
+      justify-content: center;
+      width: 100%;
+      z-index: 1 !important;
+    }
+    .container-Banner-Category-Content-title-Movil {
+      display: flex;
+      justify-content: center;
+      width: 90%;
+      margin-top: 0rem;
+      margin-bottom: 0.6rem;
+      padding-left: 10px;
+      padding-right: 10px;
+      z-index: 10;
+      font-size: 3rem;
+      line-height: 50px;
+      color: rgb(34, 34, 34);
+      font-family: 'Montserrat';
+      font-weight: 600;
+      font-size: 2.1rem;
+      line-height: 2.5rem;
+      letter-spacing: -1px;
+    }
+
+
+  }

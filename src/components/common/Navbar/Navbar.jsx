@@ -18,10 +18,12 @@ import Top_header from '../Top_Header/Top_header';
 import  SearchNavbar  from "../../Search/SearchNavbar";
 
 
-//icons
+//icons 
 import { IoCloseOutline, IoMenuOutline } from "react-icons/io5";
 import { BsChevronDown } from "react-icons/bs";
 import { BsChevronUp } from "react-icons/bs";
+import { BsSearch } from "react-icons/bs";
+import { BsHouseDoorFill } from "react-icons/bs";
 
 
 
@@ -330,7 +332,10 @@ const Navbar = () => {
               <div className='content-Top-search' >
                     <div className='content-top-search-div' onClick={ actionSearch } >
                         <SearchNavbar clickSearch={ clickSearch }  />
-                    </div>  
+                    </div>
+                    <div className='content-top-search-icon'onClick={ actionSearch } >
+                      <BsSearch className='search__icon' />
+                    </div> 
               </div>
 
               <div className='movilNav__container-line-top'></div>

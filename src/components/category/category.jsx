@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 //importacion de datos de productos
 import { featuredProductss } from "../../data/featuredProductss";
 import { featuredProducts } from "../../data/featuredProducts";
+import { ProductsAll } from "../../data/ProductsAll";
 
 //componentes
 import CardItem from '../Cards/CardItem'
@@ -29,7 +30,7 @@ const bannerTitle =  listaDatos.map(item => item.title);
 
 //Convertimos a strings para las props
 const img =  bannerImg.toString();
-const imgMini =  bannerImgMini.toString()
+const imgMini = bannerImgMini.toString()
 const tit =  bannerTitle.toString();
 
 
@@ -52,6 +53,7 @@ const Category = ({history}) => {
 
 
    const [products, setProducts] = useState([]);
+   const [imgBanner, setImgBanner] = useState("");
 
 
 
@@ -78,7 +80,6 @@ const Category = ({history}) => {
           return e.category == consulta;
         })
         setProducts(compareData);
-        console.log("aqui va los productos:  " + products);
       }
 
 
@@ -115,6 +116,19 @@ const Category = ({history}) => {
       }
 
     }
+
+    //compara la props de URL con las categorias existentes
+    const compareImg = () => {
+
+        let compareData = BannerData.filter((e) => {
+          return e.category == consulta;
+        })
+        setImgBanner(compareData);
+        console.log("aqui va");
+        console.log(imgBanner);
+
+    }
+
     //metodo para aplicar los filtros de busqueda
     const filterCategory = (category, consulta) => {
 		if (category === 'All'){
@@ -140,6 +154,7 @@ const Category = ({history}) => {
     //use effects general
     useEffect(() => {
         productsMain();
+        compareImg();
         console.log("aqui va la query" + consulta);
     }, [consulta])
 

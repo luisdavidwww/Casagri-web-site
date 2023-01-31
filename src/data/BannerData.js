@@ -10,6 +10,7 @@ import SaludAnimal from '../assets/img/SaludAnimal.jpg'
 export const BannerData = [
     {
         id:0,
+        category:'All',
         img:bannerHome,
         miniimg:bannerHome,
         title:'La compañía para la agroindustria',
@@ -18,6 +19,7 @@ export const BannerData = [
     },
     {
         id:1,
+        category:'All',
         img:bannerCompany,
         miniimg:bannerCompanyMini,
         title:'Acerca de Nosotros',
@@ -26,6 +28,7 @@ export const BannerData = [
     },
     {
         id:2,
+        category:'All',
         img:bannerContact,
         miniimg:bannerContactMini,
         title:'Contactanos',
@@ -34,6 +37,7 @@ export const BannerData = [
     },
     {
         id:3,
+        category:'All',
         img:SaludAnimal,
         miniimg:SaludAnimal,
         title:'',

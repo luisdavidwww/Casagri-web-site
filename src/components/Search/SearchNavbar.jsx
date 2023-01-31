@@ -78,7 +78,7 @@ const SearchNavbar = ( clickSearch ) => {
                             value={ searchText }
                             onChange={ handleInputChange } 
                         />
-
+                         
                 </form>
         </div>
     </div>

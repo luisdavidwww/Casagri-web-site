@@ -45,7 +45,7 @@ const Cards = () =>  {
               src={item.imgUrl}
               title={item.title}
               label=''
-              path={`/cart/${ item.id }`}
+              path={`/Details/${ item.id }`}
               price={item.price}
               presentation={item.presentation}
               ranking={item.ranking}

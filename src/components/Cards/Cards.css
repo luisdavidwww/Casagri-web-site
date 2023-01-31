@@ -305,6 +305,8 @@ font-family: "Gotham Medium";
   /*Titulo Container*/
   .title-container{
     padding-top: 2rem;
+    padding-left: 0rem;
+    padding-right: 0rem;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -334,20 +336,20 @@ font-family: "Gotham Medium";
     justify-content: center;
     margin-top: 1rem;
   }
-  
+
   
   /*Listado de Cards*/
   .cards__items{
-    display: inline-block; 
-    justify-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .cards__item {
     display: inline-block;
-    width: 160px;
-    margin-bottom: 1rem;
+    width: 175px;
+    margin-left: 0.5rem !important;
+    margin-right: 0.5rem !important;
     margin: 0px;
-    margin-left: 20px;
     margin-bottom: 15px;
   }
 
@@ -358,7 +360,6 @@ font-family: "Gotham Medium";
 
   /*Card individual de producto*/
   .cards__item__link{
-    
     margin: 1rem;
     margin: 0px;
     margin-left: 0px;

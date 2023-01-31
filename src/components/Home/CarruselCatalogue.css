@@ -8,6 +8,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    height: 350px;
 }
 
 .title-container-two{
@@ -33,12 +34,12 @@
 }
 .slick-track{
   height: 400px;
-
 }
+
 /* Tarjeta Principal*/
 .cards__item-two{
     width: 220px;
-    height: 350px;
+    height: 300px;
     padding-top: 0.5rem;
     margin-bottom: 1rem;
     transition: all 0.3s ease-in-out;
@@ -49,10 +50,10 @@
 /*Movimiento hacia arriba*/
 .cards__item-two:hover{
     width: 220px;
-    height: 350px;
+    height: 300px;
     bottom: 5rem;
     padding-top: 0rem;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
     
 }
 
@@ -69,7 +70,7 @@
   }
   .cards__item__link-two:hover {
     color: #000000;
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.09);
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
   }
 
 
@@ -78,7 +79,7 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    height: 280px;
+    height: 260px;
     margin: auto
     ;}
 
@@ -248,22 +249,46 @@
 
   /* Tarjeta Principal*/
 .cards__item-two{
+  display: flex;
   width: 300px;
   height: 350px;
-  padding-top: 0.5rem;
-  margin-bottom: 1rem;
-  margin-right: 0rem;
-  margin-left: 2rem;
   transition: all 0.3s ease-in-out;
+  background-color: rgb(253, 253, 253);
+  margin: 0px;
+}
+
+.cards__item__link-two{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 300px;
+    height: 370px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    color: #000000;
+    box-shadow: 0px 10px 10px rgb(0 0 0 / 14%);
+    margin-left: 0.7rem;
+  margin-right: 0.5rem;
 }
 
 
-  /*---------------------------ESTILOS ITEM CARRUSEL ---------------------------------*/
+.cards__item__pic-wrap-two {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+  height: 290px;
+  margin: 0px;
+}
 
+
+ 
   .cards__item__info-two {
     display: flex;
     justify-content: center;
     padding: 20px 10px 20px !important;
+    
   }
 
   .cards__item__text-two {
@@ -277,6 +302,8 @@
     margin-right: 20px;
     margin-bottom: 0.8rem;
   }
+
+
 
 
   /* Botones */
@@ -315,4 +342,64 @@
     width: 28px;
     height: 28px;
   }
+
+
+
+
+
+
+   /*---------------------------ESTILOS ITEM CARRUSEL ---------------------------------*/
+
+
+
+  .container-Slick{
+    display: block;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .slick-track{
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    margin-left: 0px;
+    margin-right: 0px;
+    height: 400px;
+    width: 1500px;
+  }
+
+  .slick-slide{
+    display: none;
+  }
+
+.slick-slide {
+    display: none;
+}
+.slick-active .slick-current{
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /*----Boton next----*/
+  .slick-next{
+    display:none !important;
+  }
+
+  /*-----Boton next------*/
+  .slick-prev{
+    display:none;
+  }
+
   }

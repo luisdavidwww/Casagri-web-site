@@ -86,8 +86,7 @@
         justify-content: center;
         flex-direction: row;
         width: 100%;
-        margin-left: 1rem;
-        margin-right: 1rem;
+        margin-right: 0.5rem;
     }
     .Search__imput{
         width:250px;
@@ -100,6 +99,19 @@
         font-weight: 500;
         padding: 0.5rem 1rem 0.5rem 1rem;
         letter-spacing: 0.3px;
+    }
+
+    .Search__btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        border: 1px solid  #e7e3e3;
+        background-color: #47A01A;
+        padding: 0rem 1rem 0rem 1rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+        cursor: pointer;
     }
 
     
