@@ -236,6 +236,12 @@ a{
 }
 
 
+/*Container Busqueda*/
+.content-Top-search{
+  display: none;
+}
+
+
 
 
 @media screen and (max-width: 960px) {
@@ -247,7 +253,7 @@ a{
     display: block;
     position: fixed;
     background-color: #ffffff;
-    z-index: 150 !important;
+    
     color: #272727;
     width: 100%;
   }
@@ -274,6 +280,7 @@ a{
   .icon-container {
     display: flex;
     justify-content: flex-end;
+    z-index: 150 !important;
     position: fixed;
     background: rgb(255, 255, 255);
     z-index: 10;
@@ -417,7 +424,7 @@ a{
     display: block;
     flex-direction: column;
     width: 100%;
-    height: 90vh;
+    height: 91vh;
     background: #ffffff;
     position: absolute;
     z-index: 40 !important;
@@ -437,6 +444,7 @@ a{
     opacity: 1;
     transition: all 0.5s ease;
     z-index: 50 !important;
+    overflow-y: scroll;
   }
 
 
@@ -457,7 +465,7 @@ a{
     width: 100%;
     height: 70px;   
     text-decoration: none;
-    background-color: rgb(247, 247, 247);
+    background-color: rgb(252, 252, 252);
     /*border-bottom: 1px solid rgb(230, 230, 230);*/ /* divisiones de sublineas de productos casagri */
     color: rgb(0, 0, 0);
   }
@@ -507,5 +515,42 @@ a{
     color: #fff;
     padding: 16px;
   }
-  
+
+
+
+
+  /*Container Busqueda*/
+  .content-top-search-div{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  }
+  .content-Top-search{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    z-index: 50 !important;
+  }
+
+
+  .content-top-search-cancel{
+    display: flex;
+    width: 100%;
+    padding: 1rem;
+  }
+  .content-top-search-cancela{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    vertical-align: middle;
+    color: #6e6e6e;
+    background-color: #d6d6d6;
+    padding: 1rem;
+    border-radius: 2px;
+    font-family: "Montserrat";
+    font-size: 12px;
+    font-weight: 500;
+  }
+
 }

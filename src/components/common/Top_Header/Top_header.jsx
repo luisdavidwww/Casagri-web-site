@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import { useLocation } from 'react-router-dom';
 
+//components
+import  SearchNavbar  from "../../Search/SearchNavbar";
+
 //logo
 import LogoCasagri from "static/casagri-logo-01.svg"
 
@@ -59,6 +62,7 @@ const Top_header = () => {
                                 </a>  
                             </div>        
                         </div>
+                        
 
                         {/* Opcones de Icons */}
                         <div className='content-Top-options-list-icons-set'>

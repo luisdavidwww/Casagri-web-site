@@ -15,6 +15,7 @@ import 'aos/dist/aos.css';
 
 //componentes
 import Top_header from '../Top_Header/Top_header';
+import  SearchNavbar  from "../../Search/SearchNavbar";
 
 
 //icons
@@ -33,11 +34,17 @@ const Navbar = () => {
   const [dropdownMovil, setDropdownMovil] = useState(false);
   const [click, setClick] = useState(false);
   const [erclick, setErclick] = useState(false);
+  const [clickSearch, SetclickSearch] = useState(false);
   const [line, setline] = useState("");
   const [button, setButton] = useState(true);
 
-  //Acción Click
+  //Acción Click  
   const handleClick = () => setClick(!click);
+  const actionSearch = () => SetclickSearch(!clickSearch);
+  const actionSearchFalse = () => SetclickSearch(false);
+
+  console.log(clickSearch);
+
 
   //cursor activo sobre el elemento Navbar
   const onMouseEnter = () => {
@@ -164,7 +171,7 @@ const Navbar = () => {
        <div className='icon-container'>
             <div className='icon-container-main'>
                 <div className=''>
-                  <div className='icon-container-main-def' onClick={() => { handleClick(); SubLinesOut();}}>
+                  <div className='icon-container-main-def' onClick={() => { handleClick(); SubLinesOut(); actionSearchFalse();}}>
                     {click ?
                     (<IoCloseOutline/>)
                     :
@@ -278,7 +285,24 @@ const Navbar = () => {
           </section>
 
           {/*---------------------------------Navbar Movil--------------------------------------*/}
-          <section id="movilNav__container">
+
+{
+  clickSearch ?
+  (
+    <section>
+              {/* Barra de Busqueda */}
+              <div className='content-Top-search' >
+                    <div className='content-top-search-div' >
+                        <SearchNavbar clickSearch={ clickSearch }/>
+                        <div className='content-top-search-cancel' onClick={ actionSearch } > 
+                            <div className='content-top-search-cancela' > Cancel</div>
+                        </div>
+                    </div>  
+              </div>
+    </section>
+  ):
+  (
+    <section id="movilNav__container">
             
             {/*Opciones de politica de la empresa*/}
             <div className='movilNav-option-main'>
@@ -295,13 +319,24 @@ const Navbar = () => {
               ))}
             </div>
 
+                
+
             <div className='movilNav__lower'>
               {/* Recorrido de la lista: LINEAS DE PRODUCTOS CASAGRI*/}
 
               <div className='movilNav__container-line-top'></div>
+
+              {/* Barra de Busqueda */}
+              <div className='content-Top-search' >
+                    <div className='content-top-search-div' onClick={ actionSearch } >
+                        <SearchNavbar clickSearch={ clickSearch }  />
+                    </div>  
+              </div>
+
+              <div className='movilNav__container-line-top'></div>
               
               {links.map((link) => (
-              <div key={link.id} >
+              <div key={link.id}>
                   {/* Condicional para hover de las líneas */}
                   { heading == link.name && line == link.name ? 
                     (
@@ -360,10 +395,15 @@ const Navbar = () => {
                                 })}
                               </div> 
                           )} 
-                </div>
+              </div>
               ))}
             </div>
-          </section>
+    </section>
+  )
+}
+          
+          
+          
 
         </div>
       </nav>

@@ -4,6 +4,7 @@ import bannerCompanyMini from '../assets/img/banner06mini.jpg'
 import bannerContact from '../assets/img/banner07.jpg'
 import bannerContactMini from '../assets/img/banner07mini.jpg'
 import bannerHome from '../assets/img/banner00.jpg'
+import SaludAnimal from '../assets/img/SaludAnimal.jpg'
 
 
 export const BannerData = [
@@ -28,6 +29,14 @@ export const BannerData = [
         img:bannerContact,
         miniimg:bannerContactMini,
         title:'Contactanos',
+        subTitle:"",
+        href:'/'
+    },
+    {
+        id:3,
+        img:SaludAnimal,
+        miniimg:SaludAnimal,
+        title:'',
         subTitle:"",
         href:'/'
     }

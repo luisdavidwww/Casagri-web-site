@@ -3,10 +3,34 @@ import { useParams } from "react-router-dom";
 
 //importacion de datos de productos
 import { featuredProductss } from "../../data/featuredProductss";
+import { featuredProducts } from "../../data/featuredProducts";
 
 //componentes
 import CardItem from '../Cards/CardItem'
 import  Search  from "../Search/Search";
+import { BannerCategory } from 'components/BannerMain/BannerCategory';
+
+//Datos para los banners
+import { BannerData } from '../../data/BannerData';
+
+
+
+
+
+// Valor del Banner Principal
+const listaDatos = BannerData.filter(element => element.id === 3);
+
+//Img del banner principal  
+const bannerImg =  listaDatos.map(item => item.img);
+const bannerImgMini =  listaDatos.map(item => item.miniimg);
+
+//Titulo del banner principal  
+const bannerTitle =  listaDatos.map(item => item.title);
+
+//Convertimos a strings para las props
+const img =  bannerImg.toString();
+const imgMini =  bannerImgMini.toString()
+const tit =  bannerTitle.toString();
 
 
 
@@ -34,7 +58,7 @@ const Category = ({history}) => {
     //evalua la prop de URL, 
     const productsMain = () => {
       if (consulta === 'All'){
-        setProducts(featuredProductss);
+        setProducts(featuredProducts);
         return
 		}
         else {
@@ -122,8 +146,7 @@ const Category = ({history}) => {
 
   return (
     <>
-    
-
+            <BannerCategory image={img} imageMini={imgMini}/>
             <Search/>
 
                 { 

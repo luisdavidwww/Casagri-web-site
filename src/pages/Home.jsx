@@ -28,9 +28,6 @@ export const Home = () => {
     <div>
       <CarruselDiscover/>
       <AboutUsHome/>
-
-      <Cards/>
-      <NewSection/>
     </div>
   )
 }
