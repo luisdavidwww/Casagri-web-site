@@ -5,14 +5,13 @@ import { useParams } from "react-router-dom";
 import { featuredProductss } from "../../data/featuredProductss";
 import { featuredProducts } from "../../data/featuredProducts";
 import { ProductsAll } from "../../data/ProductsAll";
-
 //componentes
 import CardItem from '../Cards/CardItem'
 import  Search  from "../Search/Search";
 import { BannerCategory } from 'components/BannerMain/BannerCategory';
-
 //Datos para los banners
 import { BannerData } from '../../data/BannerData';
+
 
 
 
@@ -33,6 +32,10 @@ const img =  bannerImg.toString();
 const imgMini = bannerImgMini.toString()
 const tit =  bannerTitle.toString();
 
+//constante para pedir img de Banner
+const imgCategory = require.context('../../static/images/category', true);
+
+
 
 
 const Category = ({history}) => {
@@ -51,10 +54,7 @@ const Category = ({history}) => {
       new Set(featuredProductss.map(products => products.subCategory)),
   ];
 
-
    const [products, setProducts] = useState([]);
-   const [imgBanner, setImgBanner] = useState("");
-
 
 
     //evalua la prop de URL, 
@@ -117,18 +117,6 @@ const Category = ({history}) => {
 
     }
 
-    //compara la props de URL con las categorias existentes
-    const compareImg = () => {
-
-        let compareData = BannerData.filter((e) => {
-          return e.category == consulta;
-        })
-        setImgBanner(compareData);
-        console.log("aqui va");
-        console.log(imgBanner);
-
-    }
-
     //metodo para aplicar los filtros de busqueda
     const filterCategory = (category, consulta) => {
 		if (category === 'All'){
@@ -146,22 +134,18 @@ const Category = ({history}) => {
         
     }
     
-
-   
     const [categories, setCategories] = useState(allCategories);
 
 
     //use effects general
     useEffect(() => {
         productsMain();
-        compareImg();
-        console.log("aqui va la query" + consulta);
     }, [consulta])
 
 
   return (
     <>
-            <BannerCategory image={img} imageMini={imgMini}/>
+            <BannerCategory image={imgCategory(`./${consulta+'.jpg'}`)} imageMini={imgCategory(`./${consulta+'.jpg'}`)} rutes={consulta}/>
             <Search/>
 
                 { 

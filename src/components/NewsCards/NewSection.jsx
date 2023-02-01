@@ -53,7 +53,7 @@ const News = () =>  {
 
       { /*Btn de Funciones */ }
       <div className='btn-featuredProducts'>
-        <a href='/news' className=''>
+        <a href='/news' style={{textDecoration:'none'}}>
           <button className='btn-outline-featuredProducts btn-text'
             >Leer más
           </button>

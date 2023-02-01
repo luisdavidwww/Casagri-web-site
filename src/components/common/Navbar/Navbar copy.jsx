@@ -185,10 +185,9 @@ const Navbar = () => {
             </div>    
        </div>
 
-      <nav className={click ? 'navbar__main active' : 'navbar__main'} ref={refOne}>
-      
+       
 
-                            
+      <nav className={click ? 'navbar active' : 'navbar'} ref={refOne}>
         <div className='navigation__container--navs'>
 
           {/*------------------------------Navbar Escritorio------------------------------------*/}
@@ -200,9 +199,9 @@ const Navbar = () => {
               <div key={link.id} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} >
                   {/* Lineas de Producto en el Navbar */}
                   <div className={heading == link.name && hover ? 'desktopNav__container-line-hover' : 'desktopNav__container-line' }>
-                    <a href={`/Category/${link.name}`} style={{textDecoration:'none'}}>
+                    <a href={`/Category/${link.name}`} >
                       <h1
-                          className={ 'desktopNav__container-line-title' }
+                          className={ heading == link.name && hover ? 'desktopNav__container-line-title-hover' : 'desktopNav__container-line-title' }
                           onMouseOver={() => {
                             setHeading(link.name);
                             setHover(true);
@@ -236,7 +235,7 @@ const Navbar = () => {
                                       {link.sublinks.map((mysublinks) => (
                                           <div key={link.id} className="desktopNav__SubLines" >
                                             <div>
-                                                <a className="desktopNav__SubLines-Title" href={`/Category/${mysublinks.Head}`} style={{textDecoration:'none'}}>
+                                                <a className="desktopNav__SubLines-Title" href={`/Category/${mysublinks.Head}`}>
                                                   {mysublinks.Head}  
                                                 </a>
                                             </div>
@@ -294,24 +293,14 @@ const Navbar = () => {
   (
     <section>
               {/* Barra de Busqueda */}
-              <AnimatePresence>
               <div className='content-Top-search' >
-                <motion.div
-                  initial={{x: 0, y: 43, scale: 1, rotate: 0,  opacity:1 }}      
-                  animate={{x: 0, y: 0, scale: 1, rotate: 0, transition:{duration:"0.40"}, opacity:1 }} 
-                  exit={{x: 0, y: -50, scale: 1, rotate: 0,  opacity:1 }}    
-                  >
-                  <div className='content-top-search-div' >
-                      <SearchNavbar clickSearch={ clickSearch }/>
-                      <div className='content-top-search-cancel' onClick={ actionSearch } > 
-                          <div data-aos="fade-left" className='content-top-search-cancela' > Cancel</div>
-                      </div>
-                  </div> 
-                                
-                </motion.div>
+                    <div className='content-top-search-div' >
+                        <SearchNavbar clickSearch={ clickSearch }/>
+                        <div className='content-top-search-cancel' onClick={ actionSearch } > 
+                            <div className='content-top-search-cancela' > Cancel</div>
+                        </div>
+                    </div>  
               </div>
-              </AnimatePresence>
-              
     </section>
   ):
   (
@@ -351,13 +340,12 @@ const Navbar = () => {
 
               <div className='movilNav__container-line-top'></div>
               
-              {/* Desplegable De Categorias */}
               {links.map((link) => (
               <div key={link.id}>
                   {/* Condicional para hover de las líneas */}
                   { heading == link.name && line == link.name ? 
                     (
-                      <a className='movilNav__container-line-hover'
+                      <a href='#' className='movilNav__container-line-hover'
                           onClick={() => { dropdownBoxMovil(link.name); }}
                         >
                           {/* Lineas de Producto en el Navbar hover*/}
@@ -375,9 +363,8 @@ const Navbar = () => {
                     )
                     : 
                     (   
-                      <a className='movilNav__container-line'
+                      <a href='#' className='movilNav__container-line'
                           onClick={() => { dropdownBoxMovil(link.name); }}
-                          style={{textDecoration:'none'}}
                         >
                           {/* Lineas de Producto en el Navbar*/}
                               <div>
@@ -394,34 +381,25 @@ const Navbar = () => {
                     )
                   }
                       {/* SubLíneas de Productos*/}
-                      <AnimatePresence>
-                      {dropdownMovil && link.submenu && heading == link.name && erclick && (
+                  
+                        {dropdownMovil && link.submenu && heading == link.name && erclick && (
                           <div className='movilNav-drop'>
-                            <motion.div
-                            initial={{x: 50, y: 0, scale: 1, rotate: 0,  opacity:0 }}      
-                            animate={{x: 0, y: 0, scale: 1, rotate: 0, transition:{duration:"0.40"}, opacity:1 }}  
-                            >
-                              {link.sublinks.map((mysublinks) => {
+                                {link.sublinks.map((mysublinks) => {
                                   return (
                                     <div key={link.id}>
                                       <a
                                         className='movilNav-SubLines'
                                         href={`/Category/${mysublinks.Head}`}
-                                        style={{textDecoration:'none'}}
                                       >
-                                        <div className='movilNav-SubLines-title'>
+                                        <div data-aos="fade-left" className='movilNav-SubLines-title'>
                                             {mysublinks.Head}
                                         </div>
                                       </a>
                                     </div>
                                   );
                                 })}
-
-                            </motion.div>                              
-                          </div> 
-                        )} 
-                      </AnimatePresence>
-                        
+                              </div> 
+                          )} 
               </div>
               ))}
             </div>
@@ -429,8 +407,10 @@ const Navbar = () => {
   )
 }
           
+          
+          
+
         </div>
-      
       </nav>
     </>
   );

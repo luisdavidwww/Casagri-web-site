@@ -121,10 +121,8 @@ function CardItem(props) {
             {/* Datos del Productos */}
             <div className='cards__item__info-container'>
 
-                
-
                 <div className='cards__item__info-title'>
-                  <h5 className='cards__item__text-title'>{props.title}</h5>
+                  <h1 className='cards__item__text-title' style={{textDecoration:'none'}}>{props.title}</h1>
                 </div>
 
                 <StarRanking className='container__star' ranking={props.ranking} card={true} href=''/>

@@ -57,9 +57,9 @@ export const CarruselDiscover = () => {
     <>
     
       <div className="mainContainer">
-        <Slider {...settings}>
+        <Slider {...settings}  className='CarruselDiscover__Desktop'>
         {CarouselData.map((item) => (
-            <div className="container">
+            <div className="container-desktop">
               <img className='container-img' src={item.img} />
             </div>
           ))}
@@ -67,7 +67,7 @@ export const CarruselDiscover = () => {
       </div>
 
       <div className="mainContainer-Movil">
-        <Slider {...settings}>
+        <Slider {...settings} className='CarruselDiscover__Movil'>
         {CarouselData.map((item) => (
             <div className="container-Movil">
               <img className='container-img-Movil' src={item.imgMini} />

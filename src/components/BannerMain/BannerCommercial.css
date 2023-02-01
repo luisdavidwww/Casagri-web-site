@@ -1,19 +1,24 @@
  /*-----------Banner-----------*/
 
-  .Banner-Category-Movil{
+ .Banner-Commercial-Movil{
     display: none;
   }
 
-  .container-Category-Main{
+  .Banner__comercial{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .container-Commercial-Main{
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 100%;
+    height: 20rem;
   }
 
   .banner-img{
     display: flex;
-    object-fit: cover;
+    object-fit: fill;
     width:100%;
     height:100%;
     z-index: 5;
@@ -22,7 +27,7 @@
     cursor: pointer;
   }
 
-  .container-Category-Main-Content{
+  .container-Commercial-Main-Content{
     display: flex;
     position: absolute;
     justify-content: flex-start;
@@ -30,7 +35,7 @@
     margin-top: 6%;
   }
 
-  .container-Banner-Category-Content-title {
+  .container-Banner-Commercial-Content-title {
     display: flex;
     justify-content: center;
     width: 500px;
@@ -49,23 +54,24 @@
 
   @media screen and (max-width: 960px) {
 
-    .Banner-Category-Desktop{
+    .Banner-Commercial-Desktop{
       display: none;
     }
-    .container-Category-Main{
+    .container-Commercial-Main{
       display: none;
     }
 
-    .Banner-Category-Movil{
+    .Banner-Commercial-Movil{
       display: inline-block;
       width: 100%;
     }
 
-    .container-Category-Main-Movil{
+    .container-Commercial-Main-Movil{
       display: inline-flex;
       width: 100%;
       padding-top: 80px;
-      height: 20rem;
+      width: 100%;
+      height: 100%;
     }
 
     .banner-img-Movil{
@@ -76,14 +82,14 @@
     }
 
 
-    .container-Banner-Category-Content-Movil{
+    .container-Banner-Commercial-Content-Movil{
       display: flex;
       position: relative;
       justify-content: center;
       width: 100%;
       z-index: 1 !important;
     }
-    .container-Banner-Category-Content-title-Movil {
+    .container-Banner-Commercial-Content-title-Movil {
       display: flex;
       justify-content: center;
       width: 90%;

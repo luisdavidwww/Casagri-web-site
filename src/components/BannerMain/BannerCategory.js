@@ -4,6 +4,9 @@ import React from 'react'
 import '../BannerMain/BannerCategory.css';
 import '../../Styles/GlobalStyles.css';
 
+//Datos para los banners
+import { BannerData } from '../../data/BannerData';
+
 
 export const BannerCategory = (props) => {
 
@@ -14,7 +17,6 @@ export const BannerCategory = (props) => {
     <>
     
      {/*------------------------------Banner Escritorio------------------------------------*/}
-
      <section className='Banner-Category-Desktop'>
       
       <div className='container-Category-Main'>

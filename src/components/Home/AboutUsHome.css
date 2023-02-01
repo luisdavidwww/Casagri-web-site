@@ -11,7 +11,7 @@
     justify-content: center;
     align-items: center;
     padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-bottom: 3rem;
   }
 
   /*Contenedor Secundario*/
@@ -30,7 +30,7 @@
     position: relative;
     display: inline-block;
     flex-direction: column;
-    width: 30rem;
+    width: 33rem;
     margin-left: 3rem;
     overflow: hidden;
   }
@@ -73,8 +73,8 @@
     text-align: start;
     align-items: center;
     color: #000000;
-    font-size: 40px;
-    line-height: 45px;
+    font-size: 42px;
+    line-height: 55px;
     font-family: "Montserrat SemiBold";
     text-decoration-color: #00ff00;
   }
@@ -86,7 +86,7 @@
   .text-basic{
     text-align: start;
     font-family: "Poppins Regular";
-    margin-top: 1.5rem;
+    margin-top: 1.3rem;
     font-size: 15px;
     letter-spacing: 0;
     line-height: 23px
@@ -107,7 +107,7 @@
     text-decoration-line: none;
     outline: none;
     cursor: pointer;
-    margin-top: 1rem; 
+    margin-top: 1.5rem; 
 }
 
 .btn-outline:hover{

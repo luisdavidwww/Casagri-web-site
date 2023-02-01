@@ -19,7 +19,6 @@ const StarRanking = (props) => {
                 setEstrellas({color: "green"})
               }
         }     
-        console.log(props.ranking); 
     }, [ranking])
 
 

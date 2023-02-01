@@ -68,6 +68,18 @@
   }
 
 
+  /* Busqueda Faliida */
+
+  .alert__Search__fail{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 2rem;
+    background-color: ;
+  }
+
+
 @media only screen and (max-width: 1000px) {
 
 

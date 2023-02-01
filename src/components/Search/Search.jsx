@@ -6,12 +6,14 @@ import { getProductByName } from '../../selectors/getProductByName';
 import queryString from 'query-string';
 
 
+
 //componentes
 import  ProductContainerNew  from "../Search/ProductContainerNew";
 import CardItem from '../Cards/CardItem'
 
 //Estilos
-import './Search.css'
+import './Search.css';
+
 
 //icons
 import { BsSearch } from "react-icons/bs"
@@ -79,12 +81,14 @@ const Search = ({ history }) => {
                 </form>
         </div>
 
-            {/* Resultado de Busqueda */}
+            {/*--------------------- Resultado de Busqueda -------------------------*/}
             <div className="">
                     {
+                        
                         (  heroesFiltered.length !== 0  ) 
                         && 
                         <>
+                        {/*--------------------- Busqueda Exitosa -------------------------*/}
                         <div className="alert alert-danger">
                                 <h1>Resultado de Busqueda: { query }</h1>
                         </div>
@@ -112,15 +116,17 @@ const Search = ({ history }) => {
                     }
 
                     { 
+                        
                         ( heroesFiltered.length == 0 && query !== undefined && searchText == alert)  
                             && 
-                            <div className="alert alert-danger">
-                                <h1>Lo sentimos no existe el producto: { query }</h1>
-                            </div>
+                            <>
+                                {/*--------------------- Busqueda Fllida -------------------------*/}
+                                <div className="alert__Search__fail">
+                                    <h1>Lo sentimos no existe el producto: { query }</h1>
+                                </div>
+                            </>
+                            
                     }
-
-
-
             </div>
     </div>
 </div>
