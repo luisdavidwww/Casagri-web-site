@@ -1,3 +1,12 @@
-.Category__container{
-    /*background-color: #f6f7f9;*/
+.category__Container{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    padding: 2rem;
+}
+
+.category__products{
+    display: flex;
+    
 }
