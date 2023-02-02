@@ -22,7 +22,8 @@ export const Details = () => {
     let compareData = featuredProductss.filter((e) => {
       return e.id == id
     })
-    setData(compareData)
+    setData(compareData);
+    console.log(data);
   }
 
   useEffect(() => {

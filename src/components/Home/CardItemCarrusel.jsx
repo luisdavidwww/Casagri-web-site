@@ -30,11 +30,12 @@ function CardItemCarrusel(props) {
 
   return (
     <>
+
       <li className='cards__item-two'
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       >
-        <a className='cards__item__link-two' to={props.path}>
+        <a className='cards__item__link-two' href={props.href}>
           <figure className='cards__item__pic-wrap-two'>
               <img 
               className='cards__item__img-two'

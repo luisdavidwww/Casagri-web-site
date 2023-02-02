@@ -1,8 +1,12 @@
+//BannerComercial 
+import agro from '../../../static/images/category/Agroindustrial.jpg';
+
 export const links = [
   {
     id: 1,
     name: "Agroindustrial",
     submenu: true,
+    img: agro,
     sublinks: [
       {
         Head: "Agroquímicos",

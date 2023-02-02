@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 
 //Estilos
 import '../BannerMain/BannerCategory.css';
@@ -11,7 +11,9 @@ import { BannerData } from '../../data/BannerData';
 export const BannerCategory = (props) => {
 
   //props que darán valor tanto a la imagen del banner comoal titulo interno
-  const { image, imageMini, title } = props;
+  const { image, imageMini, title, consulta } = props;
+
+
 
   return (
     <>
@@ -22,7 +24,7 @@ export const BannerCategory = (props) => {
       <div className='container-Category-Main'>
           <img className='banner-img' 
             src={image}
-            alt="Compañia">
+            alt={consulta}>
           </img>
           <div className='container-Category-Main-Content'>
             <h1 className='container-Banner-Category-Content-title Gothan-Font w500'>{title}</h1>
@@ -36,7 +38,7 @@ export const BannerCategory = (props) => {
         <div className='container-Category-Main-Movil'>
               <img className='banner-img-Movil' 
                 src={imageMini}
-                alt="Compañia"
+                alt={consulta}
                 >
               </img>
               

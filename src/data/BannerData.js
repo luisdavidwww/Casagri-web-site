@@ -6,9 +6,25 @@ import bannerContact from '../assets/img/banner07.jpg';
 import bannerContactMini from '../assets/img/banner07mini.jpg';
 import bannerHome from '../assets/img/banner00.jpg';
 import SaludAnimal from '../assets/img/SaludAnimal.jpg';
-//BannerComercial 
+
+//Banner Comercial 
 import SaludAnimalF from '../static/images/banner/SaludAnimalF.jpg';
 import SaludAnimalMiniF from '../static/images/banner/SaludAnimalMiniF.jpg';
+
+//Banner Category
+import All from '../static/images/category/All.jpg';
+import AllMini from '../static/images/category/AllMini.jpg';
+import agro from '../static/images/category/Agroindustrial.jpg';
+import agroMini from '../static/images/category/AgroindustrialMini.jpg';
+import Maquinarias from '../static/images/category/Maquinarias.jpg';
+import MaquinariasMini from '../static/images/category/MaquinariasMini.jpg';
+import saludA from '../static/images/category/SaludAnimal.jpg';
+import saludAMini from '../static/images/category/SaludAnimalMini.jpg';
+import Ferretería from '../static/images/category/Ferretería.jpg';
+import FerreteríaMini from '../static/images/category/FerreteríaMini.jpg';
+
+
+
 
 export const BannerData = [
     {
@@ -55,6 +71,53 @@ export const BannerData = [
         title:'',
         subTitle:"",
         href:'/Category/All'
+    },
+
+]
+
+
+export const BannerCategoryImg = [
+    {
+        id:'01C-All',
+        category:'All',
+        img:All,
+        miniimg:AllMini,
+        title:'',
+        subTitle:""
+    },
+    {
+        id:'01C-Agroindustrial',
+        category:'Agroindustial',
+        img:agro,
+        miniimg:agroMini,
+        title:'',
+        subTitle:""
+    },
+    {
+        id:'01C-Maquinarias',
+        category:'Maquinarias',
+        img:Maquinarias,
+        miniimg:MaquinariasMini,
+        title:'',
+        subTitle:""
+    },
+    {
+        id:'01C-SaludAnimal',
+        category:'SaludAnimal',
+        img:saludA,
+        miniimg:saludAMini,
+        title:'',
+        subTitle:"",
+        href:'/'
+    },
+    {
+        id:'01C-Ferretería',
+        category:'Ferretería',
+        img:Ferretería,
+        miniimg:FerreteríaMini,
+        title:'',
+        subTitle:"",
+        href:'/'
     },
 
 ]

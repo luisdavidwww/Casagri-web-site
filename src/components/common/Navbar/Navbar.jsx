@@ -200,7 +200,7 @@ const Navbar = () => {
               <div key={link.id} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} >
                   {/* Lineas de Producto en el Navbar */}
                   <div className={heading == link.name && hover ? 'desktopNav__container-line-hover' : 'desktopNav__container-line' }>
-                    <a href={`/Category/${link.name}`} style={{textDecoration:'none'}}>
+                    <a /* href={`/Category/${link.name}`} */ style={{textDecoration:'none'}}>
                       <h1
                           className={ 'desktopNav__container-line-title' }
                           onMouseOver={() => {

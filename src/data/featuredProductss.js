@@ -13,7 +13,7 @@ const featuredProductss = [
     {
         id: 452,
         title: "Asperjadora Selene",
-        category: "",
+        category: "Agroindustrial",
         imgUrl: "Asperjadora_Selene.jpg",
         presentation: "16 Litros",
         price: 38.00,

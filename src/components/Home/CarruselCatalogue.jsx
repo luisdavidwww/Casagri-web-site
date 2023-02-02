@@ -81,30 +81,30 @@ export const CarruselCatalogue = () => {
                     src='agroindustrial.jpg'
                     text='Agroindustrial'
                     label=''
-                    path='/store'
+                    href={`/Category/Agroindustrial`}
                   />
                   <CardItemCarrusel
                     src='maquinarias.jpg'
                     text='Maquinarias'
-                    path='/store'
+                    href={`/Category/Maquinarias`}
                   />
                   <CardItemCarrusel
                     src='saludAnimal.jpg'
                     text='Salud Animal'
                     label=''
-                    path='/Store'
+                    href={`/Category/Salud Animal`}
                   />
                   <CardItemCarrusel
                     src='ferreteria.jpg'
                     text='Ferretería'
                     label=''
-                    path='/store'
+                    href={`/Category/Ferretería`}
                   />
                   <CardItemCarrusel
                     src='salud-publica.jpg'
                     text='Salud Pública'
                     label=''
-                    path='/store'
+                    href={`/Category/Salud Pública`}
                   />
               </Slider>
         </div>
