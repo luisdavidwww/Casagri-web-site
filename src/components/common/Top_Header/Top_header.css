@@ -88,7 +88,7 @@
       color:rgb(0, 0, 0);
       font-family: 'Lexend', sans-serif;
       font-weight: 300;
-      letter-spacing: 0.7px;
+      letter-spacing: 0.2px;
       font-size: 14px;
       text-decoration: none;
       transition: all .25s ease-in-out;
@@ -97,6 +97,7 @@
     .content-Top-options-list-link:hover{
       cursor: pointer;
       color:#049e1e;
+
     }
 
     .content-top__icon{

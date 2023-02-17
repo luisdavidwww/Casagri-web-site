@@ -76,7 +76,11 @@
     flex-direction: column;
     width: 100%;
     padding: 2rem;
-    background-color: ;
+  }
+
+  .container-msg{
+    display: grid;
+    justify-content: center;
   }
 
 

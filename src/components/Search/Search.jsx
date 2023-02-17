@@ -121,8 +121,11 @@ const Search = ({ history }) => {
                             && 
                             <>
                                 {/*--------------------- Busqueda Fllida -------------------------*/}
-                                <div className="alert__Search__fail">
-                                    <h1>Lo sentimos no existe el producto: { query }</h1>
+                                <div className="alert alert-danger" style={{marginTop:'2rem'}}>
+                                    <div className='container-msg'>
+                                    Lo sentimos no existe el producto: "{ query }"
+                                    </div>
+                                    
                                 </div>
                             </>
                             

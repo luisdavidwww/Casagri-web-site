@@ -31,7 +31,7 @@ const tit =  bannerTitle.toString();
 
 export const Home = () => {
   return (
-    <div>
+    <div style={{backgroundColor:'#F0F5F9'}}>
       <CarruselDiscover/>
       <AboutUsHome/>
       <CarruselCatalogue/>
