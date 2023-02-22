@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import StarRanking from "./starRanking";
 
 //icons 
-import { IoIosHeart } from "react-icons/io";
+import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
+import { BsCart3, BsCartCheckFill } from "react-icons/bs";
 
 
 //importacion temporal de imagenes
@@ -19,7 +20,11 @@ function CardItem(props) {
   const [click, setClick] = useState(false);
   const [infoHeart, setInfoHeart] = useState(false);
 
-  //cursor activo sobre el elemento Navbar
+  const [clickCart, setClickCart] = useState(false);
+  const [infoCart, setInfoCart] = useState(false);
+
+
+  //acciones btn favoritos
   const onMouseEnter = () => {
     if (window.innerWidth < 960) {
       setInfoHeart(false);
@@ -27,7 +32,6 @@ function CardItem(props) {
       setInfoHeart(true);
     }
   };
-  //cursor desactivado al salir del elemento Navbar
   const onMouseLeave = () => {
     if (window.innerWidth < 960) {
       setInfoHeart(false);
@@ -35,8 +39,6 @@ function CardItem(props) {
       setInfoHeart(false);
     }
   };
-
-  //like products
   const clickState = () => {
     if ( click )
     {
@@ -50,6 +52,36 @@ function CardItem(props) {
   }
 
 
+  //acciones btn carts
+  const onMouseEnterCart = () => {
+    if (window.innerWidth < 960) {
+      setInfoCart(false);
+    } else {
+      setInfoCart(true);
+    }
+  };
+  const onMouseLeaveCart = () => {
+    if (window.innerWidth < 960) {
+      setInfoCart(false);
+    } else {
+      setInfoCart(false);
+    }
+  };
+  const clickStateCart = () => {
+    if ( clickCart )
+    {
+      setClickCart(false);
+      setInfoCart(false);
+    }
+    else{
+      setClickCart(true);
+      setInfoCart(false);
+    }
+  }
+
+
+
+
 
 
 
@@ -58,12 +90,15 @@ function CardItem(props) {
       <li className='cards__item' onMouseLeave={onMouseLeave}>
         <div>
           
-            <div className='icon-heart' onClick={() => { clickState()}}>
+            <div className='icon-heart'>
+
+              {/* Icono Favorito*/}
+              <div onClick={() => { clickState()}}>
               {
                 click ?
                 (
                   <div className='icon-container_heart-clickNull' onMouseEnter={() => {onMouseEnter()}} onMouseLeave={onMouseLeave} > 
-                    <IoIosHeart className='icon-heart-click' />
+                    <IoMdHeart className='icon-heart-click' />
                      {
                         infoHeart ?
                         (
@@ -77,8 +112,8 @@ function CardItem(props) {
                   </div>
                 ):
                 (
-                  <div className='icon-container_heart-clickNull' onMouseEnter={() => {onMouseEnter()}} onMouseLeave={onMouseLeave} >
-                    <IoIosHeart className='icon-heart-clickNull' />
+                  <div className='icon-container_heart-clickNull' onMouseEnter={() => {onMouseEnter()}} onMouseLeave={onMouseLeave}>
+                    <IoMdHeartEmpty className='icon-heart-clickNull' />
                     {
                         infoHeart ?
                         (
@@ -93,8 +128,48 @@ function CardItem(props) {
                   
                 )
               }
-              
+              </div>
+
+              {/* Icono Carrito*/}
+              <div onClick={() => { clickStateCart()}}>
+              {
+                clickCart ?
+                (
+                  <div className='icon-container_heart-clickNull' onMouseEnter={() => {onMouseEnterCart()}} onMouseLeave={onMouseLeaveCart} > 
+                    <BsCartCheckFill className='icon-heart-click' />
+                     {
+                        infoCart ?
+                        (
+                          <>
+                          <div className='icon-heart-container-two'>
+                            <div className='icon-cart-message'> Eliminar del carrito </div>
+                          </div>
+                          </>
+                        ):null
+                      }
+                  </div>
+                ):
+                (
+                  <div className='icon-container_heart-clickNull' onMouseEnter={() => {onMouseEnterCart()}} onMouseLeave={onMouseLeaveCart} >
+                    <BsCart3 className='icon-heart-clickNull' />
+                    {
+                        infoCart ?
+                        (
+                          <>
+                          <div className='icon-heart-container'>
+                            <div className='icon-cart-message'> Anadir al carrito </div>
+                          </div> 
+                          </>
+                        ):null
+                      }
+                  </div>
+                  
+                )
+              }
+              </div>
+ 
             </div>
+
 
             
 
@@ -125,14 +200,13 @@ function CardItem(props) {
                   <h1 className='cards__item__text-title' style={{textDecoration:'none'}}>{props.title}</h1>
                 </div>
 
-                <StarRanking className='container__star' ranking={props.ranking} card={true} href=''/>
-                
                 <div className='cards__item__info'>
                   <h5 className='cards__item__text-presentation'>{props.presentation}</h5>
                 </div>
                 <div className='cards__item__info'>
                   <h5 className='cards__item__text-price'>{props.price + '$'}</h5>
                 </div>
+                <StarRanking className='container__star' ranking={props.ranking} card={true} href=''/> 
             </div>
         </a>
 

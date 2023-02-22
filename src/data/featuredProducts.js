@@ -48,7 +48,17 @@ const featuredProducts = [
         price: 250.00,
         ranking: 4,
         description: "This coat has been made using 100% wool and is fully lined with a soft fleece lining. The coat has a button fastening with two front pockets and a zip pocket. This coat will be perfect for keeping warm during winter months."
-    }
+    },
+    {
+        id: 314,
+        title: "Motosierra SP 526",
+        category: "Agroindustrial",
+        imgUrl: "Motosierra_sp_526.jpg",
+        presentation: "52 CC - 3.1 HP",
+        price: 350.00,
+        ranking: 1,
+        description: "This black blouse has a round neckline, short sleeves, and a front button closure. The top is made of 100% cotton. This item is machine washable."
+    },
 ]
 
 export { featuredProducts }

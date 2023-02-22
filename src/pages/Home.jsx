@@ -1,7 +1,8 @@
 import React from 'react';
 
 //componentes
-import  Cards  from 'components/Cards/Cards';
+import  FeaturedProducts  from 'components/Cards/FeaturedProducts';
+import  RecommendedProducts  from 'components/Cards/RecommendedProducts';
 import  AboutUsHome  from 'components/Home/AboutUsHome';
 import { CarruselDiscover } from 'components/CarruselDiscover/CarruselDiscover';
 import { CarruselCatalogue } from 'components/Home/CarruselCatalogue';
@@ -31,12 +32,14 @@ const tit =  bannerTitle.toString();
 
 export const Home = () => {
   return (
-    <div style={{backgroundColor:'#F0F5F9'}}>
+    /* style={{backgroundColor:'#F0F5F9'}} */
+    <div style={{backgroundColor:'#F9F9F9'}} >
       <CarruselDiscover/>
       <AboutUsHome/>
       <CarruselCatalogue/>
-      <Cards/>
+      <FeaturedProducts/>
       <BannerCommercial image={img} href={href} imageMini={imageMini}/>
+      <RecommendedProducts/>
       <NewSection/>
     </div>
   )

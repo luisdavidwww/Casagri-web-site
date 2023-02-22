@@ -26,9 +26,9 @@ export const CarruselCatalogue = () => {
   // setting slider configurations Desktop
   const [sliderSettings, setSliderSettings] = useState({
     infinite: true,
-    speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 2,
+    speed: 600,
+    slidesToShow: 4,
+    slidesToScroll: 1,
     arrows: false,
   })
   // setting slider configurations Movil
