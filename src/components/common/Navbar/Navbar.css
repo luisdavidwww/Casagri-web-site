@@ -5,6 +5,7 @@
   background: rgb(255, 255, 255);
   height: 50px;
   display: flex;
+  position: initial;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -13,6 +14,7 @@
   transition: all .25s ease-in-out;
   z-index: 70 !important;
 }
+
 
 ul {
   list-style: none;
@@ -74,6 +76,7 @@ a{
   text-align: center;
   max-width: 1200px;
   margin: auto;
+  
 }
 
 .desktopNav__lower{
@@ -154,9 +157,9 @@ a{
   transition-property:  all 5s initial;
   transition-duration: 500ms;
   width: 100%;
-  -webkit-box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.09);
-  -moz-box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.09);
-   box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.09); 
+  -webkit-box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.19);
+  -moz-box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.19);
+   box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.19); 
 }
 
 
@@ -191,7 +194,7 @@ a{
   text-align: center;
   text-transform: uppercase;
   color:#0f0f0f;
-  transition: all .25s ease-in-out;
+  transition: all .5s ease-in-out;
 }
 
 .desktopNav__SubLines-Title:hover{
@@ -200,6 +203,7 @@ a{
 
 .desktopNav__SubLines-Title-link{
   color: #1f1f1f;
+  transition: all .5s ease-in-out;
 }
 
 .desktopNav__SubLines-Title-link:hover{
@@ -229,6 +233,7 @@ a{
   margin-top: 5px;
   padding-top: 5px;
   color: rgb(0, 0, 0);
+  transition: all .5s ease-in-out;
 }
 
 .desktopNav__Container-Lines-subLines-List:hover{
@@ -437,12 +442,12 @@ a{
     width: 100%;
     height: 91vh;
     background: #ffffff;
-    position: absolute;
-    z-index: 40 !important;
+    position: fixed;
+    z-index: 50 !important;
     top: 80px;
     left: -100%;
     opacity: 1;
-    transition: all 0.5s ease;
+    transition: all 0.7s ease;
   }
 
   .navbar__main.active {
@@ -453,7 +458,7 @@ a{
     background: #ffffff;
     left: 0;
     opacity: 1;
-    transition: all 0.05s ease;
+    transition: all 0.5s ease;
     z-index: 50 !important;
     overflow-y: scroll !important;
   }
@@ -463,7 +468,7 @@ a{
   .movilNav-drop{
     display: block;
     opacity: 1;
-    transition: all 0.5s ease;
+    transition: all 0.7s ease;
     z-index: 1;
     max-width: 100%;
   }

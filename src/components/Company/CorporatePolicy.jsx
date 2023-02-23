@@ -1,0 +1,62 @@
+import React from 'react'
+import { Link, Redirect } from "react-router-dom";
+
+//Componentes
+import CardItem from '../Cards/CardItem';
+//Diseño y estilos
+import './CorporatePolicy.css';
+//Datos para el Carousel
+import { CorporatePolicyData } from '../../data/CorporatePolicy';
+
+
+//importacion temporal de imagenes
+const imgL = require.context('../../static/images/corporatePolicy', true);
+
+const CorporatePolicy = () => {
+  return (
+    <>
+    <div className='CorporatePolicy__container'>
+        {/* Titulo */}
+        <div className='title-container'>
+            <div className='title-container-main'>
+                <h1 className='title-basic-center' >Nosotros</h1>
+            </div>
+        </div>
+
+
+    <div className='cards__container'>
+        <div className='cards__wrapper'>
+          <ul className='cards__items'>
+          {CorporatePolicyData?.map((item) => (
+            <li className='cards__item-pc'>
+                <Link className='cards__item__link-two' to="">
+                    <figure className='cards__item__pic-wrap-two'>
+                        <img 
+                        className='cards__item__img-two'
+                        key={item.id}
+                        alt={item.title}
+                        src={imgL(`./${item.imgUrl}`)}
+                        objectFit="cover"
+                                />
+                    </figure>
+                    <div className='cards__item__info-two'>
+                        <h5 className='cards__item__text-two'>{item.title}</h5>  
+                    </div> 
+                    <p>{item.text}</p>
+                </Link>
+            </li>
+          ))}
+          </ul>
+        </div>
+    </div>
+
+
+
+
+        
+    </div>
+    </>
+  )
+}
+
+export default CorporatePolicy

@@ -35,7 +35,7 @@ export const CarruselCatalogue = () => {
   const [sliderSettingsMovil, setSliderSettingsMovil] = useState({
     infinite: false,
     speed: 500,
-    slidesToShow: 1.2,
+    slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
   })
@@ -70,7 +70,7 @@ export const CarruselCatalogue = () => {
     <>
     <section className='CarruselCatalogue__main'>
       <div className='title-container-two'>
-          <h1 className='title-basic-center-two'>Nuestros Productos</h1>
+          <h1 className='title-basic-center-two'>Categorias</h1>
       </div>
 
       {/* Carrusel Desktop */}

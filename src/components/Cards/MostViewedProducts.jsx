@@ -28,7 +28,7 @@ const Cards = () =>  {
 
         <div className='title-container'>
           <div className='title-container-main'>
-            <h1 className='title-basic-center' >Recomendados</h1>
+            <h1 className='title-basic-center'>Los más vistos</h1>
           </div>
         </div>
         

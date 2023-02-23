@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { Link, Redirect } from "react-router-dom";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 //components
 import StarRanking from "./starRanking";
@@ -173,11 +176,11 @@ function CardItem(props) {
 
             
 
-        <a className='cards__item__link' href={props.path} >
+        <Link className='cards__item__link' to={props.path} >
             {/* Imagen del Producto */}
             <figure className='cards__item__pic-wrap' >
-
-                <img
+            
+              <img
                 className='cards__item__img'
                 alt='Travel Image'
                 src={imgL(`./${props.src}`)}
@@ -208,7 +211,7 @@ function CardItem(props) {
                 </div>
                 <StarRanking className='container__star' ranking={props.ranking} card={true} href=''/> 
             </div>
-        </a>
+        </Link>
 
         </div>
       </li>

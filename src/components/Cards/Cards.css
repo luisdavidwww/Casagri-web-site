@@ -6,7 +6,6 @@
   justify-content: center;
   padding-top: 1rem;
   padding-bottom: 2rem;
-  
 }
 
 
@@ -24,8 +23,7 @@ cursor: pointer;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 1250px;
-  padding-left: 1rem;
+  width: 1100px;
   padding-right: 2rem;
   padding-bottom: 1.5rem;
 }
@@ -40,8 +38,9 @@ cursor: pointer;
 .title-basic-center{
   color: #000000;
   text-align: start;
-  font-size: 35px;
+  font-size: 30px;
   line-height: 40px;
+  letter-spacing: -1px;
   font-family: "Montserrat SemiBold";
 }
 
@@ -132,7 +131,6 @@ cursor: pointer;
   display: flex;
   flex-flow: column;
   align-items: center;
-  
   width: 100%;
 }
 .cards__wrapper {
@@ -253,7 +251,7 @@ cursor: pointer;
 /*  Fuentes de la presentación del Producto   */
 .cards__item__text-presentation {
   color: #23263b;
-  font-family: 'Montserrat SemiBold', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   text-align: start;
   font-size: 12px;
   letter-spacing: 0px;
@@ -268,6 +266,7 @@ cursor: pointer;
 /*  Fuentes del Precio del Producton  */
 .cards__item__text-price {
   color: #aa086c;
+  color: #00a86e;
   font-family: 'Montserrat', sans-serif;
   text-align: start;
   font-size: 15px;

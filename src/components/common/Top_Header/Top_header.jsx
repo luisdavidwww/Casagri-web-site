@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
 //components
 import  SearchNavbar  from "../../Search/SearchNavbar";
@@ -43,23 +43,23 @@ const Top_header = () => {
                     <div className='content-Top-options'>
                         <div className='content-Top-options-list'>
                             <div className='content-Top-options-list-link'>
-                                <a href='/' className='content-Top-options-list-link' style={{ textDecoration: 'none'}}>
+                                <Link to='/' className='content-Top-options-list-link' style={{ textDecoration: 'none'}}>
                                     Inicio
-                                </a> 
+                                </Link> 
                             </div>  
                         </div>
                         <div className='content-Top-options-list'>
                             <div className='content-Top-options-list-link'>
-                                <a  href='/company' className='content-Top-options-list-link' style={{ textDecoration: 'none'}}>
+                                <Link  to='/company' className='content-Top-options-list-link' style={{ textDecoration: 'none'}}>
                                     Empresa
-                                </a> 
+                                </Link> 
                             </div>
                         </div>
                         <div className='content-Top-options-list'>
                             <div className='content-Top-options-list-link'>
-                                <a href="/contact" className='content-Top-options-list-link' style={{ textDecoration: 'none'}}>
+                                <Link to="/contact" className='content-Top-options-list-link' style={{ textDecoration: 'none'}}>
                                     Contacto
-                                </a>  
+                                </Link>  
                             </div>        
                         </div>
                         

@@ -6,18 +6,9 @@ import nosotros from 'static/images/home/aboutUsHome.jpg';
 import nosotrosMini from '../../static/images/home/aboutUsHomeMini.jpg';
 
 //Estilos y diseño
-import './AboutUsHome.css'
 import 'aos/dist/aos.css'; 
 
-
-
-const AboutUsHome = () => {
-
-  useEffect(() => { 
-    AOS.init({duration:800});
-    },[]);
-
-
+const Trayectory = () => {
   return (
     <>
       <div className='body-container'>
@@ -33,8 +24,8 @@ const AboutUsHome = () => {
             >
 
                   <h1 className='title-basic-start'> 
-                    Más de 70 años <br /> de la mano del productor  
-                    <span style={{color:'#489B1E'}}> Venezolano</span> 
+                  Trayectoria, Trabajo <br /> y Compromiso <br />
+                    <span style={{color:'#489B1E'}}> desde 1948 </span> 
                   </h1>
                   
                 <div className='us-text'>
@@ -43,11 +34,6 @@ const AboutUsHome = () => {
                         reconocidos por nuestro compromiso, responsabilidad y servicio 
                         brindado colaborando con el sector agroalimentario del país.
                     </p>
-                    <a href='/company' className=''>
-                      <button className='btn-outline btn-text main-green'
-                          >Ver más
-                      </button>
-                    </a>
                 </div>
             </div>
 
@@ -66,10 +52,55 @@ const AboutUsHome = () => {
 
         </div>
 
+
+
+        <div className='us-container' >
+
+
+
+            {/* Imagen Principal */}
+            <a className='us-wrap' 
+                  data-aos="fade-left"
+                  data-aos-offset="200"
+                  data-aos-easing="ease-in-sine"
+            >
+                <img
+                  className='us-img'
+                  alt='Sede AgroMax'
+                  src={ nosotros }
+                />
+            </a>
+
+
+             {/* Info */}
+             <div className='us-wrap-Info'
+                data-aos="fade-right"
+                data-aos-offset="200"
+                data-aos-easing="ease-in-sine"
+            >
+
+                  <h1 className='title-basic-start'> 
+                  Trayectoria, Trabajo <br /> y Compromiso <br />
+                    <span style={{color:'#489B1E'}}> desde 1948 </span> 
+                  </h1>
+                  
+                <div className='us-text'>
+                    <p className='text-basic'>
+                        Somos una compañía sólida con mas de 70 años de trayectoria, 
+                        reconocidos por nuestro compromiso, responsabilidad y servicio 
+                        brindado colaborando con el sector agroalimentario del país.
+                    </p>
+                </div>
+            </div>  
+
+        </div>
+
+        
+
         {/* ----------- Movil ----------------*/}
         <div className='us-container-Movil' >
 
-          {/* Imagen Principal 
+          {/* Imagen Principal  */}
           <div className='us-wrap-Movil'  data-aos="fade-left">
                 <img
                   className='us-img-Movil'
@@ -77,8 +108,7 @@ const AboutUsHome = () => {
                   src={ nosotrosMini }
                 />
           </div>
-          */}
-
+          
             {/* Info */}
             <div className='us-wrap-Info-Movil'>
                   <h1 className='title-basic-start-Movil'> 
@@ -109,5 +139,4 @@ const AboutUsHome = () => {
   )
 }
 
-export default AboutUsHome;
-
+export default Trayectory

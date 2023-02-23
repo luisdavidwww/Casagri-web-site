@@ -1,6 +1,11 @@
 import React from 'react'
 import { BannerMain } from 'components/BannerMain/BannerMain';
 
+//componentes 
+import AboutUs from 'components/Company/AboutUs';
+import CorporatePolicy from 'components/Company/CorporatePolicy';
+import Trayectory from 'components/Company/Trayectory';
+
 //Datos para los banners
 import { BannerData } from '../data/BannerData';
 
@@ -26,8 +31,12 @@ export const Company = () => {
 
   return (
     <>
-      <BannerMain image={img} imageMini={imgMini} title={tit}/>
-      
+      <div style={{backgroundColor:'#F9F9F9'}}>
+        <BannerMain image={img} imageMini={imgMini} />
+        <AboutUs/>
+        <CorporatePolicy/>
+        <Trayectory/>
+      </div>
     </>
   )
 }

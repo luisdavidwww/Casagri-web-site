@@ -1,4 +1,7 @@
 import React, {useEffect} from 'react';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+
 import CardItem from './CardItem';
 import AOS      from 'aos';
 
@@ -28,19 +31,20 @@ const Cards = () =>  {
 
         <div className='title-container'>
           <div className='title-container-main'>
-            <h1 className='title-basic-center' >Productos destacados</h1>
+            <h1 className='title-basic-center' >Destacados</h1>
           </div>
         </div>
-        
- 
-      
+
 
       { /*Lista de Productos*/ }
       <div className='cards__container'>
         <div className='cards__wrapper'>
           <ul className='cards__items'>
           {featuredProducts?.map((item) => (
-              <CardItem
+
+            
+              item.imgUrl ?(
+                <CardItem
               key={item.id}
               src={item.imgUrl}
               title={item.title}
@@ -50,6 +54,12 @@ const Cards = () =>  {
               presentation={item.presentation}
               ranking={item.ranking}
               />
+              ):
+              (
+                <Skeleton width={140} height={140} /> 
+              )
+            
+              
           ))}
           </ul>
         </div>

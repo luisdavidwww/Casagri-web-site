@@ -291,7 +291,7 @@ const Navbar = () => {
 
 {
   clickSearch ?
-  (
+  ( /* Sección de busqueda */
     <section>
               {/* Barra de Busqueda */}
               <AnimatePresence>
@@ -314,20 +314,20 @@ const Navbar = () => {
               
     </section>
   ):
-  (
+  ( /*Sección del Navbar con categorias */
     <section id="movilNav__container">
             
             {/*Opciones de politica de la empresa*/}
             <div className='movilNav-option-main'>
               {op.map((option) => (
                     <div className='movilNav-option-container' key={op.id}>
-                      <a href={option.href}  
+                      <Link to={option.href}  
                       className='movilNav-option-text' 
                       style={{ textDecoration: 'none', textAlign:'center'}}
                       onClick={() => { setClick(false) }}
                       >
                         {option.option} 
-                      </a>
+                      </Link>
                     </div>
               ))}
             </div>

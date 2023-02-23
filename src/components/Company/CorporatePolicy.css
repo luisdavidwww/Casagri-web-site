@@ -1,0 +1,20 @@
+.CorporatePolicy__container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+
+
+  .cards__item-pc {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    margin: 0 0.3rem;
+    border-radius: 10px;
+    width: 280px;
+    height: 300px;
+  }
