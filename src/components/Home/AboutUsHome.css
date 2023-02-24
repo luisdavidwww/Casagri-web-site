@@ -74,7 +74,8 @@
     color: #000000;
     font-size: 42px;
     line-height: 55px;
-    font-family: "Montserrat SemiBold";
+    font-family: "Montserrat";
+    font-weight: 600;
     text-decoration-color: #00ff00;
   }
   
@@ -134,7 +135,7 @@
 
     .body-container {
       width: 100%;
-      padding-bottom: 1rem;
+      padding: 0rem;
     }
   
     .us-container {
@@ -176,9 +177,11 @@
 
     .title-basic-start-Movil{
       text-align: center;
-      font-family: "Montserrat SemiBold";
-      font-size: 35px;
-      line-height: 45px;
+      font-family: "Montserrat";
+      letter-spacing: -1px;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 40px;
       color: #000000;
       padding-top: 35px;
       padding-bottom: 1rem;

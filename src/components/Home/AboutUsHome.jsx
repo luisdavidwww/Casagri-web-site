@@ -33,7 +33,7 @@ const AboutUsHome = () => {
             >
 
                   <h1 className='title-basic-start'> 
-                    Más de 70 años <br /> de la mano del productor  
+                    De la mano del productor  
                     <span style={{color:'#489B1E'}}> Venezolano</span> 
                   </h1>
                   
@@ -67,22 +67,12 @@ const AboutUsHome = () => {
         </div>
 
         {/* ----------- Movil ----------------*/}
+{/*
         <div className='us-container-Movil' >
-
-          {/* Imagen Principal 
-          <div className='us-wrap-Movil'  data-aos="fade-left">
-                <img
-                  className='us-img-Movil'
-                  alt='Sede AgroMax'
-                  src={ nosotrosMini }
-                />
-          </div>
-          */}
-
-            {/* Info */}
+              
             <div className='us-wrap-Info-Movil'>
                   <h1 className='title-basic-start-Movil'> 
-                    Más de 70 años de la mano del productor  
+                  De la mano del productor  
                     <span style={{color:'#489B1E'}}> Venezolano</span> 
                   </h1>
 
@@ -101,9 +91,10 @@ const AboutUsHome = () => {
                     </div>    
                 </div>
             </div>
-
-
+            
         </div>
+        */}
+
       </div>
     </>
   )

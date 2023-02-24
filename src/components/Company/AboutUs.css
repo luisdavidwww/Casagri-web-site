@@ -1,6 +1,6 @@
 .AboutUs__main{
-    padding-top: 2rem;
-    padding-bottom: 0rem;
+    padding-top: 3rem;
+    padding-bottom: 1rem;
   }
 
   .AboutUs__title__Container{
@@ -24,7 +24,7 @@
   .AboutUs__text__Container{
     display: flex;
     justify-content: center;
-    width: 800px;
+    width: 600px;
     margin: auto;
     padding-bottom: 2rem;
   }

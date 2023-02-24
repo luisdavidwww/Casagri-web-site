@@ -1,5 +1,6 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import Slider from "react-slick";
+import AOS  from 'aos';
 
 //componentes
 import CardItemCarrusel from "./CardItemCarrusel";
@@ -8,9 +9,9 @@ import CardItemCarrusel from "./CardItemCarrusel";
 import './CarruselCatalogue.css'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import 'aos/dist/aos.css'; 
 
 //Icons 
-
 import { VscChevronRight } from "react-icons/vsc";
 import { VscChevronLeft } from "react-icons/vsc";
 
@@ -64,6 +65,10 @@ export const CarruselCatalogue = () => {
   }
 
 
+  useEffect(() => { 
+    AOS.init({duration:800});
+    },[]);
+
  
 
   return (
@@ -112,8 +117,7 @@ export const CarruselCatalogue = () => {
 
       {/* Carrusel Movil */}
       <div className="main-Container-Movil">
-        <div className='container-Slick'>
-              <Slider {...sliderSettingsMovil} ref={customeSliderMovil}>
+        <div className='container-Slick' >
                   <CardItemCarrusel
                     src='agroindustrial.jpg'
                     text='Agroindustrial'
@@ -143,7 +147,7 @@ export const CarruselCatalogue = () => {
                     label=''
                     path='/store'
                   />
-              </Slider>
+              
         </div>
       </div>
 
@@ -165,7 +169,7 @@ export const CarruselCatalogue = () => {
         </div>
       </div>
 
-      {/* Botones Controladores Movil */}
+      {/* Botones Controladores Movil 
       <div className='container-Control-Movil'>
         <div className='container-Control-Block-Movil'>
         <div className='container-tbn-Movil'>
@@ -183,6 +187,7 @@ export const CarruselCatalogue = () => {
           
         </div>
       </div>
+      */}
     </section>
     </>
     

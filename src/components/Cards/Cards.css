@@ -37,11 +37,12 @@ cursor: pointer;
 /* Fuente del Titulo*/
 .title-basic-center{
   color: #000000;
+  font-family: "Montserrat";
   text-align: start;
   font-size: 30px;
+  font-weight: 600;
   line-height: 40px;
   letter-spacing: -1px;
-  font-family: "Montserrat SemiBold";
 }
 
 
@@ -337,11 +338,13 @@ font-family: "Gotham Medium";
   }
   /* Fuente del Titulo*/
   .title-basic-center{
-    color: #2b2b2b;
+    color: #000000;
+    font-family: "Montserrat";
     text-align: center;
-    font-size: 35px;
+    font-size: 28px;
+    font-weight: 600;
     line-height: 40px;
-    font-family: "Montserrat SemiBold";
+    letter-spacing: -1px;
   }
 
   /*Contenedor Principal de las Cards*/

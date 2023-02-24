@@ -32,7 +32,8 @@
     font-size: 30px;
     letter-spacing: -1px;
     line-height: 40px;
-    font-family: "Montserrat SemiBold";
+    font-family: "Montserrat";
+    font-weight: 600;
   }
 
 .container-Slick{
@@ -243,10 +244,12 @@
   }
 
   .title-basic-center-two{
-    color: #000000;
-    font-size: 34px;
-    line-height: 40px;
-    font-family: "Montserrat SemiBold";
+      font-family: "Montserrat";
+      letter-spacing: -1px;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 40px;
+      color: #000000;
   }
 
   .main-Container-Movil{
@@ -269,6 +272,7 @@
   width: 90%;
   transition: all 0.3s ease-in-out;
   margin: auto;
+  margin-bottom: 7rem;
   padding: 0px;
 }
 
@@ -282,8 +286,8 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 360px;
-    height: 430px;
+    width: 320px;
+    height: 400px;
     overflow: hidden;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
@@ -295,7 +299,7 @@
   display: flex;
   justify-content: center;
   overflow: hidden;
-  height: 350px;
+  height: 380px;
   width: 360px;
   margin: 0px;
   box-shadow: 0px 10px 10px rgb(0 0 0 / 7%);
@@ -316,7 +320,7 @@
   .cards__item__text-two {
     color: black;
     font-family: 'Montserrat', sans-serif;
-    font-size: 19px;
+    font-size: 16px;
     font-weight: 500;
     letter-spacing: 0px;
     cursor: pointer;
@@ -389,7 +393,7 @@
     display: flex;
     margin-left: 0px;
     margin-right: 0px;
-    height: 430px;
+    height: 440px;
     width: 1500px;
   }
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef  } from 'react';
 import { Link, Redirect } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import AOS      from 'aos';
+import AOS  from 'aos';
 
 
 // Listas de datos 
