@@ -26,23 +26,22 @@ const CorporatePolicy = () => {
 
     <div className='cards__container'>
         <div className='cards__wrapper'>
-          <ul className='cards__items'>
+          <ul className='cards__items-container'>
           {CorporatePolicyData?.map((item) => (
             <li className='cards__item-pc'>
-                <Link className='cards__item__link-two' to="">
-                    <figure className='cards__item__pic-wrap-two'>
-                        <img 
-                        className='cards__item__img-two'
-                        key={item.id}
-                        alt={item.title}
-                        src={imgL(`./${item.imgUrl}`)}
-                        objectFit="cover"
-                                />
-                    </figure>
-                    <div className='cards__item__info-two'>
-                        <h5 className='cards__item__text-two'>{item.title}</h5>  
+                <Link className='cards__item__link-pc' to="">
+                    <img 
+                      className='cards__item__img-pc'
+                      key={item.id}
+                      alt={item.title}
+                      src={imgL(`./${item.imgUrl}`)}
+                      objectFit="cover"
+                        />
+                    <div className='cards__item__info-pc'>
+                        <h5 className='cards__item__text-pc'>{item.title}</h5>
+                        <p className='cards__item__p-two'>{item.text}</p>  
                     </div> 
-                    <p>{item.text}</p>
+                    
                 </Link>
             </li>
           ))}

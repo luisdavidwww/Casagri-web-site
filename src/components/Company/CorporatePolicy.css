@@ -7,14 +7,121 @@
     padding-bottom: 2rem;
   }
 
-
+  .cards__items-container {
+    display: inline-flex;
+    margin-bottom: 24px;
+    max-width: 100%;
+    padding: 0px;
+  }
 
   .cards__item-pc {
     display: flex;
     justify-content: center;
     flex: 1;
-    margin: 0 0.3rem;
+    margin: 0 0.4rem;
     border-radius: 10px;
-    width: 280px;
-    height: 300px;
+    margin-top: 1rem;
+    transition: all .4s ease-in-out;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
   }
+
+  .cards__item-pc:hover {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    margin: 0 0.4rem;
+    border-radius: 10px;
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+    transition: all .4s ease-in-out;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.15);
+  }
+
+  .cards__item__link-pc{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    width: 300px;
+  }
+
+  .cards__item__pic-wrap-pc{
+    margin: 2rem;
+  }
+
+  .cards__item__img-pc{
+    display: flex;
+    position: relative;
+    height: 250px;
+  }
+
+  .cards__item__text-pc{
+    color: #489B1E;
+    font-family: "Montserrat";
+    text-align: center;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 40px;
+    letter-spacing: -1px;
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .cards__item__info-pc{
+    background-color: rgb(253, 253, 253);
+    height: 170px;
+  }
+
+.cards__item__p-two{
+  font-size: 14px;
+  line-height: 22px;
+  font-family: "Poppins Regular";
+  color: black;
+  padding-top: 0.4rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  text-align: center;
+}
+ 
+
+
+@media only screen and (max-width: 960px) {
+
+  .cards__items-container{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .cards__item-pc {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex: 1;
+    margin: 0 0.4rem;
+    border-radius: 10px;
+    transition: all .25s ease-in-out;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
+  }
+  .cards__item-pc:hover {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex: 1;
+    margin: 0 0.4rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+    transition: all .25s ease-in-out;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
+  }
+
+  .cards__item__info-pc{
+    height: 145px;
+    margin-bottom: 1rem;
+  }
+
+
+  .cards__item__text-pc{
+    margin-bottom: 0rem;
+  }
+
+}

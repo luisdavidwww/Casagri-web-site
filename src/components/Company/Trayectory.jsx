@@ -4,7 +4,8 @@ import AOS      from 'aos';
 //imagenes
 import nosotros from 'static/images/home/aboutUsHome.jpg';
 import nosotrosMini from '../../static/images/home/aboutUsHomeMini.jpg';
-
+//Diseño y estilos
+import './Trayectory.css';
 //Estilos y diseño
 import 'aos/dist/aos.css'; 
 
@@ -23,16 +24,16 @@ const Trayectory = () => {
                 data-aos-easing="ease-in-sine"
             >
 
-                  <h1 className='title-basic-start'> 
-                  Trayectoria, Trabajo <br /> y Compromiso <br />
+                  <h1 className='title-basic-trayectory' style={{ textAlign:"end"}}> 
+                    Trayectoria, Trabajo <br /> y Compromiso
                     <span style={{color:'#489B1E'}}> desde 1948 </span> 
                   </h1>
                   
                 <div className='us-text'>
                     <p className='text-basic'>
-                        Somos una compañía sólida con mas de 70 años de trayectoria, 
-                        reconocidos por nuestro compromiso, responsabilidad y servicio 
-                        brindado colaborando con el sector agroalimentario del país.
+                    Desde el año 1948 se ha mantenido lealmente 
+                    acompañando y mejorando al sector agrícola y 
+                    pecuario del país.
                     </p>
                 </div>
             </div>
@@ -54,18 +55,12 @@ const Trayectory = () => {
 
 
 
-        <div className='us-container' >
-
-
+        <div className='us-container__trayectory' >
 
             {/* Imagen Principal */}
-            <a className='us-wrap' 
-                  data-aos="fade-left"
-                  data-aos-offset="200"
-                  data-aos-easing="ease-in-sine"
-            >
+            <a className='us-wrap__trayectory'>
                 <img
-                  className='us-img'
+                  className='us-img__trayectory'
                   alt='Sede AgroMax'
                   src={ nosotros }
                 />
@@ -73,22 +68,17 @@ const Trayectory = () => {
 
 
              {/* Info */}
-             <div className='us-wrap-Info'
-                data-aos="fade-right"
-                data-aos-offset="200"
-                data-aos-easing="ease-in-sine"
-            >
+             <div className='us-wrap-Info__trayectory'>
 
-                  <h1 className='title-basic-start'> 
-                  Trayectoria, Trabajo <br /> y Compromiso <br />
-                    <span style={{color:'#489B1E'}}> desde 1948 </span> 
+                  <h1 className='title-basic-trayectory' style={{ textAlign:"start"}}> 
+                    Innovación <span style={{color:'#489B1E'}}> Tecnológica</span> 
                   </h1>
                   
                 <div className='us-text'>
                     <p className='text-basic'>
-                        Somos una compañía sólida con mas de 70 años de trayectoria, 
-                        reconocidos por nuestro compromiso, responsabilidad y servicio 
-                        brindado colaborando con el sector agroalimentario del país.
+                    Renovamos y ampliamos los productos y servicios constantemente
+                    para adaptarnos a  las necesidades emergentes del Sector 
+                    Agropecuario y Agroindustrial. 
                     </p>
                 </div>
             </div>  
