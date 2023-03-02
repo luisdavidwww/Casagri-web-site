@@ -17,7 +17,7 @@ const AboutUs = () => {
         <section className='AboutUs__main'>
             {/* Ttitulo Principal */}
             <div className='AboutUs__title__Container' data-aos="fade-up">
-                <h1 className='AboutUs__title'>Acerca de <span style={{color:'#489B1E'}}> Casagri</span> </h1>
+                <h1 className='AboutUs__title'>Acerca de <span style={{color:'#489B1E'}}> Casagri </span> </h1>
             </div>
             <div className='AboutUs__text__Container' data-aos="fade-up">
                     <p className='text__aboutUs'>

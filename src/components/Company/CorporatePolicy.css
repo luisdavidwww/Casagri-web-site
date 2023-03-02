@@ -52,7 +52,6 @@
   .cards__item__img-pc{
     display: flex;
     position: relative;
-    height: 250px;
   }
 
   .cards__item__text-pc{
@@ -65,6 +64,7 @@
     letter-spacing: -1px;
     text-align: center;
     margin-top: 1rem;
+    margin-bottom: 0rem;
   }
 
   .cards__item__info-pc{
