@@ -16,7 +16,8 @@
     font-size: 30px;
     letter-spacing: -1px;
     line-height: 40px;
-    font-family: "Montserrat SemiBold";
+    font-family: "Montserrat";
+    font-weight: 600;
   }
 
 
@@ -24,7 +25,7 @@
   .AboutUs__text__Container{
     display: flex;
     justify-content: center;
-    width: 600px;
+    width: 800px;
     margin: auto;
     padding-bottom: 2rem;
   }

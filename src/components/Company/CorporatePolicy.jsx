@@ -16,14 +16,7 @@ const CorporatePolicy = () => {
   return (
     <>
     <div className='CorporatePolicy__container'>
-        {/* Titulo 
-        <div className='title-container'>
-            <div className='title-container-main'>
-                <h1 className='title-basic-center' >Nosotros</h1>
-            </div>
-        </div>
-        */}
-
+      
         <div className='AboutUs__title__Container'>
                 <h1 className='AboutUs__title'>Nosotros</h1>
         </div>

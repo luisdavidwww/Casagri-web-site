@@ -16,10 +16,10 @@ const AboutUs = () => {
     <>
         <section className='AboutUs__main'>
             {/* Ttitulo Principal */}
-            <div className='AboutUs__title__Container' data-aos="fade-up">
+            <div className='AboutUs__title__Container'>
                 <h1 className='AboutUs__title'>Acerca de <span style={{color:'#489B1E'}}> Casagri </span> </h1>
             </div>
-            <div className='AboutUs__text__Container' data-aos="fade-up">
+            <div className='AboutUs__text__Container'>
                     <p className='text__aboutUs'>
                       Somos una empresa con más de 70 años caminando de la mano del Productor Venezolano, 
                       para ofrecer Soluciones Integrales a las necesidades específicas del sector Agrícola y 
