@@ -5,6 +5,7 @@ import { BannerMain } from 'components/BannerMain/BannerMain';
 import AboutUs from 'components/Company/AboutUs';
 import CorporatePolicy from 'components/Company/CorporatePolicy';
 import Trayectory from 'components/Company/Trayectory';
+import NationalMomentum from 'components/Company/NationalMomentum';
 
 //Datos para los banners
 import { BannerData } from '../data/BannerData';
@@ -34,8 +35,9 @@ export const Company = () => {
       <div style={{backgroundColor:'#F9F9F9'}}>
         <BannerMain image={img} imageMini={imgMini} />
         <AboutUs/>
-        <CorporatePolicy/>
-        <Trayectory/>
+        <CorporatePolicy component="CorporatePolicy"/>
+        <Trayectory component="Trayectory"/>
+        <NationalMomentum component="NationalMomentum"/>
       </div>
     </>
   )

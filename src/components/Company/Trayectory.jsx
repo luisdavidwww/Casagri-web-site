@@ -15,7 +15,7 @@ import 'aos/dist/aos.css';
 import { VscChevronRight } from "react-icons/vsc";
 import { VscChevronLeft } from "react-icons/vsc";
 
-const Trayectory = () => {
+const Trayectory = ({Trayectory}) => {
 
   //creating the ref
   const customeSlider = useRef();
@@ -48,7 +48,7 @@ const Trayectory = () => {
       <div className="main-Container">
         <div className='container-Slick'>
               <Slider {...sliderSettings} ref={customeSlider}>
-                  <div>
+                  <div className='aux'>
                      {/* ----------- Trayectoria y compromiso ----------------*/}
                       <div className='work-container' >
                         {/* Info */}
@@ -79,7 +79,7 @@ const Trayectory = () => {
                       </div>
                   </div>
 
-                  <div>
+                  <div className='auxA'>
                     {/* ----------- Innovación  y  Tecnológica ----------------*/}
                       <div className='us-container__trayectory' >
                         {/* Imagen Principal */}
@@ -111,61 +111,27 @@ const Trayectory = () => {
         </div>
       </div>
 
-
       {/* Botones Controladores Desktop */}
-      <div className='container-Control'>
-        <div className='container-Control-Block'>
-          <div className='container-tbn'>
-            <div className='container-btn-deg' onClick={()=>gotoPrev()}>
-              <button className='btn-deg'>
-                <VscChevronLeft className='btnPrevios'/>
-              </button>
-            </div>
-            <div className='container-btn-deg' onClick={()=>gotoNext()}>
-              <button className='btn-deg'>
-                <VscChevronRight className='btnNext'/>
-              </button>
-            </div>
-          </div>  
+      <div className='btn_trayectory__container'>
+        <div className='container-Control'>
+          <div className='container-Control-Block'>
+            <div className='container-tbn'>
+              <div className='container-btn-deg' onClick={()=>gotoPrev()}>
+                <button className='btn-deg'>
+                  <VscChevronLeft className='btnPrevios'/>
+                </button>
+              </div>
+              <div className='container-btn-deg' onClick={()=>gotoNext()}>
+                <button className='btn-deg'>
+                  <VscChevronRight className='btnNext'/>
+                </button>
+              </div>
+            </div>  
+          </div>
         </div>
       </div>
-
       
-
-
-
-        {/* ----------- Trayectoria y compromiso ----------------*/}
-        <div className='work-container' >
-
-            {/* Info */}
-            <div className='us-wrap-Info-work'>
-
-                  <h1 className='title-basic-trayectory' style={{ textAlign:"end"}}> 
-                    Trayectoria, Trabajo y <br /> Compromiso
-                    <span style={{color:'#489B1E'}}> desde 1948 </span> 
-                  </h1>
-                  
-                <div className='us-text-work'>
-                    <p className='text-basic-work'>
-                    Desde el año 1948 se ha mantenido lealmente 
-                    acompañando y mejorando al sector agrícola y 
-                    pecuario del país.
-                    </p>
-                </div>
-            </div>
-
-            {/* Imagen Principal */}
-            <a className='us-wrap-work'>
-                <img
-                  className='us-img-w'
-                  alt='Sede AgroMax'
-                  src={ nosotros }
-                />
-            </a>
-
-        </div>
-
-        {/* ----------- Trayectoria y compromiso MOVIL ----------------*/}
+        {/* ----------- MOVIL ----------------*/}
         <div className='us-container__trayectory-movil' >
 
           {/* Imagen Principal */}
@@ -191,41 +157,41 @@ const Trayectory = () => {
                     </p>
                 </div>
             </div>
+
+            {/* ----------- Innovación  y  Tecnológica ----------------*/}
+            <div className='us-container__trayectory' >
+
+              {/* Imagen Principal */}
+              <a className='us-wrap__trayectory'>
+                  <img
+                    className='us-img__trayectory'
+                    alt='Sede AgroMax'
+                    src={ nosotros }
+                  />
+              </a>
+
+
+              {/* Info */}
+              <div className='us-wrap-Info__trayectory'>
+
+                    <h1 className='title-basic-trayectory' style={{ textAlign:"start"}}> 
+                      Innovación <span style={{color:'#489B1E'}}> Tecnológica</span> 
+                    </h1>
+                    
+                  <div className='us-text__trayectory'>
+                      <p className='text-basic__trayectory'>
+                      Renovamos y ampliamos los productos y servicios constantemente
+                      para adaptarnos a  las necesidades emergentes del Sector 
+                      Agropecuario y Agroindustrial. 
+                      </p>
+                  </div>
+              </div>  
+
+            </div>
             
         </div>
 
-        {/* ----------- Innovación  y  Tecnológica ----------------*/}
-        <div className='us-container__trayectory' >
-
-            {/* Imagen Principal */}
-            <a className='us-wrap__trayectory'>
-                <img
-                  className='us-img__trayectory'
-                  alt='Sede AgroMax'
-                  src={ nosotros }
-                />
-            </a>
-
-
-             {/* Info */}
-             <div className='us-wrap-Info__trayectory'>
-
-                  <h1 className='title-basic-trayectory' style={{ textAlign:"start"}}> 
-                    Innovación <span style={{color:'#489B1E'}}> Tecnológica</span> 
-                  </h1>
-                  
-                <div className='us-text__trayectory'>
-                    <p className='text-basic__trayectory'>
-                    Renovamos y ampliamos los productos y servicios constantemente
-                    para adaptarnos a  las necesidades emergentes del Sector 
-                    Agropecuario y Agroindustrial. 
-                    </p>
-                </div>
-            </div>  
-
-        </div>
-
-        
+    
 
       </div>
     </>

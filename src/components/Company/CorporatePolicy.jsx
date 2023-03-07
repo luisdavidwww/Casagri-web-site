@@ -12,7 +12,7 @@ import { CorporatePolicyData } from '../../data/CorporatePolicy';
 //importacion temporal de imagenes
 const imgL = require.context('../../static/images/corporatePolicy', true);
 
-const CorporatePolicy = () => {
+const CorporatePolicy = ({component}) => {
   return (
     <>
     <div className='CorporatePolicy__container'>
@@ -25,12 +25,12 @@ const CorporatePolicy = () => {
     <div className='cards__container'>
         <div className='cards__wrapper'>
           <ul className='cards__items-container'>
-          {CorporatePolicyData?.map((item) => (
+          {CorporatePolicyData?.map((item, index) => (
             <li className='cards__item-pc'>
                 <Link className='cards__item__link-pc' to="">
                     <img 
                       className='cards__item__img-pc'
-                      key={item.id}
+                      key={`${component}-${index}`}
                       alt={item.title}
                       src={imgL(`./${item.imgUrl}`)}
                       objectFit="cover"
@@ -39,7 +39,6 @@ const CorporatePolicy = () => {
                         <h5 className='cards__item__text-pc'>{item.title}</h5>
                         <p className='cards__item__p-two'>{item.text}</p>  
                     </div> 
-                    
                 </Link>
             </li>
           ))}
