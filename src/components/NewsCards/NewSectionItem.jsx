@@ -1,4 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import AOS      from 'aos';
+
+//Estilos y diseño
+import 'aos/dist/aos.css'; 
 
 
 //importacion temporal de imagenes
@@ -6,12 +10,11 @@ const imgL = require.context('../../static/images/news', true);
 
 
 function NewItem(props) {
-  
 
   return (
-    <>
-      <li className='news__item'>
-        <a className='news__item__link' href={props.url}>
+    <div data-aos="fade-up" data-aos-once="true" data-aos-duration="1500">
+      <li className='news__item' >
+        <a className='news__item__link' href={props.url} >
 
           {/* Imagen del Producto */}
           <figure className='news__item__pic-wrap'>
@@ -46,7 +49,7 @@ function NewItem(props) {
           
         </a>
       </li>
-    </>
+    </div>
   );
 }
 

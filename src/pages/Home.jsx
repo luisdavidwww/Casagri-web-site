@@ -34,7 +34,7 @@ export const Home = () => {
   return (
     /* style={{backgroundColor:'#F0F5F9'}} */
     <div style={{backgroundColor:'#F9F9F9'}} >
-      <CarruselDiscover/>
+      <CarruselDiscover component="CorporatePolicy"/>
       <AboutUsHome/>
       <CarruselCatalogue/>
       <FeaturedProducts/>

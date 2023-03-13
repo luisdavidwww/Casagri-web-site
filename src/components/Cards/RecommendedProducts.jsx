@@ -15,11 +15,6 @@ import { featuredProducts } from '../../data/featuredProducts';
 const Cards = () =>  {
 
 
-  useEffect(() => { 
-    AOS.init({duration:700});
-    },[]);
-
-
   
   return (
     <div className='cards'>
@@ -56,7 +51,7 @@ const Cards = () =>  {
       </div>
 
       { /*Btn de Funciones */ }
-      <div className='btn-featuredProducts'>
+      <div className='btn-featuredProducts' data-aos="zoom-in" data-aos-once="true" data-aos-duration="1000">
         <a href={`/Category/All`} style={{textDecoration:'none'}}>
           <button className='btn-outline-featuredProducts btn-text'
             >Ver todos

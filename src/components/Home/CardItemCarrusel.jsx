@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import AOS      from 'aos';
+
+//diseño
+import 'aos/dist/aos.css'; 
 
 
 //importacion temporal de imagenes
@@ -33,8 +36,7 @@ function CardItemCarrusel(props) {
 
 
   return (
-    <>
-
+    <div data-aos="fade-right" data-aos-once="true" data-aos-duration="1500">
       <li className='cards__item-two'
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
@@ -73,7 +75,7 @@ function CardItemCarrusel(props) {
           
         </Link>
       </li>
-    </>
+    </div>
   );
 }
 

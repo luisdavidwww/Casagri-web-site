@@ -14,12 +14,6 @@ import { newsData } from '../../data/newsData';
 
 const News = () =>  {
 
-
-  useEffect(() => { 
-    AOS.init({duration:700});
-    },[]);
-
-
   
   return (
     <div className='news-container'>
@@ -45,6 +39,7 @@ const News = () =>  {
               date={item.date}
               url={item.url}
               description={item.description}
+              
               />
           ))}
           </ul>
@@ -52,7 +47,7 @@ const News = () =>  {
       </div>
 
       { /*Btn de Funciones */ }
-      <div className='btn-featuredProducts'>
+      <div className='btn-featuredProducts' data-aos="zoom-in" data-aos-once="true" data-aos-duration="1000">
         <a href='/news' style={{textDecoration:'none'}}>
           <button className='btn-outline-featuredProducts btn-text'
             >Leer más

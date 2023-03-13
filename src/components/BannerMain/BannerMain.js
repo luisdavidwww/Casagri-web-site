@@ -23,6 +23,7 @@ export const BannerMain = (props) => {
           </img>
           <div className='container-Banner-Main-Content'>
             <h1 className='container-Banner-Main-Content-title Gothan-Font w500'>{title}</h1>
+            
           </div>
       </div>
      </section>

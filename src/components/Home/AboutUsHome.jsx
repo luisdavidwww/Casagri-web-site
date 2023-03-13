@@ -13,10 +13,6 @@ import 'aos/dist/aos.css';
 
 const AboutUsHome = () => {
 
-  useEffect(() => { 
-    AOS.init({duration:800});
-    },[]);
-
 
   return (
     <>
@@ -30,6 +26,8 @@ const AboutUsHome = () => {
                 data-aos="fade-right"
                 data-aos-offset="200"
                 data-aos-easing="ease-in-sine"
+                data-aos-once="false" 
+                data-aos-duration="800"
             >
 
                   <h1 className='title-basic-start'> 
@@ -52,17 +50,23 @@ const AboutUsHome = () => {
             </div>
 
             {/* Imagen Principal */}
-            <a className='us-wrap' 
-                  data-aos="fade-left"
-                  data-aos-offset="200"
-                  data-aos-easing="ease-in-sine"
+            <div
+              data-aos="fade-left"
+              data-aos-offset="200"
+              data-aos-easing="ease-in-sine"
+              data-aos-once="false" 
+              data-aos-duration="800"
             >
-                <img
-                  className='us-img'
-                  alt='Sede AgroMax'
-                  src={ nosotros }
-                />
-            </a>
+              <a className='us-wrap' >
+                  <img
+                    className='us-img'
+                    alt='Sede AgroMax'
+                    src={ nosotros }
+                  />
+              </a>
+
+            </div>
+            
 
         </div>
 

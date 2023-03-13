@@ -65,9 +65,6 @@ export const CarruselCatalogue = () => {
   }
 
 
-  useEffect(() => { 
-    AOS.init({duration:800});
-    },[]);
 
  
 
@@ -152,7 +149,7 @@ export const CarruselCatalogue = () => {
       </div>
 
       {/* Botones Controladores Desktop */}
-      <div className='container-Control'>
+      <div className='container-Control' data-aos="fade-right" data-aos-once="true" data-aos-duration="1000">
         <div className='container-Control-Block'>
           <div className='container-tbn'>
             <div className='container-btn-deg' onClick={()=>gotoPrev()}>

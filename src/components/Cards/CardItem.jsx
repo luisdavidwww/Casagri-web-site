@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from "react-router-dom";
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import AOS      from 'aos';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 //components
 import StarRanking from "./starRanking";
+
+//diseño
+import 'aos/dist/aos.css'; 
+
 
 //icons 
 import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
@@ -84,13 +89,9 @@ function CardItem(props) {
 
 
 
-
-
-
-
   return (
     <>
-      <li className='cards__item' onMouseLeave={onMouseLeave}>
+      <li className='cards__item' onMouseLeave={onMouseLeave} data-aos="fade-up" data-aos-once="true" data-aos-duration="1500">
         <div>
           
             <div className='icon-heart'>
