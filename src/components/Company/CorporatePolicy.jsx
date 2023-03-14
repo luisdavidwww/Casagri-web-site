@@ -14,6 +14,7 @@ import { NOSOTROS } from '../../routers/index'
 //importacion temporal de imagenes
 const imgL = require.context('../../static/images/corporatePolicy', true);
 
+
 const CorporatePolicy = ({component}) => {
 
   const [nosotros, setNosotros] = useState([])
@@ -25,6 +26,9 @@ const CorporatePolicy = ({component}) => {
     const res = await response.json();
     setNosotros(res.data);
   }
+
+
+ 
 
   useEffect(() => {
     getInfo();
@@ -46,12 +50,17 @@ const CorporatePolicy = ({component}) => {
           {nosotros?.map((item, index) => (
             <li className='cards__item-pc' key={`${component}-${index}`}>
                 <a className='cards__item__link-pc' data-aos="fade-up" data-aos-once="true" data-aos-duration="1500">
-                    <img 
+                  {  item ?
+                      <img 
                       className='cards__item__img-pc'
                       alt={item.titulo}
                       //src={imgL(`./${item.imgUrl}`)}
                       src={item.img}
-                        />
+                      />
+                    :
+                    <Skeleton variant="rectangular"  height={190} />
+                  }
+                    
                     <div className='cards__item__info-pc'>
                         <h5 className='cards__item__text-pc'>{item.titulo || <Skeleton />}</h5>
                         <p className='cards__item__p-two'>{item.texto || <Skeleton />}</p>  
