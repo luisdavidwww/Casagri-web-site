@@ -1,18 +1,36 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from "react-router-dom";
+import Skeleton from 'react-loading-skeleton';
 
 //Componentes
 import CardItem from '../Cards/CardItem';
 //Diseño y estilos
 import './CorporatePolicy.css';
-//Datos para el Carousel
+//Data
 import { CorporatePolicyData } from '../../data/CorporatePolicy';
+import { NOSOTROS } from '../../routers/index'
 
 
 //importacion temporal de imagenes
 const imgL = require.context('../../static/images/corporatePolicy', true);
 
 const CorporatePolicy = ({component}) => {
+
+  const [nosotros, setNosotros] = useState([])
+
+  const getInfo = async () => {
+    //const response = await fetch(`${process.env.REACT_APP_API_URL}${ACERCA_DE_CASAGRI}`);
+    const response = await fetch(`${'http://localhost:8080/api/'}${NOSOTROS}`);
+    
+    const res = await response.json();
+    setNosotros(res.data);
+  }
+
+  useEffect(() => {
+    getInfo();
+  },[])
+
+
   return (
     <>
     <div className='CorporatePolicy__container'>
@@ -25,21 +43,20 @@ const CorporatePolicy = ({component}) => {
     <div className='cards__container'>
         <div className='cards__wrapper'>
           <ul className='cards__items-container'>
-          {CorporatePolicyData?.map((item, index) => (
-            <li className='cards__item-pc'>
-                <Link className='cards__item__link-pc' to="">
+          {nosotros?.map((item, index) => (
+            <li className='cards__item-pc' key={`${component}-${index}`}>
+                <a className='cards__item__link-pc' data-aos="fade-up" data-aos-once="true" data-aos-duration="1500">
                     <img 
                       className='cards__item__img-pc'
-                      key={`${component}-${index}`}
-                      alt={item.title}
-                      src={imgL(`./${item.imgUrl}`)}
-                      objectFit="cover"
+                      alt={item.titulo}
+                      //src={imgL(`./${item.imgUrl}`)}
+                      src={item.img}
                         />
                     <div className='cards__item__info-pc'>
-                        <h5 className='cards__item__text-pc'>{item.title}</h5>
-                        <p className='cards__item__p-two'>{item.text}</p>  
+                        <h5 className='cards__item__text-pc'>{item.titulo || <Skeleton />}</h5>
+                        <p className='cards__item__p-two'>{item.texto || <Skeleton />}</p>  
                     </div> 
-                </Link>
+                </a>
             </li>
           ))}
           </ul>

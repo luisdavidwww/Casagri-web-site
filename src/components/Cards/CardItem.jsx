@@ -187,7 +187,6 @@ function CardItem(props) {
                 src={imgL(`./${props.src}`)}
                 //src={image}
                 layout="fill"
-                        objectFit="cover"
                         style={{
                             marginLeft: "auto",
                             marginRight: "auto",

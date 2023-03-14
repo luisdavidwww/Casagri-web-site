@@ -1,6 +1,6 @@
 .btn_trayectory__container{
   display:flex;
-  margin-top: 2rem;
+  margin-top: 4rem;
 }
 
 
@@ -161,7 +161,7 @@
   justify-content: center !important;
   flex-direction: column !important;
   margin-top: 1rem !important;
-  width: 90%;
+  width: 90% !important;
 }
 
 .us-container__trayectory{

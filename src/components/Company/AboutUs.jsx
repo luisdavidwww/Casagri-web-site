@@ -1,36 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import AOS      from 'aos';
+import Skeleton from 'react-loading-skeleton';
 
 //estilos y diseño
 import './AboutUs.css';
-import 'aos/dist/aos.css'; 
+import 'aos/dist/aos.css';
 
-const AboutUs = () => {
+// Data
+import { ACERCA_DE_CASAGRI } from '../../routers/index'
 
-  useEffect(() => { 
-    AOS.init({duration:1200});
-    },[]);
+const AboutUs = ({component}) => {
+
+  const [data, setData] = useState([])
+
+  const getInfo = async () => {
+    //const response = await fetch(`${process.env.REACT_APP_API_URL}${ACERCA_DE_CASAGRI}`);
+    const response = await fetch(`${'http://localhost:8080/api/'}${ACERCA_DE_CASAGRI}`);
+    
+    const res = await response.json();
+    setData(res);
+  }
+
+  useEffect(() => {
+    getInfo();
+  },[])
 
 
   return (
     <>
-        <section className='AboutUs__main'>
+    {data.map((item, index) => (
+        <section className='AboutUs__main' data-aos="fade-up" data-aos-once="true" data-aos-duration="1500" key={`${component}-${index}`}>
             {/* Ttitulo Principal */}
             <div className='AboutUs__title__Container'>
-                <h1 className='AboutUs__title'>Acerca de <span style={{color:'#489B1E'}}> Casagri </span> </h1>
+                {/*<span style={{color:'#489B1E'}}></span> */}
+                  <h1 className='AboutUs__title'>{item.titulo || <Skeleton />}</h1>
             </div>
             <div className='AboutUs__text__Container'>
-                    <p className='text__aboutUs'>
-                      Somos una empresa con más de 70 años caminando de la mano del Productor Venezolano, 
-                      para ofrecer Soluciones Integrales a las necesidades específicas del sector Agrícola y 
-                      Pecuario del País. <br /><br />
-                      Nos dedicada a la fabricación, distribución, comercialización de insumos, maquinarias e 
-                      implementos agrícolas y medicamentos e insumos veterinarios, ofreciendo a nivel nacional 
-                      diversos productos de alta calidad, logrando de esta forma satisfacer las necesidades 
-                      del sector Agropecuario e Agroindustrial.
-                    </p>
+                  <p className='text__aboutUs'>{item.texto || <Skeleton />}</p>
             </div>
         </section>
+         ))}
     </>
   )
 }

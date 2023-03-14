@@ -26,7 +26,7 @@ const AboutUsHome = () => {
                 data-aos="fade-right"
                 data-aos-offset="200"
                 data-aos-easing="ease-in-sine"
-                data-aos-once="false" 
+                data-aos-once="true" 
                 data-aos-duration="800"
             >
 
@@ -54,7 +54,7 @@ const AboutUsHome = () => {
               data-aos="fade-left"
               data-aos-offset="200"
               data-aos-easing="ease-in-sine"
-              data-aos-once="false" 
+              data-aos-once="true" 
               data-aos-duration="800"
             >
               <a className='us-wrap' >
@@ -66,8 +66,6 @@ const AboutUsHome = () => {
               </a>
 
             </div>
-            
-
         </div>
 
         {/* ----------- Movil ----------------*/}

@@ -43,7 +43,7 @@ const imgCategory = require.context('../../static/images/category', true);
 
 
 
-const Category = ({history}) => {
+const Category = ({history, component}) => {
    
     //query de la url
     const { consulta } = useParams();
@@ -257,9 +257,9 @@ const Category = ({history}) => {
                                 <div className='cards__container'>
                                     <div className='cards__wrapper'>
                                     <ul className='cards__items'>
-                                    {products?.map((item) => (
+                                    {products?.map((item, index) => (
                                         <CardItem
-                                        key={item.id}
+                                        key={`${component}-${index}`}
                                         src={item.imgUrl}
                                         title={item.title}
                                         label=''

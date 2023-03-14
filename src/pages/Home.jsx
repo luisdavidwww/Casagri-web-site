@@ -34,13 +34,13 @@ export const Home = () => {
   return (
     /* style={{backgroundColor:'#F0F5F9'}} */
     <div style={{backgroundColor:'#F9F9F9'}} >
-      <CarruselDiscover component="CorporatePolicy"/>
+      <CarruselDiscover component="CarruselDiscover"/>
       <AboutUsHome/>
-      <CarruselCatalogue/>
-      <FeaturedProducts/>
+      <CarruselCatalogue component="CarruselCatalogue"/>
+      <FeaturedProducts component="FeaturedProducts"/>
       <BannerCommercial image={img} href={href} imageMini={imageMini}/>
-      <RecommendedProducts/>
-      <NewSection/>
+      <RecommendedProducts component="RecommendedProducts"/>
+      <NewSection component="NewSection"/>
     </div>
   )
 }

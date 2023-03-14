@@ -45,6 +45,10 @@
     width: 300px;
   }
 
+  .cards__item__link-pc:hover{
+    cursor: pointer;
+  }
+
   .cards__item__pic-wrap-pc{
     margin: 2rem;
   }

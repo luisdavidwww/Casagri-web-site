@@ -5,6 +5,10 @@ import AOS  from 'aos';
 //componentes
 import CardItemCarrusel from "./CardItemCarrusel";
 
+
+//Datos para el Carousel
+import { Categorys } from '../../data/Categorys';
+
 //Estilos y diseño
 import './CarruselCatalogue.css'
 import "slick-carousel/slick/slick.css";
@@ -18,7 +22,7 @@ import { VscChevronLeft } from "react-icons/vsc";
 
 
 
-export const CarruselCatalogue = () => {
+export const CarruselCatalogue = ({component}) => {
 
   //creating the ref
   const customeSlider = useRef();
@@ -48,7 +52,6 @@ export const CarruselCatalogue = () => {
   }
   const gotoPrev = () => {
     customeSlider.current.slickPrev();
-    console.log("funcion activa")
   }
 
   //funciones para Movil
@@ -79,71 +82,31 @@ export const CarruselCatalogue = () => {
       <div className="main-Container">
         <div className='container-Slick'>
               <Slider {...sliderSettings} ref={customeSlider}>
+                {Categorys?.map((item, index) => (
                   <CardItemCarrusel
-                    src='agroindustrial.jpg'
-                    text='Agroindustrial'
-                    label=''
-                    href={`/Category/Agroindustrial`}
+                    key={`${component}-${index}`}
+                    text={item.text}
+                    src={item.img}
+                    label={item.label}
+                    href={item.href}
                   />
-                  <CardItemCarrusel
-                    src='maquinarias.jpg'
-                    text='Maquinarias'
-                    href={`/Category/Maquinarias`}
-                  />
-                  <CardItemCarrusel
-                    src='saludAnimal.jpg'
-                    text='Salud Animal'
-                    label=''
-                    href={`/Category/Salud Animal`}
-                  />
-                  <CardItemCarrusel
-                    src='ferreteria.jpg'
-                    text='Ferretería'
-                    label=''
-                    href={`/Category/Ferretería`}
-                  />
-                  <CardItemCarrusel
-                    src='salud-publica.jpg'
-                    text='Salud Pública'
-                    label=''
-                    href={`/Category/Salud Pública`}
-                  />
+                  ))}
               </Slider>
         </div>
       </div>
 
-      {/* Carrusel Movil */}
+      {/* Categorias Movil */}
       <div className="main-Container-Movil">
         <div className='container-Slick' >
+          {Categorys?.map((item, index) => (
                   <CardItemCarrusel
-                    src='agroindustrial.jpg'
-                    text='Agroindustrial'
-                    label=''
-                    path='/store'
+                    key={`${component}-${index}`}
+                    text={item.text}
+                    src={item.img}
+                    label={item.label}
+                    href={item.href}
                   />
-                  <CardItemCarrusel
-                    src='maquinarias.jpg'
-                    text='Maquinarias'
-                    path='/store'
-                  />
-                  <CardItemCarrusel
-                    src='saludAnimal.jpg'
-                    text='Salud Animal'
-                    label=''
-                    path='/Store'
-                  />
-                  <CardItemCarrusel
-                    src='ferreteria.jpg'
-                    text='Ferretería'
-                    label=''
-                    path='/store'
-                  />
-                  <CardItemCarrusel
-                    src='salud-publica.jpg'
-                    text='Salud Pública'
-                    label=''
-                    path='/store'
-                  />
+                  ))}
               
         </div>
       </div>

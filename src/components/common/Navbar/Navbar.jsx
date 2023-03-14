@@ -27,7 +27,7 @@ import { BsHouseDoorFill } from "react-icons/bs";
 
 
 
-const Navbar = () => {
+const Navbar = ({component}) => {
 
   //Variables de entradas
   const [heading, setHeading] = useState("");
@@ -45,7 +45,6 @@ const Navbar = () => {
   const actionSearch = () => SetclickSearch(!clickSearch);
   const actionSearchFalse = () => SetclickSearch(false);
 
-  console.log(clickSearch);
 
 
   //cursor activo sobre el elemento Navbar
@@ -196,8 +195,8 @@ const Navbar = () => {
             <div className='desktopNav__lower'>
 
               {/* Recorrido de la lista: LINEAS DE PRODUCTOS CASAGRI*/}
-              {links.map((link) => (
-              <div key={link.id} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} >
+              {links.map((link, index) => ( 
+              <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} key={`${component}-${index}`} >
                   {/* Lineas de Producto en el Navbar */}
                   <div className={heading == link.name && hover ? 'desktopNav__container-line-hover' : 'desktopNav__container-line' }>
                     <a /* href={`/Category/${link.name}`} */ style={{textDecoration:'none'}}>
@@ -233,8 +232,8 @@ const Navbar = () => {
                                   <div className="desktopNav__container-Drowbox-">
 
                                     {/* Recorrido de las sublineas */}
-                                      {link.sublinks.map((mysublinks) => (
-                                          <div key={link.id} className="desktopNav__SubLines" >
+                                      {link.sublinks.map((mysublinks, index) => (
+                                          <div className="desktopNav__SubLines" key={`${component}-${'Sub-category'}-${index}`} >
                                             <div>
                                                 <a className="desktopNav__SubLines-Title" href={`/Category/${mysublinks.Head}`} style={{textDecoration:'none'}}>
                                                   {mysublinks.Head}  
@@ -246,8 +245,8 @@ const Navbar = () => {
                                             { mysublinks.subitem  ?
                                               (
                                                 <div className="desktopNav__Container-Lines-subLines">
-                                                  {mysublinks.sublink.map((slink) => (   
-                                                      <li className='desktopNav__Container-Lines-subLines-tol' key={link.id}>
+                                                  {mysublinks.sublink.map((slink, index) => (   
+                                                      <li className='desktopNav__Container-Lines-subLines-tol' key={`${component}-${'category-Act'}-${index}`}>
                                                           <a className="desktopNav__Container-Lines-subLines-List" href={`/Category/${slink.name}`}>
                                                             {slink.name}
                                                           </a>   
@@ -319,9 +318,10 @@ const Navbar = () => {
             
             {/*Opciones de politica de la empresa*/}
             <div className='movilNav-option-main'>
-              {op.map((option) => (
-                    <div className='movilNav-option-container' key={op.id}>
-                      <Link to={option.href}  
+              {op.map((option, index) => (
+                    <div className='movilNav-option-container' key={`${component}-${'option'}-${index}`}>
+                      <Link 
+                      to={option.href}  
                       className='movilNav-option-text' 
                       style={{ textDecoration: 'none', textAlign:'center'}}
                       onClick={() => { setClick(false) }}
@@ -352,8 +352,8 @@ const Navbar = () => {
               <div className='movilNav__container-line-top'></div>
               
               {/* Desplegable De Categorias */}
-              {links.map((link) => (
-              <div key={link.id}>
+              {links.map((link, index) => (
+              <div key={`${component}-${'category-movil'}-${index}`}>
                   {/* Condicional para hover de las líneas */}
                   { heading == link.name && line == link.name ? 
                     (
@@ -401,9 +401,9 @@ const Navbar = () => {
                             initial={{x: 50, y: 0, scale: 1, rotate: 0,  opacity:0 }}      
                             animate={{x: 0, y: 0, scale: 1, rotate: 0, transition:{duration:"0.40"}, opacity:1 }}  
                             >
-                              {link.sublinks.map((mysublinks) => {
+                              {link.sublinks.map((mysublinks, index) => {
                                   return (
-                                    <div key={link.id}>
+                                    <div key={`${component}-${'sub-category-movil'}-${index}`}>
                                       <a
                                         className='movilNav-SubLines'
                                         href={`/Category/${mysublinks.Head}`}

@@ -15,7 +15,7 @@ import { featuredProducts } from '../../data/featuredProducts';
 
 
 
-const Cards = () =>  {
+const Cards = ({component}) =>  {
 
   
   return (
@@ -34,12 +34,11 @@ const Cards = () =>  {
       <div className='cards__container'>
         <div className='cards__wrapper'>
           <ul className='cards__items'>
-          {featuredProducts?.map((item) => (
+          {featuredProducts?.map((item, index) => (
 
-            
               item.imgUrl ?(
               <CardItem
-              key={item.id}
+              key={`${component}-${index}`}
               src={item.imgUrl}
               title={item.title}
               label=''

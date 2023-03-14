@@ -20,12 +20,12 @@ export const AppRouter = () => {
     return (
         <Router>
             <div style={{  display:'block' }}>
-                <Navbar/>
+                <Navbar component="Navbar"/>
                 <Routes>  
                     <Route path="/" element={ <Home/> }></Route>;
                     <Route path="/Contact" element={ <Contact/> }></Route>
                     <Route path="/Company" element={ <Company/> }></Route>
-                    <Route path="/Category/:consulta" element={ <Category/> }></Route>
+                    <Route path="/Category/:consulta" element={ <Category component={"Category"}/> }></Route>
                     <Route path="/search/:query" element={ <Search/> }></Route>
                     <Route path="/Details/:id" element={ <Details/> }></Route>
                 </Routes>

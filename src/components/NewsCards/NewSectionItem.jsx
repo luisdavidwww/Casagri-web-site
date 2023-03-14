@@ -23,7 +23,6 @@ function NewItem(props) {
               alt=''
               src={imgL(`./${props.src}`)}
               layout="fill"
-                      objectFit="cover"
                       style={{
                           marginLeft: "auto",
                           marginRight: "auto",

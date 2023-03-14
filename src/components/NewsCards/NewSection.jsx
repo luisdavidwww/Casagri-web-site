@@ -12,7 +12,7 @@ import { newsData } from '../../data/newsData';
 
 
 
-const News = () =>  {
+const News = ({component}) =>  {
 
   
   return (
@@ -30,9 +30,9 @@ const News = () =>  {
       <div className='news_container-main'>
         <div className='news_wrapper'>
           <ul className='news__items'>
-          {newsData?.map((item) => (
+          {newsData?.map((item, index) => (
               <NewSectionItem
-              key={item.id}
+              key={`${component}-${index}`}
               src={item.imgUrl}
               sender={item.sender}
               title={item.title}

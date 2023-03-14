@@ -34,7 +34,7 @@ export const Company = () => {
     <>
       <div style={{backgroundColor:'#F9F9F9'}}>
         <BannerMain image={img} imageMini={imgMini} />
-        <AboutUs/>
+        <AboutUs component="AboutUs"/>
         <CorporatePolicy component="CorporatePolicy"/>
         <Trayectory component="Trayectory"/>
         <NationalMomentum component="NationalMomentum"/>
