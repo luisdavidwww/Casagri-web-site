@@ -1,18 +1,34 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { BannerMain } from 'components/BannerMain/BannerMain';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 //componentes 
 import AboutUs from 'components/Company/AboutUs';
 import CorporatePolicy from 'components/Company/CorporatePolicy';
 import Trayectory from 'components/Company/Trayectory';
 import NationalMomentum from 'components/Company/NationalMomentum';
+import Loader from "components/Loader/Loader";
 
-//Datos para los banners
+// Data
 import { BannerData } from '../data/BannerData';
+import { BANNERS } from '../routers/index'
 
 
 
 export const Company = () => {
+
+  const [error, setError] = useState(null);
+  const [loanding, setLoanding] = useState(true);
+  const [banner, setBanner] = useState([])
+
+  const getInfo = async () => {
+    const response = await fetch(`${'http://localhost:8080/api/'}${BANNERS}${'/Empresa'}`);
+    const res = await response.json();
+    setBanner(res.data);
+    console.log(res.data.img);
+    console.log(banner.img);
+  }
   
 
   // Valor del Banner Principal
@@ -30,10 +46,21 @@ export const Company = () => {
   const imgMini =  bannerImgMini.toString();
   const tit =  bannerTitle.toString();
 
+  useEffect(() => {
+    getInfo();
+  },[])
+
   return (
     <>
       <div style={{backgroundColor:'#F9F9F9'}}>
-        <BannerMain image={img} imageMini={imgMini} />
+        {
+          loanding ?(
+            <Box sx={{ display: 'flex' }}>
+              <CircularProgress color="success" />
+            </Box>
+          ): null
+        }
+        <BannerMain image={/*img*/ banner.img } imageMini={imgMini} />
         <AboutUs component="AboutUs"/>
         <CorporatePolicy component="CorporatePolicy"/>
         <Trayectory component="Trayectory"/>
