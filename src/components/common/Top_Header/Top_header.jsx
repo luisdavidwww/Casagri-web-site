@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { useLocation, Link } from 'react-router-dom';
+import Skeleton from 'react-loading-skeleton';
 
 //components
 import  SearchNavbar  from "../../Search/SearchNavbar";
@@ -35,7 +36,11 @@ const Top_header = () => {
                 <div className='content-Top'>
                         <a href='/' className='Link-Top-Header'>
                             <div className='navbar-logo' >
-                                <img src={ LogoCasagri } alt="Casagri" />
+                                {
+                                    LogoCasagri != null ? 
+                                    (<img src={ LogoCasagri } alt="Casagri" />):
+                                    (<Skeleton variant="rectangular" width={64} height={64} />)
+                                } 
                             </div> 
                         </a> 
                 </div>

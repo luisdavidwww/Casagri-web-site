@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { BannerMain } from 'components/BannerMain/BannerMain';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import React, { useState, useEffect } from 'react';
 
 //componentes 
+import { BannerMain } from 'components/BannerMain/BannerMain';
 import AboutUs from 'components/Company/AboutUs';
 import CorporatePolicy from 'components/Company/CorporatePolicy';
 import Trayectory from 'components/Company/Trayectory';
@@ -12,22 +10,31 @@ import Loader from "components/Loader/Loader";
 
 // Data
 import { BannerData } from '../data/BannerData';
-import { BANNERS } from '../routers/index'
+import { BANNERS } from '../routers/index';
 
 
 
 export const Company = () => {
 
   const [error, setError] = useState(null);
-  const [loanding, setLoanding] = useState(true);
-  const [banner, setBanner] = useState([])
+  const [loanding, setLoanding] = useState(false);
+  const [banner, setBanner] = useState([]);
 
+
+  //Peticion del Banner Principal
   const getInfo = async () => {
+
+    //Estado del Loanding Verdadero
+    setLoanding(true);
+
+    //Petición a la api
     const response = await fetch(`${'http://localhost:8080/api/'}${BANNERS}${'/Empresa'}`);
     const res = await response.json();
     setBanner(res.data);
-    console.log(res.data.img);
-    console.log(banner.img);
+
+    //Estado del Loanding Falso
+    setLoanding(false);
+
   }
   
 
@@ -46,25 +53,27 @@ export const Company = () => {
   const imgMini =  bannerImgMini.toString();
   const tit =  bannerTitle.toString();
 
+
   useEffect(() => {
     getInfo();
   },[])
 
+  
   return (
     <>
       <div style={{backgroundColor:'#F9F9F9'}}>
         {
-          loanding ?(
-            <Box sx={{ display: 'flex' }}>
-              <CircularProgress color="success" />
-            </Box>
-          ): null
+          loanding ?( <Loader/>):(
+            <>
+              <BannerMain image={ banner.img } imageMini={ banner.imgMini } /> 
+              <AboutUs component="AboutUs"/>
+              <CorporatePolicy component="CorporatePolicy"/>
+              <Trayectory component="Trayectory"/>
+              <NationalMomentum component="NationalMomentum"/>
+            </>
+          )
         }
-        <BannerMain image={/*img*/ banner.img } imageMini={imgMini} />
-        <AboutUs component="AboutUs"/>
-        <CorporatePolicy component="CorporatePolicy"/>
-        <Trayectory component="Trayectory"/>
-        <NationalMomentum component="NationalMomentum"/>
+        
       </div>
     </>
   )

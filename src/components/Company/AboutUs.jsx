@@ -35,7 +35,7 @@ const AboutUs = ({component}) => {
                   <h1 className='AboutUs__title'>{data.titulo || <Skeleton variant="rectangular" width={210} />}</h1>
             </div>
             <div className='AboutUs__text__Container'>
-                  <p className='text__aboutUs'>{data.texto || <Skeleton />}</p>
+                  <p className='text__aboutUs'>{data.texto || <Skeleton className='AboutUs__text__Container'/>}</p>
             </div>
         </section>
     </>

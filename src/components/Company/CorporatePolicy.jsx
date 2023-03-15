@@ -20,13 +20,15 @@ const CorporatePolicy = ({component}) => {
   const [nosotros, setNosotros] = useState([])
 
   const getInfo = async () => {
-
+    //const response = await fetch(`${process.env.REACT_APP_API_URL}${ACERCA_DE_CASAGRI}`);
     const response = await fetch(`${'http://localhost:8080/api/'}${NOSOTROS}`);
+    
     const res = await response.json();
     setNosotros(res.data);
-
   }
 
+
+ 
 
   useEffect(() => {
     getInfo();
@@ -56,7 +58,7 @@ const CorporatePolicy = ({component}) => {
                       src={item.img}
                       />
                     :
-                    <Skeleton variant="rectangular"  height={210} />
+                    <Skeleton variant="rectangular"  height={190} />
                   }
                     
                     <div className='cards__item__info-pc'>
