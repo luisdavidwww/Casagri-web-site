@@ -7,18 +7,24 @@ import './AboutUs.css';
 import 'aos/dist/aos.css';
 
 // Data
-import { ACERCA_DE_CASAGRI } from '../../routers/index'
+import { ACERCA_DE_CASAGRI, INSTALACIONES } from '../../routers/index'
 
 const AboutUs = ({component}) => {
 
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]);
+  const [instalaciones, setInstalaciones] = useState([])
 
   const getInfo = async () => {
-    //const response = await fetch(`${process.env.REACT_APP_API_URL}${ACERCA_DE_CASAGRI}`);
-    const response = await fetch(`${'http://localhost:8080/api/'}${ACERCA_DE_CASAGRI}`);
+    //const datos = await fetch(`${process.env.REACT_APP_API_URL__OTRO}${INSTALACIONES}`);
+    const datos = await fetch(`${process.env.REACT_APP_API_URL}${INSTALACIONES}`);
+    const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${ACERCA_DE_CASAGRI}`);
 
     const res = await response.json();
+    const resp = await datos.json();
+
     setData(res.data);
+    setInstalaciones(resp.data);
+    console.log(resp.data)
   }
 
   useEffect(() => {
