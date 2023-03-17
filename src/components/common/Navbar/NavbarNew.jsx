@@ -9,7 +9,7 @@ import { links } from "./Mylinks";
 import { op } from "./Options";
 
 // Estilos
-import "./Navbar.css"
+import "./NavbarNew.css"
 import 'aos/dist/aos.css'; 
 
 
@@ -32,8 +32,10 @@ const Navbar = ({component}) => {
 
   //Variables de entradas
   const [heading, setHeading] = useState("");
+  const [subheading, setSubHeading] = useState("");
   const [hover, setHover] = useState(false);
   const [dropdown, setDropdown] = useState(false);
+  const [subdropdown, setSubDropdown] = useState(false);
   const [dropdownMovil, setDropdownMovil] = useState(false);
   const [click, setClick] = useState(false);
   const [erclick, setErclick] = useState(false);
@@ -57,13 +59,25 @@ const Navbar = ({component}) => {
       setDropdown(true);
     }
   };
+
+  const onMouseEnterSub = () => {
+    if (window.innerWidth < 960) {
+      setSubDropdown(false);
+      setSubHeading("");
+    } else {
+      setSubDropdown(true);
+    }
+  };
+
   //cursor desactivado al salir del elemento Navbar
   const onMouseLeave = () => {
     if (window.innerWidth < 960) {
       setDropdown(false);
+      setSubDropdown(false);
       setHeading("");
     } else {
       setDropdown(false);
+      setSubDropdown(false);
       setHeading("");
     }
   };
@@ -77,7 +91,7 @@ const Navbar = ({component}) => {
   };
 
   //Metodo para ocultar  
-  const SubLinesOut = () => setHeading("");
+  const SubLinesOut = () => {setHeading("")};
 
   //Metodo para mostrar y ocultar Pestaña de SubLineas Movil
   const dropdownBoxMovil = (props) => {
@@ -186,8 +200,6 @@ const Navbar = ({component}) => {
        </div>
 
       <nav className={click ? 'navbar__main active' : 'navbar__main'} ref={refOne}>
-      
-
                             
         <div className='navigation__container--navs'>
 
@@ -198,6 +210,7 @@ const Navbar = ({component}) => {
               {/* Recorrido de la lista: LINEAS DE PRODUCTOS CASAGRI*/}
               {links.map((link, index) => ( 
               <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} key={`${component}-${index}`} >
+
                   {/* Lineas de Producto en el Navbar */}
                   <div className={heading == link.name && hover ? 'desktopNav__container-line' : 'desktopNav__container-line' }>
                     <a /* href={`/Category/${link.name}`} */ style={{textDecoration:'none'}}>
@@ -214,56 +227,57 @@ const Navbar = ({component}) => {
                   </div>
 
                   {/* Sublineas de Productos */}
+                  
 
                   <AnimatePresence>
 
                   {dropdown ? (    
-                    <div  className='desktopNav__container--navbar'>
+                    <div  className='desktopNav__container--navbar-two'>
                       {/* Validación del nombre la Línea y si posee sublineas activas */}
+                      
                         {heading == link.name && link.submenu && (
 
                            <motion.div                  
-                            /*initial={{opacity:0,y:"-100%",}}
-                            animate={{opacity:1,y:"0%", transition:{duration:"0.65"}}}
-                            exit={{opacity:0,y:"-10%",transition:{duration:"0.35"}}}*/
-
-                            initial={{x: 0, y: -10, scale: 1, rotate: 0,  opacity:0}}      
+                            initial={{x: 0, y: -10, scale: 1, rotate:0,  opacity:0}}      
                             animate={{x: 0, y: 0, scale: 1, rotate: 0, transition:{duration:"0.40"}, opacity:1 }} 
                             exit={{x: 0, y: -20, scale: 1, rotate: 0, transition:{duration:"0.40"},  opacity:0 }}  
                             >
-
-                              <div  onMouseLeave={() => {setHover(false);}} className='desktopNav__container--active'>
-                                <div className="desktopNav__container-Drowbox-container">
-                                  <div className="desktopNav__container-Drowbox-">
-
-                                    {/* Recorrido de las sublineas */}
-                                      {link.sublinks.map((mysublinks, index) => (
-                                          <div className="desktopNav__SubLines" key={`${component}-${'Sub-category'}-${index}`} >
-                                            <div>
-                                                <a className="desktopNav__SubLines-Title" href={`/Category/${mysublinks.Head}`} style={{textDecoration:'none'}}>
+                              <div  onMouseLeave={() => {setHover(false)}} className='desktopNav__container--active-two'>
+                                {/* Recorrido de las sublineas */}
+                                {link.sublinks.map((mysublinks, index) => (
+                                          <div className="desktopNav__SubLines-two" key={`${component}-${'Sub-category'}-${index}`} >
+                                            <div onMouseEnter={onMouseEnterSub} >
+                                                <div className="desktopNav__SubLines-Title-two" onMouseOver={() => { setSubHeading(mysublinks.Head); }} to={`/Category/${mysublinks.Head}`} style={{textDecoration:'none'}}>
                                                   {mysublinks.Head}  
-                                                </a>
+                                                
+                                                  {/* Sub Lineas */}
+                                                  { subdropdown ? (
+                                                    <div   onMouseLeave={() => {setSubDropdown(false)}}   >
+                                                      {  subheading == mysublinks.Head && mysublinks.subitem ? 
+                                                        (
+                                                          <div className="desktopNav__Container-Lines-subLines-two" onMouseLeave={() => {setSubHeading(false);}} >
+                                                            {mysublinks.sublink.map((slink, index) => (   
+                                                                <li className='desktopNav__Container-Lines-subLines-tol' key={`${component}-${'category-Act'}-${index}`}>
+                                                                    <a className="desktopNav__Container-Lines-subLines-List" href={`/Category/${slink.name}`}>
+                                                                      {slink.name}
+                                                                    </a>   
+                                                                </li>            
+                                                              ))}
+                                                          </div>
+                                                        ):null
+                                                      }
+                                                    </div> ):null } 
+                                                </div>
+                                                                                                   
                                             </div>
-                                            
-
-                                          {/* Validación si las sublineas tienen categorias activas */}
-                                            { mysublinks.subitem  ?
-                                              (
-                                                <div className="desktopNav__Container-Lines-subLines">
-                                                  {mysublinks.sublink.map((slink, index) => (   
-                                                      <li className='desktopNav__Container-Lines-subLines-tol' key={`${component}-${'category-Act'}-${index}`}>
-                                                          <a className="desktopNav__Container-Lines-subLines-List" href={`/Category/${slink.name}`}>
-                                                            {slink.name}
-                                                          </a>   
-                                                      </li>            
-                                                    ))}
-                                                  </div>
-                                              ):null
-                                            }
-
+                                                
 
                                           </div>
                                         ))}
+                                <div className="desktopNav__container-Drowbox-container-two">
+                                  <div className="desktopNav__container-Drowbox-two">
+
+                                    
 
 
 
@@ -274,8 +288,7 @@ const Navbar = ({component}) => {
                               </motion.div>
                             
                         )}
-                      </div>
-
+                    </div>
                   ):null}
 
                   </AnimatePresence>
