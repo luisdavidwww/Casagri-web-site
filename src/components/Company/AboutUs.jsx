@@ -12,7 +12,8 @@ import { ACERCA_DE_CASAGRI, INSTALACIONES } from '../../routers/index'
 const AboutUs = ({component}) => {
 
   const [data, setData] = useState([]);
-  const [instalaciones, setInstalaciones] = useState([])
+  const [instalaciones, setInstalaciones] = useState([]);
+
 
   const getInfo = async () => {
     //const datos = await fetch(`${process.env.REACT_APP_API_URL__OTRO}${INSTALACIONES}`);

@@ -15,7 +15,13 @@ import 'aos/dist/aos.css';
 import { VscChevronRight } from "react-icons/vsc";
 import { VscChevronLeft } from "react-icons/vsc";
 
+// Data
+import { ACERCA_DE_CASAGRI, INSTALACIONES } from '../../routers/index'
+
 const Trayectory = ({Trayectory}) => {
+
+  const [data, setData] = useState([]);
+  const [instalaciones, setInstalaciones] = useState([]);
 
   //creating the ref
   const customeSlider = useRef();
@@ -38,6 +44,18 @@ const Trayectory = ({Trayectory}) => {
     customeSlider.current.slickPrev();
   }
 
+  const getInfo = async () => {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}${ACERCA_DE_CASAGRI}`);
+    const res = await response.json();
+
+    setData(res.data);
+  }
+
+  useEffect(() => {
+    getInfo();
+  },[])
+
+
 
   return (
     <>
@@ -58,6 +76,10 @@ const Trayectory = ({Trayectory}) => {
                                   <h1 className='title-basic-trayectory' style={{ textAlign:"end"}}> 
                                     Trayectoria, Trabajo y <br /> Compromiso
                                     <span style={{color:'#489B1E'}}> desde 1948 </span> 
+                                  </h1>
+
+                                  <h1 className='title-basic-trayectory' style={{ textAlign:"end"}}> 
+                                    
                                   </h1>
                                   
                                 <div className='us-text-work'>
