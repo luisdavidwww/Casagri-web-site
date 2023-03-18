@@ -21,10 +21,12 @@ import Dropdown from '../Dropdown/Dropdown';
 
 //icons 
 import { IoCloseOutline, IoMenuOutline } from "react-icons/io5";
-import { BsChevronDown } from "react-icons/bs";
-import { BsChevronUp } from "react-icons/bs";
-import { BsSearch } from "react-icons/bs";
-import { BsHouseDoorFill } from "react-icons/bs";
+import {  BsChevronDown, 
+          BsChevronRight,
+          BsChevronUp,
+          BsSearch,
+          BsHouseDoorFill
+       } from "react-icons/bs";
 
 
 
@@ -81,6 +83,7 @@ const Navbar = ({component}) => {
       setHeading("");
     }
   };
+
    //metodo pra que aparezca el boton de opciones superior Responsive
    const showButton = () => {
     if (window.innerWidth <= 960) {
@@ -214,7 +217,7 @@ const Navbar = ({component}) => {
                   {/* Lineas de Producto en el Navbar */}
                   <div className={heading == link.name && hover ? 'desktopNav__container-line' : 'desktopNav__container-line' }>
                     <a /* href={`/Category/${link.name}`} */ style={{textDecoration:'none'}}>
-                      <h1
+                      <div
                           className={ 'desktopNav__container-line-title' }
                           onMouseOver={() => {
                             setHeading(link.name);
@@ -222,7 +225,7 @@ const Navbar = ({component}) => {
                           }}
                       >
                           {link.name}
-                      </h1>
+                      </div>
                     </a>    
                   </div>
 
@@ -240,35 +243,45 @@ const Navbar = ({component}) => {
                            <motion.div                  
                             initial={{x: 0, y: -10, scale: 1, rotate:0,  opacity:0}}      
                             animate={{x: 0, y: 0, scale: 1, rotate: 0, transition:{duration:"0.40"}, opacity:1 }} 
-                            exit={{x: 0, y: -20, scale: 1, rotate: 0, transition:{duration:"0.40"},  opacity:0 }}  
+                            exit={{x: 0, y: -10, scale: 1, rotate: 0, transition:{duration:"0.20"},  opacity:0 }}  
                             >
                               <div  onMouseLeave={() => {setHover(false)}} className='desktopNav__container--active-two'>
                                 {/* Recorrido de las sublineas */}
                                 {link.sublinks.map((mysublinks, index) => (
                                           <div className="desktopNav__SubLines-two" key={`${component}-${'Sub-category'}-${index}`} >
                                             <div onMouseEnter={onMouseEnterSub} >
-                                                <div className="desktopNav__SubLines-Title-two" onMouseOver={() => { setSubHeading(mysublinks.Head); }} to={`/Category/${mysublinks.Head}`} style={{textDecoration:'none'}}>
-                                                  {mysublinks.Head}  
-                                                
-                                                  {/* Sub Lineas */}
-                                                  { subdropdown ? (
-                                                    <div   onMouseLeave={() => {setSubDropdown(false)}}   >
-                                                      {  subheading == mysublinks.Head && mysublinks.subitem ? 
-                                                        (
-                                                          <div className="desktopNav__Container-Lines-subLines-two" onMouseLeave={() => {setSubHeading(false);}} >
-                                                            {mysublinks.sublink.map((slink, index) => (   
-                                                                <li className='desktopNav__Container-Lines-subLines-tol' key={`${component}-${'category-Act'}-${index}`}>
-                                                                    <a className="desktopNav__Container-Lines-subLines-List" href={`/Category/${slink.name}`}>
-                                                                      {slink.name}
-                                                                    </a>   
-                                                                </li>            
-                                                              ))}
-                                                          </div>
-                                                        ):null
-                                                      }
-                                                    </div> ):null } 
+                                                <div className="" onMouseOver={() => { setSubHeading(mysublinks.Head); }} to={`/Category/${mysublinks.Head}`} style={{textDecoration:'none'}}>
+                                                  <a className='desktopNav__titleSubCategory' >
+                                                    {mysublinks.Head} { mysublinks.subitem ? (<BsChevronRight className='iconSubLinea'/>):null }
+                                                  </a >
+                                                  <div className='aux'>
+                                                    {/* Sub Lineas */}
+                                                    { subdropdown ? (
+                                                      <div  onMouseLeave={() => {setSubDropdown(false)}}   >
+                                                        {  subheading == mysublinks.Head && mysublinks.subitem ? 
+                                                          (
+                                                            <motion.div                  
+                                                              initial={{x: 0, y: 0, scale: 1, rotate:0,  opacity:0}}      
+                                                              animate={{x: 0, y: 0, scale: 1, rotate: 0, transition:{duration:"0.3"}, opacity:1 }} 
+                                                              exit={{x: 0, y: 0, scale: 1, rotate: 0, transition:{duration:"0.20"},  opacity:0 }}  
+                                                              >
+                                                            <div className="desktopNav__Container-Lines-subLines-two" onMouseLeave={() => {setSubHeading(false);}} >
+                                                              {mysublinks.sublink.map((slink, index) => (   
+                                                                  <li className='desktopNav__Container-Lines-subLines-tol' key={`${component}-${'category-Act'}-${index}`}>
+                                                                      <a className="desktopNav__Container-Lines-subLines-List" href={`/Category/${slink.name}`}>
+                                                                        {slink.name}
+                                                                      </a>   
+                                                                  </li>            
+                                                                ))}
+                                                            </div>
+                                                            </motion.div>
+                                                          ):null
+                                                        }
+                                                      </div> ):null }
+                                                  </div>
+                                                   
                                                 </div>
-                                                                                                   
+                                                                                                  
                                             </div>
                                                 
 
