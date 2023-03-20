@@ -250,8 +250,8 @@ const Navbar = ({component}) => {
                                 {link.sublinks.map((mysublinks, index) => (
                                           <div className="desktopNav__SubLines-two" key={`${component}-${'Sub-category'}-${index}`} >
                                             <div onMouseEnter={onMouseEnterSub} >
-                                                <div className="" onMouseOver={() => { setSubHeading(mysublinks.Head); }} to={`/Category/${mysublinks.Head}`} style={{textDecoration:'none'}}>
-                                                  <a className='desktopNav__titleSubCategory' >
+                                                <div className="desktopNav__Container__titleSubCategory" onMouseOver={() => { setSubHeading(mysublinks.Head); }}  style={{textDecoration:'none'}}>
+                                                  <a className='desktopNav__titleSubCategory' href={`/Category/${mysublinks.Head}`}>
                                                     {mysublinks.Head} { mysublinks.subitem ? (<BsChevronRight className='iconSubLinea'/>):null }
                                                   </a >
                                                   <div className='aux'>
@@ -267,11 +267,11 @@ const Navbar = ({component}) => {
                                                               >
                                                             <div className="desktopNav__Container-Lines-subLines-two" onMouseLeave={() => {setSubHeading(false);}} >
                                                               {mysublinks.sublink.map((slink, index) => (   
-                                                                  <li className='desktopNav__Container-Lines-subLines-tol' key={`${component}-${'category-Act'}-${index}`}>
-                                                                      <a className="desktopNav__Container-Lines-subLines-List" href={`/Category/${slink.name}`}>
+                                                                  <div className='desktopNav__Container-Lines-subLines-tol-two' key={`${component}-${'category-Act'}-${index}`}>
+                                                                      <a className="desktopNav__Container-Lines-subLines-List-two" href={`/Category/${slink.name}`}>
                                                                         {slink.name}
                                                                       </a>   
-                                                                  </li>            
+                                                                  </div>            
                                                                 ))}
                                                             </div>
                                                             </motion.div>

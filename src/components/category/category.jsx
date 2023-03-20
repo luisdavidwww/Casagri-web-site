@@ -8,7 +8,7 @@ import { ProductsAll } from "../../data/ProductsAll";
 //componentes
 import CardItem from '../Cards/CardItem'
 import  Search  from "../Search/Search";
-import  {FiltersBar}  from "../Search/FiltersBar";
+import  SimpleAccordion  from "../Search/FiltersBar";
 import { BannerCategory } from 'components/BannerMain/BannerCategory';
 //Datos para los banners 
 import { BannerData } from '../../data/BannerData';
@@ -238,9 +238,11 @@ const Category = ({history, component}) => {
             <BannerCategory image={imgBanner} imageMini={imgMiniBanner} consulta={consulta} />
             <Search/>
             <div className='category__Container'>
-              <div className='category__filter'>
 
+              <div className='category__filter'>
+                <SimpleAccordion/>
               </div>
+
               <div className='category__products'>
               { 
                         ( products.length == 0  ) 
@@ -255,10 +257,11 @@ const Category = ({history, component}) => {
                         && 
                             <div className='cards'>
                                 <div className='cards__container'>
-                                    <div className='cards__wrapper'>
+                                  <div className='cards__wrapper'>
                                     <ul className='cards__items'>
                                     {products?.map((item, index) => (
                                         <CardItem
+                                        component={"Categoria"}
                                         key={`${component}-${index}`}
                                         src={item.imgUrl}
                                         title={item.title}
@@ -269,15 +272,12 @@ const Category = ({history, component}) => {
                                         />
                                     ))}
                                     </ul>
-                                    </div>
+                                  </div>
                                 </div>       
                             </div>
                     }
               </div>
             </div>
-           
-
-
 
     </>
   )

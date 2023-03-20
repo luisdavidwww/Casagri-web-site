@@ -8,8 +8,8 @@ import './starRanking.css'
 
 const StarRanking = (props) => {
 
-    const [ranking, setRanking] = useState(props.ranking)
-    const [estrellas, setEstrellas]= useState(props.style)
+    const [ranking, setRanking] = useState(props.ranking);
+    const [estrellas, setEstrellas]= useState(props.style);
 
     useEffect(()=>{
         if(props.card == false){
@@ -28,12 +28,31 @@ const StarRanking = (props) => {
     return (
         <div className='star-container' >
             {
-                [... new Array(5)].map((star, index)=>{
-                    return index < ranking ? 
-                    <BsStarFill  key={index} style={estrellas} className='star__icon' onClick={() =>indexStart(index)} />  :
-                    <BsStar  key={index} style={estrellas} className='star__icon' onClick={() =>indexStart(index)} />                    
-                })
+                props.component == 'Accordion' ? (
+                    <>
+                        {
+                            [... new Array(5)].map((star, index)=>{
+                                return index < ranking ? 
+                                <BsStarFill  key={index} style={estrellas} className='star__icon__two' onClick={() =>indexStart(index)} />  :
+                                <BsStar  key={index} style={estrellas} className='star__icon__two' onClick={() =>indexStart(index)} />                    
+                            })
+                        }
+                    </>
+                ):
+                (
+                    <>
+                        {
+                            [... new Array(5)].map((star, index)=>{
+                                return index < ranking ? 
+                                <BsStarFill  key={index} style={estrellas} className='star__icon' onClick={() =>indexStart(index)} />  :
+                                <BsStar  key={index} style={estrellas} className='star__icon' onClick={() =>indexStart(index)} />                    
+                            })
+                        }
+                    </>
+                )
             }
+
+            
             
         
         </div>

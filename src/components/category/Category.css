@@ -8,5 +8,8 @@
 
 .category__products{
     display: flex;
-    
+}
+
+.category__filter{
+    display: flex;
 }
