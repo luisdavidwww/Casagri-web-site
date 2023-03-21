@@ -6,56 +6,36 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
+import Form from 'react-bootstrap/Form';
 
+//Estilos
+import './FiltersBar.css'
 
 export default function CheckboxList() {
-  const [checked, setChecked] = React.useState([0]);
-
-  const handleToggle = (value) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setChecked(newChecked);
-  };
 
   return (
-    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      {[0, 1, 2, 3].map((value) => {
-        const labelId = `checkbox-list-label-${value}`;
-
-        return (
-          <ListItem
-          /*
-            key={value}
-            secondaryAction={
-              <IconButton edge="end" aria-label="comments">
-                <div>250</div>
-              </IconButton>
-            }
-            disablePadding*/
-          >
-            <ListItemButton role={undefined} onClick={handleToggle(value)} dense>
-              <ListItemIcon>
-                <Checkbox
-                  edge="start"
-                  checked={checked.indexOf(value) !== -1}
-                  tabIndex={-1}
-                  disableRipple
-                  inputProps={{ 'aria-labelledby': labelId }}
-                />
-              </ListItemIcon>
-              <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
-              <div>25</div>
-            </ListItemButton>
-          </ListItem>
-        );
-      })}
-    </List>
+    <>
+    <Form>
+        <div className="mb-3">
+            <Form.Check  id={`check-api-`}>
+              <Form.Check.Input  isValid />
+              <Form.Check.Label className='subtitle__Filter__check' >{`Marca 1`}</Form.Check.Label>
+            </Form.Check>
+        </div>
+        <div className="mb-3">
+            <Form.Check  id={`check-api-`}>
+              <Form.Check.Input   isValid />
+              <Form.Check.Label className='subtitle__Filter__check' >{`Marca 2`}</Form.Check.Label>
+            </Form.Check>
+        </div>
+        <div className="mb-3">
+            <Form.Check  id={`check-api-`}>
+              <Form.Check.Input  isValid />
+              <Form.Check.Label className='subtitle__Filter__check' >{`Marca 3`}</Form.Check.Label>
+            </Form.Check>
+        </div>
+      </Form>
+    </>
+    
   );
 }

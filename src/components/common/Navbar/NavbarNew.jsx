@@ -2,23 +2,16 @@ import React, { useState, useEffect, useRef  } from 'react';
 import { Link, Redirect } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import AOS  from 'aos';
-
-
 // Listas de datos 
 import { links } from "./Mylinks";
 import { op } from "./Options";
-
 // Estilos
 import "./NavbarNew.css"
 import 'aos/dist/aos.css'; 
-
-
 //componentes
 import Top_header from '../Top_Header/Top_header';
 import  SearchNavbar  from "../../Search/SearchNavbar";
 import Dropdown from '../Dropdown/Dropdown';
-
-
 //icons 
 import { IoCloseOutline, IoMenuOutline } from "react-icons/io5";
 import {  BsChevronDown, 

@@ -1,3 +1,7 @@
+.filter__container__Main{
+  width: 250px;
+}
+
 .containerFilter{
     display: flex;
     justify-content: start;
@@ -14,6 +18,8 @@
     width: 500px;
 }
 
+
+
 .title__Filter-Main{
     color: #23263b;
     font-family: 'Montserrat', sans-serif;
@@ -26,8 +32,10 @@
     margin-right: 20px;
   }
 
+
+
 .title__Filter{
-    color: #23263b;
+    color: #252525;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 12px;
@@ -37,4 +45,94 @@
     margin-left: 5px;
     margin-right: 20px;
     margin-top: 15px;
+    transition: all .1s ease-in-out;
+  }
+  
+.title__Filter:hover{
+    color: #787981;
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+  }
+
+  .subtitle__Filter{
+    color: #252525;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 11px !important;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 20px;
+    margin-top: 15px;
+    transition: all .1s ease-in-out;
+  }
+  .subtitle__Filter:hover{
+    color: #787981;
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+  }
+
+  .subCategorie__Filter{
+    color: #252525;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 12px !important;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 20px;
+    margin-top: 15px;
+    transition: all .1s ease-in-out;
+  }
+  .subCategorie__Filter:hover{
+    color: #787981;
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+  }
+  
+
+    /*Acordion Categoria*/
+
+    .AccordionDetails{
+        margin-left: 1.5rem;
+        margin-top: 0rem;
+    }
+    .AccordionSummary{
+        margin-left: 1rem;
+    }
+
+
+
+
+
+
+
+
+  /*Cheeck Bottom*/
+
+  .container__TitleCheckbox{
+    display: flex;
+    margin-bottom: 10px;
+  }
+
+  .subtitle__Filter__check{
+    color: #23263b !important;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 11px !important;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 20px;
+    margin-top: -2px;
+  }
+
+  .form-check-input.is-valid:checked{
+    background-color: #47A01A !important;
+    border-color: #47A01A !important;
+  }
+  .form-check-input.is-valid, .was-validated .form-check-input:valid{
+    border-color: #23263b !important;
   }

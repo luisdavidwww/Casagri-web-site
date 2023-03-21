@@ -6,9 +6,7 @@ export default function FormTextFields() {
   return (
     <Box
       component="form"
-      sx={{
-        '& .MuiTextField-root': { m: 1, width: '29ch' },
-      }}
+
       noValidate
       autoComplete="off"
     >
@@ -21,6 +19,8 @@ export default function FormTextFields() {
             shrink: true,
           }}
           variant="filled"
+          style={{marginBottom:'10px'}}
+
         />
         <TextField
           id="filled-number"
@@ -30,6 +30,7 @@ export default function FormTextFields() {
             shrink: true,
           }}
           variant="filled"
+
         />
       </div>
 

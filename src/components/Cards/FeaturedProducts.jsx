@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
+import { useLocation, Link } from 'react-router-dom';
 
 import CardItem from './CardItem';
 import AOS      from 'aos';
@@ -60,11 +61,11 @@ const Cards = ({component}) =>  {
 
       { /*Btn de Funciones */ }
       <div className='btn-featuredProducts' data-aos="zoom-in" data-aos-once="true" data-aos-duration="1000">
-        <a href={`/Category/All`} style={{textDecoration:'none'}}>
+        <Link to={`/Category/All`} style={{textDecoration:'none'}}>
           <button className='btn-outline-featuredProducts btn-text'
             >Ver todos
           </button>
-        </a>
+        </Link>
       </div>
 
     </div>

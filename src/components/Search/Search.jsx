@@ -1,22 +1,16 @@
 import React, {  useMemo, useState, useEffect } from 'react';
 import { useParams, useLocation, useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { useForm } from '../../hooks/useForm';
 import { getProductByName } from '../../selectors/getProductByName';
 import queryString from 'query-string';
-
-
-
 //componentes
-import  ProductContainerNew  from "../Search/ProductContainerNew";
-import CardItem from '../Cards/CardItem'
-
+import  SearchForm  from "./SearchForm";
+import  SimpleAccordion  from "./FiltersBar";
+import CardItem from '../Cards/CardItem';
 //Estilos
 import './Search.css';
-
-
 //icons
-import { BsSearch } from "react-icons/bs"
+import {  BsXLg } from "react-icons/bs";
 
 
 const Search = ({ history }) => {
@@ -42,97 +36,94 @@ const Search = ({ history }) => {
     const { searchText } = formValues;
 
 
-    const heroesFiltered = useMemo(() => getProductByName( query ))
-
-
-    //metodo del formulario para 
-    const handleSearch = (e) => {
-        if (searchText==='') {
-            e.preventDefault();
-            navigate(`/Category/All`);
-          }  
-          else{
-            e.preventDefault();
-            navigate(`/search/${ searchText }`);
-            setAlert(searchText);
-          }
-        
-    }
+    const products = useMemo(() => getProductByName( query ))
 
 
   return (
-<div className='Search__Background' >
+    <>
 
-    {/* Formulario de Busqueda */}
-    <div className='Search__container__Active'>
-        <div className="container__Search__Active">
-                <form onSubmit={ handleSearch } className='Search__form'>
-                        <input 
-                            type="text"
-                            placeholder="Busca un producto"
-                            className='Search__imput'
-                            name="searchText"
-                            autoComplete="off"
-                            value={ searchText }
-                            onChange={ handleInputChange } 
-                        />
-                        
-                        <button className='Search__btn' type='submit'><BsSearch className='Search__icon' /></button>
-                </form>
+        {/*Barra de Busqueda Superiror */}
+        <div className='formSearch__Container__Main'>
+            <div className='formSearch__Container'>
+                <SearchForm/>
+            </div>
         </div>
 
-            {/*--------------------- Resultado de Busqueda -------------------------*/}
-            <div className="">
-                    {
-                        
-                        (  heroesFiltered.length !== 0  ) 
-                        && 
-                        <>
-                        {/*--------------------- Busqueda Exitosa -------------------------*/}
-                        <div className="alert alert-danger">
-                                <h1>Resultado de Busqueda: { query }</h1>
-                        </div>
-                            <div className='cards'>
-                                <div className='cards__container'>
-                                    <div className='cards__wrapper'>
-                                    <ul className='cards__items'>
-                                    {heroesFiltered?.map((item) => (
-                                        <CardItem
-                                        key={item.id}
-                                        src={item.imgUrl}
-                                        title={item.title}
-                                        label=''
-                                        path={`/cart/${ item.id }`}
-                                        price={item.price}
-                                        presentation={item.presentation}
-                                        />
-                                    ))}
-                                    </ul>
-                                    </div>
-                                </div>       
-                            </div>
-                        </>
-                        
-                    }
+        {/* Formulario de Busqueda */}
+        <div className='category__Container'>
 
-                    { 
-                        
-                        ( heroesFiltered.length == 0 && query !== undefined && searchText == alert)  
+            {/* Filtro de Busqueda  */}
+            <div className='category__filter'>
+                <SimpleAccordion/>
+            </div>
+
+                {/*--------------------- Resultado de Busqueda -------------------------*/}
+                <div className="">
+                        {
+                            
+                            (  products.length !== 0  ) 
                             && 
                             <>
-                                {/*--------------------- Busqueda Fllida -------------------------*/}
-                                <div className="alert alert-danger" style={{marginTop:'2rem'}}>
-                                    <div className='container-msg'>
-                                    Lo sentimos no existe el producto: "{ query }"
-                                    </div>
-                                    
+                            {/*--------------------- Busqueda Exitosa -------------------------*/}
+
+                            {/*
+                                <div className="alert alert-danger">
+                                        <h1>Resultado de Busqueda: { query }</h1>
                                 </div>
+
+                             */}
+
+                                <div className='category__products'>
+                                    <div className='cards'>
+                                        <div className='result__Category__Container' >
+                                            <div className='result__Search text__Category'> 
+                                                {`${'Resultado de Busqueda: '} ${''}`}
+                                                <span style={{fontWeight:'700'}}>{`${' '}${query}`}</span>  
+                                                <BsXLg className='iconResult__Category'/>
+                                            </div>
+                                        </div>
+                                            <div className='cards__container'>
+                                                <div className='cards__wrapper'> 
+                                                    <ul className='cards__items__Container'>
+                                                    {products?.map((item, index) => (
+                                                        <CardItem
+                                                        component={"Categoria"}
+                                                        key={`${'Search'}-${index}`}
+                                                        src={item.imgUrl}
+                                                        title={item.title}
+                                                        label=''
+                                                        path={`/Details/${ item.id }`}
+                                                        price={item.price}
+                                                        presentation={item.presentation}
+                                                        />
+                                                    ))}
+                                                    </ul>
+                                                </div>
+                                            </div>       
+                                    </div>
+                                </div>
+
                             </>
                             
-                    }
-            </div>
-    </div>
-</div>
+                        }
+
+                        { 
+                            
+                            ( products.length == 0 && query !== undefined && searchText == alert)  
+                                && 
+                                <>
+                                    {/*--------------------- Busqueda Fllida -------------------------*/}
+                                    <div className='container__error'>
+                                        <div className="alert alert-danger">
+                                            No se encuentra el producto: "{ query }"
+                                        </div>
+                                    </div>
+                                </>
+                                
+                        }
+                </div>
+        </div>
+    </>
 
   )
 }

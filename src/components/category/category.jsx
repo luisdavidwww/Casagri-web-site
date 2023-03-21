@@ -6,8 +6,9 @@ import { featuredProductss } from "../../data/featuredProductss";
 import { featuredProducts } from "../../data/featuredProducts";
 import { ProductsAll } from "../../data/ProductsAll";
 //componentes
-import CardItem from '../Cards/CardItem'
+import CardItem from '../Cards/CardItem';
 import  Search  from "../Search/Search";
+import  SearchForm  from "../Search/SearchForm";
 import  SimpleAccordion  from "../Search/FiltersBar";
 import { BannerCategory } from 'components/BannerMain/BannerCategory';
 //Datos para los banners 
@@ -15,7 +16,9 @@ import { BannerData } from '../../data/BannerData';
 import { BannerCategoryImg } from '../../data/BannerData';
 import { links } from "../common/Navbar/Mylinks";
 //Estilos
-import './Category.css'
+import './Category.css';
+//icons
+import {  BsXLg } from "react-icons/bs";
 
 
 
@@ -232,51 +235,75 @@ const Category = ({history, component}) => {
 
   return (
     <>
-            {/*
-            <BannerCategory image={imgCategory(`./${consulta+'.jpg'}`)} imageMini={imgCategory(`./${consulta+'.jpg'}`)} consulta={consulta}/>
-            */}
             <BannerCategory image={imgBanner} imageMini={imgMiniBanner} consulta={consulta} />
-            <Search/>
+
+
+            {/*Barra de Busqueda Superiror */}
+            <div className='formSearch__Container__Main'>
+              <div className='formSearch__Container'>
+                <SearchForm/>
+              </div>
+            </div>
+            
+            
+
+            {/*Contenido de Sección */}
             <div className='category__Container'>
 
+            
+              {/* Filtro de Busqueda  */}
               <div className='category__filter'>
                 <SimpleAccordion/>
               </div>
 
-              <div className='category__products'>
+              {/* Resultado de Busqueda */}
+              <>
               { 
                         ( products.length == 0  ) 
                             && 
-                            <div className="alert alert-danger">
-                                Lo sentimos no existen productos en esta categoria
+                            <div className='container__error'>
+                              <div className="alert alert-danger">
+                                No hay productos disponibles
+                              </div>
                             </div>
+                            
                 }
 
                 {
                         (  products.length !== 0  ) 
                         && 
-                            <div className='cards'>
+                        <div className='category__products'>
+                          <div className='cards'>
+                            <div className='result__Category__Container' >
+                              <div className='result__Category text__Category'> 
+                                      {`${'Categoria: '} ${'__'}`}
+                                      <span style={{fontWeight:'700'}}>{consulta}</span>  
+                                      <BsXLg className='iconResult__Category'/>
+                                </div>
+                            </div>
                                 <div className='cards__container'>
-                                  <div className='cards__wrapper'>
-                                    <ul className='cards__items'>
-                                    {products?.map((item, index) => (
-                                        <CardItem
-                                        component={"Categoria"}
-                                        key={`${component}-${index}`}
-                                        src={item.imgUrl}
-                                        title={item.title}
-                                        label=''
-                                        path={`/Details/${ item.id }`}
-                                        price={item.price}
-                                        presentation={item.presentation}
-                                        />
-                                    ))}
+                                  <div className='cards__wrapper'> 
+                                    <ul className='cards__items__Container'>
+                                      {products?.map((item, index) => (
+                                          <CardItem
+                                          component={"Categoria"}
+                                          key={`${component}-${index}`}
+                                          src={item.imgUrl}
+                                          title={item.title}
+                                          label=''
+                                          path={`/Details/${ item.id }`}
+                                          price={item.price}
+                                          presentation={item.presentation}
+                                          />
+                                      ))}
                                     </ul>
                                   </div>
                                 </div>       
                             </div>
+                        </div>
+                            
                     }
-              </div>
+              </>
             </div>
 
     </>

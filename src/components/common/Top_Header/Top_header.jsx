@@ -72,16 +72,16 @@ const Top_header = () => {
                         {/* Opcones de Icons */}
                         <div className='content-Top-options-list-icons-set'>
                             <div className='content-Top-options-list-link' style={{ textDecoration: 'none', fontSize: '18.6px'}}>
-                                <a href='/'>
+                                <Link to='/'>
                                     <BsCart3 className='content-top__icon' />
-                                </a> 
+                                </Link> 
                             </div>
                         </div>
                         <div className='content-Top-options-list-icons' >
                             <div className='content-Top-options-list-link' style={{ textDecoration: 'none', fontSize: '18px'}}>
-                                <a href={`/Category/${allCategories}`}>
+                                <Link to={`/Category/${allCategories}`}>
                                     <BsSearch className='content-top__icon' />
-                                </a>
+                                </Link>
                             </div> 
                         </div>
                     </div>

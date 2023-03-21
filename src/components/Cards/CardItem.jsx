@@ -92,7 +92,7 @@ function CardItem(props) {
   return (
     <>
     {
-      props.component == "Categoria" ?
+      props.component == "Categoria"  || props.component == "Buscar" ?
       (
         // Si el componente es de categoria, el ItemCard es sin Animación
         <li className='cards__item' >

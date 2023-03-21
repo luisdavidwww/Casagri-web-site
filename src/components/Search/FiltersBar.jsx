@@ -25,71 +25,71 @@ export default function SimpleAccordion() {
 
     
   return (
-    <div style={{width:"300px"}}>
+    <div className='filter__container__Main'>
 
-    {/*Filtros*/}
-    <div className='containerFilter'>
-        <BsFilter/>
-        <div className='title__Filter-Main'>Filtros</div>
-    </div>
+      {/*Filtros*/}
+      <div className='containerFilter'>
+          <BsFilter/>
+          <div className='title__Filter-Main'>Filtros</div>
+      </div>
 
-    {/*Precio*/}
-    <Accordion >
-        <AccordionSummary
-          onClick={() => { setClickPrice(!clickPrice)}}
-          expandIcon={clickPrice ? <BsDashLg />:<BsPlusLg />}
-          aria-controls="panel3a-content"
-          id="panel3a-header"
-        >
-            <div className='title__Filter' >Precio</div>
-        </AccordionSummary>
-        <AccordionDetails>
-            <FormTextFields/>
-        </AccordionDetails>
-    </Accordion>
+      {/*Precio*/}
+      <Accordion >
+          <AccordionSummary
+            onClick={() => { setClickPrice(!clickPrice)}}
+            expandIcon={clickPrice ? <BsDashLg />:<BsPlusLg />}
+            aria-controls="panel3a-content"
+            id="panel3a-header"
+          >
+              <div className='title__Filter' >Precio</div>
+          </AccordionSummary>
+          <AccordionDetails>
+              <FormTextFields/>
+          </AccordionDetails>
+      </Accordion>
 
-    {/*Marca*/}
-    <Accordion>
-        <AccordionSummary
-          onClick={() => { setClickBrands(!clickBrands)}}
-          expandIcon={clickBrands ? <BsDashLg />:<BsPlusLg />}
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-        >
-          <div className='title__Filter' >Marcas</div>
-        </AccordionSummary>
-        <AccordionDetails>
-          <CheckboxList/>
-        </AccordionDetails>
-    </Accordion>
-      
-    {/*Categorias*/}
-    <Accordion>
-        <AccordionSummary
-            onClick={() => { setClickCategory(!clickCategory)}}
-            expandIcon={clickCategory ? <BsDashLg />:<BsPlusLg />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-            >
-            <div className='title__Filter' >Categorias</div>
-        </AccordionSummary>
-        <CategoryAccordion/>
-    </Accordion>
+      {/*Marca*/}
+      <Accordion>
+          <AccordionSummary
+            onClick={() => { setClickBrands(!clickBrands)}}
+            expandIcon={clickBrands ? <BsDashLg />:<BsPlusLg />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <div className='title__Filter' >Marcas</div>
+          </AccordionSummary>
+          <AccordionDetails>
+            <CheckboxList/>
+          </AccordionDetails>
+      </Accordion>
+        
+      {/*Categorias*/}
+      <Accordion>
+          <AccordionSummary
+              onClick={() => { setClickCategory(!clickCategory)}}
+              expandIcon={clickCategory ? <BsDashLg />:<BsPlusLg />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+              >
+              <div className='title__Filter' >Categorias</div>
+          </AccordionSummary>
+          <CategoryAccordion/>
+      </Accordion>
 
-    {/*Ranking*/}
-    <Accordion>
-        <AccordionSummary
-            onClick={() => { setClickRanking(!clickRanking)}}
-            expandIcon={clickRanking ? <BsDashLg />:<BsPlusLg />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-            >
-            <div className='title__Filter' >Ranking</div>
-        </AccordionSummary>
-        <AccordionDetails>
-            <StarRanking component={"Accordion"}/>
-        </AccordionDetails>
-    </Accordion>
+      {/*Ranking*/}
+      <Accordion>
+          <AccordionSummary
+              onClick={() => { setClickRanking(!clickRanking)}}
+              expandIcon={clickRanking ? <BsDashLg />:<BsPlusLg />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+              >
+              <div className='title__Filter' >Ranking</div>
+          </AccordionSummary>
+          <AccordionDetails>
+              <StarRanking component={"Accordion"}/>
+          </AccordionDetails>
+      </Accordion>
     </div>
   );
 }
