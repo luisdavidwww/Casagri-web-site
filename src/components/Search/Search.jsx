@@ -5,12 +5,38 @@ import { getProductByName } from '../../selectors/getProductByName';
 import queryString from 'query-string';
 //componentes
 import  SearchForm  from "./SearchForm";
-import  SimpleAccordion  from "./FiltersBar";
+import  FiltersBar  from "../Search/FiltersBar";
+import  FilterSidebar  from "../Search/FilterSidebar";
 import CardItem from '../Cards/CardItem';
+import { BannerCategory } from 'components/BannerMain/BannerCategory';
+//Datos para los banners 
+import { BannerSearch } from '../../data/BannerData';
 //Estilos
 import './Search.css';
 //icons
 import {  BsXLg } from "react-icons/bs";
+
+
+
+// Valor del Banner Principal
+const listaDatos = BannerSearch.filter(element => element.id === "01Search");
+
+//Img del banner principal  
+const bannerImg =  listaDatos.map(item => item.img);
+const bannerImgMini =  listaDatos.map(item => item.miniimg);
+
+//Titulo del banner principal  
+const bannerTitle =  listaDatos.map(item => item.title);
+
+//Convertimos a strings para las props
+const img =  bannerImg.toString();
+const imgMini = bannerImgMini.toString()
+const tit =  bannerTitle.toString();
+
+//constante para pedir img de Banner
+const imgCategory = require.context('../../static/images/category', true);
+
+
 
 
 const Search = ({ history }) => {
@@ -36,11 +62,16 @@ const Search = ({ history }) => {
     const { searchText } = formValues;
 
 
-    const products = useMemo(() => getProductByName( query ))
+    const products = useMemo(() => getProductByName( query ));
 
+    useEffect(() => {
+        console.log(listaDatos);
+    }, [])
 
   return (
     <>
+
+        <BannerCategory image={img} imageMini={imgMini} consulta={tit} />
 
         {/*Barra de Busqueda Superiror */}
         <div className='formSearch__Container__Main'>
@@ -49,12 +80,19 @@ const Search = ({ history }) => {
             </div>
         </div>
 
-        {/* Formulario de Busqueda */}
+        {/* Contenido de Seccion*/}
         <div className='category__Container'>
 
-            {/* Filtro de Busqueda  */}
+            {/* Filtro */}
             <div className='category__filter'>
-                <SimpleAccordion/>
+                <FiltersBar/>
+              </div>
+              {/* Filtro Movil */}
+            <div className='category__filter__Movil'>
+              <div className='category__Display'>
+                Display
+              </div>
+                <FilterSidebar/>
             </div>
 
                 {/*--------------------- Resultado de Busqueda -------------------------*/}
@@ -75,11 +113,20 @@ const Search = ({ history }) => {
 
                                 <div className='category__products'>
                                     <div className='cards'>
-                                        <div className='result__Category__Container' >
-                                            <div className='result__Search text__Category'> 
-                                                {`${'Resultado de Busqueda: '} ${''}`}
-                                                <span style={{fontWeight:'700'}}>{`${' '}${query}`}</span>  
-                                                <BsXLg className='iconResult__Category'/>
+                                        {/*Titulo de Resultado Desktop */}
+                                        <div className='result__Search__Container' >
+                                            <div className='result__Search text__Result__Category'> 
+                                                {`${'Resultado: '} ${''}`}
+                                                <span style={{fontWeight:'700'}}> "{query}"</span>  
+                                            </div>
+                                        </div>
+                                        {/*Titulo de Resultado Movil */}
+                                        <div className='result__Category__Container__Movil' >
+                                            <div className='result__Category__Movil text__Result__Category__Movil'> 
+                                            <>
+                                                <p style={{fontWeight:'700'}}>{`${'Resultado: '}` }"{query}"</p> 
+                                                {/*<BsXLg className='iconResult__Category'/>*/}
+                                            </>
                                             </div>
                                         </div>
                                             <div className='cards__container'>
@@ -115,7 +162,7 @@ const Search = ({ history }) => {
                                     {/*--------------------- Busqueda Fllida -------------------------*/}
                                     <div className='container__error'>
                                         <div className="alert alert-danger">
-                                            No se encuentra el producto: "{ query }"
+                                            Lo sentimos, no encontramos resultados para: "{ query }"
                                         </div>
                                     </div>
                                 </>

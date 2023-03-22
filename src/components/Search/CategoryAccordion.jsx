@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef  } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -17,10 +17,12 @@ export default function CategoryAccordion() {
 
     const [aux, setAux] = useState("");
     const [click, setClick] = useState(false);
-    //const [clickMaquinaria, setClickMaquinaria] = useState(false);
-    // const [clickSaludA, setClickSaludA] = useState(false);
-    //const [clickFerreteria, setClickFerreteria] = useState(false);
-    //const [clickSaludPublica, setClickSaludPublica] = useState(false);
+
+    const [clickAgro, setClickAgro] = useState(false);
+    const [clickMaquinaria, setClickMaquinaria] = useState(false);
+    const [clickSaludA, setClickSaludA] = useState(false);
+    const [clickFerreteria, setClickFerreteria] = useState(false);
+    const [clickSaludPublica, setClickSaludPublica] = useState(false);
 
     const handleClick = (props) => {
             setClick(!click);
@@ -30,55 +32,101 @@ export default function CategoryAccordion() {
 
 
   return (
-    <div className='filter__container__Main'>
+    
+    <div className='filter__container__Main__Arcodion'>
+        {/*Agroindustrial*/}
         <Accordion>
-        {links.map((link, index) => ( 
-            <>
-                {/*Agroindustrial*/}
-                    <AccordionSummary
-                        onClick={() => { handleClick(link.name)}}
-                        expandIcon={ click && aux == link.name ? <BsDashLg />:<BsPlusLg />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                        key={`${'FiltroCategoria'}-${index}`}
-                        >
-                        <div className='subtitle__Filter AccordionSummary' >{link.name}</div>
-                    </AccordionSummary>
-                    <Accordion>
-                        {link.submenu ? (
-                            <>
-                                {link.sublinks.map((mysublinks, index) => (
-                                    <AccordionDetails
-                                     className='AccordionDetails'
-                                     key={`${'FiltroSubCategoria'}-${index}`}
-                                     >
-                                        <Link className='subCategorie__Filter' to={`/Category/${mysublinks.Head}`} >{mysublinks.Head}</Link>
-                                    </AccordionDetails>
-                                ))}
-                            </>
-                        ):null}
-                    </Accordion>
-            </>
-        ))}
-        </Accordion>
+                <AccordionSummary
+                    onClick={() => { setClickAgro(!clickAgro)}}
+                    expandIcon={clickAgro ? <BsDashLg />:<BsPlusLg />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                    >
+                    <div className='subtitle__Filter AccordionSummary' >Agroindustrial</div>
+                </AccordionSummary>
+                <Accordion>
+                    <AccordionDetails className='AccordionDetails'>
+                        <Link className='subCategorie__Filter' to={`/Category/Agroquímicos`} >Agroquímicos</Link>
+                        <Link className='subCategorie__Filter' >Semillas</Link>
+                        <Link className='subCategorie__Filter' >Fertilizantes</Link>
+                        <Link className='subCategorie__Filter' >Sacos, Cabuyas y Cordeles</Link>
+                        <Link className='subCategorie__Filter' >Cercas de alambres y eléctricas</Link>
+                    </AccordionDetails>
+                </Accordion>
+            </Accordion>
+            {/*Maquinarias*/}
+            <Accordion>
+                <AccordionSummary
+                    onClick={() => { setClickMaquinaria(!clickMaquinaria)}}
+                    expandIcon={clickMaquinaria ? <BsDashLg />:<BsPlusLg />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                    >
+                    <div className='subtitle__Filter AccordionSummary' >Maquinarias</div>
+                </AccordionSummary>
+                <Accordion>
+                    <AccordionDetails className='AccordionDetails'>
+                        <div className='subCategorie__Filter' >Equipos Agrícolas</div>
+                        <div className='subCategorie__Filter' >Bombas de Agua</div>
+                        <div className='subCategorie__Filter' >Generadores</div>
+                        <div className='subCategorie__Filter' >Motores</div>
 
-        <Accordion>
-        <AccordionSummary
-                        onClick={() => { setClick(!click)}}
-                        expandIcon={ click ? <BsDashLg />:<BsPlusLg />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                        >
-        {links.map((link, index) => ( 
-            <>
-                {/*Agroindustrial*/}
-                    
-                        <div className='subtitle__Filter AccordionSummary' >{link.name}</div>
-                    
-            </>
-        ))}
-        </AccordionSummary>
-        </Accordion>
+                    </AccordionDetails>
+                </Accordion>
+            </Accordion>
+            {/*Salud Animal*/}
+            <Accordion>
+                <AccordionSummary
+                    onClick={() => { setClickSaludA(!clickSaludA)}}
+                    expandIcon={clickSaludA ? <BsDashLg />:<BsPlusLg />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                    >
+                    <div className='subtitle__Filter AccordionSummary' >Salud Animal</div>
+                </AccordionSummary>
+                <Accordion>
+                    <AccordionDetails className='AccordionDetails'>
+                        <div className='subCategorie__Filter' >Medicina Veterinaria</div>
+                        <div className='subCategorie__Filter' >Instrumental Veterinario</div>
+                        <div className='subCategorie__Filter' >Manejo e Identificadore</div>
+                    </AccordionDetails>
+                </Accordion>
+            </Accordion>
+            {/*Ferreteria*/}
+            <Accordion>
+                <AccordionSummary
+                    onClick={() => { setClickFerreteria(!clickFerreteria)}}
+                    expandIcon={clickFerreteria ? <BsDashLg />:<BsPlusLg />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                    >
+                    <div className='subtitle__Filter AccordionSummary' >Ferretería</div>
+                </AccordionSummary>
+                <Accordion>
+                    <AccordionDetails className='AccordionDetails'>
+                        <div className='subCategorie__Filter' >Ferretería Agrícola</div>
+                        <div className='subCategorie__Filter' >Electricidad</div>
+                        <div className='subCategorie__Filter' >Otros Productos</div>
+                    </AccordionDetails>
+                </Accordion>
+            </Accordion>
+            {/*Salud Publica*/}
+            <Accordion>
+                <AccordionSummary
+                    onClick={() => { setClickSaludPublica(!clickSaludPublica)}}
+                    expandIcon={clickSaludPublica ? <BsDashLg />:<BsPlusLg />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                    >
+                    <div className='subtitle__Filter AccordionSummary' >Salud Pública</div>
+                </AccordionSummary>
+                <Accordion>
+                    <AccordionDetails className='AccordionDetails'>
+                        <div className='subCategorie__Filter' >Control de Plaga</div>
+                        <div className='subCategorie__Filter' >Desinfectante</div>
+                    </AccordionDetails>
+                </Accordion>
+            </Accordion>
     </div>
   );
 }

@@ -17,15 +17,11 @@ const AboutUs = ({component}) => {
 
   const getInfo = async () => {
     //const datos = await fetch(`${process.env.REACT_APP_API_URL__OTRO}${INSTALACIONES}`);
-    const datos = await fetch(`${process.env.REACT_APP_API_URL}${INSTALACIONES}`);
+    //const datos = await fetch(`${process.env.REACT_APP_API_URL}${INSTALACIONES}`);
     const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${ACERCA_DE_CASAGRI}`);
-
     const res = await response.json();
-    const resp = await datos.json();
 
     setData(res.data);
-    setInstalaciones(resp.data);
-    console.log(resp.data)
   }
 
   useEffect(() => {

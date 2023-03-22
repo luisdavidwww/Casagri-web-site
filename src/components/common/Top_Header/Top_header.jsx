@@ -20,7 +20,7 @@ import { BsCart3,  BsSearch } from "react-icons/bs"
 const Top_header = () => {
 
     //Constantes de todas las categorias
-    const allCategories = 'All';
+    const allCategories = 'buscar';
 
     //hook que utilizo para llevar el scroll a la parte superior en cada Router
     let location = useLocation();
@@ -34,7 +34,7 @@ const Top_header = () => {
         <div className='Top_header-Container-Copy'>
             <div className='ContainerHeader'>
                 <div className='content-Top'>
-                        <a href='/' className='Link-Top-Header'>
+                        <Link to='/' className='Link-Top-Header'>
                             <div className='navbar-logo' >
                                 {
                                     LogoCasagri != null ? 
@@ -42,7 +42,7 @@ const Top_header = () => {
                                     (<Skeleton variant="rectangular" width={64} height={64} />)
                                 } 
                             </div> 
-                        </a> 
+                        </Link> 
                 </div>
                 <div className='content-Top-Op'>
                     <div className='content-Top-options'>
@@ -69,7 +69,7 @@ const Top_header = () => {
                         </div>
                         
 
-                        {/* Opcones de Icons */}
+                        {/* Opcones de Icons 
                         <div className='content-Top-options-list-icons-set'>
                             <div className='content-Top-options-list-link' style={{ textDecoration: 'none', fontSize: '18.6px'}}>
                                 <Link to='/'>
@@ -77,6 +77,7 @@ const Top_header = () => {
                                 </Link> 
                             </div>
                         </div>
+                        */}
                         <div className='content-Top-options-list-icons' >
                             <div className='content-Top-options-list-link' style={{ textDecoration: 'none', fontSize: '18px'}}>
                                 <Link to={`/Category/${allCategories}`}>

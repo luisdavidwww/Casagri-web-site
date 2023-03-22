@@ -12,8 +12,8 @@ import SaludAnimalF from '../static/images/banner/SaludAnimalF.jpg';
 import SaludAnimalMiniF from '../static/images/banner/SaludAnimalMiniF.jpg';
 
 //Banner Category
-import All from '../static/images/category/All.jpg';
-import AllMini from '../static/images/category/AllMini.jpg';
+import buscar from '../static/images/category/buscar.jpg';
+import buscarMini from '../static/images/category/buscarMini.jpg';
 import agro from '../static/images/category/Agroindustrial.jpg';
 import agroMini from '../static/images/category/AgroindustrialMini.jpg';
 import Maquinarias from '../static/images/category/Maquinarias.jpg';
@@ -23,12 +23,14 @@ import saludAMini from '../static/images/category/SaludAnimalMini.jpg';
 import Ferretería from '../static/images/category/Ferretería.jpg';
 import FerreteríaMini from '../static/images/category/FerreteríaMini.jpg';
 
-
+//Banner Search
+import buscart from '../static/images/search/search.jpg';
+import buscarMinit from '../static/images/search/searchMini.jpg';
 
 
 export const BannerData = [
     {
-        id:0,
+        id:'01C-All-todo',
         category:'All',
         img:bannerHome,
         miniimg:bannerHome,
@@ -37,7 +39,6 @@ export const BannerData = [
         href:'/'
     },
     {
-        id:1,
         category:'All',
         img:bannerCompany,
         miniimg:bannerCompanyMini,
@@ -46,7 +47,6 @@ export const BannerData = [
         href:'/'
     },
     {
-        id:2,
         category:'All',
         img:bannerContact,
         miniimg:bannerContactMini,
@@ -55,7 +55,7 @@ export const BannerData = [
         href:'/'
     },
     {
-        id:3,
+        
         category:'All',
         img:SaludAnimal,
         miniimg:SaludAnimal,
@@ -64,13 +64,13 @@ export const BannerData = [
         href:'/'
     },
     {
-        id:'SaludAnimalF',
+        id: 'SaludAnimalF',
         category:'Home',
         img:SaludAnimalF,
         miniimg:SaludAnimalMiniF,
         title:'',
         subTitle:"",
-        href:'/Category/All'
+        href:'/'
     },
 
 ]
@@ -79,9 +79,9 @@ export const BannerData = [
 export const BannerCategoryImg = [
     {
         id:'01C-All',
-        category:'All',
-        img:All,
-        miniimg:AllMini,
+        category:'buscar',
+        img:buscar,
+        miniimg:buscarMini,
         title:'',
         subTitle:""
     },
@@ -119,5 +119,17 @@ export const BannerCategoryImg = [
         subTitle:"",
         href:'/'
     },
+
+]
+
+export const BannerSearch = [
+    {
+        id:'01Search',
+        category:'buscar',
+        img:buscart,
+        miniimg:buscarMinit,
+        title:'',
+        subTitle:""
+    }
 
 ]

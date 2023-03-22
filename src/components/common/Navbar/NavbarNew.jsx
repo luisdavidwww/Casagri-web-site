@@ -244,9 +244,9 @@ const Navbar = ({component}) => {
                                           <div className="desktopNav__SubLines-two" key={`${component}-${'Sub-category'}-${index}`} >
                                             <div onMouseEnter={onMouseEnterSub} >
                                                 <div className="desktopNav__Container__titleSubCategory" onMouseOver={() => { setSubHeading(mysublinks.Head); }}  style={{textDecoration:'none'}}>
-                                                  <a className='desktopNav__titleSubCategory' href={`/Category/${mysublinks.Head}`}>
+                                                  <Link className='desktopNav__titleSubCategory' to={`/Category/${mysublinks.Head}`}>
                                                     {mysublinks.Head} { mysublinks.subitem ? (<BsChevronRight className='iconSubLinea'/>):null }
-                                                  </a >
+                                                  </Link >
                                                   <div className='aux'>
                                                     {/* Sub Lineas */}
                                                     { subdropdown ? (
@@ -261,9 +261,9 @@ const Navbar = ({component}) => {
                                                             <div className="desktopNav__Container-Lines-subLines-two" onMouseLeave={() => {setSubHeading(false);}} >
                                                               {mysublinks.sublink.map((slink, index) => (   
                                                                   <div className='desktopNav__Container-Lines-subLines-tol-two' key={`${component}-${'category-Act'}-${index}`}>
-                                                                      <a className="desktopNav__Container-Lines-subLines-List-two" href={`/Category/${slink.name}`}>
+                                                                      <Link className="desktopNav__Container-Lines-subLines-List-two" to={`/Category/${slink.name}`}>
                                                                         {slink.name}
-                                                                      </a>   
+                                                                      </Link>   
                                                                   </div>            
                                                                 ))}
                                                             </div>

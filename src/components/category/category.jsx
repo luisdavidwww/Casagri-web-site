@@ -9,7 +9,8 @@ import { ProductsAll } from "../../data/ProductsAll";
 import CardItem from '../Cards/CardItem';
 import  Search  from "../Search/Search";
 import  SearchForm  from "../Search/SearchForm";
-import  SimpleAccordion  from "../Search/FiltersBar";
+import  FiltersBar  from "../Search/FiltersBar";
+import  FilterSidebar  from "../Search/FilterSidebar";
 import { BannerCategory } from 'components/BannerMain/BannerCategory';
 //Datos para los banners 
 import { BannerData } from '../../data/BannerData';
@@ -18,7 +19,7 @@ import { links } from "../common/Navbar/Mylinks";
 //Estilos
 import './Category.css';
 //icons
-import {  BsXLg } from "react-icons/bs";
+
 
 
 
@@ -69,10 +70,10 @@ const Category = ({history, component}) => {
 
     //evalua la prop de URL, 
     const productsMain = () => {
-      if (consulta === 'All'){
+      if (consulta === 'buscar'){
         setProducts(featuredProducts);
 
-          let compareBanner = BannerCategoryImg.filter((e) => {return e.category == 'All';})
+          let compareBanner = BannerCategoryImg.filter((e) => {return e.category == 'buscar';})
          //declaramos las variables para las imagenes
          let condImg =  compareBanner.map(item => item.img).toString();
          let condImgMini = compareBanner.map(item => item.miniimg).toString();
@@ -80,7 +81,6 @@ const Category = ({history, component}) => {
          //Cargamos las imagenes
          setImgBanner(condImg);
          setImgMiniBanner(condImgMini);
-         console.log(consulta);
         return
 		}
         else {
@@ -249,17 +249,23 @@ const Category = ({history, component}) => {
 
             {/*Contenido de Sección */}
             <div className='category__Container'>
-
-            
-              {/* Filtro de Busqueda  */}
+              {/* Filtro */}
               <div className='category__filter'>
-                <SimpleAccordion/>
+                <FiltersBar/>
               </div>
+              {/* Filtro Movil */}
+            <div className='category__filter__Movil'>
+              <div className='category__Display'>
+                Display 
+              </div>
+                <FilterSidebar/>
+            </div>
+            
 
               {/* Resultado de Busqueda */}
               <>
               { 
-                        ( products.length == 0  ) 
+                        ( products.length === 0  ) 
                             && 
                             <div className='container__error'>
                               <div className="alert alert-danger">
@@ -274,13 +280,31 @@ const Category = ({history, component}) => {
                         && 
                         <div className='category__products'>
                           <div className='cards'>
-                            <div className='result__Category__Container' >
-                              <div className='result__Category text__Category'> 
-                                      {`${'Categoria: '} ${'__'}`}
-                                      <span style={{fontWeight:'700'}}>{consulta}</span>  
-                                      <BsXLg className='iconResult__Category'/>
-                                </div>
-                            </div>
+                            {
+                              consulta === 'buscar' ? null:(
+                                <>
+                                {/*Titulo de Resultado Desktop */}
+                                  <div className='result__Category__Container' >
+                                    <div className='result__Category text__Category'> 
+                                        <>
+                                          {/*`${'Categoria: '} ${'__'}`*/}
+                                            <span style={{fontWeight:'700'}}>{consulta}</span>  
+                                            {/*<BsXLg className='iconResult__Category'/>*/}
+                                        </>
+                                      </div>
+                                  </div>
+                                  {/*Titulo de Resultado Movil */}
+                                    <div className='result__Category__Container__Movil' >
+                                      <div className='result__Category__Movil text__Result__Category__Movil'> 
+                                          <>
+                                              <span style={{fontWeight:'700'}}>{consulta}</span>  
+                                              {/*<BsXLg className='iconResult__Category'/>*/}
+                                          </>
+                                        </div>
+                                    </div>
+                                </>
+                              )
+                            }
                                 <div className='cards__container'>
                                   <div className='cards__wrapper'> 
                                     <ul className='cards__items__Container'>

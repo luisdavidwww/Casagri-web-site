@@ -12,6 +12,15 @@
     width: 100%;
     /*background-color: #f6f7f9;*/
 }
+.Search__Brand__container__Active{
+  display: inline-block;
+  position: relative;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 0.5rem
+  /*background-color: #f6f7f9;*/
+}
 
 .Search__form{
     display: flex;
@@ -127,7 +136,8 @@
   .Search__container__Active{
     display: flex;
     justify-content: center;
-    width: 380px
+    width: 380px;
+    margin-top: 1rem;
 }
 
 .Search__form{

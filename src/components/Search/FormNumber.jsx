@@ -13,7 +13,7 @@ export default function FormTextFields() {
       <div>
         <TextField
           id="filled-number"
-          label="Desde"
+          label="Mínimo"
           type="number"
           InputLabelProps={{
             shrink: true,
@@ -24,7 +24,7 @@ export default function FormTextFields() {
         />
         <TextField
           id="filled-number"
-          label="Hasta"
+          label="Máximo"
           type="number"
           InputLabelProps={{
             shrink: true,
