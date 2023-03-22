@@ -36,7 +36,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-export const CarruselDiscover = () => {
+export const CarruselDiscover = ({component}) => {
 
   //Constantes para el carrousel
   const settings = {
@@ -57,9 +57,9 @@ export const CarruselDiscover = () => {
     <>
     
       <div className="mainContainer">
-        <Slider {...settings}>
-        {CarouselData.map((item) => (
-            <div className="container">
+        <Slider {...settings}  className='CarruselDiscover__Desktop'>
+        {CarouselData.map((item, index) => (
+            <div className="container-desktop" key={`${component}-${index}`}>
               <img className='container-img' src={item.img} />
             </div>
           ))}
@@ -67,9 +67,9 @@ export const CarruselDiscover = () => {
       </div>
 
       <div className="mainContainer-Movil">
-        <Slider {...settings}>
-        {CarouselData.map((item) => (
-            <div className="container-Movil">
+        <Slider {...settings} className='CarruselDiscover__Movil'>
+        {CarouselData.map((item, index) => (
+            <div className="container-Movil" key={`${component}-${index}`+'movil'}>
               <img className='container-img-Movil' src={item.imgMini} />
             </div>
           ))}

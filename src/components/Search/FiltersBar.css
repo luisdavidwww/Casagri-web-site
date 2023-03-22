@@ -1,0 +1,224 @@
+/*Especiales de UI*/
+.css-o4b71y-MuiAccordionSummary-content.Mui-expanded {
+  margin: 5px 0 !important;
+}
+.css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root.Mui-expanded {
+  min-height: 44px !important;
+}
+.css-15v22id-MuiAccordionDetails-root {
+  padding: 3px 16px 10px !important;
+}
+
+
+
+
+
+
+
+
+
+.filter__container__Main__Movil{
+  display: none;
+}
+
+.filter__container__Main{
+  width: 250px;
+}
+
+.containerFilter__Sidebar{
+  display: flex;
+  justify-content: start;
+  width: 280px;
+  margin-left: 20px;
+  margin-bottom: 0.8rem;
+}
+
+.containerFilter__Basic{
+    display: flex;
+    justify-content: start;
+    width: 300px;
+    margin-left: 20px;
+    margin-bottom: 0.8rem;
+}
+
+
+.text__Filter{
+    font-size: 13px;
+}
+.iconFilter{
+    display: flex;
+    font-size: 18px;
+    width: 500px;
+}
+
+
+
+.title__Filter-Main{
+    color: #23263b;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 20px;
+  }
+
+
+
+.title__Filter{
+    color: #252525;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 20px;
+    margin-top: 0px;
+    transition: all .1s ease-in-out;
+  }
+  
+.title__Filter:hover{
+    color: #787981;
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+  }
+
+  .subtitle__Filter{
+    color: #252525;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 11px !important;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 20px;
+    /*margin-top: 15px;*/
+    transition: all .1s ease-in-out;
+  }
+  .subtitle__Filter:hover{
+    color: #787981;
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+  }
+
+  .subCategorie__Filter{
+    color: #252525;
+    display: block;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 12px !important;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 20px;
+    margin-top: 15px;
+    transition: all .1s ease-in-out;
+  }
+  .subCategorie__Filter:hover{
+    color: #787981;
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+  }
+  
+
+    /*Acordion Categoria*/
+
+    .AccordionDetails{
+        margin-left: 1.5rem;
+        margin-top: 0rem;
+    }
+    .AccordionSummary{
+        margin-left: 1rem;
+    }
+
+
+
+  /*Cheeck Bottom*/
+  .container__TitleCheckbox{
+    display: flex;
+    margin-bottom: 10px;
+  }
+
+  .subtitle__Filter__check{
+    color: #23263b !important;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 11px !important;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 20px;
+    margin-top: -2px;
+  }
+
+  .form-check-input.is-valid:checked{
+    background-color: #47A01A !important;
+    border-color: #47A01A !important;
+  }
+  .form-check-input.is-valid, .was-validated .form-check-input:valid{
+    border-color: #23263b !important;
+  }
+
+  .CheckboxList{
+    margin-left: 0.2rem;
+  }
+
+
+
+  @media only screen and (max-width: 960px) {
+    
+    
+
+    .filter__container__Main__Movil{
+      display: block;
+      
+      
+    }
+
+    /* Filtro Movil*/
+    .Sidebar__Filtro{
+      display: flex;
+    }
+
+    .Sidebar__Filtro__Title{
+      display: flex;
+      justify-content: end;
+      padding-right: 0rem;
+      margin-top: 5px;
+      border: #23263b;
+    }
+
+    .title__Filter-Main{
+      margin-right: 0px;
+    }
+
+    .containerFilter__Sidebar{
+      display: flex;
+      justify-content: flex-end;
+      margin-right: 20px;
+      margin-left: 0px;
+      margin-bottom: 0px;
+  }
+
+  .containerFilter__Basic{
+    display: flex;
+    justify-content: flex-start;
+    width: 100px;
+    margin-left: 20px;
+    margin-bottom: 0.8rem;
+}
+
+
+
+
+
+
+
+}

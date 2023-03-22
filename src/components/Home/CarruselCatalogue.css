@@ -1,0 +1,433 @@
+/*---------------------------Estilos de CARRUSEL PRODUCTS ---------------------------------*/
+
+.CarruselCatalogue__main{
+  padding-top: 2rem;
+  padding-bottom: 0rem;
+}
+
+
+.main-Container-Movil{
+  display: none;
+}
+
+
+
+.main-Container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 370px;
+}
+
+.title-container-two{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
+}
+
+.title-basic-center-two{
+    color: #000000;
+    font-size: 30px;
+    letter-spacing: -1px;
+    line-height: 40px;
+    font-family: "Montserrat";
+    font-weight: 600;
+  }
+
+.container-Slick{
+    display: block;
+    justify-content: center;
+    width: 1100px;
+    
+}
+.slick-track{
+  height: 400px;
+}
+
+/* Tarjeta Principal*/
+.cards__item-two{
+    width: 260px;
+    height: 300px;
+    padding-top: 0.5rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease-out;
+    margin-right: 2rem;
+    margin-left: 0rem;
+}
+
+/*Movimiento hacia arriba*/
+.cards__item-two:hover{
+    width: 260px;
+    height: 300px;
+    bottom: 5rem;
+    padding-top: 0rem;
+    transition: all 0.3s ease-out;
+    
+}
+
+/* Contenedor para Sombra */
+.cards__item__link-two {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    overflow: hidden;
+    text-decoration: none;
+  }
+  .cards__item__link-two:hover {
+    border: 1rem #000000;
+  }
+
+
+
+.cards__item__pic-wrap-two{
+    display: flex;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: 300px;
+    margin: auto;
+    transition: all 0.3s ease-in-out;
+    color: #000000;
+    box-shadow: 0px 10px 10px rgb(0, 0, 0, 0.04);
+  }
+.cards__item__pic-wrap-two:hover{
+  color: #000000;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+  }
+
+.cards__item__img-two {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    object-fit: cover;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .cards__item__img-two:hover {
+    /*transform: scale(1.1);*/
+    cursor: pointer;
+  }
+
+
+
+/*Btn Control Slick Carrusel*/
+
+.container-Control-Movil{
+  display: none;
+}
+
+.container-Control{
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-end;
+    
+}
+
+.container-Control-Block
+{
+    width: 1000px;
+    margin: auto;
+    background-color: transparent;
+}
+
+
+.container-tbn{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-deg{
+  background-color: transparent;
+  border: transparent;
+  color: #47A01A;
+  border: 1px solid #47A01A;
+  padding: 0.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-deg:hover{
+  background-color: #47A01A;
+  border: transparent;
+  border: 1px solid #47A01A;
+  padding: 0.5rem;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.container-btn-deg{
+  display: flex;
+  justify-content: center;
+  color: #47A01A;
+  border-radius: 2px;
+  margin-left: 15px;
+  -webkit-transform: skewX(-15deg) translateX(12px);
+  -moz-transform: skewX(-15deg) translateX(12px);
+  -ms-transform: skewX(-15deg) translateX(12px);
+  transform: skewX(-15deg) translateX(12px);
+  transition: all 0.3s ease-in-out;
+}
+
+.container-btn-deg:hover{
+  display: flex;
+  color: #ffffff;
+  -webkit-transform: skewX(-15deg) translateX(12px);
+  -moz-transform: skewX(-15deg) translateX(12px);
+  -ms-transform: skewX(-15deg) translateX(12px);
+  transform: skewX(-15deg) translateX(12px) scale(1.1);
+  justify-content: center;
+  background-color: #47A01A;
+  color: #47A01A;
+  cursor: pointer;
+}
+
+
+.btnPrevios{
+  display: flex;
+  justify-content: center;
+  width: 22px;
+  height: 18px;
+ /* margin-left: 22px; */
+    
+}
+
+.btnNext{
+    width: 22px;
+    height: 18px;
+    /* margin-left: 22px; */
+}
+
+
+
+
+
+
+
+
+/*---------------------------ESTILOS ITEM CARRUSEL ---------------------------------*/
+
+.cards__item__info-two {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .cards__item__text-two {
+    font-family: 'Montserrat', sans-serif;
+    color: #000000;
+    font-size: 15px;
+    letter-spacing: 0px;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 1.5rem;
+  }
+  
+
+
+
+
+  @media only screen and (max-width: 960px) {
+
+
+  .main-Container{
+    display: none;
+  }
+
+  .title-basic-center-two{
+      font-family: "Montserrat";
+      letter-spacing: -1px;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 40px;
+      color: #000000;
+  }
+
+  .main-Container-Movil{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .container-Slick{
+    display: block;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+  }
+
+  /* Tarjeta Principal*/
+.cards__item-two{
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  transition: all 0.3s ease-in-out;
+  margin: auto;
+  margin-bottom: 7rem;
+  padding: 0px;
+}
+
+.cards__item-two:hover{
+  display: flex;
+  width: 380px;
+  transition: all 0.3s ease-in-out;
+}
+
+.cards__item__link-two{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 320px;
+    height: 400px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    color: #000000;
+}
+
+
+.cards__item__pic-wrap-two {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  height: 380px;
+  width: 360px;
+  margin: 0px;
+  box-shadow: 0px 10px 10px rgb(0 0 0 / 7%);
+}
+.cards__item__img-two{
+  width: 360px;
+}
+
+
+ 
+  .cards__item__info-two {
+    display: flex;
+    justify-content: center;
+    padding: 20px 10px 20px !important;
+    
+  }
+
+  .cards__item__text-two {
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0px;
+    cursor: pointer;
+    margin-top: 0.4rem;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 0.8rem;
+  }
+
+
+
+
+  /* Botones */
+  .container-Control{
+    display: none;
+  }
+  .container-Control-Movil{
+    display: block;
+    padding-bottom: 2rem;
+    width: 100%;  
+  }
+  .container-Control-Block-Movil{
+    width: 100%;
+    justify-content: center;
+    padding: 1rem;
+    padding-top: 0.1rem;
+  }
+
+
+  .container-tbn-Movil{
+    display: flex;
+    justify-content: center;
+    margin-right: 2rem;
+  }
+
+  .container-btn-deg{
+    margin-right: 2px;
+    margin-right: 5px;
+  }
+
+
+  .btnPrevios{
+    width: 28px;
+    height: 28px;
+  }
+  .btnNext{
+    width: 28px;
+    height: 28px;
+  }
+
+
+
+
+
+
+   /*---------------------------ESTILOS ITEM CARRUSEL ---------------------------------*/
+
+
+
+  .container-Slick{
+    display: block;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .slick-track{
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    margin-left: 0px;
+    margin-right: 0px;
+    height: 440px;
+    width: 1500px;
+  }
+
+  .slick-slide{
+    display: none;
+  }
+
+.slick-slide {
+    display: none;
+}
+.slick-active .slick-current{
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /*----Boton next----*/
+  .slick-next{
+    display:none !important;
+  }
+
+  /*-----Boton next------*/
+  .slick-prev{
+    display:none;
+  }
+
+  }

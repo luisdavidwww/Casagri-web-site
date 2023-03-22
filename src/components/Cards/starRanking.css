@@ -1,0 +1,14 @@
+/*Icon Start*/
+.star__icon{
+    color: rgb(83, 83, 83);
+    margin-right: 0.3rem;
+    width: 0.7rem;
+} 
+.star__icon__two{
+    color: rgb(83, 83, 83);
+    margin-right: 0.3rem;
+    width: 1rem;
+} 
+.star__icon__two:hover{
+    cursor: pointer;
+} 

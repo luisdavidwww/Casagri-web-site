@@ -1,0 +1,157 @@
+import React, { useRef, useState, useEffect } from 'react'
+import Slider from "react-slick";
+import AOS  from 'aos';
+
+//componentes
+import CardItemCarrusel from "./CardItemCarrusel";
+
+
+//Datos para el Carousel
+import { Categorys } from '../../data/Categorys';
+
+//Estilos y diseño
+import './CarruselCatalogue.css'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import 'aos/dist/aos.css'; 
+
+//Icons 
+import { VscChevronRight } from "react-icons/vsc";
+import { VscChevronLeft } from "react-icons/vsc";
+
+
+
+
+export const CarruselCatalogue = ({component}) => {
+
+  //creating the ref
+  const customeSlider = useRef();
+  const customeSliderMovil = useRef();
+
+  // setting slider configurations Desktop
+  const [sliderSettings, setSliderSettings] = useState({
+    infinite: true,
+    speed: 600,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    arrows: false,
+  })
+  // setting slider configurations Movil
+  const [sliderSettingsMovil, setSliderSettingsMovil] = useState({
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+  })
+
+
+  //funciones para desktop
+  const gotoNext = () => {
+    customeSlider.current.slickNext();
+  }
+  const gotoPrev = () => {
+    customeSlider.current.slickPrev();
+  }
+
+  //funciones para Movil
+  const gotoNextMovil = () => {
+    customeSliderMovil.current.slickNext();
+  }
+  const gotoPrevMovil = () => {
+    customeSliderMovil.current.slickPrev();
+  }
+
+
+  const imageLoader = ({ src }) => {
+    return `/images/carrusel/${src}`
+  }
+
+
+
+ 
+
+  return (
+    <>
+    <section className='CarruselCatalogue__main'>
+      <div className='title-container-two'>
+          <h1 className='title-basic-center-two'>Categorias</h1>
+      </div>
+
+      {/* Carrusel Desktop */}
+      <div className="main-Container">
+        <div className='container-Slick'>
+              <Slider {...sliderSettings} ref={customeSlider}>
+                {Categorys?.map((item, index) => (
+                  <CardItemCarrusel
+                    key={`${component}-${index}`}
+                    text={item.text}
+                    src={item.img}
+                    label={item.label}
+                    href={item.href}
+                  />
+                  ))}
+              </Slider>
+        </div>
+      </div>
+
+      {/* Categorias Movil */}
+      <div className="main-Container-Movil">
+        <div className='container-Slick' >
+          {Categorys?.map((item, index) => (
+                  <CardItemCarrusel
+                    key={`${component}-${index}`}
+                    text={item.text}
+                    src={item.img}
+                    label={item.label}
+                    href={item.href}
+                  />
+                  ))}
+              
+        </div>
+      </div>
+
+      {/* Botones Controladores Desktop */}
+      <div className='container-Control' data-aos="fade-right" data-aos-once="true" data-aos-duration="1000">
+        <div className='container-Control-Block'>
+          <div className='container-tbn'>
+            <div className='container-btn-deg' onClick={()=>gotoPrev()}>
+              <button className='btn-deg'>
+                <VscChevronLeft className='btnPrevios'/>
+              </button>
+            </div>
+            <div className='container-btn-deg' onClick={()=>gotoNext()}>
+              <button className='btn-deg'>
+                <VscChevronRight className='btnNext'/>
+              </button>
+            </div>
+          </div>  
+        </div>
+      </div>
+
+      {/* Botones Controladores Movil 
+      <div className='container-Control-Movil'>
+        <div className='container-Control-Block-Movil'>
+        <div className='container-tbn-Movil'>
+          <div className='container-btn-deg' >
+            <button className='btn-deg' onClick={()=>gotoPrevMovil()} >
+              <VscChevronLeft className='btnPrevios'/>
+            </button>
+          </div>
+          <div className='container-btn-deg' >
+            <button className='btn-deg' onClick={()=>gotoNextMovil()}>
+              <VscChevronRight className='btnNext'/>
+            </button>
+          </div>
+        </div>
+          
+        </div>
+      </div>
+      */}
+    </section>
+    </>
+    
+  )
+
+
+}

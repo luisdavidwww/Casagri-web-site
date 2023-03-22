@@ -1,0 +1,102 @@
+
+@media only screen and (max-width: 1000px) {
+
+    .Search__form__Navbar{
+      display: flex;
+      position: relative;
+      justify-content: center;
+      flex-direction: row;
+      width: 100%;
+  }
+  .Search__imput__Navbar{
+      width:300px;
+      margin: auto;
+      line-height: 30px;
+      border-radius: 8px;
+      border: 1px solid #e7e3e3;
+      margin: 0px;
+      font-family: "Montserrat";
+      font-size: 13px;
+      font-weight: 500;
+      padding: 0.5rem 1rem 0.5rem 1rem;
+      letter-spacing: 0.3px;
+      background-color: rgb(253, 253, 253);
+  }
+
+
+
+.Search__imput__Navbar:focus {
+    outline: none;
+  }
+  
+  .Search__imput__Navbar:focus-within {
+    border: 1px solid #47A01A;;
+  }
+
+
+
+  .Search__container__Active__Navbar{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+    .Search__form__Navbar{
+        display: flex;
+        position: relative;
+        justify-content: center;
+        flex-direction: row;
+        width: 100%;
+        margin-right: 1rem;
+    }
+ 
+    .Search__imput__Navbar{
+        width: 220px;
+        margin: auto;
+        line-height: 30px;
+        border-radius: 1px;
+        border: 1.7px solid #47A01A;
+        margin: 0px;
+        font-family: "Montserrat";
+        font-weight: 500;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        letter-spacing: 0.3px;
+    }
+
+    .Search__imput__Navbar:focus {
+        outline: none;
+      }
+      
+      .Search__imput__Navbar:focus-within {
+        border: 1.7px solid #47A01A;
+        border-radius: 5px;
+      }
+
+
+      .Search__btn__Navbar{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        background-color: #47A01A;
+        border: 1px solid  #e7e3e3;
+        padding: 0rem 1rem 0rem 1rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        cursor: pointer;
+    }
+    
+    .Search__icon__Navbar{
+        color: #ffffff;
+        transition: all .25s ease-in-out;
+      }
+
+      .Search__icon__Navbar:hover{
+        transform: scale(1.3);
+        color: #fcfffc;
+      }
+
+    
+}
