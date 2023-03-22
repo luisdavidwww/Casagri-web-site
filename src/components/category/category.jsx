@@ -12,6 +12,9 @@ import  SearchForm  from "../Search/SearchForm";
 import  FiltersBar  from "../Search/FiltersBar";
 import  FilterSidebar  from "../Search/FilterSidebar";
 import { BannerCategory } from 'components/BannerMain/BannerCategory';
+import Loader from "components/Loader/Loader";
+//Variables de Entorno
+import { SUBCATEGORIA } from '../../routers/index';
 //Datos para los banners 
 import { BannerData } from '../../data/BannerData';
 import { BannerCategoryImg } from '../../data/BannerData';
@@ -66,6 +69,26 @@ const Category = ({history, component}) => {
    const [products, setProducts] = useState([]);
    const [imgBanner, setImgBanner] = useState('');
    const [imgMiniBanner, setImgMiniBanner] = useState('');
+   const [banner, setBanner] = useState([]);
+   const [loanding, setLoanding] = useState(false);
+
+
+   //Peticion del Banner Principal
+   const getInfo = async () => {
+
+    //Estado del Loanding Verdadero 
+    setLoanding(true);
+
+    //Petición a la api
+    const response = await fetch(`${'http://localhost:8080/api/'}${SUBCATEGORIA}${consulta}`);
+    const res = await response.json();
+    setBanner(res.data);
+    //Estado del Loanding Falso
+    setLoanding(false);
+
+    console.log(banner);
+
+  }
 
 
     //evalua la prop de URL, 
@@ -143,6 +166,7 @@ const Category = ({history, component}) => {
       //Banner Agroindustrial
       if (consulta === 'Agroindustrial' || consulta === 'Agroquímicos' ||  consulta === 'Semillas' || consulta === 'Fertilizantes' || consulta === 'Sacos Cabuyas y Cordeles' || consulta === 'Cercas de Alambre y Eléctricas' || consulta === 'Insecticidas' || consulta === 'Otros' || consulta === 'Herbicidas' || consulta === 'Fungicidas' || consulta === 'Frutas y Hortalizas'|| consulta === 'Pasto' || consulta === 'Maíz'|| consulta === 'Sustratos')
       {
+        
         let compareBanner = BannerCategoryImg.filter((e) => {return e.category == 'Agroindustial';})
         //declaramos las variables para las imagenes
         let condImg =  compareBanner.map(item => item.img).toString();
@@ -232,104 +256,114 @@ const Category = ({history, component}) => {
         productsMain();
     }, [consulta])
 
+    useEffect(() => {
+      getInfo();
+    },[consulta])
+
 
   return (
     <>
-            <BannerCategory image={imgBanner} imageMini={imgMiniBanner} consulta={consulta} />
-
-
-            {/*Barra de Busqueda Superiror */}
-            <div className='formSearch__Container__Main'>
-              <div className='formSearch__Container'>
-                <SearchForm/>
-              </div>
-            </div>
-            
-            
-
-            {/*Contenido de Sección */}
-            <div className='category__Container'>
-              {/* Filtro */}
-              <div className='category__filter'>
-                <FiltersBar/>
-              </div>
-              {/* Filtro Movil */}
-            <div className='category__filter__Movil'>
-              <div className='category__Display'>
-                Display 
-              </div>
-                <FilterSidebar/>
-            </div>
-            
-
-              {/* Resultado de Busqueda */}
-              <>
-              { 
-                        ( products.length === 0  ) 
-                            && 
-                            <div className='container__error'>
-                              <div className="alert alert-danger">
-                                No hay productos disponibles
-                              </div>
-                            </div>
-                            
-                }
-
-                {
-                        (  products.length !== 0  ) 
-                        && 
-                        <div className='category__products'>
-                          <div className='cards'>
-                            {
-                              consulta === 'buscar' ? null:(
-                                <>
-                                {/*Titulo de Resultado Desktop */}
-                                  <div className='result__Category__Container' >
-                                    <div className='result__Category text__Category'> 
-                                        <>
-                                          {/*`${'Categoria: '} ${'__'}`*/}
-                                            <span style={{fontWeight:'700'}}>{consulta}</span>  
-                                            {/*<BsXLg className='iconResult__Category'/>*/}
-                                        </>
-                                      </div>
+    {
+      loanding ?( <Loader/>):(
+        <>
+                <BannerCategory image={banner.imagen_principal} imageMini={imgMiniBanner} consulta={consulta} />
+    
+    
+                {/*Barra de Busqueda Superiror */}
+                <div className='formSearch__Container__Main'>
+                  <div className='formSearch__Container'>
+                    <SearchForm/>
+                  </div>
+                </div>
+                
+                
+    
+                {/*Contenido de Sección */}
+                <div className='category__Container'>
+                  {/* Filtro */}
+                  <div className='category__filter'>
+                    <FiltersBar/>
+                  </div>
+                  {/* Filtro Movil */}
+                <div className='category__filter__Movil'>
+                  <div className='category__Display'>
+                    Display 
+                  </div>
+                    <FilterSidebar/>
+                </div>
+                
+    
+                  {/* Resultado de Busqueda */}
+                  <>
+                  { 
+                            ( products.length === 0  ) 
+                                && 
+                                <div className='container__error'>
+                                  <div className="alert alert-danger">
+                                    No hay productos disponibles
                                   </div>
-                                  {/*Titulo de Resultado Movil */}
-                                    <div className='result__Category__Container__Movil' >
-                                      <div className='result__Category__Movil text__Result__Category__Movil'> 
-                                          <>
-                                              <span style={{fontWeight:'700'}}>{consulta}</span>  
-                                              {/*<BsXLg className='iconResult__Category'/>*/}
-                                          </>
-                                        </div>
-                                    </div>
-                                </>
-                              )
-                            }
-                                <div className='cards__container'>
-                                  <div className='cards__wrapper'> 
-                                    <ul className='cards__items__Container'>
-                                      {products?.map((item, index) => (
-                                          <CardItem
-                                          component={"Categoria"}
-                                          key={`${component}-${index}`}
-                                          src={item.imgUrl}
-                                          title={item.title}
-                                          label=''
-                                          path={`/Details/${ item.id }`}
-                                          price={item.price}
-                                          presentation={item.presentation}
-                                          />
-                                      ))}
-                                    </ul>
-                                  </div>
-                                </div>       
-                            </div>
-                        </div>
-                            
+                                </div>
+                                
                     }
-              </>
-            </div>
-
+    
+                    {
+                            (  products.length !== 0  ) 
+                            && 
+                            <div className='category__products'>
+                              <div className='cards'>
+                                {
+                                  consulta === 'buscar' ? null:(
+                                    <>
+                                    {/*Titulo de Resultado Desktop */}
+                                      <div className='result__Category__Container' >
+                                        <div className='result__Category text__Category'> 
+                                            <>
+                                              {/*`${'Categoria: '} ${'__'}`*/}
+                                                <span style={{fontWeight:'700'}}>{consulta}</span>  
+                                                {/*<BsXLg className='iconResult__Category'/>*/}
+                                            </>
+                                          </div>
+                                      </div>
+                                      {/*Titulo de Resultado Movil */}
+                                        <div className='result__Category__Container__Movil' >
+                                          <div className='result__Category__Movil text__Result__Category__Movil'> 
+                                              <>
+                                                  <span style={{fontWeight:'700'}}>{consulta}</span>  
+                                                  {/*<BsXLg className='iconResult__Category'/>*/}
+                                              </>
+                                            </div>
+                                        </div>
+                                    </>
+                                  )
+                                }
+                                    <div className='cards__container'>
+                                      <div className='cards__wrapper'> 
+                                        <ul className='cards__items__Container'>
+                                          {products?.map((item, index) => (
+                                              <CardItem
+                                              component={"Categoria"}
+                                              key={`${component}-${index}`}
+                                              src={item.imgUrl}
+                                              title={item.title}
+                                              label=''
+                                              path={`/Details/${ item.id }`}
+                                              price={item.price}
+                                              presentation={item.presentation}
+                                              />
+                                          ))}
+                                        </ul>
+                                      </div>
+                                    </div>       
+                                </div>
+                            </div>
+                                
+                        }
+                  </>
+                </div>
+    
+        </>
+      )
+    }
     </>
   )
 }
