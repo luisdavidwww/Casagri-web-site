@@ -20,7 +20,7 @@ import { BsCart3,  BsSearch } from "react-icons/bs"
 const Top_header = () => {
 
     //Constantes de todas las categorias
-    const allCategories = 'buscar';
+    const allCategories = 'Buscar';
 
     //hook que utilizo para llevar el scroll a la parte superior en cada Router
     let location = useLocation();

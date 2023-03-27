@@ -22,7 +22,7 @@ export const Contact = () => {
     setLoanding(true);
 
     //Petición a la api
-    const response = await fetch(`${'http://localhost:8080/api/'}${BANNERS}${'/Contacto'}`);
+    const response = await fetch(`${'http://localhost:8080/api/'}${BANNERS}${'Contácto'}`);
     const res = await response.json();
     setBanner(res.data);
 
@@ -41,7 +41,7 @@ export const Contact = () => {
       {
           loanding ?( <Loader/>):(
             <>
-              <BannerMain image={ banner.img } imageMini={ banner.imgMini } /> 
+              <BannerMain image={ banner.banner__desktop } imageMini={ banner.banner__movil } /> 
               <Location/>
             </>
           )

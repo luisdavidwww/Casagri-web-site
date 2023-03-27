@@ -14,7 +14,7 @@ import  FilterSidebar  from "../Search/FilterSidebar";
 import { BannerCategory } from 'components/BannerMain/BannerCategory';
 import Loader from "components/Loader/Loader";
 //Variables de Entorno
-import { SUBCATEGORIA } from '../../routers/index';
+import { BANNERSCATEGORIA, BANNERS } from '../../routers/index';
 //Datos para los banners 
 import { BannerData } from '../../data/BannerData';
 import { BannerCategoryImg } from '../../data/BannerData';
@@ -76,24 +76,37 @@ const Category = ({history, component}) => {
    //Peticion del Banner Principal
    const getInfo = async () => {
 
-    //Estado del Loanding Verdadero 
-    setLoanding(true);
+    if (consulta === "Buscar"){
+      //Estado del Loanding Verdadero 
+      setLoanding(true);
 
-    //Petición a la api
-    const response = await fetch(`${'http://localhost:8080/api/'}${SUBCATEGORIA}${consulta}`);
-    const res = await response.json();
-    setBanner(res.data);
-    //Estado del Loanding Falso
-    setLoanding(false);
+      //Petición a la api
+      const response = await fetch(`${'http://localhost:8080/api/'}${BANNERS}${consulta}`);
+      const res = await response.json();
+      setBanner(res.data);
+      //Estado del Loanding Falso
+      setLoanding(false);
+    }
+    else{
+      //Estado del Loanding Verdadero 
+      setLoanding(true);
 
-    console.log(banner);
+      //Petición a la api
+      const response = await fetch(`${'http://localhost:8080/api/'}${BANNERSCATEGORIA}${consulta.replace(/\s+/g, '')}`);
+      const res = await response.json();
+      setBanner(res.data);
+      //Estado del Loanding Falso
+      setLoanding(false);
+    }
+
+   
 
   }
 
 
     //evalua la prop de URL, 
     const productsMain = () => {
-      if (consulta === 'buscar'){
+      if (consulta === 'Buscar'){
         setProducts(featuredProducts);
 
           let compareBanner = BannerCategoryImg.filter((e) => {return e.category == 'buscar';})
@@ -266,7 +279,7 @@ const Category = ({history, component}) => {
     {
       loanding ?( <Loader/>):(
         <>
-                <BannerCategory image={banner.imagen_principal} imageMini={imgMiniBanner} consulta={consulta} />
+                <BannerCategory image={banner.banner__desktop} imageMini={banner.banner__movil} consulta={consulta} />
     
     
                 {/*Barra de Busqueda Superiror */}

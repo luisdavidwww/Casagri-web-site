@@ -19,40 +19,23 @@ const AboutUs = ({component}) => {
   const getInfoProducts = async () => {
 
     const datos = await fetch(`http://csgbqto.dyndns.org:6001/ctDynamicsSL/api/quickQuery/VW_VENTTU_PROD`, {
-      method: "GET",
+      method: "POST",
       headers: new Headers({
         "Content-Type": "application/json", 
-        'Access-Control-Allow-Origin': '*',
         'Authorization': 'Basic REVWRUxPUEVSOkJCRjk5OTM5NDhFMw==',
         'CpnyID': '0010',
         'SiteID': 'LIVE'
       }),
     });
 
-
-fetch('http://csgbqto.dyndns.org:6001/ctDynamicsSL/api/quickQuery/VW_VENTTU_PROD',  {
-  method: "GET",
-  headers: {
-    "Content-Type": "application/json", 
-    'Origin': 'http://192.168.1.217:3000',
-    'Authorization': 'Basic REVWRUxPUEVSOkJCRjk5OTM5NDhFMw==',
-    'CpnyID': '0010',
-    'SiteID': 'LIVE'
-  },
-})
-  .then(response => response.json()) 
-  .then(data => console.log(data));
-
-
-
     const dat = await datos.json();
-    console.log(dat);
+    setInfo(dat);
+   
   }
 
   const getInfo = async () => {
     const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${ACERCA_DE_CASAGRI}`);
     const res = await response.json();
-
     setData(res.data);
   }
 

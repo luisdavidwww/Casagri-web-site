@@ -28,7 +28,7 @@ export const Company = () => {
     setLoanding(true);
 
     //Petición a la api
-    const response = await fetch(`${'http://localhost:8080/api/'}${BANNERS}${'/Empresa'}`);
+    const response = await fetch(`${'http://localhost:8080/api/'}${BANNERS}${'Empresa'}`);
     const res = await response.json();
     setBanner(res.data);
 
@@ -65,7 +65,7 @@ export const Company = () => {
         {
           loanding ?( <Loader/>):(
             <>
-              <BannerMain image={ banner.img } imageMini={ banner.imgMini } /> 
+              <BannerMain image={ banner.banner__desktop } imageMini={ banner.banner__movil } /> 
               <AboutUs component="AboutUs"/>
               <CorporatePolicy component="CorporatePolicy"/>
               <Trayectory component="Trayectory"/>

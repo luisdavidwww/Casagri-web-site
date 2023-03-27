@@ -4,10 +4,10 @@ const NOSOTROS = "nosotros"
 const TRAYECTORIA = "trayectoria"
 
 //Banners Principales de Secciones
-const BANNERS = "banners"
+const BANNERS = "banners/"
 
 //Banners de busqueda por categoria
-const SUBCATEGORIA = "subcategorias/busca/"
+const BANNERSCATEGORIA = "lineaProductos/buscarBanner/"
 
 
 const INSTALACIONES = "instalaciones"
@@ -20,7 +20,7 @@ module.exports = {
     TRAYECTORIA,
     //Banners
     BANNERS,
-    SUBCATEGORIA,
+    BANNERSCATEGORIA,
     //Prueba
     INSTALACIONES,
 }
