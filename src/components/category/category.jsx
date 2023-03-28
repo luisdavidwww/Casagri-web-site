@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
+
 
 //importacion de datos de productos
 import { featuredProductss } from "../../data/featuredProductss";
@@ -22,6 +23,7 @@ import { links } from "../common/Navbar/Mylinks";
 //Estilos
 import './Category.css';
 //icons
+import { AiOutlineRight } from "react-icons/ai";
 
 
 
@@ -70,13 +72,17 @@ const Category = ({history, component}) => {
    const [imgBanner, setImgBanner] = useState('');
    const [imgMiniBanner, setImgMiniBanner] = useState('');
    const [banner, setBanner] = useState([]);
-   const [pages, setPages] = useState([]);
-   const [categoria, setCategoria] = useState([]);
    const [loanding, setLoanding] = useState(false);
 
+   //variables apra paginado
+   const [categoria, setCategoria] = useState([]);
+   const [subCategoria, setSubCategoria] = useState([]);
+   const [linea, setLinea] = useState([]);
+   
 
-   //Peticion del Banner Principal
-   const getInfo = async () => {
+
+  //Peticion el Banner Principal
+  const getInfo = async () => {
 
     if (consulta === "Buscar"){
       //Estado del Loanding Verdadero 
@@ -109,39 +115,32 @@ const Category = ({history, component}) => {
   //Peticion para la paginacion
   const getPages = async () => {
 
-      setPages("");
+      setSubCategoria("");
+      setCategoria("");
+      setLinea("");
+
       //Petición a la api
-      const response = await fetch(`${'http://localhost:8080/api/lineaProductos/buscarCategoria/'}${consulta}`);
-      const res = await response.json();
+      let response = await fetch(`${'http://localhost:8080/api/lineaProductos/buscarCategoria/'}${consulta.replace(/\s+/g, '')}`);
+      let res = await response.json();
 
-      console.log(res.data.categoria.nombre)
-
-      
-
-      if (res.data.subcategoria.nombre){
-        setPages(res.data.subcategoria.nombre);
-
-        const respon = await fetch(`${'http://localhost:8080/api/categorias/'}${res.data.subcategoria.categoria}`);
-        const resp = await respon.json();
-        setCategoria(resp.data.nombre);
+      if (res.data.subcategoria != null){ 
+        setLinea(res.data.nombre);
+        setSubCategoria(res.data.subcategoria.nombre);
+        if (subCategoria){
+          let respon = await fetch(`${'http://localhost:8080/api/categorias/'}${res.data.subcategoria.categoria}`);
+          let resp = await respon.json();
+          setCategoria(resp.data.nombre);
+        }
       }
-
-
-      if (res.data.categoria.nombre){
-        setPages("");
-        setCategoria("");
-        
-
+      if (res.data.categoria  ){
+        setSubCategoria(res.data.nombre);
         setCategoria(res.data.categoria.nombre);
-        console.log(res.data.categoria.nombre);
       }
-
-
+      if (res.data.subcategoria == null && res.data.categoria == null)
+      {
+        setCategoria(res.data.nombre);
+      }
       
-      
-
-   
-
   }
 
 
@@ -325,32 +324,53 @@ const Category = ({history, component}) => {
       loanding ?( <Loader/>):(
         <>
                 <BannerCategory image={banner.banner__desktop} imageMini={banner.banner__movil} consulta={consulta} />
-{/* 
-                <div>
-                  {
-                    pages.categoria ? (
-                      <div>
-                        {pages.categoria}
-                      </div>
-                    ):null
-                  }
-                  {
-                    pages.subcategoria.nombre ? (
-                      <div>
-                        {pages.subcategoria}
-                      </div>
-                    ):null
-                  }
-                  
-                </div>
                 
-*/}
-                  <div>{categoria}</div>
-                  <div>{pages}</div>
-                <div>{consulta}</div>
+                
     
-                {/*Barra de Busqueda Superiror */}
+                {/*Seccion Superiror */}
                 <div className='formSearch__Container__Main'>
+                  {/*Paginacion*/}
+                  <div className='Pages'> 
+                    <Link to={`/`} style={{textDecoration:'none', color:'#494949'}}> 
+                        <>Inicio</>
+                    </Link>
+                    <Link 
+                      className={consulta === categoria ? 'pagesText__active' : 'pagesText'}
+                      to={`/Category/${categoria}`} 
+                      style={{textDecoration:'none', color:'#494949'}}> 
+                      {categoria != "" ? (
+                        <span className='pagesText__Categoria' >
+                          <AiOutlineRight style={{marginLeft:'0.5rem', marginRight:'0.5rem'}}/>
+                          {categoria}
+                        </span>
+                      ):null
+                    }</Link>
+                    <Link 
+                      className={consulta === subCategoria ? 'pagesText__active' : 'pagesText'}
+                      to={`/Category/${subCategoria}`} 
+                      style={{textDecoration:'none', color:'#494949'}}>
+                    { subCategoria != "" ? (
+                        <span className='pagesText__Categoria'>
+                          <AiOutlineRight style={{marginLeft:'0.5rem', marginRight:'0.5rem'}}/>
+                          {subCategoria}
+                        </span>
+                      ):null
+                    }</Link>
+                    <Link 
+                      className={consulta === linea ? 'pagesText__active' : 'pagesText'}
+                      to={`/Category/${linea}`} 
+                      style={{textDecoration:'none', color:'#494949'}}>
+                    {
+                      linea != "" ? (
+                        <span className='pagesText__Categoria'>
+                          <AiOutlineRight style={{marginLeft:'0.5rem', marginRight:'0.5rem'}}/>
+                          {linea}
+                        </span>
+                      ):null
+                    }
+                    </Link>
+                  </div>
+                  {/*Barra de Busqueda */}
                   <div className='formSearch__Container'>
                     <SearchForm/>
                   </div>
@@ -358,15 +378,20 @@ const Category = ({history, component}) => {
 
                 {/*Titulo de Resultado Desktop */}
                 <div className='result__Search__Container' >
-                    <div className='result__Search text__Result__Category'> 
-                        <span style={{fontWeight:'600', fontSize:'25px'}}> {consulta}</span>  
-                    </div>
+                  {
+                    consulta== "Buscar" ? null:(
+                      <div className='result__Search text__Result__Category'> 
+                        <span style={{fontWeight:'700', fontSize:'29px'}}> {consulta}</span>  
+                      </div>
+                    )
+                  }
+                    
                 </div>
                 {/*Titulo de Resultado Movil */}
                 <div className='result__Category__Container__Movil' >
                     <div className='result__Category__Movil text__Result__Category__Movil'> 
                       <>
-                          <p style={{fontWeight:'700', fontSize:'25px', marginBottom:'0rem'}}>{consulta}</p> 
+                          <p style={{fontWeight:'700', fontSize:'25px', marginBottom:'0rem', textAlign:'center'}}>{consulta}</p> 
                             {/*<BsXLg className='iconResult__Category'/>*/}
                       </>
                     </div>
@@ -420,6 +445,9 @@ const Category = ({history, component}) => {
                                               path={`/Details/${ item.title }`}
                                               price={item.price}
                                               presentation={item.presentation}
+                                              categoria={categoria}
+                                              subCategoria={subCategoria}
+                                              Linea={linea}
                                               />
                                           ))}
                                         </ul>

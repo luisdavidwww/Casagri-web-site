@@ -428,15 +428,16 @@ const Navbar = ({component}) => {
                               {link.sublinks.map((mysublinks, index) => {
                                   return (
                                     <div key={`${component}-${'sub-category-movil'}-${index}`}>
-                                      <a
+                                      <Link
                                         className='movilNav-SubLines'
-                                        href={`/Category/${mysublinks.Head}`}
+                                        to={`/Category/${mysublinks.Head}`}
                                         style={{textDecoration:'none'}}
+                                        onClick={() => { handleClick()}}
                                       >
                                         <div className='movilNav-SubLines-title'>
                                             {mysublinks.Head}
                                         </div>
-                                      </a>
+                                      </Link>
                                     </div>
                                   );
                                 })}

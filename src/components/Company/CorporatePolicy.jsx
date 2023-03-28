@@ -48,14 +48,14 @@ const CorporatePolicy = ({component}) => {
         <div className='cards__wrapper'>
           <ul className='cards__items-container'>
           {nosotros?.map((item, index) => (
-            <li className='cards__item-pc' key={`${component}-${index}`}>
-                <a className='cards__item__link-pc' data-aos="fade-up" data-aos-once="true" data-aos-duration="1500">
+            <li className='cards__item-pc' key={`${component}-${index}`} data-aos="fade-up" data-aos-once="true" data-aos-duration="1500">
+                <a className='cards__item__link-pc' >
                   {  item ?
                       <img 
                       className='cards__item__img-pc'
                       alt={item.titulo}
                       //src={imgL(`./${item.imgUrl}`)}
-                      src={item.img}
+                      src={item.imagen_principal}
                       />
                     :
                     <Skeleton variant="rectangular"  height={190} />

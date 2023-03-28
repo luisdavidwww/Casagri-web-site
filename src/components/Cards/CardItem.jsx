@@ -183,7 +183,7 @@ function CardItem(props) {
 
             
 
-        <Link className='cards__item__link' to={props.path} >
+        <Link className='cards__item__link' to={props.path} state={{ from:  [props.categoria, props.subCategoria, props.Linea] }}  >
             {/* Imagen del Producto */}
             <figure className='cards__item__pic-wrap' >
             
@@ -225,7 +225,13 @@ function CardItem(props) {
       :
       (
         // ItemCard con Animación
-      <li className='cards__item' onMouseLeave={onMouseLeave} data-aos="fade-up" data-aos-once="true" data-aos-duration="1500">
+      <li className='cards__item__Home' 
+
+        onMouseLeave={onMouseLeave} 
+        data-aos="fade-up" 
+        data-aos-once="true" 
+        data-aos-duration="1500"
+        >
         <div>
             <div className='icon-heart'>
 

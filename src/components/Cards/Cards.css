@@ -159,6 +159,19 @@ cursor: pointer;
   margin-top: 0.5rem;
 }
 
+.cards__item__Home{
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  margin: 0 0.2rem;
+  margin-bottom: 0.7rem;
+  border-radius: 10px;
+  width: 240px;
+  /*width: 190px;*/
+  margin-top: 0.5rem;
+
+}
+
 
 
 /*Card individual de producto*/

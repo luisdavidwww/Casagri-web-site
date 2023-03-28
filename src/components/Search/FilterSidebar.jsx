@@ -11,6 +11,7 @@ import ListItemText from '@mui/material/ListItemText';
 
 //Componentes
 import FiltersBar from './FiltersBar';
+import FilterBarNew from './FilterBarNew';
 import FilterTilter from './FilterTilter';
 import CategoryAccordion from './CategoryAccordion';
 
@@ -59,7 +60,7 @@ export default function FilterSidebar() {
     </Box>
   );
 
-  return (
+  return ( /*  */
     <div className='filter__container__Main__Movil'>
         <div className='Sidebar__Filtro'>
             <React.Fragment key={'right'}>
@@ -71,12 +72,18 @@ export default function FilterSidebar() {
                 
             >
                 <div style={{marginTop:'2rem'}}>
-                    <FiltersBar/>
+                   <FiltersBar/> 
+                  {/* <FilterBarNew/> */}
+                  
+                    
                 </div>
                 
             </Drawer>
             </React.Fragment>
         </div>
+
+        
+
     </div>
   );
 }

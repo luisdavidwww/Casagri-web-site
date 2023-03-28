@@ -565,14 +565,14 @@ a{
 
   .movilNav-SubLines:focus{
     text-decoration: none;
-    background-color: #47A01A !important;
+    background-color: #235c33 !important;
     /*border-bottom: 1px solid rgb(230, 230, 230);*/
     color: rgb(255, 255, 255);
   }
 
   .movilNav-SubLines:hover{
     text-decoration: none;
-    background-color: #47A01A !important;
+    background-color: #235c33 !important;
     /*border-bottom: 1px solid rgb(230, 230, 230);*/
     color: rgb(255, 255, 255);
   }

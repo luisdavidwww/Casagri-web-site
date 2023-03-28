@@ -1,0 +1,44 @@
+@media only screen and (min-width: 1400px) {
+    .Details__main{
+        display: flex;
+        width: 100%;
+        margin: auto;
+        justify-content: center;
+    }
+    .Details__container{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding-top: 80px;
+        align-items: start;
+        margin: 0px;
+        width: 1100px;
+    }
+
+    .information__Details{
+        width: 800px;
+        margin-top: 60px;
+    }
+
+.text__Details__Title{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 29px;
+}
+.text__Details__Price{
+    color: #00a86e;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+}
+.text__Details__Presentation{
+    font-size: 14px;
+    line-height: 22px;
+    font-family: "Poppins Regular";
+    color: black;
+    padding-top: 0.4rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    text-align: center;
+}
+}

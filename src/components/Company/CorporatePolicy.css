@@ -72,7 +72,7 @@
   }
 
   .cards__item__info-pc{
-    background-color: rgb(253, 253, 253);
+    /*background-color: rgb(253, 253, 253);*/
     height: 170px;
   }
 
@@ -101,21 +101,24 @@
     justify-content: center;
     flex-direction: row;
     flex: 1;
-    margin: 0 0.4rem;
+    margin: 0 0.8rem;
     border-radius: 10px;
     transition: all .25s ease-in-out;
-    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.06);
+    background-color: rgb(253, 253, 253);
+    margin-bottom: 1rem;
   }
   .cards__item-pc:hover {
     display: flex;
     justify-content: center;
     flex-direction: row;
     flex: 1;
-    margin: 0 0.4rem;
+    margin: 0 0.8rem;
     border-radius: 10px;
-    margin-top: 1rem;
     transition: all .25s ease-in-out;
-    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.06);
+    background-color:rgb(253, 253, 253);
+    margin-bottom: 1rem;
   }
 
   .cards__item__info-pc{

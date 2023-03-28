@@ -29,7 +29,7 @@ const NationalMomentum = ( { component } ) => {
               <ul className='cards__items-container'>
               {NationalMomentumData?.map((item, index) => (
                 <li className='cards__item-pc' key={`${component}-${index}`}>
-                    <Link className='cards__item__link-pc'  >
+                    <div className='cards__item__link-pc'  >
                         <div className='cards__item__info-in' data-aos="flip-right" data-aos-once="true" data-aos-duration="1200">
                             <img 
                                 className='cards__item__img-in'
@@ -39,7 +39,7 @@ const NationalMomentum = ( { component } ) => {
                             <p className='cards__item__p-two'>{item.text}</p> 
                             
                         </div>  
-                    </Link>
+                    </div>
                 </li>
               ))}
               </ul>

@@ -1,5 +1,5 @@
 import React, {  useMemo, useState, useEffect } from 'react';
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useParams, useLocation, useNavigate, Link } from "react-router-dom";
 import { useForm } from '../../hooks/useForm';
 import { getProductByName } from '../../selectors/getProductByName';
 import queryString from 'query-string';
@@ -9,12 +9,15 @@ import  FiltersBar  from "../Search/FiltersBar";
 import  FilterSidebar  from "../Search/FilterSidebar";
 import CardItem from '../Cards/CardItem';
 import { BannerCategory } from 'components/BannerMain/BannerCategory';
+import Loader from "components/Loader/Loader";
+//Variables de Entorno
+import { BANNERSCATEGORIA, BANNERS } from '../../routers/index';
 //Datos para los banners 
 import { BannerSearch } from '../../data/BannerData';
 //Estilos
 import './Search.css';
 //icons
-import {  BsXLg } from "react-icons/bs";
+import { AiOutlineRight } from "react-icons/ai";
 
 
 
@@ -37,8 +40,6 @@ const tit =  bannerTitle.toString();
 const imgCategory = require.context('../../static/images/category', true);
 
 
-
-
 const Search = ({ history }) => {
 
 
@@ -48,6 +49,25 @@ const Search = ({ history }) => {
 
     //variables de estados
     const [alert, setAlert] = useState("");
+    const [banner, setBanner] = useState([]);
+    const [loanding, setLoanding] = useState(false);
+
+
+    //Peticion el Banner Principal
+  const getInfo = async () => {
+
+      //Estado del Loanding Verdadero 
+      setLoanding(true);
+
+      //Petición a la api
+      const response = await fetch(`${'http://localhost:8080/api/'}${BANNERS}${'Buscar'}`);
+      const res = await response.json();
+      setBanner(res.data);
+      //Estado del Loanding Falso
+      setLoanding(false);
+
+
+  }
 
 
     //constantes
@@ -65,70 +85,81 @@ const Search = ({ history }) => {
     const products = useMemo(() => getProductByName( query ));
 
     useEffect(() => {
-        console.log(listaDatos);
-    }, [])
+        getInfo();
+      },[query])
 
   return (
-    <>
+    <div style={{backgroundColor:'#F9F9F9', paddingTop:'2rem'}}>
 
-        <BannerCategory image={img} imageMini={imgMini} consulta={tit} />
+    {
+      loanding ?( <Loader/>):(
+        <>
+        
+            {/*<BannerCategory image={banner.banner__desktop} imageMini={banner.banner__movil}  consulta={tit}/>*/}
 
-        {/*Barra de Busqueda Superiror */}
-        <div className='formSearch__Container__Main'>
-            <div className='formSearch__Container'>
-                <SearchForm/>
+            {/*Seccion Superiror */}
+            <div className='formSearch__Container__Main'>
+                  {/*Paginacion*/}
+                  <div className='Pages__Search'> 
+                    <Link to={`/`} style={{textDecoration:'none', color:'#494949'}}> 
+                        <>Inicio</>
+                    </Link>
+                    <>
+                      <AiOutlineRight style={{marginTop:'0.6rem', marginLeft:'0.5rem', marginRight:'0.5rem'}}/>
+                        <span className='pagesText__Search pagesText__active' >
+                        Resultado de Búsqueda para:
+                          '{query}'
+                        </span>
+                    </>
+                  </div>
+                  {/*Barra de Busqueda */}
+                  <div className='formSearch__Container'>
+                    <SearchForm/>
+                  </div>
             </div>
-        </div>
 
-        {/* Contenido de Seccion*/}
-        <div className='category__Container'>
-
-            {/* Filtro */}
-            <div className='category__filter'>
-                <FiltersBar/>
-              </div>
-              {/* Filtro Movil */}
-            <div className='category__filter__Movil'>
-              <div className='category__Display'>
-                Display
-              </div>
-                <FilterSidebar/>
+            {/*Titulo de Resultado Desktop */}
+            <div className='result__Search__Container' >
+                    <div className='result__Search text__Result__Category'> 
+                        <span style={{fontWeight:'700', fontSize:'29px'}}> Resultado de Búsqueda para: '{query}'</span>  
+                    </div>
+            </div>
+            {/*Titulo de Resultado Movil */}
+            <div className='result__Category__Container__Movil' >
+                    <div className='result__Category__Movil text__Result__Category__Movil'> 
+                      <>
+                          <p style={{fontWeight:'700', fontSize:'25px', marginBottom:'0rem', textAlign:'center'}}>Resultado de Búsqueda para: '{query}'</p> 
+                            {/*<BsXLg className='iconResult__Category'/>*/}
+                      </>
+                    </div>
             </div>
 
-                {/*--------------------- Resultado de Busqueda -------------------------*/}
-                <div className="">
-                        {
-                            
-                            (  products.length !== 0  ) 
-                            && 
-                            <>
-                            {/*--------------------- Busqueda Exitosa -------------------------*/}
+            {/*Contenido de Sección */}
+            <div className='category__Container'>
 
-                            {/*
-                                <div className="alert alert-danger">
-                                        <h1>Resultado de Busqueda: { query }</h1>
-                                </div>
+                  {/* Filtro */}
+                  <div className='category__filter'>
+                    <FiltersBar/>
+                  </div>
+                  {/* Filtro Movil */}
+                <div className='category__filter__Movil'>
+                  <div className='category__Display'>
+                    Display 
+                  </div>
+                    <FilterSidebar/>
+                </div>
+            
 
-                             */}
-
-                                <div className='category__products'>
-                                    <div className='cards'>
-                                        {/*Titulo de Resultado Desktop */}
-                                        <div className='result__Search__Container' >
-                                            <div className='result__Search text__Result__Category'> 
-                                                {`${'Resultado: '} ${''}`}
-                                                <span style={{fontWeight:'700'}}> "{query}"</span>  
-                                            </div>
-                                        </div>
-                                        {/*Titulo de Resultado Movil */}
-                                        <div className='result__Category__Container__Movil' >
-                                            <div className='result__Category__Movil text__Result__Category__Movil'> 
-                                            <>
-                                                <p style={{fontWeight:'700'}}>{`${'Resultado: '}` }"{query}"</p> 
-                                                {/*<BsXLg className='iconResult__Category'/>*/}
-                                            </>
-                                            </div>
-                                        </div>
+                {/*Resultado de Busqueda*/}
+                <>
+                            {
+                                
+                                (  products.length !== 0  ) 
+                                && 
+                                <>
+                                {/*--------------------- Busqueda Exitosa -------------------------*/}
+                                    <div className='category__products'>
+                                        <div className='cards'>
                                             <div className='cards__container'>
                                                 <div className='cards__wrapper'> 
                                                     <ul className='cards__items__Container'>
@@ -147,30 +178,34 @@ const Search = ({ history }) => {
                                                     </ul>
                                                 </div>
                                             </div>       
-                                    </div>
-                                </div>
-
-                            </>
-                            
-                        }
-
-                        { 
-                            
-                            ( products.length == 0 && query !== undefined && searchText == alert)  
-                                && 
-                                <>
-                                    {/*--------------------- Busqueda Fllida -------------------------*/}
-                                    <div className='container__error'>
-                                        <div className="alert alert-danger">
-                                            Lo sentimos, no encontramos resultados para: "{ query }"
                                         </div>
                                     </div>
                                 </>
                                 
-                        }
-                </div>
-        </div>
-    </>
+                            }
+
+                            { 
+                                
+                                ( products.length == 0 && query !== undefined && searchText == alert)  
+                                    && 
+                                    <>
+                                        {/*--------------------- Busqueda Fllida -------------------------*/}
+                                        <div className='container__error'>
+                                            <div className="alert alert-danger">
+                                                Lo sentimos, no encontramos resultados para: "{ query }"
+                                            </div>
+                                        </div>
+                                    </>
+                                    
+                            }
+                </>
+            
+            </div>
+
+        </>
+      )
+    }
+    </div>
 
   )
 }

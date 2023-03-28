@@ -52,7 +52,7 @@
   
   .Search__imput:focus-within {
     border: 1.9px solid #47A01A;
-    /*width:1047px;*/
+    width:773px;
     transition: 0.4s;
   }
 
@@ -112,22 +112,28 @@
 }
 
 
-
+@media only screen and (min-width: 1400px) {
+  .Search__imput:focus-within {
+      border: 1.9px solid #47A01A;
+      width: 1030px;
+      transition: 0.4s;
+    }
+}
 
   @media only screen and (max-width: 1350px) {
-    /*.Search__imput:focus-within {
+    .Search__imput:focus-within {
       border: 1.9px solid #47A01A;
-      width: 1050px;
+      width: 530px;
       transition: 0.4s;
-    }*/
+    }
 }
 
 @media only screen and (max-width: 1200px) {
-  /*.Search__imput:focus-within {
+  .Search__imput:focus-within {
     border: 1.9px solid #47A01A;
-    width: 590px;
+    width: 530px;
     transition: 0.4s;
-  }*/
+  }
 }
 
 
