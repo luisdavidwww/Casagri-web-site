@@ -14,13 +14,13 @@ export const Details = () => {
   const [data, setData] = useState([])
   
   // delete item
-  const { id } = useParams();
+  const { nombre } = useParams();
   const navigate = useNavigate();
 
 
   const compare = () => {
     let compareData = featuredProductss.filter((e) => {
-      return e.id == id
+      return e.title == nombre
     })
     setData(compareData);
     console.log(data);
@@ -28,7 +28,7 @@ export const Details = () => {
 
   useEffect(() => {
     compare()
-  }, [id])
+  }, [nombre])
 
   
 

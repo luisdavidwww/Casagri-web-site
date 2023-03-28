@@ -151,9 +151,11 @@ cursor: pointer;
   display: flex;
   justify-content: center;
   flex: 1;
-  margin: 0 0.3rem;
+  margin: 0 0.7rem;
+  margin-bottom: 0.7rem;
   border-radius: 10px;
-  width: 190px;
+  width: 240px;
+  /*width: 190px;*/
   margin-top: 0.5rem;
 }
 
@@ -170,7 +172,7 @@ cursor: pointer;
   text-decoration: none;
   padding: 0.5rem;
   border: 1px solid transparent;
-  border: 1px solid rgb(223, 223, 223);
+  /*border: 1px solid rgb(223, 223, 223);*/
   background-color: #ffffff;
 }
 .cards__item__link:hover{

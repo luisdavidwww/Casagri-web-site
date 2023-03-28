@@ -139,7 +139,7 @@ const Search = ({ history }) => {
                                                         src={item.imgUrl}
                                                         title={item.title}
                                                         label=''
-                                                        path={`/Details/${ item.id }`}
+                                                        path={`/Details/${ item.title }`}
                                                         price={item.price}
                                                         presentation={item.presentation}
                                                         />

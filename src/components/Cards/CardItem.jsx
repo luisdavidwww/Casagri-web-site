@@ -100,7 +100,7 @@ function CardItem(props) {
           
             <div className='icon-heart'>
 
-              {/* Icono Favorito*/}
+              {/* Icono Favorito
               <div onClick={() => { clickState()}}>
               {
                 click ?
@@ -137,8 +137,9 @@ function CardItem(props) {
                 )
               }
               </div>
+              */}
 
-              {/* Icono Carrito*/}
+              {/* Icono Carrito
               <div onClick={() => { clickStateCart()}}>
               {
                 clickCart ?
@@ -175,6 +176,7 @@ function CardItem(props) {
                 )
               }
               </div>
+              */}
  
             </div>
 
@@ -227,7 +229,7 @@ function CardItem(props) {
         <div>
             <div className='icon-heart'>
 
-              {/* Icono Favorito*/}
+              {/* Icono Favorito
               <div onClick={() => { clickState()}}>
               {
                 click ?
@@ -264,8 +266,9 @@ function CardItem(props) {
                 )
               }
               </div>
+              */}
 
-              {/* Icono Carrito*/}
+              {/* Icono Carrito
               <div onClick={() => { clickStateCart()}}>
               {
                 clickCart ?
@@ -302,6 +305,7 @@ function CardItem(props) {
                 )
               }
               </div>
+              */}
  
             </div>
 

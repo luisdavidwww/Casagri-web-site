@@ -4,6 +4,7 @@
     justify-content: center;
     flex-direction: row;
     padding: 2rem;
+    padding-top: 1rem;
 }
 
 /* Container Productos*/
@@ -16,7 +17,7 @@
 
 .cards__items__Container{
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 0fr);
     padding-left: 0rem;
 }
 
@@ -26,6 +27,7 @@
     z-index: 1;
     width: 250px;
     margin-right: 1.5rem;
+    padding-top: 1rem;
 }
 .category__filter__Movil{
     display: none;
@@ -34,7 +36,7 @@
 
 /* Container Barra de Busqueda*/
 .formSearch__Container__Main{
-    width: 1280px;
+    width: 1050px;
     margin: auto;
     background-color: transparent;
 }
@@ -95,9 +97,10 @@
     justify-content: center;
     color: rgb(24, 24, 24);
     padding: 0rem 1rem;
+    margin-bottom: 0rem;
     text-decoration-line: none;
     cursor: pointer;
-    margin-top: 0rem;  
+    margin-top: 1rem;  
     transition: all .25s ease-in-out;
   }
   .result__Category:hover{
@@ -147,7 +150,7 @@
     /* Grid de producto*/
     .cards__items__Container{
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 2fr);
     }
     /* Container de error*/
      .container__error{
@@ -162,14 +165,14 @@
 @media only screen and (max-width: 1200px) {
     /*container de Producto*/
     .formSearch__Container__Main{
-        width: 870px;
+        width: 800px;
         margin: auto;
         background-color: transparent;
     }
     /* Grid de producto*/
     .cards__items__Container{
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 2fr);
     }
     /* Container de error*/
     .container__error{
@@ -247,6 +250,7 @@
         display: flex;
         justify-content: center;
         width: 100%;
+        margin-top: 1rem;
     }
     .result__Category__Movil{
         display: flex;
@@ -266,6 +270,19 @@
       .result__Search__Container{
         display: none;
     }
+
+
+    .result__Search{
+        display: flex;
+        justify-content: center;
+        color: rgb(24, 24, 24);
+        padding: 0rem 1rem;
+        margin-bottom: 0rem;
+        text-decoration-line: none;
+        cursor: pointer;
+        margin-top: 0rem !important;  
+        transition: all .25s ease-in-out;
+      }
 
 
 

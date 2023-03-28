@@ -70,6 +70,8 @@ const Category = ({history, component}) => {
    const [imgBanner, setImgBanner] = useState('');
    const [imgMiniBanner, setImgMiniBanner] = useState('');
    const [banner, setBanner] = useState([]);
+   const [pages, setPages] = useState([]);
+   const [categoria, setCategoria] = useState([]);
    const [loanding, setLoanding] = useState(false);
 
 
@@ -95,9 +97,48 @@ const Category = ({history, component}) => {
       const response = await fetch(`${'http://localhost:8080/api/'}${BANNERSCATEGORIA}${consulta.replace(/\s+/g, '')}`);
       const res = await response.json();
       setBanner(res.data);
+
       //Estado del Loanding Falso
       setLoanding(false);
     }
+
+   
+
+  }
+
+  //Peticion para la paginacion
+  const getPages = async () => {
+
+      setPages("");
+      //Petición a la api
+      const response = await fetch(`${'http://localhost:8080/api/lineaProductos/buscarCategoria/'}${consulta}`);
+      const res = await response.json();
+
+      console.log(res.data.categoria.nombre)
+
+      
+
+      if (res.data.subcategoria.nombre){
+        setPages(res.data.subcategoria.nombre);
+
+        const respon = await fetch(`${'http://localhost:8080/api/categorias/'}${res.data.subcategoria.categoria}`);
+        const resp = await respon.json();
+        setCategoria(resp.data.nombre);
+      }
+
+
+      if (res.data.categoria.nombre){
+        setPages("");
+        setCategoria("");
+        
+
+        setCategoria(res.data.categoria.nombre);
+        console.log(res.data.categoria.nombre);
+      }
+
+
+      
+      
 
    
 
@@ -273,20 +314,62 @@ const Category = ({history, component}) => {
       getInfo();
     },[consulta])
 
+    useEffect(() => {
+      getPages();
+    },[consulta])
+
 
   return (
-    <>
+    <div style={{backgroundColor:'#F9F9F9'}}>
     {
       loanding ?( <Loader/>):(
         <>
                 <BannerCategory image={banner.banner__desktop} imageMini={banner.banner__movil} consulta={consulta} />
-    
+{/* 
+                <div>
+                  {
+                    pages.categoria ? (
+                      <div>
+                        {pages.categoria}
+                      </div>
+                    ):null
+                  }
+                  {
+                    pages.subcategoria.nombre ? (
+                      <div>
+                        {pages.subcategoria}
+                      </div>
+                    ):null
+                  }
+                  
+                </div>
+                
+*/}
+                  <div>{categoria}</div>
+                  <div>{pages}</div>
+                <div>{consulta}</div>
     
                 {/*Barra de Busqueda Superiror */}
                 <div className='formSearch__Container__Main'>
                   <div className='formSearch__Container'>
                     <SearchForm/>
                   </div>
+                </div>
+
+                {/*Titulo de Resultado Desktop */}
+                <div className='result__Search__Container' >
+                    <div className='result__Search text__Result__Category'> 
+                        <span style={{fontWeight:'600', fontSize:'25px'}}> {consulta}</span>  
+                    </div>
+                </div>
+                {/*Titulo de Resultado Movil */}
+                <div className='result__Category__Container__Movil' >
+                    <div className='result__Category__Movil text__Result__Category__Movil'> 
+                      <>
+                          <p style={{fontWeight:'700', fontSize:'25px', marginBottom:'0rem'}}>{consulta}</p> 
+                            {/*<BsXLg className='iconResult__Category'/>*/}
+                      </>
+                    </div>
                 </div>
                 
                 
@@ -324,31 +407,6 @@ const Category = ({history, component}) => {
                             && 
                             <div className='category__products'>
                               <div className='cards'>
-                                {
-                                  consulta === 'buscar' ? null:(
-                                    <>
-                                    {/*Titulo de Resultado Desktop */}
-                                      <div className='result__Category__Container' >
-                                        <div className='result__Category text__Category'> 
-                                            <>
-                                              {/*`${'Categoria: '} ${'__'}`*/}
-                                                <span style={{fontWeight:'700'}}>{consulta}</span>  
-                                                {/*<BsXLg className='iconResult__Category'/>*/}
-                                            </>
-                                          </div>
-                                      </div>
-                                      {/*Titulo de Resultado Movil */}
-                                        <div className='result__Category__Container__Movil' >
-                                          <div className='result__Category__Movil text__Result__Category__Movil'> 
-                                              <>
-                                                  <span style={{fontWeight:'700'}}>{consulta}</span>  
-                                                  {/*<BsXLg className='iconResult__Category'/>*/}
-                                              </>
-                                            </div>
-                                        </div>
-                                    </>
-                                  )
-                                }
                                     <div className='cards__container'>
                                       <div className='cards__wrapper'> 
                                         <ul className='cards__items__Container'>
@@ -359,7 +417,7 @@ const Category = ({history, component}) => {
                                               src={item.imgUrl}
                                               title={item.title}
                                               label=''
-                                              path={`/Details/${ item.id }`}
+                                              path={`/Details/${ item.title }`}
                                               price={item.price}
                                               presentation={item.presentation}
                                               />
@@ -377,7 +435,7 @@ const Category = ({history, component}) => {
         </>
       )
     }
-    </>
+    </div>
   )
 }
 

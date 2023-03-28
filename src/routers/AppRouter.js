@@ -28,7 +28,7 @@ export const AppRouter = () => {
                     <Route path="/Company" element={ <Company/> }></Route>
                     <Route path="/Category/:consulta" element={ <Category component={"Category"}/> }></Route>
                     <Route path="/search/:query" element={ <Search/> }></Route>
-                    <Route path="/Details/:id" element={ <Details/> }></Route>
+                    <Route path="/Details/:nombre" element={ <Details/> }></Route>
                 </Routes>
                 <Footer/>
             </div>

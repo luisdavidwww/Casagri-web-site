@@ -52,7 +52,7 @@
   
   .Search__imput:focus-within {
     border: 1.9px solid #47A01A;
-    width:1000px;
+    /*width:1047px;*/
     transition: 0.4s;
   }
 
@@ -115,19 +115,19 @@
 
 
   @media only screen and (max-width: 1350px) {
-    .Search__imput:focus-within {
+    /*.Search__imput:focus-within {
       border: 1.9px solid #47A01A;
-      width: 790px;
+      width: 1050px;
       transition: 0.4s;
-    }
+    }*/
 }
 
 @media only screen and (max-width: 1200px) {
-  .Search__imput:focus-within {
+  /*.Search__imput:focus-within {
     border: 1.9px solid #47A01A;
     width: 590px;
     transition: 0.4s;
-  }
+  }*/
 }
 
 
