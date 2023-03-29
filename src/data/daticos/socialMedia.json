@@ -1,0 +1,14 @@
+[
+    {
+        "tipo":"instagram",
+        "url":"https://www.instagram.com/"
+    },
+    {
+        "tipo":"linkedin",
+        "url":"https://www.linkedin.com/"
+    },
+    {
+        "tipo":"facebook",
+        "url":"https://facebook.com/"
+    }
+]

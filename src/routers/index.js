@@ -5,7 +5,8 @@ const TRAYECTORIA = "trayectoria"
 
 //Banners Principales de Secciones
 const BANNERS = "banners/"
-
+//Banners Publicidad
+const BANNERSPUBLICIDAD = "banners/bannerP/"
 //Banners de busqueda por categoria
 const BANNERSCATEGORIA = "lineaProductos/buscarBanner/"
 
@@ -21,6 +22,7 @@ module.exports = {
     //Banners
     BANNERS,
     BANNERSCATEGORIA,
+    BANNERSPUBLICIDAD,
     //Prueba
     INSTALACIONES,
 }

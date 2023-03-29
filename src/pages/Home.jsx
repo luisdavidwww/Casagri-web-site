@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 //componentes
 import  FeaturedProducts  from 'components/Cards/FeaturedProducts';
@@ -8,9 +8,12 @@ import { CarruselDiscover } from 'components/CarruselDiscover/CarruselDiscover';
 import { CarruselCatalogue } from 'components/Home/CarruselCatalogue';
 import  NewSection  from 'components/NewsCards/NewSection';
 import { BannerCommercial } from 'components/BannerMain/BannerCommercial';
+import  BannerCarrousel  from 'components/BannerMain/BannerCarrousel';
+import Loader from "components/Loader/Loader";
 
-//Datos para los banners
+// Data
 import { BannerData } from '../data/BannerData';
+import { BANNERSPUBLICIDAD } from '../routers/index';
 
 
 
@@ -31,6 +34,30 @@ const tit =  bannerTitle.toString();
 
 
 export const Home = () => {
+
+  const [loanding, setLoanding] = useState(false);
+  const [banner, setBanner] = useState([]);
+
+  const getInfo = async () => {
+
+    //Estado del Loanding Verdadero
+    setLoanding(true);
+
+    //Petición a la api
+    const response = await fetch(`${'http://localhost:8080/api/'}${BANNERSPUBLICIDAD}`);
+    const res = await response.json();
+    setBanner(res.data);
+
+    //Estado del Loanding Falso
+    setLoanding(false);
+
+  }
+  
+  useEffect(() => {
+    getInfo();
+  },[])
+
+
   return (
     /* style={{backgroundColor:'#F0F5F9'}} */
     <div style={{backgroundColor:'#F9F9F9'}} >
@@ -38,7 +65,13 @@ export const Home = () => {
       <AboutUsHome/>
       <CarruselCatalogue component="CarruselCatalogue"/>
       <FeaturedProducts component="FeaturedProducts"/>
-      <BannerCommercial image={img} href={href} imageMini={imageMini}/>
+      {/*<BannerCommercial image={img} href={href} imageMini={imageMini}/>*/}
+      {
+          loanding ?( <Loader/>):(
+            <BannerCarrousel banner={banner} component={"BannerCarrousel"} />
+          )
+      }
+      
       <RecommendedProducts component="RecommendedProducts"/>
       <NewSection component="NewSection"/>
     </div>

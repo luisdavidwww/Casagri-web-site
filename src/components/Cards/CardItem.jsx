@@ -95,7 +95,7 @@ function CardItem(props) {
       props.component == "Categoria"  || props.component == "Buscar" ?
       (
         // Si el componente es de categoria, el ItemCard es sin Animación
-        <li className='cards__item' >
+        <li className='cards__item__Home' >
         <div>
           
             <div className='icon-heart'>
@@ -225,7 +225,7 @@ function CardItem(props) {
       :
       (
         // ItemCard con Animación
-      <li className='cards__item__Home' 
+      <li className='cards__item' 
 
         onMouseLeave={onMouseLeave} 
         data-aos="fade-up" 
@@ -318,7 +318,7 @@ function CardItem(props) {
 
             
 
-        <Link className='cards__item__link' to={props.path} >
+        <Link className='cards__item__link' to={props.path} state={ [props.categoria, props.subCategoria, props.Linea] } >
             {/* Imagen del Producto */}
             <figure className='cards__item__pic-wrap' >
             

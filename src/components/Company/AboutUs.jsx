@@ -19,7 +19,7 @@ const AboutUs = ({component}) => {
   const getInfoProducts = async () => {
 
     const datos = await fetch(`http://csgbqto.dyndns.org:6001/ctDynamicsSL/api/quickQuery/VW_VENTTU_PROD`, {
-      method: "POST",
+      method: "GET",
       headers: new Headers({
         "Content-Type": "application/json", 
         'Authorization': 'Basic REVWRUxPUEVSOkJCRjk5OTM5NDhFMw==',
@@ -29,6 +29,7 @@ const AboutUs = ({component}) => {
     });
 
     const dat = await datos.json();
+    console.log(datos);
     setInfo(dat);
    
   }

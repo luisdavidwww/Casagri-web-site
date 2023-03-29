@@ -28,4 +28,10 @@ const newsData = [
     },
 ]
 
-export { newsData }
+const imgCasagriLoad = 
+        {
+        imgUrl: "news02.jpg",
+      }
+
+
+export { newsData, imgCasagriLoad }

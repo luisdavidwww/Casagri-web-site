@@ -1,3 +1,13 @@
+ /*Banner de Publicidad*/
+ .Carrousel__Banner__Movil{
+  display:none;
+}
+.Carrousel__Banner__Desktop{
+  display:block;
+  margin-bottom: 2rem;
+}
+ 
+ 
  /*-----------Banner-----------*/
 
   .Banner-Category-Movil{
@@ -45,9 +55,17 @@
   }
 
 
-
-
   @media screen and (max-width: 960px) {
+
+    /*Banner de Publicidad*/
+    .Carrousel__Banner__Movil{
+      display:block;
+    }
+    .Carrousel__Banner__Desktop{
+      display:none;
+    }
+
+
 
     .Banner-Category-Desktop{
       display: none;

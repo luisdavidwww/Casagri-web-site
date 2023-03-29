@@ -49,6 +49,9 @@ const Cards = () =>  {
               price={item.price}
               presentation={item.presentation}
               ranking={item.ranking}
+              categoria={""}
+              subCategoria={""}
+              Linea={""}
               />
           ))}
           </ul>

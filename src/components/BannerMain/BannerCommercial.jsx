@@ -14,7 +14,7 @@ export const BannerCommercial = (props) => {
     <>
 
     <section className='Banner__comercial'>
-           {/*------------------------------Banner Escritorio------------------------------------*/}
+      {/*------------------------------Banner Escritorio------------------------------------*/}
      <section className='Banner-Commercial-Desktop' >   
       <a className='container-Commercial-Main' href={href}>
           <img className='banner-img' 

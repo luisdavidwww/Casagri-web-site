@@ -10,6 +10,7 @@ import  SearchForm  from "../Search/SearchForm";
 import './Details.css'
 //icons
 import { AiOutlineRight } from "react-icons/ai";
+import { MdDriveFileMove } from "react-icons/md";
 
 
 //importacion temporal de imagenes
@@ -74,15 +75,14 @@ export const Details = (props) => {
             ):null  
           }</Link>  
         )}
-        <Link 
+        <div 
           className={'pagesText__active'}
-          to={``} 
           style={{textDecoration:'none', color:'#494949'}}> 
             <span className='pagesText__Categoria' >
               <AiOutlineRight style={{marginLeft:'0.5rem', marginRight:'0.5rem'}}/>
               {nombre} 
             </span>
-        </Link>
+        </div>
       </div>
       {/*Barra de Busqueda 
       <div className='formSearch__Container'>
@@ -107,6 +107,7 @@ export const Details = (props) => {
               
                 <h1 className="text__Details__Title" >{item.title}</h1>
                 <h3 className="text__Details__Price" >{item.price}</h3>
+                <h3 className="text__Details__Brand" ></h3>
               </div>
 
             </div>

@@ -173,6 +173,9 @@ const Search = ({ history }) => {
                                                         path={`/Details/${ item.title }`}
                                                         price={item.price}
                                                         presentation={item.presentation}
+                                                        categoria={""}
+                                                        subCategoria={""}
+                                                        Linea={""}
                                                         />
                                                     ))}
                                                     </ul>
