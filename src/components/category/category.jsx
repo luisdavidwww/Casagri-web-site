@@ -108,8 +108,6 @@ const Category = ({history, component}) => {
       setLoanding(false);
     }
 
-   
-
   }
 
   //Peticion para la paginacion
@@ -324,9 +322,7 @@ const Category = ({history, component}) => {
       loanding ?( <Loader/>):(
         <>
                 <BannerCategory image={banner.banner__desktop} imageMini={banner.banner__movil} consulta={consulta} />
-                
-                
-    
+
                 {/*Seccion Superiror */}
                 <div className='formSearch__Container__Main'>
                   {/*Paginacion*/}

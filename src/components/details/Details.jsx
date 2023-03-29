@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react"
 
 //importacion de datos de productos
 import { featuredProductss } from "../../data/featuredProductss";
-import { useParams, useNavigate, useLocation } from "react-router-dom"
-import { ADD, DELETE, REMOVE_INT } from "../../controller/action"
-
-
+import { useParams, useNavigate, useLocation, Link } from "react-router-dom";
+import { ADD, DELETE, REMOVE_INT } from "../../controller/action";
+//Componentes
+import  SearchForm  from "../Search/SearchForm";
 //Estilos
 import './Details.css'
+//icons
+import { AiOutlineRight } from "react-icons/ai";
 
 
 //importacion temporal de imagenes
@@ -18,6 +20,7 @@ export const Details = (props) => {
   const { categoria } = props;
 
   const [data, setData] = useState([])
+  const [localProducts, setLocalProducts] = useState([])
   
   // delete item
   const { nombre } = useParams();
@@ -32,41 +35,80 @@ export const Details = (props) => {
     let compareData = featuredProductss.filter((e) => {
       return e.title == nombre
     })
+    setLocalProducts(from);
     setData(compareData);
-    console.log(data);
   }
+
+  const listItems = Object.keys(from).map((from) =>
+  <li>{from}</li>
+);
+
 
   useEffect(() => {
     compare();
-    console.log(from)
+    console.log(from);
+    console.log(localProducts);
   }, [nombre])
 
   
 
   return (
     <>
+    <div className='formSearch__Container__Main'>
+      {/*Paginacion*/}
+      <div className='Pages'> 
+        <Link to={`/`} style={{textDecoration:'none', color:'#494949'}}> 
+            <>Inicio</>
+        </Link>
+        {from.map(item => 
+          <Link
+            className={'pagesText'}
+            style={{textDecoration:'none', color:'#494949'}}
+            to={`/Category/${item}`} 
+          > 
+            {item != "" ? (
+            <span className='pagesText__Categoria' >
+              <AiOutlineRight style={{marginLeft:'0.5rem', marginRight:'0.5rem'}}/>
+              {item} 
+            </span>
+            ):null  
+          }</Link>  
+        )}
+        <Link 
+          className={'pagesText__active'}
+          to={``} 
+          style={{textDecoration:'none', color:'#494949'}}> 
+            <span className='pagesText__Categoria' >
+              <AiOutlineRight style={{marginLeft:'0.5rem', marginRight:'0.5rem'}}/>
+              {nombre} 
+            </span>
+        </Link>
+      </div>
+      {/*Barra de Busqueda 
+      <div className='formSearch__Container'>
+        <SearchForm/>
+      </div>
+      */}
+    </div>
       <article >
+        
         <section className="Details__main">
+              
+
+
           {data.map((item) => (
-            <div className='Details__container'
-            >
+            <div className='Details__container'>
+
               <div className=''>
                 <img src={imgL(`./${item.imgUrl}`)} alt='' style={{width:'500px'}}/>
               </div>
               
-              
-              
               <div className='information__Details'> 
               
                 <h1 className="text__Details__Title" >{item.title}</h1>
-                <h1 className="text__Details__Title" >AGUJA DEMAPLAST 16X1</h1>
                 <h3 className="text__Details__Price" >{item.price}</h3>
-                <p className="text__Details__Presentation" >{item.presentation}</p>
-                <div className=''>
-                  <button className=''>Add To Cart</button>
-                </div>
-                <p>{item.description}</p>
               </div>
+
             </div>
           ))}
         </section>
