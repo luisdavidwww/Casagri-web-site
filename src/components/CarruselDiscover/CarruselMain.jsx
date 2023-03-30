@@ -1,25 +1,30 @@
+import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
+import Skeleton from 'react-loading-skeleton';
 
-//Estilos
-import '../BannerMain/BannerCategory.css';
-import '../../Styles/GlobalStyles.css';
-
-
-const BannerCarrousel = ({banner, component}) => {
+const CarruselMain = ({banner, component}) => {
   return (
     <>
     {/* Banner Desktop */}
     <section className='Carrousel__Banner__Desktop'>
-      <Carousel fade indicators={false} >
-          { banner?.map((banner, index) => (
+      <Carousel fade indicators={false}>
+          {banner?.map((banner, index) => (
             <Carousel.Item interval={4000}  key={`${component}-${'desktop'}-${index}`} >
-            <img
-              className="d-block w-100"
-              src={banner.banner__desktop}
-              alt="First slide"
-            />
-              <Carousel.Caption>
-              </Carousel.Caption>
+                { banner.banner__desktop ? (
+                    <>
+                        <img
+                        className="d-block w-100 img__Banner"
+                        src={banner.banner__desktop}
+                        alt="First slide"
+                        />
+                        
+                        <Carousel.Caption>
+                        </Carousel.Caption>
+                    </>
+                )
+                :(<Skeleton variant="rectangular" width={'100%'} height={400} />)
+                }
+            
           </Carousel.Item>
 
             ))}
@@ -44,8 +49,7 @@ const BannerCarrousel = ({banner, component}) => {
       </Carousel>
     </section>
     </>
-    
-  );
+  )
 }
 
-export default BannerCarrousel;
+export default CarruselMain

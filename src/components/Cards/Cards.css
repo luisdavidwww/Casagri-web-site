@@ -469,7 +469,9 @@ font-family: "Gotham Medium";
 
 
   .cards__item__Home{
-    width: 190px;
+    width: 175px;
+    margin-left: 0.5rem !important;
+    margin-right: 0.5rem !important;
   }
 }
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-//componentes
+//componentes 
 import  FeaturedProducts  from 'components/Cards/FeaturedProducts';
 import  RecommendedProducts  from 'components/Cards/RecommendedProducts';
 import  AboutUsHome  from 'components/Home/AboutUsHome';
@@ -9,11 +9,12 @@ import { CarruselCatalogue } from 'components/Home/CarruselCatalogue';
 import  NewSection  from 'components/NewsCards/NewSection';
 import { BannerCommercial } from 'components/BannerMain/BannerCommercial';
 import  BannerCarrousel  from 'components/BannerMain/BannerCarrousel';
+import  CarruselMain  from 'components/CarruselDiscover/CarruselMain';
 import Loader from "components/Loader/Loader";
 
 // Data
 import { BannerData } from '../data/BannerData';
-import { BANNERSPUBLICIDAD } from '../routers/index';
+import { BANNERSPUBLICIDAD, BANNERSHOME } from '../routers/index';
 
 
 
@@ -37,6 +38,7 @@ export const Home = () => {
 
   const [loanding, setLoanding] = useState(false);
   const [banner, setBanner] = useState([]);
+  const [bannerHome, setBannerHome] = useState([]);
 
   const getInfo = async () => {
 
@@ -47,6 +49,11 @@ export const Home = () => {
     const response = await fetch(`${'http://localhost:8080/api/'}${BANNERSPUBLICIDAD}`);
     const res = await response.json();
     setBanner(res.data);
+
+    const respon = await fetch(`${'http://localhost:8080/api/'}${BANNERSHOME}`);
+    const resp = await respon.json();
+    setBannerHome(resp.data);
+
 
     //Estado del Loanding Falso
     setLoanding(false);
@@ -61,19 +68,21 @@ export const Home = () => {
   return (
     /* style={{backgroundColor:'#F0F5F9'}} */
     <div style={{backgroundColor:'#F9F9F9'}} >
-      <CarruselDiscover component="CarruselDiscover"/>
-      <AboutUsHome/>
-      <CarruselCatalogue component="CarruselCatalogue"/>
-      <FeaturedProducts component="FeaturedProducts"/>
-      {/*<BannerCommercial image={img} href={href} imageMini={imageMini}/>*/}
       {
           loanding ?( <Loader/>):(
+            <>
+            <CarruselMain banner={bannerHome} component={"CarruselMain"} />
+            {/*<CarruselDiscover component="CarruselDiscover"/>*/}
+            <AboutUsHome/>
+            <CarruselCatalogue component="CarruselCatalogue"/>
+            <FeaturedProducts component="FeaturedProducts"/>
+            {/*<BannerCommercial image={img} href={href} imageMini={imageMini}/>*/}
             <BannerCarrousel banner={banner} component={"BannerCarrousel"} />
-          )
-      }
-      
-      <RecommendedProducts component="RecommendedProducts"/>
-      <NewSection component="NewSection"/>
+            <RecommendedProducts component="RecommendedProducts"/>
+            <NewSection component="NewSection"/>
+            </>
+      )
+    }
     </div>
   )
 }

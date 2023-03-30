@@ -47,8 +47,8 @@ export const Details = (props) => {
 
   useEffect(() => {
     compare();
-    console.log(from);
-    console.log(localProducts);
+    //console.log(from);
+    //console.log(localProducts);
   }, [nombre])
 
   

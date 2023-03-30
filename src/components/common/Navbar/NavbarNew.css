@@ -203,8 +203,6 @@ a{
 }
 
 
-
-
 .desktopNav__SubLines-two{
   display: flex;
   vertical-align:top;
@@ -250,6 +248,7 @@ a{
   transition: all .5s ease-in-out;
   text-decoration: none;
 }
+
 .desktopNav__titleSubCategory:hover{
   display: flex;
   cursor: pointer;

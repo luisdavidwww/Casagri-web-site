@@ -46,6 +46,9 @@ const AboutUs = ({component}) => {
     console.log(info);
   },[])
 
+  AOS.init({
+    once: true,
+    });
 
   return (
     <>

@@ -158,6 +158,7 @@ const Category = ({history, component}) => {
         return
 		}
         else {
+        setProducts([]);
 		    compare();
         compareImgBanner();
 			  return
@@ -321,8 +322,10 @@ const Category = ({history, component}) => {
     {
       loanding ?( <Loader/>):(
         <>
-                <BannerCategory image={banner.banner__desktop} imageMini={banner.banner__movil} consulta={consulta} />
-
+                <div className='categoryBanner__Container'>
+                  <BannerCategory image={banner.banner__desktop} imageMini={banner.banner__movil} consulta={consulta} />
+                </div>
+              
                 {/*Seccion Superiror */}
                 <div className='formSearch__Container__Main'>
                   {/*Paginacion*/}

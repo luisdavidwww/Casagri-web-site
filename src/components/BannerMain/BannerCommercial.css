@@ -4,6 +4,13 @@
     display: none;
   }
 
+  .Banner-Main-Movil{
+    display: none;
+  }
+  .Banner-Main-Desktop{
+    display: block;
+  }
+
   .Banner__comercial{
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -62,6 +69,16 @@
 
 
   @media screen and (max-width: 960px) {
+
+    .Banner-Main-Movil{
+      display: block;
+      padding-top: 80px;
+    }
+    .Banner-Main-Desktop{
+      display: none;
+    }
+
+
 
     .Banner-Commercial-Desktop{
       display: none;

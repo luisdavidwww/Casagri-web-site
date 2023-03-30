@@ -6,6 +6,11 @@
     padding-top: 1rem;
 }
 
+/* Container de Banner */
+.categoryBanner__Container{
+  display: block;
+  height: 280px;
+}
 /* Container Productos*/
 .category__products{
     display: flex;

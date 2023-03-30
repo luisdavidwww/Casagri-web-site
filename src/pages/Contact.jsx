@@ -37,7 +37,7 @@ export const Contact = () => {
 
   return (
     <>
-      <div>
+      <div style={{backgroundColor:'#F9F9F9'}}>
       {
           loanding ?( <Loader/>):(
             <>

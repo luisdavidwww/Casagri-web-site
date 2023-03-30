@@ -5,6 +5,7 @@
 .Carrousel__Banner__Desktop{
   display:block;
   margin-bottom: 2rem;
+  margin-top: 0px;
 }
  
  
@@ -18,7 +19,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 13.5rem !important;
+    height: 100% !important;
   }
 
   .banner-img{
@@ -54,12 +55,18 @@
     letter-spacing: -1px;
   }
 
+  .img__Banner{
+    display: block;
+    height: 100%;
+  }
+
 
   @media screen and (max-width: 960px) {
 
     /*Banner de Publicidad*/
     .Carrousel__Banner__Movil{
       display:block;
+      padding-top: 80px;
     }
     .Carrousel__Banner__Desktop{
       display:none;
