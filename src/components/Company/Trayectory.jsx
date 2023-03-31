@@ -4,6 +4,8 @@ import AOS      from 'aos';
 
 //imagenes
 import nosotros from 'static/images/home/aboutUsHome.jpg';
+import Tecnología from 'static/images/Trayectory/InnovasionTecnologica.jpg';
+import Trayectoria from 'static/images/Trayectory/Trayectoria.jpg';
 import nosotrosMini from '../../static/images/home/aboutUsHomeMini.jpg';
 //Diseño y estilos
 import './Trayectory.css';
@@ -96,7 +98,7 @@ const Trayectory = ({Trayectory}) => {
                                 <img
                                   className='us-img-w'
                                   alt='Sede AgroMax'
-                                  src={ nosotros }
+                                  src={ Trayectoria }
                                 />
                             </a>
                         </div>
@@ -110,7 +112,7 @@ const Trayectory = ({Trayectory}) => {
                               <img
                                 className='us-img__trayectory'
                                 alt='Sede AgroMax'
-                                src={ nosotros }
+                                src={ Tecnología }
                               />
                           </a>
                           {/* Info */}
@@ -163,7 +165,7 @@ const Trayectory = ({Trayectory}) => {
                     <img
                       className='us-img__trayectory'
                       alt='Sede AgroMax'
-                      src={ nosotros }
+                      src={ Trayectoria }
                       data-aos="zoom-in-up" data-aos-once="true" data-aos-duration="1000"
                     />
               </a>
@@ -193,7 +195,7 @@ const Trayectory = ({Trayectory}) => {
                     <img
                       className='us-img__trayectory'
                       alt='Sede AgroMax'
-                      src={ nosotros }
+                      src={ Tecnología }
                       data-aos="zoom-in-up" data-aos-once="true" data-aos-duration="1000"
                     />
                 </a>

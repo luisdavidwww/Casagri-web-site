@@ -15,6 +15,11 @@
     display: none;
   }
 
+  .Banner-Category-Desktop{
+    display: block;
+    /*height: 480px;*/
+  }
+
   .container-Category-Main{
     display: flex;
     justify-content: center;
