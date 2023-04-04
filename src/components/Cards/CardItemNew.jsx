@@ -94,7 +94,7 @@ function CardItemNew(props) {
         <li className='cards__item' >
         <div>
           
-        <Link className='cards__item__link' to={props.path}  state={ [props.categoria, props.subCategoria, props.Linea] } >
+        <Link className='cards__item__link' to={props.path}  state={ [props.categoria, props.subCategoria, props.Linea, props.CodigoProd] } >
             {/* Imagen del Producto */}
             <figure className='cards__item__pic-wrap' >
             

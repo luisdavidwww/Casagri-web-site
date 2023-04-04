@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react"
 
 //importacion de datos de productos
 import { featuredProductss } from "../../data/featuredProductss";
+import data from "../../data/daticos/productos.json";
 import { useParams, useNavigate, useLocation, Link } from "react-router-dom";
 import { ADD, DELETE, REMOVE_INT } from "../../controller/action";
 //Componentes
 import  SearchForm  from "../Search/SearchForm";
+import {getProductByName} from '../../selectors/getInfoCasagri';
 //Estilos
 import './Details.css'
 //icons
@@ -32,6 +34,7 @@ export const Details = (props) => {
   const  from  = location.state
 
 
+  //Comparacion de datos estaticos con imagenes
   const compare = () => {
     let compareData = featuredProductss.filter((e) => {
       return e.title == nombre
@@ -40,6 +43,15 @@ export const Details = (props) => {
     setData(compareData);
   }
 
+//Comparacion de datos estaticos Casagri
+  const compare2 = () => {
+    //setLocalProducts(from);
+    let compareData = getProductByName(nombre);
+    console.log(compareData);
+    setData(compareData);
+  }
+
+
   const listItems = Object.keys(from).map((from) =>
   <li>{from}</li>
 );
@@ -47,6 +59,7 @@ export const Details = (props) => {
 
   useEffect(() => {
     compare();
+    //compare2();
     //console.log(from);
     //console.log(localProducts);
   }, [nombre])

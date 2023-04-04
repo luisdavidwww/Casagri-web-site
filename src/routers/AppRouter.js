@@ -11,6 +11,7 @@ import { Company } from 'pages/Company';
 import Search  from 'components/Search/Search';
 import Category  from 'components/category/category';
 import { Details }  from 'components/details/Details';
+import { DetailsNew }  from 'components/details/DetailsNew';
 
 
 import '../Styles/GlobalStyles.css'
@@ -29,6 +30,7 @@ export const AppRouter = () => {
                     <Route path="/Category/:consulta" element={ <Category component={"Category"}/> }></Route>
                     <Route path="/search/:query" element={ <Search/> }></Route>
                     <Route path="/Details/:nombre" element={ <Details/> }></Route>
+                    <Route path="/DetailsNew/:nombre" element={ <DetailsNew/> }></Route>
                 </Routes>
                 <Footer/>
             </div>
