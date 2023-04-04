@@ -9,7 +9,7 @@
 /* Container de Banner */
 .categoryBanner__Container{
   display: block;
-  height: 280px;
+  height: 100%;
 }
 /* Container Productos*/
 .category__products{
@@ -424,7 +424,7 @@
     .Pages{
         font-size: 11px;
         justify-content: center;
-        margin-top: 0.5rem;
+        margin-top: 0rem;
       }
     .Pages__Search{
         font-size: 11px;
