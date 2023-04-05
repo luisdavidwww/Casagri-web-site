@@ -73,8 +73,10 @@ export const Company = () => {
     //console.log(JSON.stringify(getProductByBrands("PUPPY PETS"))); 
     //console.log(getBrandsByName());
 
-    console.log(getProductByCat4("ASPERJADORAS MOTORIZADAS PORTATILES"))
-    console.log(getProductByName("Cipermetrina Calbos"));
+    //console.log(getProductByCat4("ASPERJADORAS MOTORIZADAS PORTATILES"))
+    //console.log(getProductByName("Cipermetrina Calbos"));
+
+    
 
 
     //setBrand(getBrandsByName());

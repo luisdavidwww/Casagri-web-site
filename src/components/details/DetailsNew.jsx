@@ -37,8 +37,7 @@ export const DetailsNew = (props) => {
 //Peticion del Banner Principal
 const getInfo = async () => {
 
-  //Estado del Loanding Verdadero
-  console.log("Nombresito:"+from[3]);
+  //Codigo del producto que viene por parámetro
   let CodigoProd = from[3];
 
 

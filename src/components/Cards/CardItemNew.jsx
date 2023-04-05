@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from "react-router-dom";
 import AOS      from 'aos';
 import Skeleton from 'react-loading-skeleton';
@@ -23,85 +23,48 @@ const imgL = require.context('../../static/images/news', true);
 
 function CardItemNew(props) {
 
+//UseState para las imagenes
+const [image, setImge] = useState([]);
 
-  const [dropdown, setDropdown] = useState(false);
-  const [click, setClick] = useState(false);
-  const [infoHeart, setInfoHeart] = useState(false);
+//Peticion de la imagen del producto
+const getProductImage = async () => {
 
-  const [clickCart, setClickCart] = useState(false);
-  const [infoCart, setInfoCart] = useState(false);
+  //Petición a la api
+  const response = await fetch(`${'http://localhost:8080/api/'}${"productos/nombre/"}${props.CodigoProd}`);
+  const res = await response.json();
 
-
-  //acciones btn favoritos
-  const onMouseEnter = () => {
-    if (window.innerWidth < 960) {
-      setInfoHeart(false);
-    } else {
-      setInfoHeart(true);
-    }
-  };
-  const onMouseLeave = () => {
-    if (window.innerWidth < 960) {
-      setInfoHeart(false);
-    } else {
-      setInfoHeart(false);
-    }
-  };
-  const clickState = () => {
-    if ( click )
-    {
-      setClick(false);
-      setInfoHeart(false);
-    }
-    else{
-      setClick(true);
-      setInfoHeart(false);
-    }
+  //en caso que no tenga imagen el producto
+  if ( res.data == null)
+  {
+    setImge([]);
   }
+  setImge(res.data);
+}
 
-
-  //acciones btn carts
-  const onMouseEnterCart = () => {
-    if (window.innerWidth < 960) {
-      setInfoCart(false);
-    } else {
-      setInfoCart(true);
-    }
-  };
-  const onMouseLeaveCart = () => {
-    if (window.innerWidth < 960) {
-      setInfoCart(false);
-    } else {
-      setInfoCart(false);
-    }
-  };
-  const clickStateCart = () => {
-    if ( clickCart )
-    {
-      setClickCart(false);
-      setInfoCart(false);
-    }
-    else{
-      setClickCart(true);
-      setInfoCart(false);
-    }
-  }
+useEffect(() => {
+  getProductImage();
+}, [])
 
 
 
   return (
     <>
-        <li className='cards__item' >
+        <li className='cards__item'
+        data-aos="fade-up" 
+        data-aos-once="true" 
+        data-aos-duration="1500"
+        >
         <div>
           
         <Link className='cards__item__link' to={props.path}  state={ [props.categoria, props.subCategoria, props.Linea, props.CodigoProd] } >
             {/* Imagen del Producto */}
             <figure className='cards__item__pic-wrap' >
-            
-              <img
+              {
+                image !== null ?  (
+                  <img
                 className='cards__item__img'
-                alt='Travel Image'
-                src={imgL(`./${props.src}`)}
+                alt={props.Nombre}
+                src={image.imagen_principal }
                 layout="fill"
                         style={{
                             marginLeft: "auto",
@@ -110,6 +73,22 @@ function CardItemNew(props) {
                             height: "5rem"
                           }}
                         />
+
+                ):(
+                  <img
+                  className='cards__item__img'
+                  alt={props.Nombre}
+                  src={imgL(`./${props.src}`) }
+                  layout="fill"
+                          style={{
+                              marginLeft: "auto",
+                              marginRight: "auto",
+                              width: "100%",
+                              height: "5rem"
+                            }}
+                          />
+                )
+              }
             </figure>
 
             {/* Datos del Productos */}
@@ -123,7 +102,7 @@ function CardItemNew(props) {
                   <h5 className='cards__item__text-presentation'>{props.Marca}</h5>
                 </div>
                 <div className='cards__item__info'>
-                  <h5 className='cards__item__text-price'>{props.Peso}kg</h5>
+                  <h5 className='cards__item__text-price'>{props.Peso} kg</h5>
                 </div>
                 <StarRanking className='container__star' ranking={""} card={true} href=''/> 
             </div>
@@ -131,8 +110,7 @@ function CardItemNew(props) {
 
         </div>
         </li>
-     
-    
+
     </>
   );
 }

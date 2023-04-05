@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Skeleton from 'react-loading-skeleton';
 
 //Estilos
@@ -6,10 +6,25 @@ import '../BannerMain/BannerMain.css';
 import '../../Styles/GlobalStyles.css';
 
 
+
+
+
 export const BannerMain = (props) => {
 
   //props que darán valor tanto a la imagen del banner comoal titulo interno
   const { image, imageMini, title } = props;
+
+  const [loanding, setLoanding] = useState(false);
+  const [banner, setBanner] = useState("");
+
+  useEffect(() => {
+    console.log(image);
+    if (image !== "")
+    {
+      setLoanding(true);
+    }
+    setBanner(image);
+  }, [])
 
   return (
     <>
@@ -17,7 +32,7 @@ export const BannerMain = (props) => {
 
      <section className='Banner-Main-Desktop'>
       {
-        image ? (
+        loanding ? (
           <div className='container-Banner-Main'>
             <img className='banner-img' 
               src={image}
@@ -28,7 +43,10 @@ export const BannerMain = (props) => {
             </div>
           </div>
         ):(
-          <Skeleton variant="rectangular" className='container-Banner-Main' />
+          <div className='container-Banner-Main'>
+            <Skeleton variant="rectangular" className='banner-img' height={280} />
+          </div>
+          
         )
       }
      </section>
