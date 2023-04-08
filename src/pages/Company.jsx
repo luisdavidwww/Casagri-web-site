@@ -13,7 +13,7 @@ import Loader from "components/Loader/Loader";
 import  { getProductByName,
           getCategory, 
           getProductByCategory,
-          getProductByCat4,
+          getProductByCat3,
           getBrandsByName, 
           getProductByBrands 
          
@@ -32,6 +32,7 @@ export const Company = () => {
   const [loanding, setLoanding] = useState(false);
   const [banner, setBanner] = useState([]);
   const [brand, setBrand] = useState([]);
+  const [brando, setBrando] = useState([]);
 
 
   //Peticion del Banner Principal
@@ -73,11 +74,10 @@ export const Company = () => {
     //console.log(JSON.stringify(getProductByBrands("PUPPY PETS"))); 
     //console.log(getBrandsByName());
 
-    //console.log(getProductByCat4("ASPERJADORAS MOTORIZADAS PORTATILES"))
+    console.log(getProductByCat3("INSECTICIDAS"))
     //console.log(getProductByName("Cipermetrina Calbos"));
 
-    
-
+    setBrando(getProductByCat3("INSECTICIDAS"));
 
     //setBrand(getBrandsByName());
 
@@ -96,7 +96,7 @@ export const Company = () => {
               <Trayectory component="Trayectory"/>
               <NationalMomentum component="NationalMomentum"/>
               <div>
-              {brand?.map((item, index) => (
+              {brando?.map((item, index) => (
                 <div key={`${"Marcascasagri"}-${index}`}>
                   {item.Marca}
                 </div>

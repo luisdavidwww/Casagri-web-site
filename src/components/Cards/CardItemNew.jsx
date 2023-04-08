@@ -56,7 +56,8 @@ useEffect(() => {
         >
         <div>
           
-        <Link className='cards__item__link' to={props.path}  state={ [props.categoria, props.subCategoria, props.Linea, props.CodigoProd] } >
+        <Link className='cards__item__link' to={props.path}  
+              state={ [props.categoria, props.subCategoria, props.Linea, props.CodigoProd] } >
             {/* Imagen del Producto */}
             <figure className='cards__item__pic-wrap' >
               {
