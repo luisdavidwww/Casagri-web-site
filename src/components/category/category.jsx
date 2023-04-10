@@ -4,15 +4,20 @@ import { useParams,Link } from "react-router-dom";
 
 //importacion de datos de productos
 import { featuredProductss } from "../../data/featuredProductss";
+import dataPro from "../../data/daticos/productos.json";
 import { featuredProducts } from "../../data/featuredProducts";
 import { ProductsAll } from "../../data/ProductsAll";
+//METODOS FILTRADO
+import { getProductByCategory , getProductByCat2 } from "../../selectors/getInfoCasagri";
 //componentes
 import CardItem from '../Cards/CardItem';
+import CardItemNew from '../Cards/CardItemNew';
 import  Search  from "../Search/Search";
 import  SearchForm  from "../Search/SearchForm";
 import  FiltersBar  from "../Search/FiltersBar";
 import  FilterSidebar  from "../Search/FilterSidebar";
 import { BannerCategory } from 'components/BannerMain/BannerCategory';
+import { imgCasagriLoad } from '../../data/newsData';
 import Loader from "components/Loader/Loader";
 //Variables de Entorno
 import { BANNERSCATEGORIA, BANNERS } from '../../routers/index';
@@ -172,10 +177,12 @@ const Category = ({history, component}) => {
           || consulta === 'Salud Animal' || consulta === 'Ferretería' 
           || consulta === 'Salud Pública')
       {
-        let compareData = featuredProductss.filter((e) => {
+        /*let compareData = featuredProductss.filter((e) => {
           return e.category == consulta;
         })
-        setProducts(compareData);
+        setProducts(compareData); getProductByCategory*/
+        console.log(getProductByCategory("AGROINDUSTRIAL")); 
+        setProducts(getProductByCategory("AGROINDUSTRIAL")); 
       }
 
 
@@ -194,7 +201,8 @@ const Category = ({history, component}) => {
         let compareData = featuredProductss.filter((e) => {
           return e.subCategory == consulta;
         })
-        setProducts(compareData);
+        //setProducts(compareData);
+        setProducts(getProductByCat2("AGROQUIMICOS")); 
       }
 
 
@@ -435,6 +443,7 @@ const Category = ({history, component}) => {
                                       <div className='cards__wrapper'> 
                                         <ul className='cards__items__Container'>
                                           {products?.map((item, index) => (
+                                            /*
                                               <CardItem
                                               component={"Categoria"}
                                               key={`${component}-${index}`}
@@ -447,6 +456,21 @@ const Category = ({history, component}) => {
                                               categoria={categoria}
                                               subCategoria={subCategoria}
                                               Linea={linea}
+                                              />*/
+                                              <CardItemNew
+                                              key={`${component}-${index}`}
+                                              src={imgCasagriLoad.imgUrl}
+                                              Nombre={item.Nombre}
+                                              Peso={item.PesoKG}
+                                              path={`/DetailsNew/${ item.Nombre }`}
+                                              price={""}
+                                              CodigoProd={item.CodigoProd}
+                                              Marca={item.Marca}
+                                              ranking={""}
+                                              component={component}
+                                              categoria={""}
+                                              subCategoria={""}
+                                              Linea={""}
                                               />
                                           ))}
                                         </ul>
