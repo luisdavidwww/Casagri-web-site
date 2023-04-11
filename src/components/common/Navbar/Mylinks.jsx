@@ -20,10 +20,12 @@ export const links = [
         Head: "Semillas",
         subitem: true,
         sublink: [
-          { name: "Frutas y Hortalizas", link: "/search" },
-          { name: "Pasto", link: "/search" },
           { name: "Maíz", link: "/search" },
-          { name: "Sustratos", link: "/search" },
+          { name: "Pasto", link: "/search" },
+          { name: "Hortalizas", link: "/search" },
+          { name: "Hortalizas Híbridas", link: "/search" },
+          { name: "Bandejas de Germinación", link: "/search" },
+          { name: "Bolsas de Vivero", link: "/search" },
         ],
       },
       {

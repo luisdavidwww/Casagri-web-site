@@ -209,7 +209,7 @@ const Navbar = ({component}) => {
 
                   {/* Lineas de Producto en el Navbar */}
                   <div className={heading == link.name && hover ? 'desktopNav__container-line' : 'desktopNav__container-line' }>
-                    <Link to={`/Category/${link.name}`}  style={{textDecoration:'none'}}>
+                    <Link /*to={`/Category/${link.name}`}*/  style={{textDecoration:'none'}}>
                       <div
                           className={ 'desktopNav__container-line-title' }
                           onMouseOver={() => {

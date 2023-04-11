@@ -118,10 +118,26 @@ const Category = ({ component }) => {
       //Petición a la api
       const response = await fetch(`${'http://localhost:8080/api/'}${BANNERSCATEGORIA}${consulta.replace(/\s+/g, '')}`);
       const res = await response.json();
-      setBanner(res.data);
 
-      //Estado del Loanding Falso
-      setLoanding(false);
+      //Petición exitosa
+      if ( res.data !== null )
+      {
+        setBanner(res.data);
+        //Estado del Loanding Falso
+        setLoanding(false); 
+      }
+      // En caso que exista un error en la petición del Banner
+      else{
+        //se asigna el banner de la seccion buscar
+        const response = await fetch(`${'http://localhost:8080/api/'}${BANNERS}${"Buscar"}`);
+        const res = await response.json();
+        setBanner(res.data);
+
+        //Estado del Loanding Falso
+        setLoanding(false);
+      }
+
+      
     }
 
   }
@@ -176,7 +192,6 @@ const Category = ({ component }) => {
         else {
         setProducts([]);
 		    compare();
-        //compareImgBanner();
 			  return
 		}
     }
@@ -186,20 +201,12 @@ const Category = ({ component }) => {
     //Paginacion Productos
     const filterProducts = () => {
 
-
             if( buscar.length === 0 ) 
             {
               return getProductByCategory(consulta.toUpperCase()).slice(currentPage, currentPage + 16);
               console.log(getProductByCategory(consulta.toUpperCase()));
             }
 
-            
-            
-
-            // Si hay algo en la caja de texto
-            /*
-            const filtered = getProductByCat2("AGROQUIMICOS").filter( prod => prod.Nombre.includes( search ) );;
-            return filtered.slice( currentPage, currentPage + 16); */
 
 
     }
@@ -270,95 +277,6 @@ const Category = ({ component }) => {
 
     }
 
-    //compara la props de URL con las categorias existentes
-    const compareImgBanner = () => {
-
-      //Banner Agroindustrial
-      if (consulta === 'Agroindustrial' || consulta === 'Agroquímicos' ||  consulta === 'Semillas' || consulta === 'Fertilizantes' || consulta === 'Sacos Cabuyas y Cordeles' || consulta === 'Cercas de Alambre y Eléctricas' || consulta === 'Insecticidas' || consulta === 'Otros' || consulta === 'Herbicidas' || consulta === 'Fungicidas' || consulta === 'Frutas y Hortalizas'|| consulta === 'Pasto' || consulta === 'Maíz'|| consulta === 'Sustratos')
-      {
-        
-        let compareBanner = BannerCategoryImg.filter((e) => {return e.category == 'Agroindustial';})
-        //declaramos las variables para las imagenes
-        let condImg =  compareBanner.map(item => item.img).toString();
-        let condImgMini = compareBanner.map(item => item.miniimg).toString();
-
-        //Cargamos las imagenes
-        setImgBanner(condImg);
-        setImgMiniBanner(condImgMini);
-      }
-
-      //Banner Maquinarias
-      if (consulta === 'Maquinarias' || consulta === 'Equípos Agrícolas' ||  consulta === 'Asperjadoras' || consulta === 'Abonadoras, Sembradoras y Cosechadoras' || consulta === 'Desmalezadoras' || consulta === 'Motosierras' || consulta === 'Motocultores' || consulta === 'Bombas de Agua' || consulta === 'Alta presión' || consulta === 'Baja presión'|| consulta === 'Generadores' || consulta === 'Motores'|| consulta === 'Sustratos')
-      {
-        let compareBanner = BannerCategoryImg.filter((e) => {return e.category == 'Maquinarias';})
-        //declaramos las variables para las imagenes
-        let condImg =  compareBanner.map(item => item.img).toString();
-        let condImgMini = compareBanner.map(item => item.miniimg).toString();
-
-        //Cargamos las imagenes
-        setImgBanner(condImg);
-        setImgMiniBanner(condImgMini);
-      }
-
-      //Banner Salud Animal
-      if (consulta === 'Salud Animal' || consulta === 'Medicina Veterinaria' ||  consulta === 'Antibióticos' || consulta === 'Anti-Diarreícos' || consulta === 'Analgésicos y Antiflamatorios' || consulta === 'Baños, Ectoparasitarios y Matagusanos' || consulta === 'Desparacitantes' || consulta === 'Tópicos y Sicatrizantes' || consulta === 'Vacunas' || consulta === 'Vitaminas y Suplementos' || consulta === 'Instrumental Veterinario'  || consulta === 'Manejo e Identificadores'     )
-      {
-        let compareBanner = BannerCategoryImg.filter((e) => {return e.category == 'SaludAnimal';})
-        //declaramos las variables para las imagenes
-        let condImg =  compareBanner.map(item => item.img).toString();
-        let condImgMini = compareBanner.map(item => item.miniimg).toString();
-
-        //Cargamos las imagenes
-        setImgBanner(condImg);
-        setImgMiniBanner(condImgMini);
-      }
-
-      //Banner Ferretería
-      if (consulta === 'Ferretería' || consulta === 'Ferretería Agrícola' ||  consulta === 'Electricidad' || consulta === 'Otros Productos')
-      {
-        let compareBanner = BannerCategoryImg.filter((e) => {return e.category == 'Ferretería';})
-        //declaramos las variables para las imagenes
-        let condImg =  compareBanner.map(item => item.img).toString();
-        let condImgMini = compareBanner.map(item => item.miniimg).toString();
-
-        //Cargamos las imagenes
-        setImgBanner(condImg);
-        setImgMiniBanner(condImgMini);
-      }
-
-      //Banner Salud Pública
-      if (consulta === 'Salud Pública' || consulta === 'Control De Plaga' ||  consulta === 'Desinfectante')
-      {
-        let compareBanner = BannerCategoryImg.filter((e) => {return e.category == 'Salud Pública';})
-        //declaramos las variables para las imagenes
-        let condImg =  compareBanner.map(item => item.img).toString();
-        let condImgMini = compareBanner.map(item => item.miniimg).toString();
-
-        //Cargamos las imagenes
-        setImgBanner(condImg);
-        setImgMiniBanner(condImgMini);
-      }
-
-    }
-
-    //metodo para aplicar los filtros de busqueda
-    const filterCategory = (category, consulta) => {
-		if (category === 'All'){
-			compare()
-			return
-		}
-      if (consulta === 'Agroindustrial'){
-			compare()
-			return
-		}
-        else{
-        const filteredData = featuredProductss.filter(products => products.category === category);
-		    setProducts(filteredData)
-        }
-        
-    }
-    
-    const [categories, setCategories] = useState(allCategories);
 
 
     //use effects general
@@ -496,20 +414,6 @@ const Category = ({ component }) => {
                                       <div className='cards__wrapper'> 
                                         <ul className='cards__items__Container'>
                                           {filterProducts()?.map((item, index) => (
-                                            /*
-                                              <CardItem
-                                              component={"Categoria"}
-                                              key={`${component}-${index}`}
-                                              src={item.imgUrl}
-                                              title={item.title}
-                                              label=''
-                                              path={`/Details/${ item.title }`}
-                                              price={item.price}
-                                              presentation={item.presentation}
-                                              categoria={categoria}
-                                              subCategoria={subCategoria}
-                                              Linea={linea}
-                                              />*/
                                               <CardItemNew
                                               key={`${component}-${index}`}
                                               src={imgCasagriLoad.imgUrl}
@@ -544,6 +448,7 @@ const Category = ({ component }) => {
                                   >
                                       Siguientes
                                   </button>
+                                  <div>Total Productos: {getProductByCategory(consulta.toUpperCase()).length}</div>
                                 </div>
                             </div>
                             
