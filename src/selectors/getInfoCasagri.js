@@ -5,17 +5,71 @@ import  data  from '../data/daticos/productos.json';
 
 /*------------------------METODOS DE CATEGORIAS------------------------------*/
 
-//Listado de Productos por Categoria 1
+//Listado de Productos por Categoria
 export const getProductByCategory = ( category = '' ) => {
 
     if ( category === '' ) {
         return [];
     }
 
+    //Agroindustrial
+    if ( category === 'AGROQUÍMICOS' ) {
+        return data.filter( products => products.cat2.includes( "AGROQUIMICOS" ) );
+    }
+            if ( category === 'INSECTICIDAS' ) {
+                return data.filter( products => products.Cat3.includes( category ) );
+            }
+            if ( category === 'HERBICIDAS' ) {
+                return data.filter( products => products.Cat3.includes( category ) );
+            }
+            if ( category === 'FUNGICIDAS' ) {
+                return data.filter( products => products.Cat3.includes( category ) );
+            }
+            if ( category === 'FUNGICIDAS' ) {
+                return data.filter( products => products.Cat3.includes( category ) );
+            }
+            if ( category === 'OTROS' ) {
+                const conditions = ["FITORREGULADORES", "RODENTICIDAS (PRESENTACIONES M" ];
+                return conditions.some(el => data.filter(products => {products.Cat3.includes(el)}));
+                //return data.filter( products => {products.Cat3.includes( {"FITORREGULADORES", "RODENTICIDAS (PRESENTACIONES M"  })} ); 
+            }
+    if ( category === 'SEMILLAS' ) {
+        return data.filter( products => products.cat2.includes( category ) );
+    }
+            if ( category === 'FRUTAS Y HORTALIZAS' ) {
+                return data.filter( products => products.Cat3.includes( "HORTALIZAS VARIEDADES" ) );
+            }
+            if ( category === 'PASTO' ) {
+                return data.filter( products => products.Cat3.includes( "SEMILLAS DE PASTO" ) );
+            }
+            if ( category === 'MAÍZ' ) {
+                return data.filter( products => products.Cat3.includes( "CEREALES HIBRIDOS" ) );
+            }
+    if ( category === 'FERTILIZANTES' ) {
+        return data.filter( products => products.cat2.includes( "FERTILIZANTES Y SUSTRATOS" ) );
+    }
+    if ( category === 'SACOS, CABULLAS Y CORDELES' ) {
+        return data.filter( products => products.cat2.includes( category ) );
+    }
+    if ( category === 'CERCAS DE ALAMBRE Y ELÉCTRICAS' ) {
+        return data.filter( products => products.cat2.includes( "CERCAS", "MALLAS Y PLÁSTICOS DE USOS VAR" ) );
+    }
+    
+
+    if ( category === 'SALUD ANIMAL' ) {
+        return data.filter( products => products.cat1.includes( "MEDICINA VETERINARIA", "GANADERIA" ) );
+    }
+
+    if ( category === 'MOTORES' ) {
+        return data.filter( products => products.Cat3.includes( category ) );
+    }
+
     //category = category.toLocaleLowerCase();
+
     return data.filter( products => products.cat1.includes( category ) );
 
 }
+
 //Listado de Productos por Categoria 2
 export const getProductByCat2 = ( category = '' ) => {
 

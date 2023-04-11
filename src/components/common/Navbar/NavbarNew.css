@@ -3,6 +3,7 @@
 
 .navbar__main {
   background: rgb(255, 255, 255);
+  z-index: 999 !important;
   height: 50px;
   display: flex;
   position: sticky;
@@ -134,9 +135,10 @@ a{
   margin-right: 15px;
 }
 
+/*Estilo de las Categorias*/
 .desktopNav__container-line-title{
   display: flex;
-  color: black;
+  color: rgb(0, 0, 0);
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 14px;
@@ -172,23 +174,48 @@ a{
   position: absolute;
 }
 
+
+/* Estilod Sub Categoria */
 .desktopNav__container--active-two{
   display: block;
   visibility: visible;
   position: absolute;
-  opacity: 0.95 !important;
-  z-index: 999 !important;
+  opacity: 1 !important;
+  z-index: 809 !important;
   padding-top: 20px;
   padding-bottom: 10px;
   padding-left: 50%;
   padding-right: 50%;
-  background-color: rgb(255, 255, 255);
+  background: rgb(252, 252, 252);
   transition-property:  all 5s initial;
   transition-duration: 500ms;
   width: 200px;
   -webkit-box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.19);
   -moz-box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.19);
    box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.19); 
+}
+
+
+.desktopNav__titleSubCategory{
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  max-width: 180px;
+  letter-spacing: 0.1px;
+  line-height: 20px;
+  text-align: start !important;
+  color:#000000 !important;
+  transition: all .5s ease-in-out;
+  text-decoration: none;
+}
+
+.desktopNav__titleSubCategory:hover{
+  display: flex;
+  cursor: pointer;
+  color:#47A01A !important;
+  transition: all .1s ease-in-out;
+  text-decoration: none;
 }
 
 
@@ -213,49 +240,14 @@ a{
   margin-right: 20px;
 }
 
-.desktopNav__SubLines-Title-two {
-  display: flex;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  max-width: 180px;
-  letter-spacing: 0.1px;
-  line-height: 22px;
-  text-align: center;
-  color:#0f0f0f !important;
-  transition: all .5s ease-in-out;
-}
 
-.desktopNav__SubLines-Title-two:hover{
-  color:#47A01A;
-}
 
 .desktopNav__Container__titleSubCategory{
   display: block;
   margin-bottom: 12px;
 }
 
-.desktopNav__titleSubCategory{
-  display: flex;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  font-size: 13px;
-  max-width: 180px;
-  letter-spacing: 0.1px;
-  line-height: 20px;
-  text-align: start !important;
-  color:#0f0f0f !important;
-  transition: all .5s ease-in-out;
-  text-decoration: none;
-}
 
-.desktopNav__titleSubCategory:hover{
-  display: flex;
-  cursor: pointer;
-  color:#47A01A !important;
-  transition: all .5s ease-in-out;
-  text-decoration: none;
-}
 
 .aux{
   display: flex;
@@ -272,29 +264,23 @@ a{
   color: #47A01A;
 }
 
+/* Estilos Lineas de Producto*/
 .desktopNav__Container-Lines-subLines-two{
   display: block;
   position: absolute;
   justify-content: start;
   left: 100%;
-  opacity: 0.99 !important;
+  opacity: 1 !important;
   margin-top: -20%;
   padding-top: 25px;
   padding-bottom: 5px;
   padding-left: 15%;
   padding-right: 10%;
   width: 200px;
-  background-color: #ffffff;
+  background: rgb(252, 252, 252);
   -webkit-box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.19);
   -moz-box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.19);
    box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.19); 
-}
-
-.desktopNav__Container-Lines-subLines-tol-two{
-  display: block;
-  text-decoration: none;
-  align-content: flex-start;
-  margin-bottom: 18px;
 }
 
 .desktopNav__Container-Lines-subLines-List-two{
@@ -308,7 +294,7 @@ a{
   letter-spacing: 0.1px;
   line-height: 17px;
   text-align: center;
-  color:#0f0f0f ;
+  color:#000000 ;
   transition: all .5s ease-in-out;
   text-decoration: none;
 }
@@ -317,6 +303,16 @@ a{
   color: #47A01A;
   cursor: pointer;
 }
+
+.desktopNav__Container-Lines-subLines-tol-two{
+  display: block;
+  text-decoration: none;
+  align-content: flex-start;
+  margin-bottom: 18px;
+}
+
+
+
 
 
 /*Container Busqueda*/

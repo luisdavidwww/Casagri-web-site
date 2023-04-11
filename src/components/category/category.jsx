@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams,Link } from "react-router-dom";
+import { useParams,Link, useLocation, useNavigate} from "react-router-dom";
 
 
 //importacion de datos de productos
@@ -57,10 +57,18 @@ const imgCategory = require.context('../../static/images/category', true);
 
 
 
-const Category = ({history, component}) => {
+const Category = ({ component }) => {
    
     //query de la url
     const { consulta } = useParams();
+    let { search } = useLocation();
+    let query = new URLSearchParams(search);
+
+    let start = 0;
+    let end = query.get("fin");
+
+
+    const navigate = useNavigate();
   
     //constante que almacena todas las categorias
     const allCategories = [
@@ -78,6 +86,9 @@ const Category = ({history, component}) => {
    const [imgMiniBanner, setImgMiniBanner] = useState('');
    const [banner, setBanner] = useState([]);
    const [loanding, setLoanding] = useState(false);
+   const [ currentPage, setCurrentPage ] = useState(0);
+   const [ buscar, setBuscar ] = useState('');
+
 
    //variables apra paginado
    const [categoria, setCategoria] = useState([]);
@@ -115,7 +126,7 @@ const Category = ({history, component}) => {
 
   }
 
-  //Peticion para la paginacion
+  //Peticion para la secuencia logica del buscador
   const getPages = async () => {
 
       setSubCategoria("");
@@ -147,7 +158,7 @@ const Category = ({history, component}) => {
   }
 
 
-    //evalua la prop de URL, 
+    //Productos Principales a Mostrar 
     const productsMain = () => {
       if (consulta === 'Buscar'){
         setProducts(featuredProducts);
@@ -165,10 +176,47 @@ const Category = ({history, component}) => {
         else {
         setProducts([]);
 		    compare();
-        compareImgBanner();
+        //compareImgBanner();
 			  return
 		}
     }
+
+
+
+    //Paginacion Productos
+    const filterProducts = () => {
+
+
+            if( buscar.length === 0 ) 
+            {
+              return getProductByCategory(consulta.toUpperCase()).slice(currentPage, currentPage + 16);
+              console.log(getProductByCategory(consulta.toUpperCase()));
+            }
+
+            
+            
+
+            // Si hay algo en la caja de texto
+            /*
+            const filtered = getProductByCat2("AGROQUIMICOS").filter( prod => prod.Nombre.includes( search ) );;
+            return filtered.slice( currentPage, currentPage + 16); */
+
+
+    }
+
+    const pageSuma = 1;
+    //botones de Paginación
+    const nextPage = () => {
+      navigate({search:`?Page=${start + pageSuma}`})
+      setCurrentPage( currentPage + 16 );
+    }
+
+    const prevPage = () => {
+          setCurrentPage( currentPage - 16 );
+    }
+
+    
+
     //compara la props de URL con las categorias existentes
     const compare = () => {
 
@@ -181,8 +229,7 @@ const Category = ({history, component}) => {
           return e.category == consulta;
         })
         setProducts(compareData); getProductByCategory*/
-        console.log(getProductByCategory("AGROINDUSTRIAL")); 
-        setProducts(getProductByCategory("AGROINDUSTRIAL")); 
+        setProducts(getProductByCategory("AGROINDUSTRIAL").slice(0,5)); 
       }
 
 
@@ -201,8 +248,10 @@ const Category = ({history, component}) => {
         let compareData = featuredProductss.filter((e) => {
           return e.subCategory == consulta;
         })
+        
         //setProducts(compareData);
-        setProducts(getProductByCat2("AGROQUIMICOS")); 
+        const filtered = getProductByCat2("AGROQUIMICOS");
+        return filtered.slice( currentPage, currentPage + 5); 
       }
 
 
@@ -220,6 +269,7 @@ const Category = ({history, component}) => {
       }
 
     }
+
     //compara la props de URL con las categorias existentes
     const compareImgBanner = () => {
 
@@ -314,6 +364,8 @@ const Category = ({history, component}) => {
     //use effects general
     useEffect(() => {
         productsMain();
+        setCurrentPage(0);
+        console.log(getProductByCategory(consulta.toUpperCase()));
     }, [consulta])
 
     useEffect(() => {
@@ -336,7 +388,7 @@ const Category = ({history, component}) => {
               
                 {/*Seccion Superiror */}
                 <div className='formSearch__Container__Main'>
-                  {/*Paginacion*/}
+                  {/*Secuencia Lógica Categorias*/}
                   <div className='Pages'> 
                     <Link to={`/`} style={{textDecoration:'none', color:'#494949'}}> 
                         <>Inicio</>
@@ -394,6 +446,7 @@ const Category = ({history, component}) => {
                   }
                     
                 </div>
+
                 {/*Titulo de Resultado Movil */}
                 <div className='result__Category__Container__Movil' >
                     <div className='result__Category__Movil text__Result__Category__Movil'> 
@@ -413,18 +466,18 @@ const Category = ({history, component}) => {
                     <FiltersBar/>
                   </div>
                   {/* Filtro Movil */}
-                <div className='category__filter__Movil'>
-                  <div className='category__Display'>
-                    Display 
+                  <div className='category__filter__Movil'>
+                    <div className='category__Display'>
+                      Display 
+                    </div>
+                      <FilterSidebar/>
                   </div>
-                    <FilterSidebar/>
-                </div>
                 
     
                   {/* Resultado de Busqueda */}
                   <>
                   { 
-                            ( products.length === 0  ) 
+                            ( filterProducts === null  ) 
                                 && 
                                 <div className='container__error'>
                                   <div className="alert alert-danger">
@@ -435,14 +488,14 @@ const Category = ({history, component}) => {
                     }
     
                     {
-                            (  products.length !== 0  ) 
+                            (  filterProducts !== null  ) 
                             && 
                             <div className='category__products'>
                               <div className='cards'>
                                     <div className='cards__container'>
                                       <div className='cards__wrapper'> 
                                         <ul className='cards__items__Container'>
-                                          {products?.map((item, index) => (
+                                          {filterProducts()?.map((item, index) => (
                                             /*
                                               <CardItem
                                               component={"Categoria"}
@@ -477,7 +530,23 @@ const Category = ({history, component}) => {
                                       </div>
                                     </div>       
                                 </div>
+                                
+                                <div>
+                                  <button 
+                                      className="btn btn-primary"
+                                      onClick={ prevPage }
+                                  >
+                                      Anteriores
+                                  </button>
+                                    <button 
+                                      className="btn btn-primary"
+                                      onClick={ nextPage }
+                                  >
+                                      Siguientes
+                                  </button>
+                                </div>
                             </div>
+                            
                                 
                         }
                   </>

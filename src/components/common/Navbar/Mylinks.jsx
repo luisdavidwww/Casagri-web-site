@@ -13,45 +13,30 @@ export const links = [
           { name: "Insecticidas", link: "/search" },
           { name: "Herbicidas", link: "/search" },
           { name: "Fungicidas", link: "/search" },
-          { name: "Rodenticidas", link: "/search" },
-          { name: "Fitorreguladores", link: "/search" },
-          { name: "Reguladores de PH", link: "/search" },
-          { name: "Adherentes Humectantes", link: "/search" },
+          { name: "Otros", link: "/search" },
         ],
       },
       {
         Head: "Semillas",
         subitem: true,
         sublink: [
-          { name: "Maíz", link: "/search" },
+          { name: "Frutas y Hortalizas", link: "/search" },
           { name: "Pasto", link: "/search" },
-          { name: "Hortalizas", link: "/search" },
-          { name: "Leguminosas", link: "/search" },
-          /*{ name: "Bolsas de Germinación", link: "/search" },
-          { name: "Bandejas de Germinación", link: "/search" },*/
+          { name: "Maíz", link: "/search" },
+          { name: "Sustratos", link: "/search" },
         ],
       },
       {
         Head: "Fertilizantes",
-        subitem: true,
-        sublink: [
-          { name: "Macronutientes", link: "/search" },
-          { name: "Organicos", link: "/search" },
-          { name: "Foliares Líquidos", link: "/search" },
-          { name: "Sustratos", link: "/search" },
-          { name: "Desintectantes de Suelos", link: "/search" },
-          { name: "Roca Fosfórica", link: "/search" },
-          { name: "Foliares e Hidrosolubles", link: "/search" },
-          { name: "Aditivo para Fertilizantes", link: "/search" },
-        ],
+        subitem: false,
       },
 
       {
-        Head: "Sacos, Cabuyas y Cordeles",
+        Head: "Sacos, Cabullas y Cordeles",
         subitem: false,
       },
       {
-        Head: "Mallas y Plásticos",
+        Head: "Cercas de Alambre y Eléctricas",
         subitem: false,
       },
     ],
@@ -62,39 +47,22 @@ export const links = [
     submenu: true,
     sublinks: [
       {
-        Head: "Equipos de Fumigación",
+        Head: "Equípos Agrícolas",
         subitem: true,
         sublink: [
           { name: "Asperjadoras", link: "/search" },
-          { name: "Accesorios", link: "/search" }
-        ],
-      },
-      {
-        Head: "Máquinaria  para la  Siembra",
-        subitem: true,
-        sublink: [
-          { name: "Acolchadoras y Entablonadoras", link: "/search" },
-          { name: "Sembradoras", link: "/search" },
-          { name: "Transplantadoras", link: "/search" },
-          { name: "Tratamineto de Semillas", link: "/search" }
-        ],
-      },
-      {
-        Head: "Maquinaria Intermedia",
-        subitem: true,
-        sublink: [
-          { name: "Motores", link: "/search" },
+          { name: "Abonadoras, Sembradoras y Cosechadoras", link: "/search" },
           { name: "Desmalezadoras", link: "/search" },
           { name: "Motosierras", link: "/search" },
-          { name: "Corta Grama", link: "/search" },
+          { name: "Motocultores", link: "/search" },
         ],
       },
       {
-        Head: "Maquinaria Ferretera",
+        Head: "Bombas de Agua",
         subitem: true,
         sublink: [
-          { name: "Generadores Eléctricos", link: "/search" },
-          { name: "Bombas de Agua", link: "/search" },
+          { name: "Alta presión", link: "/search" },
+          { name: "Baja presión", link: "/search" },
         ],
       },
       {

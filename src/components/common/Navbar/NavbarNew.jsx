@@ -234,9 +234,9 @@ const Navbar = ({component}) => {
                         {heading == link.name && link.submenu && (
 
                            <motion.div                  
-                            initial={{x: 0, y: -10, scale: 1, rotate:0,  opacity:0}}      
-                            animate={{x: 0, y: 0, scale: 1, rotate: 0, transition:{duration:"0.40"}, opacity:1 }} 
-                            exit={{x: 0, y: -10, scale: 1, rotate: 0, transition:{duration:"0.20"},  opacity:0 }}  
+                            initial={{x: 0, y: 10, scale: 1, rotate:0,  opacity:0}}      
+                            animate={{x: 0, y: 0, scale: 1, rotate: 0, transition:{duration:"0.30"}, opacity:1 }} 
+                            exit={{x: 0, y: 10, scale: 1, rotate: 0, transition:{duration:"0.20"},  opacity:0 }}  
                             >
                               <div  onMouseLeave={() => {setHover(false)}} className='desktopNav__container--active-two'>
                                 {/* Recorrido de las sublineas */}
