@@ -23,7 +23,6 @@ export const links = [
           { name: "Maíz", link: "/search" },
           { name: "Pasto", link: "/search" },
           { name: "Hortalizas", link: "/search" },
-          { name: "Hortalizas Híbridas", link: "/search" },
           { name: "Bandejas de Germinación", link: "/search" },
           { name: "Bolsas de Vivero", link: "/search" },
         ],
@@ -49,33 +48,42 @@ export const links = [
     submenu: true,
     sublinks: [
       {
-        Head: "Equípos Agrícolas",
+        Head: "Maquinaria Agrícola",
         subitem: true,
         sublink: [
-          { name: "Asperjadoras", link: "/search" },
-          { name: "Abonadoras, Sembradoras y Cosechadoras", link: "/search" },
-          { name: "Desmalezadoras", link: "/search" },
-          { name: "Motosierras", link: "/search" },
+          
+          /*{ name: "Abonadoras, Sembradoras y Cosechadoras", link: "/search" },*/
           { name: "Motocultores", link: "/search" },
+          { name: "Siembra", link: "/search" },
+          { name: "Recolección", link: "/search" },
+          { name: "Abono y Fertilización", link: "/search" },
+          { name: "Procesamiento de Materiales", link: "/search" },
+          { name: "Fumigación", link: "/search" },
         ],
+      },
+      {
+        Head: "Desmalezadoras",
+      },
+      {
+        Head: "Motosierras",
       },
       {
         Head: "Bombas de Agua",
         subitem: true,
         sublink: [
-          { name: "Alta presión", link: "/search" },
-          { name: "Baja presión", link: "/search" },
+          { name: "Bombas de Agua Domésticas", link: "/search" },
+          { name: "Bombas de Agua Portátiles", link: "/search" },
         ],
+      },
+      {
+        Head: "Motores",
+        subitem: false,
       },
       {
         Head: "Generadores",
         subitem: false,
       },
-
-      {
-        Head: "Motores",
-        subitem: false,
-      },
+     
     ],
   },
   {
@@ -87,9 +95,10 @@ export const links = [
         Head: "Medicina Veterinaria",
         subitem: true,
         sublink: [
+          { name: "Analgésicos y Anti-Inflamatorios", link: "/search" },
           { name: "Antibióticos", link: "/search" },
-          { name: "Anti-Diarreícos", link: "/search" },
-          { name: "Analgésicos y Antiflamatorios", link: "/search" },
+          { name: "Anti-Diarreicos", link: "/search" },
+          /*{ name: "Antiemeticos", link: "/search" },*/
           { name: "Baños, Ectoparasitarios y Matagusanos", link: "/search" },
           { name: "Desparasitantes", link: "/search" },
           { name: "Tópicos y Cicatrizantes", link: "/search" },
@@ -98,7 +107,7 @@ export const links = [
         ],
       },
       {
-        Head: "Instrumental Veterinario",
+        Head: "Implementos Veterinarios",
         subitem: false,
       },
       {

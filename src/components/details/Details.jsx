@@ -7,7 +7,7 @@ import { useParams, useNavigate, useLocation, Link } from "react-router-dom";
 import { ADD, DELETE, REMOVE_INT } from "../../controller/action";
 //Componentes
 import  SearchForm  from "../Search/SearchForm";
-import {getProductByName} from '../../selectors/getInfoCasagri';
+import {getProductDataByName} from '../../selectors/getInfoCasagri';
 //Estilos
 import './Details.css'
 //icons
@@ -46,7 +46,7 @@ export const Details = (props) => {
 //Comparacion de datos estaticos Casagri
   const compare2 = () => {
     //setLocalProducts(from);
-    let compareData = getProductByName(nombre);
+    let compareData = getProductDataByName(nombre);
     console.log(compareData);
     setData(compareData);
   }

@@ -12,6 +12,7 @@ import StarRanking from '../Cards/starRanking';
 import SearchFormBrands from './SearchFormBrands';
 import SearchFormComposition from './SearchFormComposition';
 import FilterFilter from './FilterTilter';
+import Brands from '../FilterAccordion/Brands';
 
 //Estilos
 import './FiltersBar.css'
@@ -19,7 +20,7 @@ import './FiltersBar.css'
 //icons clickCategory
 import {  BsFilter, BsDashLg, BsPlusLg } from "react-icons/bs";
 
-export default function FiltersBar() {
+export default function FiltersBar(props) {
 
     const [clickClasificacion, setClickClasificacion] = useState(false);
     const [clickPrice, setClickPrice] = useState(false);
@@ -28,7 +29,11 @@ export default function FiltersBar() {
     const [clickComposition, setClickComposition] = useState(false);
     const [clickRanking, setClickRanking] = useState(false);
 
-    
+    useEffect(() => {
+      console.log("Las marcas son:"+props);
+    },[])
+
+
   return (
     <>
       {/* Filtro Desktop */}
@@ -92,7 +97,9 @@ export default function FiltersBar() {
             </AccordionSummary>
             <AccordionDetails>
               <SearchFormBrands/>
-              <CheckboxList component={"Brand"}/>
+              <Brands Brands={props.brands}/>
+              <div>{props.brands}</div>
+              {/*<CheckboxList component={"Brand"}/>*/}
             </AccordionDetails>
         </Accordion>
 

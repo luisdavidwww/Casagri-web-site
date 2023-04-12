@@ -50,9 +50,10 @@ useEffect(() => {
   return (
     <>
         <li className='cards__item'
+        /*
         data-aos="fade-up" 
         data-aos-once="true" 
-        data-aos-duration="1500"
+        data-aos-duration="1500"*/
         >
         <div>
           

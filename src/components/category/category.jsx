@@ -8,7 +8,7 @@ import dataPro from "../../data/daticos/productos.json";
 import { featuredProducts } from "../../data/featuredProducts";
 import { ProductsAll } from "../../data/ProductsAll";
 //METODOS FILTRADO
-import { getProductByCategory , getProductByCat2 } from "../../selectors/getInfoCasagri";
+import { getProductByCategory , getProductByCat2, getBrandsByName } from "../../selectors/getInfoCasagri";
 //componentes
 import CardItem from '../Cards/CardItem';
 import CardItemNew from '../Cards/CardItemNew';
@@ -70,16 +70,6 @@ const Category = ({ component }) => {
 
     const navigate = useNavigate();
   
-    //constante que almacena todas las categorias
-    const allCategories = [
-		'All',
-		...new Set(featuredProductss.map(products => products.category)),
-  ];
-
-    //constante que almacena todas las Subcategorias
-    const allSubCategories = [
-      new Set(featuredProductss.map(products => products.subCategory)),
-  ];
 
    const [products, setProducts] = useState([]);
    const [imgBanner, setImgBanner] = useState('');
@@ -89,6 +79,8 @@ const Category = ({ component }) => {
    const [ currentPage, setCurrentPage ] = useState(0);
    const [ buscar, setBuscar ] = useState('');
 
+   //filters
+   const [brands, setBrands] = useState([]);
 
    //variables apra paginado
    const [categoria, setCategoria] = useState([]);
@@ -110,10 +102,14 @@ const Category = ({ component }) => {
       setBanner(res.data);
       //Estado del Loanding Falso
       setLoanding(false);
+
+      
+
     }
     else{
       //Estado del Loanding Verdadero 
       setLoanding(true);
+
 
       //Petición a la api
       const response = await fetch(`${'http://localhost:8080/api/'}${BANNERSCATEGORIA}${consulta.replace(/\s+/g, '')}`);
@@ -176,10 +172,16 @@ const Category = ({ component }) => {
 
     //Productos Principales a Mostrar 
     const productsMain = () => {
+
+      
+
+
       if (consulta === 'Buscar'){
+        
+
         setProducts(featuredProducts);
 
-          let compareBanner = BannerCategoryImg.filter((e) => {return e.category == 'buscar';})
+        let compareBanner = BannerCategoryImg.filter((e) => {return e.category == 'buscar';})
          //declaramos las variables para las imagenes
          let condImg =  compareBanner.map(item => item.img).toString();
          let condImgMini = compareBanner.map(item => item.miniimg).toString();
@@ -204,12 +206,19 @@ const Category = ({ component }) => {
             if( buscar.length === 0 ) 
             {
               return getProductByCategory(consulta.toUpperCase()).slice(currentPage, currentPage + 16);
-              console.log(getProductByCategory(consulta.toUpperCase()));
             }
 
-
-
+            
     }
+    const filterBrands = () => {
+
+      if( buscar.length === 0 ) 
+      {
+        return getBrandsByName(getProductByCategory(consulta.toUpperCase()));
+      }
+
+      
+}
 
     const pageSuma = 1;
     //botones de Paginación
@@ -283,7 +292,15 @@ const Category = ({ component }) => {
     useEffect(() => {
         productsMain();
         setCurrentPage(0);
-        console.log(getProductByCategory(consulta.toUpperCase()));
+        filterProducts();
+
+        //Obtenemos las marcas disponibles de la categoria
+        setBrands((getBrandsByName(getBrandsByName(getProductByCategory(consulta.toUpperCase())))));
+
+        console.log(getBrandsByName(getProductByCategory(consulta.toUpperCase())));
+        console.log("que paso bro"+JSON.stringify(brands));
+        filterBrands();
+        //console.log(getProductByCategory(consulta.toUpperCase()));
     }, [consulta])
 
     useEffect(() => {
@@ -300,6 +317,14 @@ const Category = ({ component }) => {
     {
       loanding ?( <Loader/>):(
         <>
+
+                {brands?.map((item, index) => (
+                <div key={`${"Marcascasagri"}-${index}`}>
+                  {item.Marca}
+                </div>
+                      
+                ))}
+
                 <div className='categoryBanner__Container'>
                   <BannerCategory image={banner.banner__desktop} imageMini={banner.banner__movil} consulta={consulta} />
                 </div>
@@ -308,8 +333,8 @@ const Category = ({ component }) => {
                 <div className='formSearch__Container__Main'>
                   {/*Secuencia Lógica Categorias*/}
                   <div className='Pages'> 
-                    <Link to={`/`} style={{textDecoration:'none', color:'#494949'}}> 
-                        <>Inicio</>
+                    <Link to={`/Category/Buscar`} style={{textDecoration:'none', color:'#494949'}}> 
+                        <>Productos</>
                     </Link>
                     <Link 
                       className={consulta === categoria ? 'pagesText__active' : 'pagesText'}
@@ -381,7 +406,7 @@ const Category = ({ component }) => {
                 <div className='category__Container'>
                   {/* Filtro */}
                   <div className='category__filter'>
-                    <FiltersBar/>
+                    <FiltersBar props={filterBrands()}/>
                   </div>
                   {/* Filtro Movil */}
                   <div className='category__filter__Movil'>

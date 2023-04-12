@@ -1,7 +1,8 @@
 import React, {  useMemo, useState, useEffect } from 'react';
 import { useParams, useLocation, useNavigate, Link } from "react-router-dom";
 import { useForm } from '../../hooks/useForm';
-import { getProductByName } from '../../selectors/getProductByName';
+//import { getProductByName } from '../../selectors/getProductByName';
+import  {getProductDataByName}  from "../../selectors/getInfoCasagri";
 import queryString from 'query-string';
 //componentes
 import  SearchForm  from "./SearchForm";
@@ -50,6 +51,7 @@ const Search = ({ history }) => {
     //variables de estados
     const [alert, setAlert] = useState("");
     const [banner, setBanner] = useState([]);
+    const [products, setProducts] = useState([]);
     const [loanding, setLoanding] = useState(false);
 
 
@@ -66,8 +68,17 @@ const Search = ({ history }) => {
       //Estado del Loanding Falso
       setLoanding(false);
 
-
   }
+
+
+  const buscarProducto = () => {
+
+    //setProducts(getProductDataByName( query ));
+    return getProductDataByName(query.toUpperCase());
+
+}
+
+
 
 
     //constantes
@@ -81,8 +92,9 @@ const Search = ({ history }) => {
     });
     const { searchText } = formValues;
 
-
-    const products = useMemo(() => getProductByName( query ));
+    //getProductByName
+    //const products = useMemo(() => getProductByName( query ));
+    
 
     useEffect(() => {
         getInfo();
@@ -154,7 +166,7 @@ const Search = ({ history }) => {
                 <>
                             {
                                 
-                                (  products.length !== 0  ) 
+                                (  buscarProducto() !== null  ) 
                                 && 
                                 <>
                                 {/*--------------------- Busqueda Exitosa -------------------------*/}
@@ -163,7 +175,7 @@ const Search = ({ history }) => {
                                             <div className='cards__container'>
                                                 <div className='cards__wrapper'> 
                                                     <ul className='cards__items__Container'>
-                                                    {products?.map((item, index) => (
+                                                    {buscarProducto()?.map((item, index) => (
                                                         <CardItem
                                                         component={"Categoria"}
                                                         key={`${'Search'}-${index}`}
