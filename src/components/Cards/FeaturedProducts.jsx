@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, Suspense} from 'react';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { useLocation, Link } from 'react-router-dom';
@@ -38,32 +38,10 @@ const Cards = ({component}) =>  {
         </div>
 
 
-        { /*Lista de Productos */ }
-      <div className='cards__container'>
-        <div className='cards__wrapper'>
-          <ul className='cards__items'>
-          {data && data.filter((element, idx) => idx < 5).map((item, index) => {
-                return (
-                  <CardItemNew
-                    key={`${component}-${index}`}
-                    src={imgCasagriLoad.imgUrl}
-                    Nombre={item.Nombre}
-                    Peso={item.PesoKG}
-                    path={`/DetailsNew/${ item.Nombre }`}
-                    price={""}
-                    CodigoProd={item.CodigoProd}
-                    Marca={item.Marca}
-                    ranking={""}
-                    component={component}
-                    categoria={""}
-                    subCategoria={""}
-                    Linea={""}
-                    />
-                  )
-            })}
-          </ul>
-        </div>
-      </div>
+        <Suspense fallback={<Loader/>}>
+          <ProfileDetails  />
+        </Suspense>
+        
       
 
 
@@ -79,6 +57,41 @@ const Cards = ({component}) =>  {
 
     </div>
     </>
+  );
+}
+
+function ProfileDetails() {
+  // Try to read user info, although it might not have loaded yet
+  return (
+    <>
+    { /*Lista de Productos */ }
+    <div className='cards__container'>
+        <div className='cards__wrapper'>
+          <ul className='cards__items'>
+          {data && data.filter((element, idx) => idx < 5).map((item, index) => {
+                return (
+                  <CardItemNew
+                    key={`${"FeaturedProducts"}-${index}`}
+                    src={imgCasagriLoad.imgUrl}
+                    Nombre={item.Nombre}
+                    Peso={item.PesoKG}
+                    path={`/DetailsNew/${ item.Nombre }`}
+                    price={""}
+                    CodigoProd={item.CodigoProd}
+                    Marca={item.Marca}
+                    ranking={""}
+                    component={"FeaturedProducts"}
+                    categoria={""}
+                    subCategoria={""}
+                    Linea={""}
+                    />
+                  )
+            })}
+          </ul>
+        </div>
+    </div>
+    </>
+      
   );
 }
 

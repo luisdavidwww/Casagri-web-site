@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 
 //componentes 
 import  FeaturedProducts  from 'components/Cards/FeaturedProducts';
@@ -34,6 +34,9 @@ const imageMini =  bannerMiniImg.toString();
 const tit =  bannerTitle.toString();
 
 
+const ProfilePage = React.lazy(() => import('../components/Cards/FeaturedProducts'));
+
+
 export const Home = () => {
 
   const [loanding, setLoanding] = useState(false);
@@ -59,7 +62,7 @@ export const Home = () => {
     setLoanding(false);
 
   }
-  
+
   useEffect(() => {
     getInfo();
   },[])
@@ -76,6 +79,7 @@ export const Home = () => {
             <AboutUsHome/>
             <CarruselCatalogue component="CarruselCatalogue"/>
             <FeaturedProducts component="FeaturedProducts"/>
+
             {/*<BannerCommercial image={img} href={href} imageMini={imageMini}/>*/}
             <BannerCarrousel banner={banner} component={"BannerCarrousel"} />
             <RecommendedProducts component="RecommendedProducts"/>
