@@ -20,7 +20,7 @@ import './FiltersBar.css'
 //icons clickCategory
 import {  BsFilter, BsDashLg, BsPlusLg } from "react-icons/bs";
 
-export default function FiltersBar(props) {
+export default function FiltersBar({Marcas, Consulta}) {
 
     const [clickClasificacion, setClickClasificacion] = useState(false);
     const [clickPrice, setClickPrice] = useState(false);
@@ -30,7 +30,7 @@ export default function FiltersBar(props) {
     const [clickRanking, setClickRanking] = useState(false);
 
     useEffect(() => {
-      console.log("Las marcas son:"+props);
+      //console.log("Las marcas son:"+ JSON.stringify(brands));
     },[])
 
 
@@ -97,8 +97,7 @@ export default function FiltersBar(props) {
             </AccordionSummary>
             <AccordionDetails>
               <SearchFormBrands/>
-              <Brands Brands={props.brands}/>
-              <div>{props.brands}</div>
+              <Brands MarcasProductos={Marcas} Enlace={Consulta} />
               {/*<CheckboxList component={"Brand"}/>*/}
             </AccordionDetails>
         </Accordion>

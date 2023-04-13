@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useParams, useNavigate, useLocation, Link } from "react-router-dom";
 //Componentes
-import {getProductDataByName} from '../../selectors/getInfoCasagri';
+import {getProductDataByName,getProductDataByCodigo} from '../../selectors/getInfoCasagri';
 import { imgCasagriLoad } from '../../data/newsData';
 import Loader from "components/Loader/Loader";
 //Estilos
@@ -57,7 +57,8 @@ export const DetailsNew = (props) => {
 
 //Obtener Info de productos de los datos estaticos Casagri
   const obtenerInfoProducto = () => {
-      let InfoProducto = getProductDataByName(nombre);
+      //let InfoProducto = getProductDataByCodigo(nombre);
+      let InfoProducto = getProductDataByCodigo(from[3]);
       setData(InfoProducto);
   }
 
@@ -66,8 +67,11 @@ export const DetailsNew = (props) => {
   useEffect(() => {
     obtenerImagenProducto();
     obtenerInfoProducto();
-    console.log(data);
   }, [nombre])
+
+  useEffect(() => {
+    console.log(from[3]);
+  }, [])
 
   
 

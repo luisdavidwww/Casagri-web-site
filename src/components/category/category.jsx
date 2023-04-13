@@ -8,7 +8,10 @@ import dataPro from "../../data/daticos/productos.json";
 import { featuredProducts } from "../../data/featuredProducts";
 import { ProductsAll } from "../../data/ProductsAll";
 //METODOS FILTRADO
-import { getProductByCategory , getProductByCat2, getBrandsByName } from "../../selectors/getInfoCasagri";
+import { getProductByCategory , 
+        getProductByCat2,  
+        getBrandsByName, 
+        getProductByBrands } from "../../selectors/getInfoCasagri";
 //componentes
 import CardItem from '../Cards/CardItem';
 import CardItemNew from '../Cards/CardItemNew';
@@ -69,9 +72,9 @@ const Category = ({ component }) => {
 
 
     const navigate = useNavigate();
+    const location = useLocation()
+    const  filtroMarca  = location.state;
   
-
-   const [products, setProducts] = useState([]);
    const [imgBanner, setImgBanner] = useState('');
    const [imgMiniBanner, setImgMiniBanner] = useState('');
    const [banner, setBanner] = useState([]);
@@ -79,10 +82,13 @@ const Category = ({ component }) => {
    const [ currentPage, setCurrentPage ] = useState(0);
    const [ buscar, setBuscar ] = useState('');
 
-   //filters
-   const [brands, setBrands] = useState([]);
+   //Productos
+   const [products, setProducts] = useState([]);
 
-   //variables apra paginado
+   //Filtros
+   const [marcas, setMarcas] = useState([]);
+
+   //variables para paginado
    const [categoria, setCategoria] = useState([]);
    const [subCategoria, setSubCategoria] = useState([]);
    const [linea, setLinea] = useState([]);
@@ -173,13 +179,10 @@ const Category = ({ component }) => {
     //Productos Principales a Mostrar 
     const productsMain = () => {
 
-      
-
-
       if (consulta === 'Buscar'){
         
 
-        setProducts(featuredProducts);
+        //setProducts(featuredProducts);
 
         let compareBanner = BannerCategoryImg.filter((e) => {return e.category == 'buscar';})
          //declaramos las variables para las imagenes
@@ -192,7 +195,7 @@ const Category = ({ component }) => {
         return
 		}
         else {
-        setProducts([]);
+        //setProducts([]);
 		    compare();
 			  return
 		}
@@ -200,25 +203,24 @@ const Category = ({ component }) => {
 
 
 
-    //Paginacion Productos
-    const filterProducts = () => {
-
-            if( buscar.length === 0 ) 
-            {
-              return getProductByCategory(consulta.toUpperCase()).slice(currentPage, currentPage + 16);
-            }
-
-            
-    }
-    const filterBrands = () => {
-
-      if( buscar.length === 0 ) 
+    //Productos
+    const filterProducts = ( filtroMarca ) => {
+      if( buscar.length === 0 && filtroMarca == null ) 
       {
-        return getBrandsByName(getProductByCategory(consulta.toUpperCase()));
+        return getProductByCategory(consulta.toUpperCase()).slice(currentPage, currentPage + 16);
       }
+      if( buscar.length === 0 && filtroMarca !== null ) 
+      {
+        return getProductByBrands(getProductByCategory(consulta.toUpperCase()).slice(currentPage, currentPage + 16));
+      }
+    }
 
-      
-}
+    //Marcas
+    const filterBrands = () => {
+      setMarcas((getBrandsByName(getBrandsByName(getProductByCategory(consulta.toUpperCase())))));
+      return getBrandsByName(getProductByCategory(consulta.toUpperCase()));
+    }
+
 
     const pageSuma = 1;
     //botones de Paginación
@@ -245,7 +247,7 @@ const Category = ({ component }) => {
           return e.category == consulta;
         })
         setProducts(compareData); getProductByCategory*/
-        setProducts(getProductByCategory("AGROINDUSTRIAL").slice(0,5)); 
+        //setProducts(getProductByCategory("AGROINDUSTRIAL").slice(0,5)); 
       }
 
 
@@ -281,7 +283,7 @@ const Category = ({ component }) => {
         let compareData = featuredProductss.filter((e) => {
           return e.TipoProducto == consulta;
         })
-        setProducts(compareData);
+        //setProducts(compareData);
       }
 
     }
@@ -291,16 +293,11 @@ const Category = ({ component }) => {
     //use effects general
     useEffect(() => {
         productsMain();
+        
         setCurrentPage(0);
         filterProducts();
 
-        //Obtenemos las marcas disponibles de la categoria
-        setBrands((getBrandsByName(getBrandsByName(getProductByCategory(consulta.toUpperCase())))));
-
-        console.log(getBrandsByName(getProductByCategory(consulta.toUpperCase())));
-        console.log("que paso bro"+JSON.stringify(brands));
         filterBrands();
-        //console.log(getProductByCategory(consulta.toUpperCase()));
     }, [consulta])
 
     useEffect(() => {
@@ -311,6 +308,10 @@ const Category = ({ component }) => {
       getPages();
     },[consulta])
 
+    useEffect(() => {
+      filterProducts();
+  }, [])
+
 
   return (
     <div style={{backgroundColor:'#F9F9F9'}}>
@@ -318,12 +319,6 @@ const Category = ({ component }) => {
       loanding ?( <Loader/>):(
         <>
 
-                {brands?.map((item, index) => (
-                <div key={`${"Marcascasagri"}-${index}`}>
-                  {item.Marca}
-                </div>
-                      
-                ))}
 
                 <div className='categoryBanner__Container'>
                   <BannerCategory image={banner.banner__desktop} imageMini={banner.banner__movil} consulta={consulta} />
@@ -395,7 +390,6 @@ const Category = ({ component }) => {
                     <div className='result__Category__Movil text__Result__Category__Movil'> 
                       <>
                           <p style={{fontWeight:'700', fontSize:'25px', marginBottom:'0rem', textAlign:'center'}}>{consulta}</p> 
-                            {/*<BsXLg className='iconResult__Category'/>*/}
                       </>
                     </div>
                 </div>
@@ -406,7 +400,7 @@ const Category = ({ component }) => {
                 <div className='category__Container'>
                   {/* Filtro */}
                   <div className='category__filter'>
-                    <FiltersBar props={filterBrands()}/>
+                    <FiltersBar Marcas={marcas} Consulta={consulta}/>
                   </div>
                   {/* Filtro Movil */}
                   <div className='category__filter__Movil'>
@@ -444,7 +438,7 @@ const Category = ({ component }) => {
                                               src={imgCasagriLoad.imgUrl}
                                               Nombre={item.Nombre}
                                               Peso={item.PesoKG}
-                                              path={`/DetailsNew/${ item.Nombre }`}
+                                              path={`/DetailsNew/${ item.Nombre.replace(/\s+/g, '').replace(/[^a-zA-Z0-9 ]/g, '') }`}
                                               price={""}
                                               CodigoProd={item.CodigoProd}
                                               Marca={item.Marca}

@@ -245,13 +245,22 @@ export const getBrandsByName = ( ArregloProducto ) => {
       return CasagriBrands.filter(o => hash[o.Marca] ? false : hash[o.Marca] = true);
 }
 
-//Producto por Marca
-export const getProductByBrands = ( Marca = '' ) => {
+//Producto por Marca Normal
+export const getProductByBrandsUni = ( Marca = '' ) => {
 
     if ( Marca === '' ) {
         return [];
     }
+    //brand = brand.toLocaleLowerCase();
+    return data.filter( products => products.Marca.includes( Marca )  );
 
+}
+//Producto por Marca con la categoria como condición
+export const getProductByBrands = ( Marca = '', ProductoPorCategoria ) => {
+
+    if ( Marca === '' ) {
+        return [];
+    }
     //brand = brand.toLocaleLowerCase();
     return data.filter( products => products.Marca.includes( Marca )  );
 
@@ -269,6 +278,18 @@ export const getProductDataByName = ( name = '' ) => {
 
     name = name.toLocaleLowerCase();
     return data.filter( products => products.Nombre.toLocaleLowerCase().includes( name )  );
+
+}
+
+//Buscar Producto por Codigo
+export const getProductDataByCodigo = ( codigo ) => {
+
+    if ( codigo === '' ) {
+        return [];
+    }
+
+    //codigo = codigo.toLocaleLowerCase();
+    return data.filter( products => products.CodigoProd.includes( codigo )  );
 
 }
 
