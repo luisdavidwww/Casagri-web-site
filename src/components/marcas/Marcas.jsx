@@ -230,7 +230,7 @@ const Marcas = ({ component }) => {
                                               src={imgCasagriLoad.imgUrl}
                                               Nombre={item.Nombre}
                                               Peso={item.PesoKG}
-                                              path={`/DetailsNew/${ item.Nombre }`}
+                                              path={`/DetailsNew/${ item.Nombre.replace(/\s+/g, '').replace(/[^a-zA-Z0-9 ]/g, '') }`}
                                               price={""}
                                               CodigoProd={item.CodigoProd}
                                               Marca={item.Marca}

@@ -38,7 +38,7 @@ export const DetailsNew = (props) => {
       let CodigoProd = from[3];
 
       //Petición a la api
-      const response = await fetch(`${'http://localhost:8080/api/'}${"productos/nombre/"}${CodigoProd}`);
+      const response = await fetch(`${'http://localhost:8080/api/'}${"productos/nombre/"}${nombre}`);
       const res = await response.json();
 
 
@@ -58,19 +58,21 @@ export const DetailsNew = (props) => {
 //Obtener Info de productos de los datos estaticos Casagri
   const obtenerInfoProducto = () => {
       //let InfoProducto = getProductDataByCodigo(nombre);
-      let InfoProducto = getProductDataByCodigo(from[3]);
+      let InfoProducto = getProductDataByName(nombre);
+      console.log(InfoProducto);
       setData(InfoProducto);
   }
 
 
 
   useEffect(() => {
-    obtenerImagenProducto();
+    //obtenerImagenProducto();
     obtenerInfoProducto();
+    console.log(nombre)
   }, [nombre])
 
   useEffect(() => {
-    console.log(from[3]);
+    //console.log(from[3]);
   }, [])
 
   
@@ -86,6 +88,7 @@ export const DetailsNew = (props) => {
             <Link to={`/`} style={{textDecoration:'none', color:'#494949'}}> 
                 <>Inicio</>
             </Link>
+            {/*
             {from.map((item, index) => 
               <Link
                 key={`${"DEtailsProducts"}-${index}`}
@@ -100,7 +103,7 @@ export const DetailsNew = (props) => {
                 </span>
                 ):null  
               }</Link>  
-            )}
+            )}*/}
             <div 
               className={'pagesText__active'}
               style={{textDecoration:'none', color:'#494949'}}> 
