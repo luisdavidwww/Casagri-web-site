@@ -157,16 +157,41 @@ export const getProductByCategory = ( category = '' ) => {
                 let atidotos = data.filter( products => products.Cat3.includes( "ANTIDOTOS, ANTITOXICOS Y PARAS" ) );
 
                 return analgesicos.concat( atidotos );
+            }//
+            if ( category === 'ANTISEPTICOS Y DESINFECTANTES' ) {
+                return data.filter( products => products.Cat3.includes( "ANTISEPTICOS-DESINFECTANTES" ) );
             }
             if ( category === 'ANTIBIÓTICOS' ) {
                 return data.filter( products => products.Cat3.includes( "ANTIBIOTICOS" ) );
             }
-            if ( category === 'ANTI-DIARREICOS' ) {
+            if ( category === 'ANTIMASTITICOS' ) {
+                return data.filter( products => products.Cat3.includes( "ANTIMASTITICOS" ) );
+            }
+            if ( category === 'ANTITIMPÁNICO' ) {
+                return data.filter( products => products.Cat3.includes( "ANTITIMPÀNICO" ) );
+            }
+            if ( category === 'ANTIDIARREICOS' ) {
                 return data.filter( products => products.Cat3.includes( "ANTIDIARREICOS" ) );
             }
-            if ( category === 'ANTIEMETICOs' ) {
-                return data.filter( products => products.Cat3.includes( "ANTIEMETICO" ) );
+            if ( category === 'BAÑOS, ECTOPARASITARIOS Y MATAGUSANOS' ) {
+                let antiparasitario = data.filter( products => products.Cat3.includes( "ANTIPARASITARIO EXTERNO (BAÑOS") );
+                let topico = data.filter( products => products.Cat3.includes( "TOPICO ANTIPARASITARIO" ) );
+
+                return antiparasitario.concat( topico ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
+
             }
+            if ( category === 'BIOLÓGICOS' ) {
+                return data.filter( products => products.Cat3.includes( "VACUNAS Y BACTERINAS" ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
+            }
+            if ( category === 'VITAMINAS Y SUPLEMENTOS' ) {
+                let antiparasitarioInterno = data.filter( products => products.Cat3.includes( "ANTIPARASITARIO INTERNO") );
+                let laxantesPurgantes = data.filter( products => products.Cat3.includes( "LAXANTES Y PURGANTES" ) );;
+
+                return antiparasitarioInterno.concat( laxantesPurgantes ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
+            }
+
+
+
     if ( category === 'IMPLEMENTOS VETERINARIOS' ) {
         return data.filter( products => products.cat2.includes( "IMPLEMENTOS VETERINARIOS" ) );
     }
@@ -228,43 +253,7 @@ export const getCategory = (  ) => {
 
 }
 
-/*------------------------METODOS DE MARCA------------------------------*/
 
-//Listado de Marcas Casagri
-export const getBrandsByName = ( ArregloProducto ) => {
-
-    let CasagriBrands =[];
-
-    CasagriBrands = ArregloProducto.map( function (item) {
-        let brands = { Marca: item.Marca };
-          return brands;
-      });
-  
-      //filtramos las marcas repetidas
-      let hash = {};
-      return CasagriBrands.filter(o => hash[o.Marca] ? false : hash[o.Marca] = true);
-}
-
-//Producto por Marca Normal
-export const getProductByBrandsUni = ( Marca = '' ) => {
-
-    if ( Marca === '' ) {
-        return [];
-    }
-    //brand = brand.toLocaleLowerCase();
-    return data.filter( products => products.Marca.includes( Marca )  );
-
-}
-//Producto por Marca con la categoria como condición
-export const getProductByBrands = ( Marca = '', ProductoPorCategoria ) => {
-
-    if ( Marca === '' ) {
-        return [];
-    }
-    //brand = brand.toLocaleLowerCase();
-    return data.filter( products => products.Marca.includes( Marca )  );
-
-}
 
 
 /*------------------------METODOS DE PRODUCTO------------------------------*/
@@ -293,3 +282,72 @@ export const getProductDataByCodigo = ( codigo ) => {
 
 }
 
+
+/*------------------------METODOS DE MARCA------------------------------*/
+
+//Listado de Marcas Casagri
+export const getBrandsByName = ( ArregloProducto ) => {
+
+    let CasagriBrands =[];
+
+    CasagriBrands = ArregloProducto.map( function (item) {
+        let brands = { Marca: item.Marca };
+          return brands;
+      });
+  
+      //filtramos las marcas repetidas
+      let hash = {};
+      return CasagriBrands.filter(o => hash[o.Marca] ? false : hash[o.Marca] = true).sort((x, y) => x.Marca.localeCompare(y.Marca));
+}
+
+//Producto por Marca Normal
+export const getProductByBrandsUni = ( Marca = '' ) => {
+
+    if ( Marca === '' ) {
+        return [];
+    }
+    //brand = brand.toLocaleLowerCase();
+    return data.filter( products => products.Marca.includes( Marca )  );
+
+}
+
+//Producto por Marca con la categoria como condición
+export const getProductByBrands = ( Marca = '', ProductoPorCategoria ) => {
+
+    if ( Marca === '' ) {
+        return [];
+    }
+    //brand = brand.toLocaleLowerCase();
+    return data.filter( products => products.Marca.includes( Marca )  );
+
+}
+
+//Buscador de Marcas por nombre 
+export const getBrand = ( searchText, MarcasProductos ) => {
+
+    if ( searchText === '' ) {
+        return [];
+    }
+
+    return MarcasProductos.filter( products => products.Marca.includes( searchText )  );
+
+}
+
+
+
+/*------------------------METODOS DE COMPOSICIÓN------------------------------*/
+
+export const getComponentByName = ( ArregloProducto ) => {
+
+    let CasagriComponents =[];
+
+    CasagriComponents = ArregloProducto.map( function (item) {
+        let brands = { cat4: item.cat4 };
+          return brands;
+      });
+  
+      //filtramos las marcas repetidas sort()
+      let hash = {};
+      return CasagriComponents.filter(o => hash[o.cat4] ? false : hash[o.cat4] = true).sort((x, y) => x.cat4.localeCompare(y.cat4));
+      //return luis.sort((x, y) => x.cat4.localeCompare(y.cat4));
+}

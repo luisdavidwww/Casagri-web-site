@@ -42,23 +42,23 @@ export default function CheckboxList({component}) {
       ):
       (
         <Form>
-          <div className="CheckboxList" style={{marginBottom:'0.7rem'}}>
+          <div className="filter__container__Main" style={{marginBottom:'0.7rem'}}>
               <Form.Check  id={`check-api-4`}>
-                <Form.Check.Input  isValid />
+                {/*<Form.Check.Input  isValid />*/}
                 <Form.Check.Label className='subtitle__Filter__check' >
                   <Link style={{textDecoration:'none', color:'#23263b '}} to={`/Category/buscar`}>Lo más destacado</Link>
                 </Form.Check.Label>
               </Form.Check>
           </div>
-          <div className="CheckboxList" style={{marginBottom:'0.7rem'}}>
+          <div className="filter__container__Main" style={{marginBottom:'0.7rem'}}>
               <Form.Check  id={`check-api-5`}>
-                <Form.Check.Input   isValid />
+                {/*<Form.Check.Input  isValid />*/}
                 <Form.Check.Label className='subtitle__Filter__check' >Precios de mayor a menor</Form.Check.Label>
               </Form.Check>
           </div>
-          <div className="CheckboxList" style={{marginBottom:'0.7rem'}}>
+          <div className="filter__container__Main" style={{marginBottom:'0.7rem'}}>
               <Form.Check  id={`check-api-6`}>
-                <Form.Check.Input  isValid />
+                {/*<Form.Check.Input  isValid />*/}
                 <Form.Check.Label className='subtitle__Filter__check' >Precios de menor a mayor</Form.Check.Label>
               </Form.Check>
           </div>

@@ -1,14 +1,14 @@
 import React, {  useMemo, useState } from 'react';
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from '../../hooks/useForm';
-import { getProductByName } from '../../selectors/getProductByName';
+import { getBrand } from '../../selectors/getInfoCasagri';
 import queryString from 'query-string';
 //Estilos
 import './Search.css';
 //icons
 import { BsSearch } from "react-icons/bs"
 
-const SearchFormBrands = () => {
+const SearchFormBrands = ({ MarcasProductos }) => {
      //constantes
      const { query } = useParams();
      const navigate = useNavigate();
@@ -29,7 +29,7 @@ const SearchFormBrands = () => {
      const { searchText } = formValues;
  
  
-     const heroesFiltered = useMemo(() => getProductByName( query ));
+     //const heroesFiltered = useMemo(() => getBrand( query ));
 
      //metodo para busqueda de producto
     const handleSearch = (e) => {
@@ -39,8 +39,11 @@ const SearchFormBrands = () => {
           }  
           else{
             e.preventDefault();
-            navigate(`/search/${ searchText }`);
-            setAlert(searchText);
+            //navigate(`/search/${ searchText }`);
+            //setAlert(searchText);
+            
+            console.log(getBrand( searchText, MarcasProductos ));
+            console.log(searchText);
           }
         
     }

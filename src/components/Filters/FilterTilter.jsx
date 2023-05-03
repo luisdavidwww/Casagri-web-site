@@ -8,13 +8,13 @@ const FilterTilter = ({component}) => {
     {
       component==="Sidebar" ? (
         <div className='containerFilter__Sidebar'>
-            <BsFilter/>
-            <div className='title__Filter-Main'>Filtros</div>
+            
+            <div className='title__Filter-Main'>Otras Opciones</div>
         </div>
       ):(
         <div className='containerFilter__Basic'>
-            <BsFilter/>
-            <div className='title__Filter-Main'>Filtros</div>
+           
+            <div className='title__Filter-Main'>Otras Opciones</div>
         </div>
       )
     }

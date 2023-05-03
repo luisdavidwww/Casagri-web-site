@@ -28,6 +28,7 @@ const Navbar = ({component}) => {
   //Variables de entradas
   const [heading, setHeading] = useState("");
   const [subheading, setSubHeading] = useState("");
+  const [subLineheading, setSubLineHeading] = useState("");
   const [hover, setHover] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   const [subdropdown, setSubDropdown] = useState(false);
@@ -226,6 +227,7 @@ const Navbar = ({component}) => {
                   
 
                   <AnimatePresence>
+                    
 
                   {dropdown ? (    
                     <div  className='desktopNav__container--navbar-two'>
@@ -241,10 +243,16 @@ const Navbar = ({component}) => {
                               <div  onMouseLeave={() => {setHover(false)}} className='desktopNav__container--active-two'>
                                 {/* Recorrido de las sublineas */}
                                 {link.sublinks.map((mysublinks, index) => (
-                                          <div className="desktopNav__SubLines-two" key={`${component}-${'Sub-category'}-${index}`} >
+                                          <Link className="desktopNav__SubLines-two" 
+                                                onMouseOver={() => { setSubHeading(mysublinks.Head); }} 
+                                                onMouseLeave={() => {setSubHeading("");}} 
+                                                key={`${component}-${'Sub-category'}-${index}`} 
+                                                to={`/Category/${mysublinks.Head}`}
+                                                style={{textDecoration:'none'}}
+                                          >
                                             <div onMouseEnter={onMouseEnterSub} >
-                                                <div className="desktopNav__Container__titleSubCategory" onMouseOver={() => { setSubHeading(mysublinks.Head); }}  style={{textDecoration:'none'}}>
-                                                  <Link className='desktopNav__titleSubCategory' to={`/Category/${mysublinks.Head}`}>
+                                                <div className="desktopNav__Container__titleSubCategory"   style={{textDecoration:'none'}}>
+                                                  <Link className={ subheading === mysublinks.Head ? ('desktopNav__titleSubCategory-hover'):("desktopNav__titleSubCategory")} to={`/Category/${mysublinks.Head}`}>
                                                     {mysublinks.Head} { mysublinks.subitem ? (<BsChevronRight className='iconSubLinea'/>):null }
                                                   </Link >
                                                   <div className='aux'>
@@ -258,13 +266,19 @@ const Navbar = ({component}) => {
                                                               animate={{x: 0, y: 0, scale: 1, rotate: 0, transition:{duration:"0.3"}, opacity:1 }} 
                                                               exit={{x: 0, y: 0, scale: 1, rotate: 0, transition:{duration:"0.20"},  opacity:0 }}  
                                                               >
-                                                            <div className="desktopNav__Container-Lines-subLines-two" onMouseLeave={() => {setSubHeading(false);}} >
+                                                            <div className="desktopNav__Container-Lines-subLines-one" onMouseLeave={() => {setSubHeading("");}} >
                                                               {mysublinks.sublink.map((slink, index) => (   
-                                                                  <div className='desktopNav__Container-Lines-subLines-tol-two' key={`${component}-${'category-Act'}-${index}`}>
-                                                                      <Link className="desktopNav__Container-Lines-subLines-List-two" to={`/Category/${slink.name}`}>
+                                                                  <Link className='desktopNav__Container-Lines-subLines-tol-one' 
+                                                                      onMouseOver={() => { setSubLineHeading(slink.name); }} onMouseLeave={() => {setSubLineHeading("");}}
+                                                                      key={`${component}-${'category-Act'}-${index}`}
+                                                                      to={`/Category/${slink.name}`}
+                                                                      style={{textDecoration:'none'}}
+                                                                      >
+                                                                    {/* desktopNav__Container-Lines-subLines-List-one  */}
+                                                                      <Link className={ subLineheading === slink.name ? ('desktopNav__Container-Lines-subLines-List-one-hover '):("desktopNav__Container-Lines-subLines-List-one ")} to={`/Category/${slink.name}`}>
                                                                         {slink.name}
                                                                       </Link>   
-                                                                  </div>            
+                                                                  </Link>            
                                                                 ))}
                                                             </div>
                                                             </motion.div>
@@ -278,7 +292,7 @@ const Navbar = ({component}) => {
                                             </div>
                                                 
 
-                                          </div>
+                                          </Link>
                                         ))}
                                 <div className="desktopNav__container-Drowbox-container-two">
                                   <div className="desktopNav__container-Drowbox-two">

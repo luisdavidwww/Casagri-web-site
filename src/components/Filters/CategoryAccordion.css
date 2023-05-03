@@ -1,5 +1,138 @@
 /*PRINCIPAL NAV BAR*/
 
+.Container__line__hover{
+  display: flex;
+  justify-content: flex-start; /* justify-content: center; */
+  align-items: center;
+  width: 100%;
+  height: 80px;   
+  text-decoration: none;
+  color: #47A01A !important;
+  /*border-bottom: 1px solid rgb(235, 235, 235);*/
+}
+
+
+.Container__line__hover__title{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-left: 3rem;
+}
+
+
+a.Container__line{
+  color: rgb(0, 0, 0) !important;
+}
+
+.Container__line{
+  display: flex;
+  justify-content: flex-start; /* justify-content: center; */
+  align-items: center;
+  width: 100%;
+  height: 80px;   
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  /*border-bottom: 1px solid rgb(235, 235, 235);*/ /* divisiones de lineas deproductos casagri */
+}
+
+.Container__line__title{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-left: 3rem;
+}
+
+
+.container__drop{
+  display: block;
+  opacity: 1;
+  transition: all 0.7s ease;
+  z-index: 1;
+  max-width: 100%;
+}
+
+
+.SubLines{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 70px;   
+  text-decoration: none;
+  background-color: rgb(252, 252, 252);
+  color: rgb(0, 0, 0);
+}
+
+.SubLines:focus{
+  text-decoration: none;
+  background-color: #235c33 !important;
+  /*border-bottom: 1px solid rgb(230, 230, 230);*/
+  color: rgb(255, 255, 255);
+}
+
+.SubLines:hover{
+  text-decoration: none;
+  background-color: #235c33 !important;
+  /*border-bottom: 1px solid rgb(230, 230, 230);*/
+  color: rgb(255, 255, 255);
+}
+
+
+.SubLines__title{
+  font-family: 'Gotham Light', sans-serif;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  padding-left: 3.2rem;
+}
+
+.SubLines__title:focus{
+  color: rgb(255, 255, 255);
+  font-family: 'Gotham Light', sans-serif;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .navbar__main {
   background: rgb(255, 255, 255);
@@ -111,7 +244,8 @@ a{
   transition: 0.1s;
   height: 2.1rem;
   border-bottom: 4px solid  #47A01A;
-  
+  margin-left: 15px;
+  margin-right: 15px;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.5s ease-in-out;
@@ -144,7 +278,9 @@ a{
   letter-spacing: 0.5px;
   text-transform: uppercase;
   cursor: pointer;
-  
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 15px;
 }
 .desktopNav__container-line-title-hover{
   color: #47A01A;
@@ -157,8 +293,6 @@ a{
   margin-left: 20px;
   margin-right: 20px;
   margin-top: 15px;
-  padding: 0px !important;
-  
 }
 
 
@@ -181,11 +315,14 @@ a{
   position: absolute;
   opacity: 1 !important;
   z-index: 809 !important;
-  padding: 0px !important;
-  margin: 0px !important;;
-  background: rgb(255, 255, 255) !important;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  padding-left: 50%;
+  padding-right: 50%;
+  background: rgb(252, 252, 252);
   transition-property:  all 5s initial;
   transition-duration: 500ms;
+  width: 200px;
   -webkit-box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.19);
   -moz-box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.19);
    box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.19); 
@@ -197,40 +334,20 @@ a{
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 13px;
-  padding: 0px !important;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  margin-top: 1rem;
-  margin-bottom: 0.3rem;
+  max-width: 180px;
   letter-spacing: 0.1px;
   line-height: 20px;
   text-align: start !important;
   color:#000000 !important;
-  text-decoration: none;
-}
-
-.desktopNav__titleSubCategory-hover{
-  display: flex;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  font-size: 13px;
-  padding: 0px !important;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  margin-top: 1rem;
-  margin-bottom: 0.3rem;
-  letter-spacing: 0.1px;
-  line-height: 20px;
-  text-align: start !important;
-  color:#ffffff !important;
+  transition: all .5s ease-in-out;
   text-decoration: none;
 }
 
 .desktopNav__titleSubCategory:hover{
   display: flex;
   cursor: pointer;
-  /*color:#47A01A !important;*/
-  /*transition: all .1s ease-in-out;*/
+  color:#47A01A !important;
+  transition: all .1s ease-in-out;
   text-decoration: none;
 }
 
@@ -249,24 +366,18 @@ a{
 .desktopNav__SubLines-two{
   display: flex;
   vertical-align:top;
-  margin: 0px !important;
-  
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
-
-.desktopNav__SubLines-two:hover{
-  display: flex;
-  vertical-align:top;
-  background-color: #1c4905;
-  cursor: pointer;
-  color: #e9e9e9 !important;
-}
-
-
 
 
 
 .desktopNav__Container__titleSubCategory{
   display: block;
+  margin-bottom: 12px;
 }
 
 
@@ -287,68 +398,50 @@ a{
 }
 
 /* Estilos Lineas de Producto*/
-.desktopNav__Container-Lines-subLines-one{
+.desktopNav__Container-Lines-subLines-two{
   display: block;
   position: absolute;
   justify-content: start;
   left: 100%;
   opacity: 1 !important;
-  background: rgb(252, 252, 252);
-  margin-top: -20.5%;
-  margin-bottom: 0px;
+  margin-top: -20%;
+  padding-top: 25px;
+  padding-bottom: 5px;
+  padding-left: 15%;
+  padding-right: 10%;
   width: 200px;
+  background: rgb(252, 252, 252);
   -webkit-box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.19);
   -moz-box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.19);
    box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.19); 
 }
 
-
-.desktopNav__Container-Lines-subLines-List-one{
+.desktopNav__Container-Lines-subLines-List-two{
   display: flex;
   font-family: 'Montserrat', sans-serif;
   justify-content: start;
   text-align: start !important;
   font-weight: 400;
   font-size: 13px;
+  max-width: 180px;
   letter-spacing: 0.1px;
   line-height: 17px;
   text-align: center;
-  color:#0e0e0e ;
+  color:#000000 ;
   transition: all .5s ease-in-out;
-  text-decoration: none !important;
+  text-decoration: none;
 }
 
-.desktopNav__Container-Lines-subLines-List-one-hover{
-  display: flex;
-  font-family: 'Montserrat', sans-serif;
-  justify-content: start;
-  text-align: start !important;
-  font-weight: 400;
-  font-size: 13px;
-  letter-spacing: 0.1px;
-  line-height: 17px;
-  text-align: center;
-  color:#ffffff !important;
-  transition: all .5s ease-in-out;
-  text-decoration: none !important;
+.desktopNav__Container-Lines-subLines-List-two:hover{
+  color: #47A01A;
+  cursor: pointer;
 }
 
-
-.desktopNav__Container-Lines-subLines-tol-one{
+.desktopNav__Container-Lines-subLines-tol-two{
   display: block;
   text-decoration: none;
   align-content: flex-start;
-  padding-top: 9%;
-  padding-bottom: 9%;
-  padding-left: 15%;
-  padding-right: 10%;
-  color: #000000;
-  transition: all .1s ease-in-out;
-}
-
-.desktopNav__Container-Lines-subLines-tol-one:hover{
-  background-color: #1c4905;
-  transition: all .1s ease-in-out;
+  margin-bottom: 18px;
 }
 
 
@@ -485,16 +578,7 @@ a{
     /*border-bottom: 1px solid rgb(235, 235, 235);*/ /* divisiones de lineas deproductos casagri */
   }
 
-  .movilNav__container-line-hover{
-    display: flex;
-    justify-content: flex-start; /* justify-content: center; */
-    align-items: center;
-    width: 100%;
-    height: 80px;   
-    text-decoration: none;
-    color: #47A01A !important;
-    /*border-bottom: 1px solid rgb(235, 235, 235);*/
-  }
+  
 
   .movilNav__container-line-title{
     font-family: 'Montserrat', sans-serif;
@@ -578,40 +662,9 @@ a{
 
 
   /*----------DROPDOWN MENU----------*/
-  .movilNav-drop{
-    display: block;
-    opacity: 1;
-    transition: all 0.7s ease;
-    z-index: 1;
-    max-width: 100%;
-  }
 
   
-  .movilNav-SubLines{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    height: 70px;   
-    text-decoration: none;
-    background-color: rgb(252, 252, 252);
-    color: rgb(0, 0, 0);
-  }
-
-  .movilNav-SubLines:focus{
-    text-decoration: none;
-    background-color: #235c33 !important;
-    /*border-bottom: 1px solid rgb(230, 230, 230);*/
-    color: rgb(255, 255, 255);
-  }
-
-  .movilNav-SubLines:hover{
-    text-decoration: none;
-    background-color: #235c33 !important;
-    /*border-bottom: 1px solid rgb(230, 230, 230);*/
-    color: rgb(255, 255, 255);
-  }
-
+  
 
   .movilNav-SubLines-title{
     font-family: 'Gotham Light', sans-serif;

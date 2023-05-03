@@ -10,7 +10,7 @@ import { Contact } from 'pages/Contact';
 import { Company } from 'pages/Company';
 import Search  from 'components/Search/Search';
 import Category  from 'components/category/category';
-import Marcas  from 'components/marcas/Marcas';
+import Marcas  from 'components/category/Marcas';
 import { Details }  from 'components/details/Details';
 import { DetailsNew }  from 'components/details/DetailsNew';
 

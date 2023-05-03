@@ -31,7 +31,8 @@ const CarruselMain = ({banner, component}) => {
       
       </Carousel>
     </section>
-    {/* Banner Desktop */}
+
+    {/* Banner Movil */}
     <section className='Carrousel__Banner__Movil'>
       <Carousel fade indicators={false} >
           {banner?.map((banner, index) => (

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams,Link, useLocation, useNavigate} from "react-router-dom";
 
-
 //importacion de datos de productos
 import { featuredProductss } from "../../data/featuredProductss";
 import dataPro from "../../data/daticos/productos.json";
@@ -10,15 +9,16 @@ import { ProductsAll } from "../../data/ProductsAll";
 //METODOS FILTRADO
 import { getProductByCategory , 
         getProductByCat2,  
-        getBrandsByName, 
+        getBrandsByName,
+        getComponentByName, 
         getProductByBrands } from "../../selectors/getInfoCasagri";
 //componentes
 import CardItem from '../Cards/CardItem';
 import CardItemNew from '../Cards/CardItemNew';
 import  Search  from "../Search/Search";
 import  SearchForm  from "../Search/SearchForm";
-import  FiltersBar  from "../Search/FiltersBar";
-import  FilterSidebar  from "../Search/FilterSidebar";
+import  FiltersBar  from "../Filters/FiltersBar";
+import  FilterSidebar  from "../Filters/FilterSidebar-Movil";
 import { BannerCategory } from 'components/BannerMain/BannerCategory';
 import { imgCasagriLoad } from '../../data/newsData';
 import Loader from "components/Loader/Loader";
@@ -87,6 +87,7 @@ const Category = ({ component }) => {
 
    //Filtros
    const [marcas, setMarcas] = useState([]);
+   const [componentes, setComponentes] = useState([]);
 
    //variables para paginado
    const [categoria, setCategoria] = useState([]);
@@ -220,6 +221,13 @@ const Category = ({ component }) => {
       setMarcas((getBrandsByName(getBrandsByName(getProductByCategory(consulta.toUpperCase())))));
       return getBrandsByName(getProductByCategory(consulta.toUpperCase()));
     }
+    
+    //Componentes 
+    const filtersComponent = () => {
+      setComponentes((getComponentByName(getProductByCategory(consulta.toUpperCase()))));
+      console.log(getComponentByName(getProductByCategory(consulta.toUpperCase())));
+      return getComponentByName(getProductByCategory(consulta.toUpperCase()));
+    }
 
 
     const pageSuma = 1;
@@ -298,6 +306,7 @@ const Category = ({ component }) => {
         filterProducts();
 
         filterBrands();
+        filtersComponent();
     }, [consulta])
 
     useEffect(() => {
@@ -400,7 +409,7 @@ const Category = ({ component }) => {
                 <div className='category__Container'>
                   {/* Filtro */}
                   <div className='category__filter'>
-                    <FiltersBar Marcas={marcas} Consulta={consulta}/>
+                    <FiltersBar Marcas={marcas} Consulta={consulta} Componentes={componentes}/>
                   </div>
                   {/* Filtro Movil */}
                   <div className='category__filter__Movil'>

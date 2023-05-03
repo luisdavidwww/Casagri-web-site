@@ -9,6 +9,8 @@ import Typography from '@mui/material/Typography';
 
 //Estilos
 import './FiltersBar.css';
+import './CategoryAccordion.css';
+
 // Listas de datos 
 import { links } from "../common/Navbar/Mylinks";
 //icons
@@ -71,18 +73,18 @@ export default function CategoryAccordion() {
 
   return (
     
-    <div className='filter__container__Main__Arcodion'>
+    <div className='filter__container__Main'>
         {links.map((link, index) => (
               <div key={`${"Filter"}-${'category-movil'}-${index}`}>
                   {/* Condicional para hover de las líneas */}
                   { heading == link.name && line == link.name ? 
                     (
-                      <a className='movilNav__container-line-hover'
+                      <a className='Container__line__hover'
                           onClick={() => { dropdownBoxMovil(link.name); }}
                         >
                           {/* Lineas de Producto en el Navbar hover*/}
                               <div>
-                                    <h1 className='movilNav__container-line-title'>
+                                    <h1 className='Container__line__hover__title'>
                                         {link.name} 
                                           { heading == link.name && line == link.name ? 
                                           (  <BsChevronDown style={{marginLeft:'10px', paddingTop:'2px', display:'inline-flex'}}/>  )
@@ -95,13 +97,13 @@ export default function CategoryAccordion() {
                     )
                     : 
                     (   
-                      <a className='movilNav__container-line'
+                      <a className='Container__line'
                           onClick={() => { dropdownBoxMovil(link.name); }}
                           style={{textDecoration:'none'}}
                         >
                           {/* Lineas de Producto en el Navbar*/}
                               <div>
-                                    <h1 className='movilNav__container-line-title'>
+                                    <h1 className='Container__line__title'>
                                         {link.name} 
                                           { heading == link.name && line == link.name ? 
                                           (  <BsChevronDown style={{marginLeft:'10px', paddingTop:'2px', display:'inline-flex'}}/> )
@@ -116,7 +118,7 @@ export default function CategoryAccordion() {
                       {/* SubLíneas de Productos*/}
                       <AnimatePresence>
                       {dropdownMovil && link.submenu && heading == link.name && erclick && (
-                          <div className='movilNav-drop'>
+                          <div className='container__drop'>
                             <motion.div
                             initial={{x: 50, y: 0, scale: 1, rotate: 0,  opacity:0 }}      
                             animate={{x: 0, y: 0, scale: 1, rotate: 0, transition:{duration:"0.40"}, opacity:1 }}  
@@ -125,12 +127,12 @@ export default function CategoryAccordion() {
                                   return (
                                     <div key={`${"subLink"}-${'sub-category-movil'}-${index}`}>
                                       <Link
-                                        className='movilNav-SubLines'
+                                        className='SubLines'
                                         to={`/Category/${mysublinks.Head}`}
                                         style={{textDecoration:'none'}}
                                         onClick={() => { handleClick()}}
                                       >
-                                        <div className='movilNav-SubLines-title'>
+                                        <div className='SubLines__title'>
                                             {mysublinks.Head}
                                         </div>
                                       </Link>

@@ -7,7 +7,7 @@ import queryString from 'query-string';
 
 
 //componentes
-import  ProductContainerNew  from "./ProductContainerNew";
+//import  ProductContainerNew  from "./ProductContainerNew";
 import CardItem from '../Cards/CardItem'
 
 //Estilos

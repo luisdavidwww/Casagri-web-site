@@ -6,8 +6,8 @@ import  {getProductDataByName}  from "../../selectors/getInfoCasagri";
 import queryString from 'query-string';
 //componentes
 import  SearchForm  from "./SearchForm";
-import  FiltersBar  from "../Search/FiltersBar";
-import  FilterSidebar  from "../Search/FilterSidebar";
+import  FiltersBar  from "../Filters/FiltersBar";
+import  FilterSidebar  from "../Filters/FilterSidebar-Movil";
 import CardItem from '../Cards/CardItem';
 import { BannerCategory } from 'components/BannerMain/BannerCategory';
 import Loader from "components/Loader/Loader";
