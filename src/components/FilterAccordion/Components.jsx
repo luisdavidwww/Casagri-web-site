@@ -11,7 +11,7 @@ export default function Components({ ComponentesProductos, Enlace }) {
 
     //overflow-y: scroll !important;
     
-    <div className='filter__container__Main__Arcodion'>
+    <div className={ ComponentesProductos?.length > 23 ? 'filter__container__Main__Arcodion': 'filter__container__Main'}>
       <ul style={{paddingLeft:'0rem'}}>
         {
           ComponentesProductos?.map((item, index) => ( 

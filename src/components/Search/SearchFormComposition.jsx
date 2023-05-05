@@ -1,20 +1,25 @@
-import React, {  useMemo, useState } from 'react';
+import React, {  useMemo, useEffect, useState } from 'react';
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from '../../hooks/useForm';
-import { getProductByName } from '../../selectors/getProductByName';
+import { getComponent } from '../../selectors/getInfoCasagri';
 import queryString from 'query-string';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+//Componentes
+import ComponentsProducts from '../FilterAccordion/Components';
 //Estilos
 import './Search.css';
 //icons
 import { BsSearch } from "react-icons/bs"
 
-const SearchFormComposition = () => {
+const SearchFormComposition = ({ ComponentesProductos, Enlace }) => {
      //constantes
      const { query } = useParams();
      const navigate = useNavigate();
  
      //variables de estados
      const [alert, setAlert] = useState("");
+     const [componentes, setComponentes] = useState([]);
  
  
      //constantes
@@ -29,31 +34,41 @@ const SearchFormComposition = () => {
      const { searchText } = formValues;
  
  
-     const heroesFiltered = useMemo(() => getProductByName( query ));
+     useEffect(() => {
+
+      if ( searchText == "" )
+      {
+        setComponentes([]);
+
+      }
+      else{
+        setComponentes(getComponent( searchText , ComponentesProductos ));
+
+      }
+  }, [searchText])
 
      //metodo para busqueda de producto
     const handleSearch = (e) => {
         if (searchText==='') {
             e.preventDefault();
-            navigate(`/Category/All`);
+            setComponentes([]);
           }  
           else{
             e.preventDefault();
-            navigate(`/search/${ searchText }`);
-            setAlert(searchText);
+            //console.log("QUE MAS PEUS"+JSON.stringify(marcas));
           }
         
     }
 
   return (
     <>
-        {/* Formulario de Busqueda */}
+        {/* Formulario de Busqueda de Marca*/}
         <div className='Search__Brand__container__Active'>
             <div className="Search__Brand__container__Active">
                     <form onSubmit={ handleSearch } className='Search__form'>
                             <input 
                                 type="text"
-                                placeholder="Composición"
+                                placeholder="Buscar Componente"
                                 className='Search__imput'
                                 name="searchText"
                                 autoComplete="off"
@@ -61,11 +76,36 @@ const SearchFormComposition = () => {
                                 onChange={ handleInputChange } 
                                 
                             />
-                            <BsSearch className='icon__Search'/>
+                            
                           
                     </form>
             </div>
         </div>
+        
+        {/* Resultado de Busqueda de Marca*/}
+        {
+          searchText !== "" ? (
+            <div>
+              {
+                componentes?.length !== 0 ? (
+                  <ComponentsProducts ComponentesProductos={componentes} Enlace={Enlace} />
+                ):
+                (
+                  <div className='result__Filter'>sin resultados para: "{ searchText }"</div>
+                )
+              }
+              
+            </div>
+            ):
+            (
+              <div>
+                <ComponentsProducts ComponentesProductos={ComponentesProductos} Enlace={Enlace} />
+              </div>
+            )
+
+        }
+        
+
     </>
   )
 }

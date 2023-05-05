@@ -173,7 +173,8 @@ const Marcas = ({ component }) => {
                 {/*Titulo de Resultado Desktop */}
                 <div className='result__Search__Container' >
                       <div className='result__Search text__Result__Category'> 
-                        <span style={{fontWeight:'700', fontSize:'29px'}}>Marca <>&nbsp;</> {marca}</span>  
+                        <span style={{fontWeight:'500', fontSize:'23px', marginTop:'0.4rem', marginLeft:'0.1rem'}}>Marca:</span>  
+                        <span style={{fontWeight:'700', fontSize:'29px', marginLeft:'0.5rem' }}>{/* <>&nbsp;</> */}  {marca}</span>  
                       </div>
                 </div>
 
@@ -181,7 +182,7 @@ const Marcas = ({ component }) => {
                 <div className='result__Category__Container__Movil' >
                     <div className='result__Category__Movil text__Result__Category__Movil'> 
                       <>
-                          <p style={{fontWeight:'700', fontSize:'25px', marginBottom:'0rem', textAlign:'center'}}>Marca{marca}</p> 
+                          <p style={{fontWeight:'700', fontSize:'25px', marginBottom:'0rem', textAlign:'center'}}>Marca: {marca}</p> 
                       </>
                     </div>
                 </div>

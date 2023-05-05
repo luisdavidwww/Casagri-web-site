@@ -126,7 +126,7 @@ export default function FormTextFields() {
 
         />
       </div>
-
+{/*
       <Slider
         value={typeof value === 'number' ? value : 0}
         onChange={handleSliderChange}
@@ -148,7 +148,8 @@ export default function FormTextFields() {
             'aria-labelledby': 'input-slider',
           }}
       />
-
+*/}
     </Box>
+
   );
 }

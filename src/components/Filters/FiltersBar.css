@@ -9,7 +9,7 @@
   padding: 3px 16px 10px !important;
 }
 .css-1160xiw-MuiPaper-root-MuiDrawer-paper{
-  background-color: #4E4E4E !important;
+  background-color: #ffffff !important;
   color: rgb(255, 255, 255) !important;
 }
 
@@ -157,6 +157,25 @@
     transition: all .1s ease-in-out;
   }
 
+  .result__Filter{
+    color: #3a3a3a;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 12px !important;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 20px;
+    /*margin-top: 15px;*/
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all .1s ease-in-out;
+  }
+
   .subCategorie__Filter{
     color: #252525;
     display: block;
@@ -230,7 +249,7 @@
 
   @media only screen and (max-width: 960px) {
     
-    
+
 
     .filter__container__Main__Movil{
       display: block;

@@ -111,9 +111,7 @@ export default function FiltersBar({Marcas, Consulta, Componentes}) {
 
         {/*Filtro Titulo*/}
         <FilterFilter/>
-
         
-
         {/*Clasificacion*/}
         <Accordion >
           <AccordionSummary aria-controls="panel1d-content" id="panel1d-header" >
@@ -165,19 +163,19 @@ export default function FiltersBar({Marcas, Consulta, Componentes}) {
             </div> <BsChevronDown className='iconOptionFilters'/>
           </AccordionSummary>
           <AccordionDetails>
-            <SearchFormBrands MarcasProductos={Marcas} />
-            <Brands MarcasProductos={Marcas} Enlace={Consulta} />
+            <SearchFormBrands MarcasProductos={Marcas} Enlace={Consulta}/>
+            {/*<Brands MarcasProductos={Marcas} Enlace={Consulta} />*/}
           </AccordionDetails>
         </Accordion>
 
         {/*Componentes*/}
         {
           Consulta === "Agroquímicos" || Consulta === "Insecticidas" || Consulta === "Herbicidas"
-          || Consulta === "Fungicidas" || Consulta === "Otros"  || Consulta === "Medicina Veterinaria"
-          || Consulta === "Analgésicos y Anti-Inflamatorios" || Consulta === "Antibióticos" 
-          || Consulta === "Anti-Diarreicos" || Consulta === "Baños, Ectoparasitarios y Matagusanos"  
-          || Consulta === "Desparasitantes" || Consulta === "Tópicos y Cicatrizantes"
-          || Consulta === "Vacunas" || Consulta === "Vitaminas y Suplementos"  /* || Insecticidas Medicina Veterinaria*/ ? 
+          || Consulta === "Fungicidas" || Consulta === "Otros"  || Consulta === "Salud Animal Veterinaria" || Consulta === "Medicina Veterinaria"
+          || Consulta === "Analgésicos y Antiinflamatorios" || Consulta === "Antisepticos y Desinfectantes" || Consulta === "Antibióticos" 
+          || Consulta === "Antimastiticos" || Consulta === "Antitimpánico"  || Consulta === "Antidiarreicos"  || Consulta === "Desinfectante"
+          || Consulta === "Baños, Ectoparasitarios y Matagusanos" || Consulta === "Biológicos" || Consulta === "Desparasitantes"
+          || Consulta === "Endectocidas" || Consulta === "Hemoparatisidas" || Consulta === "Vitaminas y Suplementos" || Consulta === "Control De Plaga"   ? 
           (
             <Accordion>
               <AccordionSummary 
@@ -190,17 +188,12 @@ export default function FiltersBar({Marcas, Consulta, Componentes}) {
                 </div> <BsChevronDown className='iconOptionFilters'/>
               </AccordionSummary>
               <AccordionDetails>
-                <ComponentsProducts ComponentesProductos={Componentes} Enlace={Consulta} />
+                <SearchFormComposition ComponentesProductos={Componentes} Enlace={Consulta} />
+                {/*<ComponentsProducts ComponentesProductos={Componentes} Enlace={Consulta} />*/}
               </AccordionDetails>
             </Accordion>
           ):null
         }
-        
-        
-
-        
-
-        
 
         </div>
         

@@ -422,67 +422,66 @@ const Category = ({ component }) => {
     
                   {/* Resultado de Busqueda */}
                   <>
-                  { 
-                            ( filterProducts === null  ) 
-                                && 
-                                <div className='container__error'>
-                                  <div className="alert alert-danger">
-                                    No hay productos disponibles
+                    { 
+                              ( filterProducts === null  ) 
+                                  && 
+                                  <div className='container__error'>
+                                    <div className="alert alert-danger">
+                                      No hay productos disponibles
+                                    </div>
                                   </div>
+                                  
+                      }
+      
+                      {
+                              (  filterProducts !== null  ) 
+                              && 
+                              <div className='category__products'>
+                                <div className='cards'>
+                                      <div className='cards__container'>
+                                        <div className='cards__wrapper'> 
+                                          <ul className='cards__items__Container'>
+                                            {filterProducts()?.map((item, index) => (
+                                                <CardItemNew
+                                                key={`${component}-${index}`}
+                                                src={imgCasagriLoad.imgUrl}
+                                                Nombre={item.Nombre}
+                                                Peso={item.PesoKG}
+                                                path={`/DetailsNew/${ item.Nombre.replace(/\s+/g, '').replace(/[^a-zA-Z0-9 ]/g, '') }`}
+                                                price={""}
+                                                CodigoProd={item.CodigoProd}
+                                                Marca={item.Marca}
+                                                ranking={""}
+                                                component={component}
+                                                categoria={""}
+                                                subCategoria={""}
+                                                Linea={""}
+                                                />
+                                            ))}
+                                          </ul>
+                                        </div>
+                                      </div>       
                                 </div>
-                                
-                    }
-    
-                    {
-                            (  filterProducts !== null  ) 
-                            && 
-                            <div className='category__products'>
-                              <div className='cards'>
-                                    <div className='cards__container'>
-                                      <div className='cards__wrapper'> 
-                                        <ul className='cards__items__Container'>
-                                          {filterProducts()?.map((item, index) => (
-                                              <CardItemNew
-                                              key={`${component}-${index}`}
-                                              src={imgCasagriLoad.imgUrl}
-                                              Nombre={item.Nombre}
-                                              Peso={item.PesoKG}
-                                              path={`/DetailsNew/${ item.Nombre.replace(/\s+/g, '').replace(/[^a-zA-Z0-9 ]/g, '') }`}
-                                              price={""}
-                                              CodigoProd={item.CodigoProd}
-                                              Marca={item.Marca}
-                                              ranking={""}
-                                              component={component}
-                                              categoria={""}
-                                              subCategoria={""}
-                                              Linea={""}
-                                              />
-                                          ))}
-                                        </ul>
-                                      </div>
-                                    </div>       
-                                </div>
-                                
-                                <div>
-                                  <button 
-                                      className="btn btn-primary"
-                                      onClick={ prevPage }
-                                  >
-                                      Anteriores
-                                  </button>
+                                  
+                                  <div>
                                     <button 
-                                      className="btn btn-primary"
-                                      onClick={ nextPage }
-                                  >
-                                      Siguientes
-                                  </button>
-                                  <div>Total Productos: {getProductByCategory(consulta.toUpperCase()).length}</div>
-                                </div>
-                            </div>
-                            
-                                
-                        }
-                  </>
+                                        className="btn btn-primary"
+                                        onClick={ prevPage }
+                                    >
+                                        Anteriores
+                                    </button>
+                                      <button 
+                                        className="btn btn-primary"
+                                        onClick={ nextPage }
+                                    >
+                                        Siguientes
+                                    </button>
+                                    <div>Total Productos: {getProductByCategory(consulta.toUpperCase()).length}</div>
+                                  </div>
+                              </div>
+      
+                      }
+                    </>
                 </div>
     
         </>

@@ -72,10 +72,8 @@ export default function FilterSidebar() {
                 
             >
                 <div style={{marginTop:'2rem'}}>
-                   <FiltersBar/> 
+                   <FiltersBar/>
                   {/* <FilterBarNew/> */}
-                  
-                    
                 </div>
                 
             </Drawer>

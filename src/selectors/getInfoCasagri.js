@@ -196,6 +196,22 @@ export const getProductByCategory = ( category = '' ) => {
         return data.filter( products => products.cat2.includes( "IMPLEMENTOS VETERINARIOS" ) );
     }
 
+    if ( category === 'MANEJO E IDENTIFICADORES' ) {
+        return data.filter( products => products.Cat3.includes( "MANEJO E IDENTIFICACION" ) );
+    }
+
+    if ( category === 'CONTROL DE PLAGA' ) {
+
+        let SaludPublica = data.filter( products => products.cat1.includes( "SALUD PUBLICA" ) );
+        let Insecticidas = data.filter( products => products.cat2.includes( "INSECTICIDAS" ) );;
+
+        return SaludPublica.concat( Insecticidas ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
+    }
+
+    if ( category === 'DESINFECTANTE' ) {
+        return data.filter( products => products.Cat3.includes( "DESINFECTANTES" ) );
+    }
+
     //category = category.toLocaleLowerCase();  
 
     return data.filter( products => products.cat1.includes( category ) );
@@ -258,15 +274,20 @@ export const getCategory = (  ) => {
 
 /*------------------------METODOS DE PRODUCTO------------------------------*/
 
-//Buscar Producto por nombre
+//Buscar Producto Y Componente Activo
 export const getProductDataByName = ( name = '' ) => {
 
     if ( name === '' ) {
         return [];
     }
 
-    name = name.toLocaleLowerCase();
-    return data.filter( products => products.Nombre.toLocaleLowerCase().includes( name )  );
+    name = name.toLocaleUpperCase();
+    let nombre = data.filter( products => products.Nombre.includes( name ) );
+    let componente = data.filter( products => products.cat4.includes( name ) );;
+
+    return nombre.concat( componente ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
+
+    //return data.filter( products => products.Nombre.includes( name )  );
 
 }
 
@@ -329,7 +350,7 @@ export const getBrand = ( searchText, MarcasProductos ) => {
         return [];
     }
 
-    return MarcasProductos.filter( products => products.Marca.includes( searchText )  );
+    return MarcasProductos.filter( products => products.Marca.includes( searchText.toLocaleUpperCase() )  );
 
 }
 
@@ -350,4 +371,15 @@ export const getComponentByName = ( ArregloProducto ) => {
       let hash = {};
       return CasagriComponents.filter(o => hash[o.cat4] ? false : hash[o.cat4] = true).sort((x, y) => x.cat4.localeCompare(y.cat4));
       //return luis.sort((x, y) => x.cat4.localeCompare(y.cat4));
+}
+
+//Buscador de Marcas por nombre 
+export const getComponent = ( searchText, ComponentesProductos ) => {
+
+    if ( searchText === '' ) {
+        return [];
+    }
+
+    return ComponentesProductos.filter( products => products.cat4.includes( searchText.toLocaleUpperCase() )  );
+
 }

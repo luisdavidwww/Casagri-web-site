@@ -124,13 +124,15 @@
 
 
   /*Error mensaje */
+  .container__Main__error{
+    
+  }
   .container__error{
     display: flex;
     justify-content: center;
-    width: 900px;
-    align-items: center;
-    margin-top: 2rem;
+    margin: auto;
   }
+  
 
   /*Diseño para la Paginacion*/
   .Pages{
