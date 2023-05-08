@@ -96,12 +96,13 @@ export const Company = () => {
               <Trayectory component="Trayectory"/>
               <NationalMomentum component="NationalMomentum"/>
               <div>
-              {brando?.map((item, index) => (
+                {/* {brando?.map((item, index) => (
                 <div key={`${"Marcascasagri"}-${index}`}>
                   {item.Marca}
                 </div>
                       
-                ))}
+                ))}*/}
+              
               </div>
             </>
           )
