@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { BannerMain } from 'components/BannerMain/BannerMain';
 import Location  from 'components/Contact/Location';
 import Loader from "components/Loader/Loader";
-import ContactSection from 'components/Contact/ContactSection';
+
 
 //Datos para los banners
 import { BANNERS } from '../routers/index';
@@ -44,7 +44,7 @@ export const Contact = () => {
             <>
               <BannerMain image={ banner.banner__desktop } imageMini={ banner.banner__movil } /> 
               <Location/>
-              <ContactSection/>
+              
             </>
           )
         }

@@ -1,5 +1,8 @@
 //Data de productos casagri
 import  data  from '../data/daticos/productos.json';
+import  ProducRecomendados  from '../data/daticos/ProducRecomendados.json';
+import  FeaturedProducts  from '../data/daticos/FeaturedProducts.json';
+//FeaturedProducts
 
 
 
@@ -218,37 +221,10 @@ export const getProductByCategory = ( category = '' ) => {
 
 }
 
-//Listado de Productos por Categoria 2
-export const getProductByCat2 = ( category = '' ) => {
+//Listado de Productos Destacados
+export const getProduct = ( ) => {
 
-    if ( category === '' ) {
-        return [];
-    }
-
-    //category = category.toLocaleLowerCase();
-    return data.filter( products => products.cat2.includes( category ) );
-
-}
-//Listado de Productos por Categoria 3
-export const getProductByCat3 = ( category3 = '' ) => {
-
-    if ( category3 === '' ) {
-        return [];
-    }
-
-    //category = category.toLocaleLowerCase();
-    return data.filter( products => products.Cat3.includes( category3 ) );
-
-}
-//Listado de Productos por Categoria 4
-export const getProductByCat4 = ( category4 = '' ) => {
-
-    if ( category4 === '' ) {
-        return [];
-    }
-
-    //category = category.toLocaleLowerCase();
-    return data.filter( products => products.cat4.includes( category4 ) );
+    return FeaturedProducts.concat(ProducRecomendados );
 
 }
 
@@ -373,7 +349,7 @@ export const getComponentByName = ( ArregloProducto ) => {
       //return luis.sort((x, y) => x.cat4.localeCompare(y.cat4));
 }
 
-//Buscador de Marcas por nombre 
+//Buscador de Componente por nombre 
 export const getComponent = ( searchText, ComponentesProductos ) => {
 
     if ( searchText === '' ) {
@@ -381,5 +357,16 @@ export const getComponent = ( searchText, ComponentesProductos ) => {
     }
 
     return ComponentesProductos.filter( products => products.cat4.includes( searchText.toLocaleUpperCase() )  );
+
+}
+
+//Buscador de Componente  
+export const getComponentList = ( searchText ) => {
+
+    if ( searchText === '' ) {
+        return [];
+    }
+
+    return data.filter( products => products.cat4.includes( searchText.toLocaleUpperCase() )  );
 
 }

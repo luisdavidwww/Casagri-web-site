@@ -11,6 +11,7 @@ import { BannerCommercial } from 'components/BannerMain/BannerCommercial';
 import  BannerCarrousel  from 'components/BannerMain/BannerCarrousel';
 import  CarruselMain  from 'components/CarruselDiscover/CarruselMain';
 import Loader from "components/Loader/Loader";
+import ContactSection from 'components/Home/Contact/ContactSection';
 
 // Data
 import { BannerData } from '../data/BannerData';
@@ -84,6 +85,7 @@ export const Home = () => {
             <BannerCarrousel banner={banner} component={"BannerCarrousel"} />
             <RecommendedProducts component="RecommendedProducts"/>
             <NewSection component="NewSection"/>
+            <ContactSection/>
             </>
       )
     }

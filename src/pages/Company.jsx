@@ -1,23 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
-//componentes 
+//componentes  
 import { BannerMain } from 'components/BannerMain/BannerMain';
 import AboutUs from 'components/Company/AboutUs';
 import CorporatePolicy from 'components/Company/CorporatePolicy';
 import Trayectory from 'components/Company/Trayectory';
 import NationalMomentum from 'components/Company/NationalMomentum';
+import BrandsCarrousel from "components/Company/BrandsCarrousel";
 import Loader from "components/Loader/Loader";
 
 //Selectors getCategory
 
-import  { getProductByName,
-          getCategory, 
-          getProductByCategory,
-          getProductByCat3,
-          getBrandsByName, 
-          getProductByBrands 
-         
-        }  from '../selectors/getInfoCasagri';
 
 // Data
 import { BannerData } from '../data/BannerData';
@@ -71,15 +64,6 @@ export const Company = () => {
 
   useEffect(() => {
     getInfo();
-    //console.log(JSON.stringify(getProductByBrands("PUPPY PETS"))); 
-    //console.log(getBrandsByName());
-
-    console.log(getProductByCat3("INSECTICIDAS"))
-    //console.log(getProductByName("Cipermetrina Calbos"));
-
-    setBrando(getProductByCat3("INSECTICIDAS"));
-
-    //setBrand(getBrandsByName());
 
   },[])
 
@@ -95,15 +79,7 @@ export const Company = () => {
               <CorporatePolicy component="CorporatePolicy"/>
               <Trayectory component="Trayectory"/>
               <NationalMomentum component="NationalMomentum"/>
-              <div>
-                {/* {brando?.map((item, index) => (
-                <div key={`${"Marcascasagri"}-${index}`}>
-                  {item.Marca}
-                </div>
-                      
-                ))}*/}
-              
-              </div>
+              <BrandsCarrousel/>
             </>
           )
         }

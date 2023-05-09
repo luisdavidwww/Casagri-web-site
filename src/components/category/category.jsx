@@ -8,7 +8,7 @@ import { featuredProducts } from "../../data/featuredProducts";
 import { ProductsAll } from "../../data/ProductsAll";
 //METODOS FILTRADO
 import { getProductByCategory , 
-        getProductByCat2,  
+        getProduct,  
         getBrandsByName,
         getComponentByName, 
         getProductByBrands } from "../../selectors/getInfoCasagri";
@@ -181,24 +181,11 @@ const Category = ({ component }) => {
     const productsMain = () => {
 
       if (consulta === 'Buscar'){
-        
 
-        //setProducts(featuredProducts);
-
-        let compareBanner = BannerCategoryImg.filter((e) => {return e.category == 'buscar';})
-         //declaramos las variables para las imagenes
-         let condImg =  compareBanner.map(item => item.img).toString();
-         let condImgMini = compareBanner.map(item => item.miniimg).toString();
- 
-         //Cargamos las imagenes
-         setImgBanner(condImg);
-         setImgMiniBanner(condImgMini);
-        return
+         return getProduct().slice(currentPage, currentPage + 16);
 		}
         else {
-        //setProducts([]);
-		    compare();
-			  return
+          return getProduct().slice(currentPage, currentPage + 16);
 		}
     }
 
@@ -206,6 +193,10 @@ const Category = ({ component }) => {
 
     //Productos
     const filterProducts = ( filtroMarca ) => {
+      if (consulta === 'Buscar'){
+
+        return getProduct().slice(currentPage, currentPage + 16);
+   }
       if( buscar.length === 0 && filtroMarca == null ) 
       {
         return getProductByCategory(consulta.toUpperCase()).slice(currentPage, currentPage + 16);
@@ -243,61 +234,6 @@ const Category = ({ component }) => {
 
     
 
-    //compara la props de URL con las categorias existentes
-    const compare = () => {
-
-      //Categorias
-      if (consulta === 'Agroindustrial' || consulta === 'Maquinarias' 
-          || consulta === 'Salud Animal' || consulta === 'Ferretería' 
-          || consulta === 'Salud Pública')
-      {
-        /*let compareData = featuredProductss.filter((e) => {
-          return e.category == consulta;
-        })
-        setProducts(compareData); getProductByCategory*/
-        //setProducts(getProductByCategory("AGROINDUSTRIAL").slice(0,5)); 
-      }
-
-
-      //SubCategorias
-      if (consulta === 'Agroquímicos' || consulta === 'Semillas' 
-      || consulta === 'Fertilizantes' || consulta === 'Sacos Cabuyas y Cordeles' 
-      || consulta === 'Cercas de Alambre y Eléctricas' || consulta === 'Equípos Agrícolas'
-      || consulta === 'Bombas de Agua' || consulta === 'Generadores'
-      || consulta === 'Motores' || consulta === 'Medicina Veterinaria'
-      || consulta === 'Instrumental Veterinario' || consulta === 'Manejo e Identificadores'
-      || consulta === 'Ferreteria Agricola' || consulta === 'Electricidad'
-      || consulta === 'Otros Productos ' || consulta === 'Control De Plaga'
-      || consulta === 'Desinfectante'     
-      )
-      {
-        let compareData = featuredProductss.filter((e) => {
-          return e.subCategory == consulta;
-        })
-        
-        //setProducts(compareData);
-        const filtered = getProductByCat2("AGROQUIMICOS");
-        return filtered.slice( currentPage, currentPage + 5); 
-      }
-
-
-      //tipoProductos 
-      if (consulta === 'Insecticidas' || consulta === 'Herbicidas' 
-      || consulta === 'Fungicidas' || consulta === 'Asperjadoras' 
-      || consulta === 'Alta Presión' || consulta === 'Baja Presión'
-      || consulta === 'Baños, Ectoparasitarios y Matagusanos'   
-      )
-      {
-        let compareData = featuredProductss.filter((e) => {
-          return e.TipoProducto == consulta;
-        })
-        //setProducts(compareData);
-      }
-
-    }
-
-
-
     //use effects general
     useEffect(() => {
         productsMain();
@@ -307,6 +243,7 @@ const Category = ({ component }) => {
 
         filterBrands();
         filtersComponent();
+        console.log(productsMain())
     }, [consulta])
 
     useEffect(() => {

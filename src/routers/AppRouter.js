@@ -11,6 +11,7 @@ import { Company } from 'pages/Company';
 import Search  from 'components/Search/Search';
 import Category  from 'components/category/category';
 import Marcas  from 'components/category/Marcas';
+import Componentes  from 'components/category/Componentes';
 import { Details }  from 'components/details/Details';
 import { DetailsNew }  from 'components/details/DetailsNew';
 
@@ -30,6 +31,7 @@ export const AppRouter = () => {
                     <Route path="/Company" element={ <Company/> }></Route>
                     <Route path="/Category/:consulta" element={ <Category component={"Category"}/> }></Route>
                     <Route path="/marcas/:marca" element={ <Marcas component={"Marca"}/> }></Route>
+                    <Route path="/component/:composicion" element={ <Componentes component={"Composición"}/> }></Route>
                     <Route path="/search/:query" element={ <Search/> }></Route>
                     <Route path="/Details/:nombre" element={ <Details/> }></Route>
                     <Route path="/DetailsNew/:nombre" element={ <DetailsNew/> }></Route>
