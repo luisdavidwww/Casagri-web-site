@@ -90,14 +90,14 @@ const Marcas = ({ component }) => {
 
     //Productos
     const filterProducts = () => {
-        return getProductByBrands(marca.toUpperCase() , consultaParaLeerMarcas.toString() ).slice(currentPage, currentPage + 16 );
+        return getProductByBrands(marca.toUpperCase() , marca.toString() ).slice(currentPage, currentPage + 16 );
         //getProductByCategory(consultaParaLeerMarcas.toString().toUpperCase());
     }
 
     //Leer Todas las marcas de la categoría
     const filterBrands = () => {
-      setMarcas((getBrandsByName(getBrandsByName(getProductByCategory(consultaParaLeerMarcas.toString().toUpperCase())))));
-      return getBrandsByName(getProductByCategory(consultaParaLeerMarcas.toString().toUpperCase()));
+      setMarcas((getBrandsByName(getBrandsByName(getProductByCategory(marca.toString().toUpperCase())))));
+      return getBrandsByName(getProductByCategory(marca.toString().toUpperCase()));
     }
 
 
@@ -124,7 +124,9 @@ const Marcas = ({ component }) => {
         filterProducts();
 
         filterBrands();
-        console.log(consultaParaLeerMarcas.toString().toUpperCase());
+
+        console.log(consultaParaLeerMarcas);
+        console.log(marca.toString().toUpperCase());
     }, [marca])
 
     useEffect(() => {

@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { Link, Redirect } from "react-router-dom";
 import Slider from "react-slick";
 import AOS      from 'aos';
 
@@ -18,34 +19,41 @@ import { VscChevronRight } from "react-icons/vsc";
 import { VscChevronLeft } from "react-icons/vsc";
 
 // Data
-import { ACERCA_DE_CASAGRI, INSTALACIONES } from '../../routers/index'
+import { ACERCA_DE_CASAGRI, INSTALACIONES } from '../../routers/index';
+
+
+
+//importacion temporal de imagenes
+const imgL = require.context('../../static/images/brands', true);
 
 const BrandsCarrousel = () => {
 
   const [data, setData] = useState([]);
-  const [instalaciones, setInstalaciones] = useState([]);
 
   //creating the ref
   const customeSlider = useRef();
 
-  // setting slider configurations Desktop
-  const [sliderSettings, setSliderSettings] = useState({
-    infinite: true,
-    speed: 600,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    arrows: false,
-  })
-
   const settings = {
     dots: false,
-    arrows: true,
+    arrows: false,
     infinite: true,
     slidesToShow: 4,
     slidesToScroll: 1,
-    autoplay: false,
-    speed: 2000,
-    autoplaySpeed: 2000,
+    autoplay: true,
+    speed: 700,
+    autoplaySpeed: 3000,
+    cssEase: "linear"
+  };
+
+  const settingsMovil = {
+    dots: false,
+    arrows: false,
+    infinite: true,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 700,
+    autoplaySpeed: 3000,
     cssEase: "linear"
   };
 
@@ -74,34 +82,110 @@ const BrandsCarrousel = () => {
   return (
     <>
 
-            <div className='AboutUs__title__Container'>
-                    <h1 className='AboutUs__title'>Distribuidores <span style={{color:'#489B1E'}}> Autorizados </span> </h1>
-            </div>
-
-     <div className="mainContainer">
-        <h2>Auto Play</h2>
-        <Slider {...settings}>
-          <div className="container">
-            <img src="https://logodownload.org/wp-content/uploads/2017/09/bayer-logo-1-1.png" />
-          </div>
-          <div className="container">
-            <img src="https://www.multiagri.com/uploads/productos/a0HP7KVSYo.png" />
-          </div>
-          <div className="container">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Syngenta_Logo.svg/2560px-Syngenta_Logo.svg.png" />
-          </div>
-          <div className="container">
-            <img src="http://recruiters-zone.com/static/media/BRS_Ventures.0722bfe22318cd3f3f5d.jpg" />
-          </div>
-          <div className="container">
-            <img src="http://recruiters-zone.com/static/media/ibexglobal.bbde01ca0d4903ed36b1.png" />
-          </div>
-          <div className="container">
-            <img src="http://recruiters-zone.com/static/media/BRS_Ventures.0722bfe22318cd3f3f5d.jpg" />
-          </div>
-        </Slider>
+      <div className='AboutUs__title__Container BrandsCarrousel'>
+          <h1 className='AboutUs__title'>Distribuidores <span style={{color:'#489B1E'}}> Autorizados </span> </h1>
       </div>
 
+      {/* Desktop */}
+     <div className="mainContainer-brand">
+      <div className='main-Container-brand'>
+        <div className='container-Slick-brand'>
+          <Slider {...settings} ref={customeSlider}>
+              <div className="container">
+                <Link to="/marcas/BAYER - AGROQUIMICOS">
+                 <img src={imgL(`./${"bayer.png"}`)} style={{height:'100px', marginTop:'20px'}} />
+                </Link>
+              </div>
+              <div className="container">
+                <Link to="/marcas/BAYER - DEKALB">
+                  <img src={imgL(`./${"dekalb.png"}`)} style={{height:'130px'}} />
+                </Link>
+              </div>
+              <div className="container">
+                <img src={imgL(`./${"icl.png"}`)} style={{height:'150px'}} />
+              </div>
+              <div className="container">
+                <Link to="/marcas/CALBOS">
+                  <img src={imgL(`./${"calbos.png"}`)} style={{height:'105px', marginTop:'20px'}} />
+                </Link>
+              </div>
+              <div className="container">
+                <Link to="/marcas/WOLF">
+                  <img src={imgL(`./${"wolf.png"}`)} style={{height:'100px', marginTop:'25px'}} />
+                </Link>
+              </div>
+              <div className="container">
+                <Link to="/marcas/WESTAR">
+                  <img src={imgL(`./${"westar.png"}`)} style={{height:'150px', marginTop:'5px'}} />
+                </Link>
+              </div>
+          </Slider>
+        </div>
+      </div>
+      
+        
+
+        {/* Botones Controladores Desktop */}
+        <div className='btn_trayectory__containerBrands' data-aos="zoom-in-up" data-aos-once="true" data-aos-duration="2000">
+            <div className='container-Control'>
+              <div className='container-Control-Block'>
+                <div className='container-tbn'>
+                  <div className='container-btn-deg' onClick={()=>gotoPrev()}>
+                    <button className='btn-deg'>
+                      <VscChevronLeft className='btnPrevios'/>
+                    </button>
+                  </div>
+                  <div className='container-btn-deg' onClick={()=>gotoNext()}>
+                    <button className='btn-deg'>
+                      <VscChevronRight className='btnNext'/>
+                    </button>
+                  </div>
+                </div>  
+              </div>
+            </div>
+        </div>
+      </div>
+
+      {/* Movil */}
+      <div className="mainContainer-brand-movil">
+        <div className='main-Container-brand'>
+          <div className='container-Slick-brand'>
+            <Slider {...settingsMovil}>
+                <div className="container-movil" style={{paddingLeft:'4rem'}}>
+                  <Link to="/marcas/BAYER - AGROQUIMICOS">
+                  <img className='center__Movil' src={imgL(`./${"bayer.png"}`)} style={{height:'100px', marginTop:'20px'}} />
+                  </Link>
+                </div>
+                <div className="container-movil">
+                  <Link to="/marcas/BAYER - DEKALB">
+                    <img className='center__Movil' src={imgL(`./${"dekalb.png"}`)} style={{height:'130px'}} />
+                  </Link>
+                </div>
+                <div className="container-movil">
+                  <img className='center__Movil' src={imgL(`./${"icl.png"}`)} style={{height:'150px'}} />
+                </div>
+                <div className="container-movil">
+                  <Link to="/marcas/CALBOS">
+                    <img className='center__Movil' src={imgL(`./${"calbos.png"}`)} style={{height:'105px', marginTop:'20px'}} />
+                  </Link>
+                </div>
+                <div className="container-movil">
+                  <Link to="/marcas/WOLF">
+                    <img className='center__Movil' src={imgL(`./${"wolf.png"}`)} style={{height:'100px', marginTop:'25px'}} />
+                  </Link>
+                </div>
+                <div className="container-movil">
+                  <Link to="/marcas/WESTAR">
+                    <img className='center__Movil' src={imgL(`./${"westar.png"}`)} style={{height:'150px', marginTop:'5px'}} />
+                  </Link>
+                </div>
+            </Slider>
+          </div>
+        </div>
+      
+      </div>
+
+      
 
     </>
   )
