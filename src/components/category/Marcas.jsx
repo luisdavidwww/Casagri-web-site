@@ -77,7 +77,7 @@ const Marcas = ({ component }) => {
       setLoanding(true);
 
       //Petición a la api
-      const response = await fetch(`${'http://localhost:8080/api/'}${BANNERS}${"Buscar"}`);
+      const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${"Buscar"}`);
       const res = await response.json();
       setBanner(res.data);
       //Estado del Loanding Falso
@@ -93,7 +93,10 @@ const Marcas = ({ component }) => {
         return getProductByBrands(marca.toUpperCase() , marca.toString() ).slice(currentPage, currentPage + 16 );
         //getProductByCategory(consultaParaLeerMarcas.toString().toUpperCase());
     }
-
+    const filterProductsTotal = () => {
+      return getProductByBrands(marca.toUpperCase() , marca.toString() );
+      //getProductByCategory(consultaParaLeerMarcas.toString().toUpperCase());
+  }
     //Leer Todas las marcas de la categoría
     const filterBrands = () => {
       setMarcas((getBrandsByName(getBrandsByName(getProductByCategory(marca.toString().toUpperCase())))));
@@ -126,7 +129,7 @@ const Marcas = ({ component }) => {
         filterBrands();
 
         console.log(consultaParaLeerMarcas);
-        console.log(marca.toString().toUpperCase());
+        console.log(filterProductsTotal());
     }, [marca])
 
     useEffect(() => {

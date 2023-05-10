@@ -613,20 +613,21 @@ a{
   }
 
 
-  .movilNav-SubLines-title{
-    font-family: 'Gotham Light', sans-serif;
+  .movilNav-SubLines-title-nav{
+    font-family: 'Gotham Light';
+    font-weight: 600;
     font-size: 14px;
     text-align: center;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.1px;
     padding-left: 3.2rem;
   }
 
-  .movilNav-SubLines-title:focus{
+  .movilNav-SubLines-title-nav:focus{
     color: rgb(255, 255, 255);
-    font-family: 'Gotham Light', sans-serif;
+    font-family: 'Gotham Light';
     font-size: 14px;
     text-align: center;
-    letter-spacing: 1px;
+    letter-spacing: 0.1px;
   }
 
   .dropdown-menu {

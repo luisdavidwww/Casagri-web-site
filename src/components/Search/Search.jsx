@@ -63,7 +63,7 @@ const Search = ({ history }) => {
       setLoanding(true);
 
       //Petición a la api
-      const response = await fetch(`${'http://localhost:8080/api/'}${BANNERS}${'Buscar'}`);
+      const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${'Buscar'}`);
       const res = await response.json();
       setBanner(res.data);
       //Estado del Loanding Falso

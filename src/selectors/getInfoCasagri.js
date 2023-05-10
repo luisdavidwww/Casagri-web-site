@@ -1,5 +1,6 @@
 //Data de productos casagri
-import  data  from '../data/daticos/productos.json';
+//import  data  from '../data/daticos/productos.json';
+import  data  from '../data/daticos/ProductosNew.json';
 import  ProducRecomendados  from '../data/daticos/ProducRecomendados.json';
 import  FeaturedProducts  from '../data/daticos/FeaturedProducts.json';
 //FeaturedProducts
@@ -315,7 +316,7 @@ export const getProductByBrands = ( Marca = '', ProductoPorCategoria ) => {
         return [];
     }
     //brand = brand.toLocaleLowerCase();
-    return data.filter( products => products.Marca.includes( Marca )  );
+    return data.filter( products => products.Marca.includes( Marca )).sort((x, y) => x.Nombre.localeCompare(y.Nombre)) ;
 
 }
 

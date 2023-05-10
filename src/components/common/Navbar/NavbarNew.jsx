@@ -343,7 +343,7 @@ const Navbar = ({component}) => {
                   <div className='content-top-search-div' >
                       <SearchNavbar clickSearch={ clickSearch }/>
                       <div className='content-top-search-cancel' onClick={ actionSearch } > 
-                          <div data-aos="fade-left" className='content-top-search-cancela' > Cancel</div>
+                          <div data-aos="fade-left" className='content-top-search-cancela' > Cancelar </div>
                       </div>
                   </div> 
                                 
@@ -438,8 +438,10 @@ const Navbar = ({component}) => {
                       {dropdownMovil && link.submenu && heading == link.name && erclick && (
                           <div className='movilNav-drop'>
                             <motion.div
+                          /*
                             initial={{x: 50, y: 0, scale: 1, rotate: 0,  opacity:0 }}      
-                            animate={{x: 0, y: 0, scale: 1, rotate: 0, transition:{duration:"0.40"}, opacity:1 }}  
+                            animate={{x: 0, y: 0, scale: 1, rotate: 0, transition:{duration:"0.10"}, opacity:1 }}  
+                          */
                             >
                               {link.sublinks.map((mysublinks, index) => {
                                   return (
@@ -450,7 +452,7 @@ const Navbar = ({component}) => {
                                         style={{textDecoration:'none'}}
                                         onClick={() => { handleClick()}}
                                       >
-                                        <div className='movilNav-SubLines-title'>
+                                        <div className='movilNav-SubLines-title-nav'>
                                             {mysublinks.Head}
                                         </div>
                                       </Link>
