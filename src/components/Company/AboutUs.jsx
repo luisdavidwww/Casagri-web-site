@@ -2,20 +2,20 @@ import React, { useState, useEffect } from 'react';
 import AOS      from 'aos';
 import Skeleton from 'react-loading-skeleton';
 
-//estilos y diseño
+// Estilos y diseño
 import './AboutUs.css';
 import 'aos/dist/aos.css';
 
 // Data
-import { ACERCA_DE_CASAGRI, INSTALACIONES } from '../../routers/index'
+import { ACERCA_DE_CASAGRI } from '../../routers/index'
 
-const AboutUs = ({component}) => {
+const AboutUs = () => {
 
   const [data, setData] = useState([]);
-  const [info, setInfo] = useState([]);
 
-      //body: JSON.stringify(data),
 
+//Peticion productos casagri
+{/* 
   const getInfoProducts = async () => {
 
     const datos = await fetch(`http://csgbqto.dyndns.org:6001/ctDynamicsSL/api/quickQuery/VW_VENTTU_PROD`, {
@@ -33,6 +33,7 @@ const AboutUs = ({component}) => {
     setInfo(dat);
    
   }
+*/}
 
   const getInfo = async () => {
     const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${ACERCA_DE_CASAGRI}`);
@@ -41,9 +42,7 @@ const AboutUs = ({component}) => {
   }
 
   useEffect(() => {
-    getInfoProducts();
     getInfo();
-    console.log(info);
   },[])
 
   AOS.init({

@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams,Link, useLocation, useNavigate} from "react-router-dom";
 
-//importacion de datos de productos
-import { featuredProductss } from "../../data/featuredProductss";
-import dataPro from "../../data/daticos/productos.json";
-import { featuredProducts } from "../../data/featuredProducts";
-import { ProductsAll } from "../../data/ProductsAll";
 //METODOS FILTRADO
 import { getProductByCategory , 
         getProduct,  
@@ -13,9 +8,7 @@ import { getProductByCategory ,
         getComponentByName, 
         getProductByBrands } from "../../selectors/getInfoCasagri";
 //componentes
-import CardItem from '../Cards/CardItem';
 import CardItemNew from '../Cards/CardItemNew';
-import  Search  from "../Search/Search";
 import  SearchForm  from "../Search/SearchForm";
 import  FiltersBar  from "../Filters/FiltersBar";
 import  FilterSidebar  from "../Filters/FilterSidebar-Movil";
@@ -23,41 +16,12 @@ import { BannerCategory } from 'components/BannerMain/BannerCategory';
 import { imgCasagriLoad } from '../../data/newsData';
 import Loader from "components/Loader/Loader";
 //Variables de Entorno
-import { BANNERSCATEGORIA, BANNERS } from '../../routers/index';
-//Datos para los banners 
-import { BannerData } from '../../data/BannerData';
-import { BannerCategoryImg } from '../../data/BannerData';
-import { links } from "../common/Navbar/Mylinks";
+import { BANNERSCATEGORIA, BANNERS, CATEGORIAS,
+          BUSCARCATEGORIA, } from '../../routers/index';
 //Estilos
 import './Category.css';
 //icons
 import { AiOutlineRight } from "react-icons/ai";
-
-
-
-
-
-
-
-// Valor del Banner Principal
-const listaDatos = BannerData.filter(element => element.id === 3);
-
-//Img del banner principal  
-const bannerImg =  listaDatos.map(item => item.img);
-const bannerImgMini =  listaDatos.map(item => item.miniimg);
-
-//Titulo del banner principal  
-const bannerTitle =  listaDatos.map(item => item.title);
-
-//Convertimos a strings para las props
-const img =  bannerImg.toString();
-const imgMini = bannerImgMini.toString()
-const tit =  bannerTitle.toString();
-
-//constante para pedir img de Banner
-const imgCategory = require.context('../../static/images/category', true);
-
-
 
 
 const Category = ({ component }) => {
@@ -74,16 +38,12 @@ const Category = ({ component }) => {
     const navigate = useNavigate();
     const location = useLocation()
     const  filtroMarca  = location.state;
-  
-   const [imgBanner, setImgBanner] = useState('');
-   const [imgMiniBanner, setImgMiniBanner] = useState('');
+
    const [banner, setBanner] = useState([]);
    const [loanding, setLoanding] = useState(false);
    const [ currentPage, setCurrentPage ] = useState(0);
    const [ buscar, setBuscar ] = useState('');
 
-   //Productos
-   const [products, setProducts] = useState([]);
 
    //Filtros
    const [marcas, setMarcas] = useState([]);
@@ -104,22 +64,19 @@ const Category = ({ component }) => {
       setLoanding(true);
 
       //Petición a la api
-      const response = await fetch(`${'http://localhost:8080/api/'}${BANNERS}${consulta}`);
+      const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${consulta}`);
       const res = await response.json();
       setBanner(res.data);
       //Estado del Loanding Falso
       setLoanding(false);
-
-      
 
     }
     else{
       //Estado del Loanding Verdadero 
       setLoanding(true);
 
-
       //Petición a la api
-      const response = await fetch(`${'http://localhost:8080/api/'}${BANNERSCATEGORIA}${consulta.replace(/\s+/g, '')}`);
+      const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERSCATEGORIA}${consulta.replace(/\s+/g, '')}`);
       const res = await response.json();
 
       //Petición exitosa
@@ -132,7 +89,7 @@ const Category = ({ component }) => {
       // En caso que exista un error en la petición del Banner
       else{
         //se asigna el banner de la seccion buscar
-        const response = await fetch(`${'http://localhost:8080/api/'}${BANNERS}${"Buscar"}`);
+        const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${"Buscar"}`);
         const res = await response.json();
         setBanner(res.data);
 
@@ -153,14 +110,14 @@ const Category = ({ component }) => {
       setLinea("");
 
       //Petición a la api
-      let response = await fetch(`${'http://localhost:8080/api/lineaProductos/buscarCategoria/'}${consulta.replace(/\s+/g, '')}`);
+      let response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BUSCARCATEGORIA}${consulta.replace(/\s+/g, '')}`);
       let res = await response.json();
 
       if (res.data.subcategoria != null){ 
         setLinea(res.data.nombre);
         setSubCategoria(res.data.subcategoria.nombre);
         if (subCategoria){
-          let respon = await fetch(`${'http://localhost:8080/api/categorias/'}${res.data.subcategoria.categoria}`);
+          let respon = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${CATEGORIAS}${res.data.subcategoria.categoria}`);
           let resp = await respon.json();
           setCategoria(resp.data.nombre);
         }
@@ -188,7 +145,6 @@ const Category = ({ component }) => {
           return getProduct().slice(currentPage, currentPage + 16);
 		}
     }
-
 
 
     //Productos
@@ -264,8 +220,6 @@ const Category = ({ component }) => {
     {
       loanding ?( <Loader/>):(
         <>
-
-
                 <div className='categoryBanner__Container'>
                   <BannerCategory image={banner.banner__desktop} imageMini={banner.banner__movil} consulta={consulta} />
                 </div>
@@ -339,7 +293,6 @@ const Category = ({ component }) => {
                       </>
                     </div>
                 </div>
-                
                 
     
                 {/*Contenido de Sección */}

@@ -6,24 +6,18 @@ import '../BannerMain/BannerMain.css';
 import '../../Styles/GlobalStyles.css';
 
 
-
-
-
 export const BannerMain = (props) => {
 
   //props que darán valor tanto a la imagen del banner comoal titulo interno
   const { image, imageMini, title } = props;
 
   const [loanding, setLoanding] = useState(false);
-  const [banner, setBanner] = useState("");
 
   useEffect(() => {
-    console.log(image);
     if (image !== "")
     {
       setLoanding(true);
     }
-    setBanner(image);
   }, [])
 
   return (
@@ -62,13 +56,6 @@ export const BannerMain = (props) => {
                 alt="Compañia"
                 >
               </img>
-              {
-                /*
-                <div className='container-Banner-Main-Content-Movil'>
-                <h1 className='container-Banner-Main-Content-title-Movil Montserrat-Font w600'>{title}</h1>
-                </div>
-                */
-              }
           </div>
         ):
         (

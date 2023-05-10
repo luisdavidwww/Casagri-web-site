@@ -1,25 +1,15 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
-import AOS      from 'aos';
 
-//imagenes
-import nosotros from 'static/images/home/aboutUsHome.jpg';
-import Tecnología from 'static/images/Trayectory/InnovasionTecnologica.jpg';
-import Trayectoria from 'static/images/Trayectory/Trayectoria.jpg';
-import nosotrosMini from '../../static/images/home/aboutUsHomeMini.jpg';
-//Diseño y estilos
-import './BrandsCarrousel.css';
 //Estilos y diseño
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import 'aos/dist/aos.css'; 
+import './BrandsCarrousel.css';
 //Icons 
 import { VscChevronRight } from "react-icons/vsc";
 import { VscChevronLeft } from "react-icons/vsc";
-
-// Data
-import { ACERCA_DE_CASAGRI, INSTALACIONES } from '../../routers/index';
 
 
 
@@ -28,10 +18,10 @@ const imgL = require.context('../../static/images/brands', true);
 
 const BrandsCarrousel = () => {
 
-  const [data, setData] = useState([]);
 
   //creating the ref
   const customeSlider = useRef();
+  const customeSliderMovil = useRef();
 
   const settings = {
     dots: false,
@@ -49,9 +39,9 @@ const BrandsCarrousel = () => {
     dots: false,
     arrows: false,
     infinite: true,
-    slidesToShow: 2,
+    slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     speed: 700,
     autoplaySpeed: 3000,
     cssEase: "linear"
@@ -66,24 +56,25 @@ const BrandsCarrousel = () => {
     customeSlider.current.slickPrev();
   }
 
-  const getInfo = async () => {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}${ACERCA_DE_CASAGRI}`);
-    const res = await response.json();
-
-    setData(res.data);
+  //funciones para Movil
+  const gotoNextMovil = () => {
+    customeSliderMovil.current.slickNext();
+  }
+  const gotoPrevMovil = () => {
+    customeSliderMovil.current.slickPrev();
   }
 
+
+
   useEffect(() => {
-    getInfo();
   },[])
 
 
 
   return (
     <>
-
       <div className='AboutUs__title__Container BrandsCarrousel'>
-          <h1 className='AboutUs__title'>Distribuidores <span style={{color:'#489B1E'}}> Autorizados </span> </h1>
+          <h1 className='AboutUs__title'>Somos Distribuidores <span style={{color:'#489B1E'}}> Autorizados </span> </h1>
       </div>
 
       {/* Desktop */}
@@ -150,43 +141,54 @@ const BrandsCarrousel = () => {
       <div className="mainContainer-brand-movil">
         <div className='main-Container-brand'>
           <div className='container-Slick-brand'>
-            <Slider {...settingsMovil}>
-                <div className="container-movil" style={{paddingLeft:'4rem'}}>
+            <Slider {...settingsMovil} ref={customeSliderMovil}>
+                <div className="container-movil" >
                   <Link to="/marcas/BAYER - AGROQUIMICOS">
-                  <img className='center__Movil' src={imgL(`./${"bayer.png"}`)} style={{height:'100px', marginTop:'20px'}} />
+                      <img className='center__Movil' src={imgL(`./${"bayer.png"}`)} style={{height:'80px', marginTop:'20px', paddingLeft:'10px'}} />
                   </Link>
                 </div>
                 <div className="container-movil">
                   <Link to="/marcas/BAYER - DEKALB">
-                    <img className='center__Movil' src={imgL(`./${"dekalb.png"}`)} style={{height:'130px'}} />
+                    <img className='center__Movil' src={imgL(`./${"dekalb.png"}`)} style={{height:'100px', paddingLeft:'0px', marginTop:'7px'}} />
                   </Link>
                 </div>
                 <div className="container-movil">
-                  <img className='center__Movil' src={imgL(`./${"icl.png"}`)} style={{height:'150px'}} />
+                  <img className='center__Movil' src={imgL(`./${"icl.png"}`)} style={{height:'105px', paddingLeft:'7px', marginTop:'5px'}} />
                 </div>
                 <div className="container-movil">
                   <Link to="/marcas/CALBOS">
-                    <img className='center__Movil' src={imgL(`./${"calbos.png"}`)} style={{height:'105px', marginTop:'20px'}} />
+                    <img className='center__Movil' src={imgL(`./${"calbos.png"}`)} style={{height:'80px', paddingLeft:'15px', marginTop:'20px'}} />
                   </Link>
                 </div>
                 <div className="container-movil">
                   <Link to="/marcas/WOLF">
-                    <img className='center__Movil' src={imgL(`./${"wolf.png"}`)} style={{height:'100px', marginTop:'25px'}} />
+                    <img className='center__Movil' src={imgL(`./${"wolf.png"}`)} style={{height:'80px', paddingLeft:'10px', marginTop:'20px'}} />
                   </Link>
                 </div>
                 <div className="container-movil">
                   <Link to="/marcas/WESTAR">
-                    <img className='center__Movil' src={imgL(`./${"westar.png"}`)} style={{height:'150px', marginTop:'5px'}} />
+                    <img className='center__Movil' src={imgL(`./${"westar.png"}`)} style={{height:'110px', marginTop:'15px', paddingRight:'5px'}} />
                   </Link>
                 </div>
             </Slider>
           </div>
         </div>
-      
+        {/* Botones Controladores Desktop */}
+        <div className='container-movil-btn'>
+
+        <div className='container-btn-deg' onClick={()=>gotoPrevMovil()}>
+          <button className='btn-deg'>
+            <VscChevronLeft className='btnPrevios'/>
+          </button>
+        </div>
+        <div className='container-btn-deg' onClick={()=>gotoNextMovil()}>
+          <button className='btn-deg'>
+            <VscChevronRight className='btnNext'/>
+          </button>
+        </div>
+
       </div>
-
-      
-
+      </div>
     </>
   )
 }

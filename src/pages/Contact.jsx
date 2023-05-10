@@ -23,7 +23,7 @@ export const Contact = () => {
     setLoanding(true);
 
     //Petición a la api
-    const response = await fetch(`${'http://localhost:8080/api/'}${BANNERS}${'Contácto'}`);
+    const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${'Contácto'}`);
     const res = await response.json();
     setBanner(res.data);
 

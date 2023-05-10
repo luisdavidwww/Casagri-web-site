@@ -9,62 +9,35 @@ import NationalMomentum from 'components/Company/NationalMomentum';
 import BrandsCarrousel from "components/Company/BrandsCarrousel";
 import Loader from "components/Loader/Loader";
 
-//Selectors getCategory
-
-
 // Data
-import { BannerData } from '../data/BannerData';
-import  data  from '../data/daticos/productos.json';
 import { BANNERS } from '../routers/index';
 
 
 
 export const Company = () => {
 
-  const [error, setError] = useState(null);
   const [loanding, setLoanding] = useState(false);
   const [banner, setBanner] = useState([]);
-  const [brand, setBrand] = useState([]);
-  const [brando, setBrando] = useState([]);
 
 
   //Peticion del Banner Principal
   const getInfo = async () => {
-
     //Estado del Loanding Verdadero
     setLoanding(true);
 
     //Petición a la api
-    const response = await fetch(`${'http://localhost:8080/api/'}${BANNERS}${'Empresa'}`);
+    const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${'Empresa'}`);
     const res = await response.json();
     
     setBanner(res.data);
 
     //Estado del Loanding Falso
     setLoanding(false);
-
   }
-
-
-  // Valor del Banner Principal
-  const listaDatos = BannerData.filter(element => element.id === 1);
-
-  //Img del banner principal  
-  const bannerImg =  listaDatos.map(item => item.img);
-  const bannerImgMini =  listaDatos.map(item => item.miniimg);
-
-  //Titulo del banner principal  
-  const bannerTitle =  listaDatos.map(item => item.title);
-
-  //Convertimos a strings para las props
-  const img =  bannerImg.toString();
-  const imgMini =  bannerImgMini.toString();
-  const tit =  bannerTitle.toString();
 
 
   useEffect(() => {
     getInfo();
-
   },[])
 
   

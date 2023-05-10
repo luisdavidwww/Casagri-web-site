@@ -1,18 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Redirect } from "react-router-dom";
 import Skeleton from 'react-loading-skeleton';
-
-//Componentes
-import CardItem from '../Cards/CardItem';
-//Diseño y estilos
+// Diseño y estilos
 import './CorporatePolicy.css';
-//Data
-import { CorporatePolicyData } from '../../data/CorporatePolicy';
+// Data
 import { NOSOTROS } from '../../routers/index'
-
-
-//importacion temporal de imagenes
-const imgL = require.context('../../static/images/corporatePolicy', true);
 
 
 const CorporatePolicy = ({component}) => {
@@ -20,15 +11,11 @@ const CorporatePolicy = ({component}) => {
   const [nosotros, setNosotros] = useState([])
 
   const getInfo = async () => {
-    //const response = await fetch(`${process.env.REACT_APP_API_URL}${ACERCA_DE_CASAGRI}`);
-    const response = await fetch(`${'http://localhost:8080/api/'}${NOSOTROS}`);
-    
+    const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${NOSOTROS}`);
+
     const res = await response.json();
     setNosotros(res.data);
   }
-
-
- 
 
   useEffect(() => {
     getInfo();
@@ -38,9 +25,9 @@ const CorporatePolicy = ({component}) => {
   return (
     <>
     <div className='CorporatePolicy__container'>
-      
+
         <div className='AboutUs__title__Container'>
-                <h1 className='AboutUs__title'>Nosotros</h1>
+            <h1 className='AboutUs__title'>Nosotros</h1>
         </div>
 
 
@@ -54,7 +41,6 @@ const CorporatePolicy = ({component}) => {
                       <img 
                       className='cards__item__img-pc'
                       alt={item.titulo}
-                      //src={imgL(`./${item.imgUrl}`)}
                       src={item.imagen_principal}
                       />
                     :
@@ -72,10 +58,6 @@ const CorporatePolicy = ({component}) => {
         </div>
     </div>
 
-
-
-
-        
     </div>
     </>
   )

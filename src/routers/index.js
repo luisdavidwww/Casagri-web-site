@@ -14,7 +14,11 @@ const BANNERSPUBLICIDAD = "banners/bannerP/"
 const BANNERSCATEGORIA = "lineaProductos/buscarBanner/"
 
 
-const INSTALACIONES = "instalaciones"
+//Categorias
+const CATEGORIAS = "categorias/"
+const BUSCARCATEGORIA = "lineaProductos/buscarCategoria/"
+
+
 
 
 module.exports = {
@@ -27,6 +31,7 @@ module.exports = {
     BANNERS,
     BANNERSCATEGORIA,
     BANNERSPUBLICIDAD,
-    //Prueba
-    INSTALACIONES,
+    //Categorias
+    CATEGORIAS,
+    BUSCARCATEGORIA,
 }

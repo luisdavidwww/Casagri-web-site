@@ -1,0 +1,16 @@
+.container-Banner-Main-Movil{
+    display:none;
+}
+.container-Banner-Main{
+    display:flex
+}
+
+@media screen and (max-width: 960px) {
+    .container-Banner-Main-Movil{
+        display:flex;
+        padding-top: 80px;
+    }
+    .container-Banner-Main{
+        display:none;
+    }
+}

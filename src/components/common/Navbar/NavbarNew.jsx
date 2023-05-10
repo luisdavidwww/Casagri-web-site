@@ -275,9 +275,11 @@ const Navbar = ({component}) => {
                                                                       style={{textDecoration:'none'}}
                                                                       >
                                                                     {/* desktopNav__Container-Lines-subLines-List-one  */}
-                                                                      <Link className={ subLineheading === slink.name ? ('desktopNav__Container-Lines-subLines-List-one-hover '):("desktopNav__Container-Lines-subLines-List-one ")} to={`/Category/${slink.name}`}>
+                                                                      <div className={ subLineheading === slink.name ? 
+                                                                        ('desktopNav__Container-Lines-subLines-List-one-hover '):("desktopNav__Container-Lines-subLines-List-one ")}
+                                                                      >
                                                                         {slink.name}
-                                                                      </Link>   
+                                                                      </div>   
                                                                   </Link>            
                                                                 ))}
                                                             </div>

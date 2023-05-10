@@ -144,7 +144,7 @@ div h3{
     width: 100%;
     margin-left: 0rem;
     margin-right: 0rem;
-    height: 200px;
+    height: 140px;
   }
   
   .container-Slick-brand{
@@ -172,8 +172,9 @@ div h3{
   .container-movil{
     display: flex;
     justify-content: center;
-    margin: auto;
   }
+
+
 
   .mainContainer-brand .container img{
     display: flex;
@@ -184,9 +185,17 @@ div h3{
   }
 
   .center__Movil{
-    margin-left: 2.2rem !important;
+    margin-left: 0.6rem !important;
   }
   
+
+  .container-movil-btn{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    padding-right: 2rem;
+    scale: 0.7;
+  }
 }
 
 

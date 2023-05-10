@@ -1,12 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Slider from "react-slick";
-import AOS      from 'aos';
 
 //imagenes
-import nosotros from 'static/images/home/aboutUsHome.jpg';
 import Tecnología from 'static/images/Trayectory/InnovasionTecnologica.jpg';
 import Trayectoria from 'static/images/Trayectory/Trayectoria.jpg';
-import nosotrosMini from '../../static/images/home/aboutUsHomeMini.jpg';
 //Diseño y estilos
 import './Trayectory.css';
 //Estilos y diseño
@@ -17,13 +14,8 @@ import 'aos/dist/aos.css';
 import { VscChevronRight } from "react-icons/vsc";
 import { VscChevronLeft } from "react-icons/vsc";
 
-// Data
-import { ACERCA_DE_CASAGRI, INSTALACIONES } from '../../routers/index'
 
-const Trayectory = ({Trayectory}) => {
-
-  const [data, setData] = useState([]);
-  const [instalaciones, setInstalaciones] = useState([]);
+const Trayectory = () => {
 
   //creating the ref
   const customeSlider = useRef();
@@ -37,7 +29,6 @@ const Trayectory = ({Trayectory}) => {
     arrows: false,
   })
 
-
   //funciones para desktop
   const gotoNext = () => {
     customeSlider.current.slickNext();
@@ -46,15 +37,8 @@ const Trayectory = ({Trayectory}) => {
     customeSlider.current.slickPrev();
   }
 
-  const getInfo = async () => {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}${ACERCA_DE_CASAGRI}`);
-    const res = await response.json();
-
-    setData(res.data);
-  }
 
   useEffect(() => {
-    getInfo();
   },[])
 
 
