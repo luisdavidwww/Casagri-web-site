@@ -181,9 +181,7 @@ const Marcas = ({ component }) => {
                       <div className='result__Search text__Result__Category'> 
                         <span style={{fontWeight:'500', fontSize:'23px', marginTop:'0.4rem', marginLeft:'0.1rem'}}>Marca:</span>  
                         <span style={{fontWeight:'700', fontSize:'29px', marginLeft:'0.5rem' }}>{/* <>&nbsp;</> */}  {marca}</span>  
-                        <div className="">
-                          <img src={imgL(`./${marca}.png`)} style={{display:'flex', justifyContent:'flex-end', height:'45px', marginLeft:'50%'}} />
-                        </div>
+                        
                       </div>
                       
                 </div>
