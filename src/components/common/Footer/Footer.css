@@ -11,6 +11,8 @@ li a{
 /* Color del Footer*/
 .color__footer{
     background-color: #e9e6e6;
+    background-color: #f3f3f3;
+    background-color: #24262b;
     padding-top: 2rem;
     margin: auto;
 }
@@ -54,7 +56,7 @@ li a{
     margin-top: 1rem;
 }
 .footer__logo__IconsSocial__item{
-    color: #2c502f;
+    color: #ffffff;
     width: 16px;
     height: 16px;
     margin-right: 1.5rem;
@@ -103,7 +105,7 @@ li a{
     margin-left: 5px;
     margin-right: 5px;
     transition: all .25s ease-in-out;
-    color: black;
+    color: rgb(255, 255, 255);
 }
 .footer__span:hover{
     color:#47A01A;
@@ -157,7 +159,7 @@ li a{
     margin-left: 1rem;
     font-size: 12px;
     font-weight: 300;
-    color: #000000;
+    color: #ffffff;
 }
 .footer__contact__span:hover{
     cursor: pointer;
@@ -198,11 +200,11 @@ li a{
 }
 .text-Copy{
     color: #fff !important;
-    background-color: #242424;
+    background-color: #0f141f;
     letter-spacing: 0px;
     font-family: "Gotham";
-    font-size: 12px;
-    padding: 0.5rem;
+    font-size: 11px;
+    padding: 0.4rem;
 }
 
 

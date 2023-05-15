@@ -1,7 +1,7 @@
 import React from 'react';
 
 //Logo casagri
-import LogoCasagri from "../../../static/casagri-logo-01.png";
+import LogoCasagri from "../../../static/casagri-logo-footer.png";
 
 //icons
 import { AiFillPhone } from "react-icons/ai";
@@ -93,7 +93,7 @@ const Footer = () => {
                             <div className='footer__info__contact__item'>
                                 <div className='footer__info__contact__iconText'>
                                     <AiFillPhone className='footer__icon__contact'/>
-                                    <span className='footer__contact__span'>0501- CASAGRI (2272474) 54654</span>
+                                    <span className='footer__contact__span' >0501- CASAGRI (2272474) 54654</span>
                                 </div>
                                 <div className='footer__info__contact__iconTextbtn'>
                                     <MdEmail className='footer__icon__contact'/>

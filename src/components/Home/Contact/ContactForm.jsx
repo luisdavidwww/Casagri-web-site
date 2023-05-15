@@ -1,54 +1,68 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import 'aos/dist/aos.css'; 
+import './ContactSection.css';
+import './ContactSection.css';
 
 const FormStyle = styled.form`
   width: 100%;
   .form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     margin-bottom: 1rem;
   }
   label {
-    font-family: 'Roboto';
-    font-size: 16px;
-    letter-spacing: 0.5px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.1px;
+    width: 950px;
   }
   input,
   textarea {
     width: 100%;
-    font-size: 14px;
-    font-family: 'Roboto';
-    letter-spacing: 0.5px;
+    font-size: 13px;
+    font-family: 'Montserrat';
+    letter-spacing: 0.1px;
     padding: 1.0rem;
     color: var(--gray-1);
     background-color: #FFFFFF;
     outline: none;
     border: solid 1px #E2E2E2; 
-    border-radius: 8px;
+    border-radius: 2px;
     margin-top: 0.5rem;
   }
+  input:focus-within {
+    border: 1.9px solid #47A01A;
+    width:773px;
+    transition: 0.4s;
+    width: 100%;
+  }
   textarea {
-    min-height: 250px;
+    min-height: 120px;
     resize: vertical;
+  }
+  textarea:focus-within {
+    border: 1.9px solid #47A01A;
+    width:773px;
+    transition: 0.4s;
+    width: 100%;
   }
   button[type='submit'] {
     display: inline-block;
-    padding: 12px 40px;
-    font-size: 18px;
-    border-radius: 2px;
-    text-decoration-line: none;
-    outline: none;
-    border: 2px solid #E2E2E2;
-    cursor: pointer;
-    margin-bottom: 100px;
-    font-family: 'PT Sans', sans-serif;
-    letter-spacing: 0.4px;
   }
-  button:hover {
-    transition: all 0.3s ease-out;
-    background:#a8b402;
-    color: rgb(255, 255, 255);
-    border: 2px solid #a8b402;
-    transition: 250ms;
+
+  @media screen and (max-width: 960px) {
+    label {
+      font-family: 'Montserrat';
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.1px;
+      width: 100%;
+    }
   }
 `;
 
@@ -57,7 +71,7 @@ export default function ContactForm() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   return (
-    <>
+    <div className='container__Form' data-aos="fade-left" data-aos-once="true" data-aos-duration="1500">
       <FormStyle>
         <div className="form-group">
           <label htmlFor="name">
@@ -98,8 +112,13 @@ export default function ContactForm() {
             />
           </label>
         </div>
-        <button type="submit">Enviar</button>
+        { /*Btn de Funciones */ }
+        <div className='btn-featuredProducts' data-aos="zoom-in" data-aos-once="true" data-aos-duration="1000">
+            <button type="submit" className='btn-outline-featuredProducts btn-text'
+              >Enviar
+            </button>
+        </div>
       </FormStyle>
-    </>
+    </div>
   );
 }

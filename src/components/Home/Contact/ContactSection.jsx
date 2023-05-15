@@ -1,11 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import AOS from 'aos';
-import { MdEmail, MdLocalPhone } from 'react-icons/md';
 import ContactForm from './ContactForm';
-import ContactInfoItem from './ContactInfoItem';
-import SectionTitle from './SectionTitle';
 import 'aos/dist/aos.css'; 
+import './ContactSection.css';
 
 
 const ContactSectionStyle = styled.div`
@@ -118,29 +115,23 @@ const ContactSectionStyle = styled.div`
 
 export default function ContactSection() {
 
-  React.useEffect(() => { 
-    AOS.init({duration:2000});
-    },[]);
+
 
   return (
-    <>
-    
-    <ContactSectionStyle>
-      <div className="container">
-        <div data-aos="zoom-in-up" >
-          <SectionTitle heading="Contáctanos" subheading="get in touch" />
-        </div>
-        <div className="contactSection__wrapper">
-          <div data-aos="fade-right"  className="left">
-            <ContactInfoItem icon={<MdLocalPhone />} text="0251 - 8149220" />
-            <ContactInfoItem icon={<MdEmail />} text="info@agromaxgroup.com" />
-          </div>
-          <div data-aos="fade-left"  className="right">
-            <ContactForm />
-          </div>
+    <div  style={{backgroundColor:'#f7f7f8', paddingTop:'3rem', paddingBottom:'2rem', marginTop:'2rem', marginBottom:'3.5rem'}} >
+    { /*Titulo de Sección*/ }
+      <div className='title-container'>
+        <div className='title-container-main'>
+          <h1 className='title-basic-center' data-aos="fade-right" data-aos-once="true" data-aos-duration="1500" >Contáctanos</h1>
         </div>
       </div>
-    </ContactSectionStyle>
-    </>
+
+    <div className="container__Contact__Main">
+      <div className="container__Contact">
+        <ContactForm  />
+      </div>
+    </div>
+  
+    </div>
   );
 }

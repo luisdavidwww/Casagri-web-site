@@ -1,0 +1,58 @@
+.container-Slick-two {
+    display: block;
+    justify-content: center;
+    width: 1500px;
+}
+
+.title-basic-trayectory-company{
+    color: #000000;
+    font-family: "Montserrat";
+    font-size: 42px;
+    font-weight: 600;
+    line-height: 40px;
+    letter-spacing: -1px;
+  }
+
+.us-wrap-work-company{
+    position: relative;
+    display: inline-block;
+    flex-direction: column;
+    width: 28rem;
+    margin-right: 0rem;
+    overflow: hidden;
+}
+
+.text-basic-work-company {
+    text-align: end;
+    font-family: "Poppins";
+    margin-top: 1.3rem;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 23px;
+    width: 80%;
+  }
+
+
+  .text-basic__trayectory-company{
+    text-align: start;
+    font-family: "Poppins";
+    margin-top: 1.3rem;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 23px;
+    width: 80%;
+  }
+
+
+@media only screen and (max-width: 960px){
+
+    .text-basic__company {
+        text-align: start !important;
+        justify-content: center;
+        width: 97% !important;
+        margin: 0px;
+        margin-top: 1.7rem;
+        font-family: "Poppins";
+    }
+}
+

@@ -1,7 +1,7 @@
 import React, {useEffect, Suspense} from 'react';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
-import { useLocation, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 //componentes
 import CardItem from './CardItem';
 import CardItemNew from './CardItemNew';
