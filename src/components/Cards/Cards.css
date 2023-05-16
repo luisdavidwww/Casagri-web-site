@@ -330,6 +330,43 @@ font-family: "Gotham Medium";
 
 
 
+.btn-text-products {
+  justify-content: center;
+  font-family: "Gotham";
+  text-align: center;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  line-height: 5px;
+  color: rgb(255, 255, 255);
+}
+.btn-outline-featuredProducts-art {
+  display: flex;
+  background-color: transparent;
+  padding: 1rem 1.2rem;
+  background-color: #47A01A;
+  border: 1px solid #47A01A;
+  transition: all 0.3s ease-out;
+  border-radius: 5px;
+  text-decoration-line: none;
+  outline: none;
+  cursor: pointer;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+  transition: all .5s ease-in-out;
+  
+}
+.btn-outline-featuredProducts-art:hover{
+  color: rgb(255, 255, 255);
+  transform: scale(1.03);
+  background-color: #6bb646;
+  border: 1px solid #6bb646;
+  transition: all .5s ease-in-out;
+  }
+
+
+
+
 
 
 @media only screen and (max-width: 960px) {

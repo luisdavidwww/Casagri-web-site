@@ -25,6 +25,7 @@ function CardItemNew(props) {
 
 //UseState para las imagenes
 const [image, setImge] = useState([]);
+const [btn, setBtn] = useState(false);
 
 //Peticion de la imagen del producto
 const getProductImage = async () => {
@@ -53,12 +54,18 @@ useEffect(() => {
         /*
         data-aos="fade-up" 
         data-aos-once="true" 
-        data-aos-duration="1500"*/
+        data-aos-duration="1500"
+        onMouseOver={() => { setBtn(!btn); }} 
+        onMouseLeave={() => { setBtn(btn) }} 
+        */
         >
         <div>
           
         <Link className='cards__item__link' to={props.path}  
-              state={ [props.categoria, props.subCategoria, props.Linea, props.CodigoProd] } >
+              state={ [props.categoria, props.subCategoria, props.Linea, props.CodigoProd] } 
+              
+              
+              >
             {/* Imagen del Producto */}
             <figure className='cards__item__pic-wrap' >
               {
@@ -103,10 +110,19 @@ useEffect(() => {
                 <div className='cards__item__info'>
                   <h5 className='cards__item__text-presentation'>{props.Marca}</h5>
                 </div>
+                { /* 
                 <div className='cards__item__info'>
                   <h5 className='cards__item__text-price'>{props.Peso} kg</h5>
                 </div>
                 <StarRanking className='container__star' ranking={""} card={true} href=''/> 
+                */ }
+                { /*Btn de Funciones */ }
+
+                    <div className='btn-featuredProducts' data-aos="zoom-in" data-aos-once="true" data-aos-duration="1000">
+                      <button className='btn-outline-featuredProducts-art btn-text-products'
+                        >Ver Producto
+                      </button>
+                    </div>
             </div>
         </Link>
 
