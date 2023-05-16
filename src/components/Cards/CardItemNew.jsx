@@ -116,13 +116,14 @@ useEffect(() => {
                 </div>
                 <StarRanking className='container__star' ranking={""} card={true} href=''/> 
                 */ }
-                { /*Btn de Funciones */ }
+                { /*Btn de Funciones 
 
                     <div className='btn-featuredProducts' data-aos="zoom-in" data-aos-once="true" data-aos-duration="1000">
                       <button className='btn-outline-featuredProducts-art btn-text-products'
                         >Ver Producto
                       </button>
                     </div>
+                */ }
             </div>
         </Link>
 
