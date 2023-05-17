@@ -30,7 +30,10 @@ const Category = ({ component }) => {
     const { consulta } = useParams();
     let { search, state } = useLocation();
 
-    state = { numberPage: state.numberPage };
+    const searchF = search || `?Page=0`;
+    const NumbPage = state?.numberPage;
+
+    //state = { numberPage: 0 };
 
     //let query = new URLSearchParams(search);
 
@@ -58,9 +61,11 @@ const Category = ({ component }) => {
    const [subCategoria, setSubCategoria] = useState([]);
    const [linea, setLinea] = useState([]);
 
-   //variables para link pagina
+   //numero de la pagina
    const [pagesNext, setPagesNext] = useState(0);
-   const [prueba, setPruebita] = useState([]);
+   //cantidad de paginados
+   const [cantPages, setCantPages] = useState(0);
+
    
 
 
@@ -156,32 +161,34 @@ const Category = ({ component }) => {
 
 
     //Productos
-    const filterProducts = ( search ) => {
+    const filterProducts = ( ) => {
 
+      //cuantas paginas tiene la consulta:
+
+      //let i = 0;
+      //let a = 0;
+      /*
+      while (a < getProductByCategory(consulta.toUpperCase()).length) {
+        console.log("Iteracción: " + i);
+        i++;
+        a = a +16
+
+        let luis = i;
+      }*/
+
+      
 
       if (consulta === 'Buscar'){
         return getProduct().slice(currentPage, currentPage + 16);
       }
-   
-      /*
-      if (state.dataProducts == 0){
-         return getProductByCategory(consulta.toUpperCase()).slice(0  ,  16);
-      }
-      */
 
+      if ( pagesNext == 0){
+        return getProductByCategory(consulta.toUpperCase()).slice(0  , 16);
+      }
 
       
-   /* dataProducts
-      if( buscar.length === 0 && filtroMarca == null ) 
-      {
-        return getProductByCategory(consulta.toUpperCase()).slice(currentPage, currentPage + 16);
-      }
-      if( buscar.length === 0 && filtroMarca !== null ) 
-      {
-        return getProductByBrands(getProductByCategory(consulta.toUpperCase()).slice(currentPage, currentPage + 16));
-      }*/
 
-      return getProductByCategory(consulta.toUpperCase()).slice(currentPage, currentPage + 16);
+      return getProductByCategory(consulta.toUpperCase()).slice( pagesNext * 17  , (pagesNext * 17) + 16);
     }
 
     //Marcas
@@ -202,13 +209,11 @@ const Category = ({ component }) => {
     const nextPage = () => {
       //navigate({search:`?Page=${start + pageSuma}`})
       
-      setCurrentPage( currentPage + 16 );
+      //setCurrentPage( currentPage + 16 );
       //navigate({search:`?Page=${pagesNext + 1}`} , { state: {numberPage: 1} } );
       setPagesNext(pagesNext + 1);
-      navigate(`?Page=${pagesNext + 1}`, { state: {numberPage: pagesNext } } );
+      navigate({search:`?Page=${pagesNext + 1}`} , { state: {numberPage: pagesNext + 1 } } );
       
-
-      console.log('Numero de pagina basic: ' + pagesNext );
       //setCurrentPage( currentPage + 16 );
     }
 
@@ -226,6 +231,50 @@ const Category = ({ component }) => {
           
     }
 
+    //Obtener numero de pagina del enlace
+    const getNumbLink = () => {
+
+      //definimos la regla para detectar en numero de pagina
+      var regex = /(\d+)/g;
+
+      /* 
+      searchF es el condicional de busqueda de numero de paginas, cuando
+      es la pagina cero(primera pagina): '?Page=0', luego las paginas que
+      detecta son: '?Page=1', '?Page=2', '?Page=3'
+
+      Lo que nos interesa de esta cadena de caracteres del enlace es el valor 
+      numérico: 0,2,3.... etc
+      */
+      //guardamos el numero de pagina como un string
+      let condicion = searchF.match(regex).toString();
+
+      //cuando es una pagina diferente a la 0
+      if ( parseInt(condicion) !== 0 ){
+
+          setPagesNext(parseInt(condicion));
+
+          console.log( searchF.match(regex).toString() );
+          console.log( parseInt(condicion) );
+      }
+      //cuando es la página 0
+      else {
+          setPagesNext(0);
+          //filterProducts();
+      }
+          
+    }
+
+    //Obtener numero de pagina del enlace
+    const arrayPaginado = () => {
+
+      //definimos la regla para detectar en numero de pagina
+      let miarray = new Array(10);
+      miarray.forEach(function(item,index,arr){
+        console.log("Posición " + index + ": " + item);
+    });
+          
+    }
+
     
 
     //use effects general
@@ -237,21 +286,32 @@ const Category = ({ component }) => {
 
         filterBrands();
         filtersComponent();
+
+        getInfo();
+        getNumbLink();
         
     }, [consulta])
 
     useEffect(() => {
-      getInfo();
-    },[consulta])
+      getNumbLink();
+    },[searchF])
 
     useEffect(() => {
       getPages();
-    },[consulta])
+
+      setCantPages((getProductByCategory(consulta.toUpperCase()).length)/17);
+
+      console.log((getProductByCategory(consulta.toUpperCase()).length)/17);
+      console.log( pagesNext +'-------------'+ cantPages );
+      
+    },[consulta, pagesNext ])
 
     useEffect(() => {
-      //getInfo();
-      //filterProducts();
-      console.log('Numero de pagina: ' + state.numberPage );
+      getInfo();
+      filterProducts();
+
+      getNumbLink();  
+
   }, [pagesNext])
 
 
@@ -400,13 +460,43 @@ const Category = ({ component }) => {
                                     >
                                         Anteriores
                                     </button>
-                                      <button 
-                                        className="btn btn-primary"
-                                        onClick={ nextPage }
-                                    >
-                                        Siguientes
-                                    </button>
+                                      {
+                                      (  pagesNext == Math.trunc(cantPages) ) 
+                                        && 
+                                        <>
+                                        </>
+                                      }
+                                      {
+                                      (  pagesNext < Math.trunc(cantPages)  ) 
+                                        && 
+                                        <>
+                                         {
+                                            pagesNext == Math.trunc(cantPages)-1 && Number.isInteger(cantPages) ? (null):(
+                                            <button 
+                                            className="btn btn-primary"
+                                            onClick={ nextPage }
+                                            >
+                                                Siguientes
+                                            </button>
+
+                                          )
+                                        }
+                                        </>
+                                  
+                                        
+                                      }
+
+                                      
                                     <div>Total Productos: {getProductByCategory(consulta.toUpperCase()).length}</div>
+                                    {
+                                      Number.isInteger(cantPages) ? (
+                                        <div>Paginas: {pagesNext+1} / {Math.trunc(cantPages)}</div>
+                                      ):
+                                      (
+                                        <div>Paginas: {pagesNext+1} / {Math.trunc(cantPages)+1}</div>
+                                      )
+                                    }
+                                    
                                   </div>
                               </div>
       
