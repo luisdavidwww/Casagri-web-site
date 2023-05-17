@@ -29,10 +29,14 @@ const Category = ({ component }) => {
     //query de la url
     const { consulta } = useParams();
     let { search, state } = useLocation();
-    let query = new URLSearchParams(search);
+
+    state = { numberPage: state.numberPage };
+
+    //let query = new URLSearchParams(search);
+
 
     let start = 0;
-    let end = query.get("fin");
+    //let end = query.get("fin");
 
 
     const navigate = useNavigate();
@@ -55,7 +59,7 @@ const Category = ({ component }) => {
    const [linea, setLinea] = useState([]);
 
    //variables para link pagina
-   const [pagesNext, setPagesNext] = useState(1);
+   const [pagesNext, setPagesNext] = useState(0);
    const [prueba, setPruebita] = useState([]);
    
 
@@ -154,23 +158,16 @@ const Category = ({ component }) => {
     //Productos
     const filterProducts = ( search ) => {
 
-      let numberPage = 1;
-
-      //setPruebita(getProductByCategory(consulta.toUpperCase()));
-
-/*
-      if (numberPage !== search){
-        return getProductByCategory(consulta.toUpperCase()).slice(currentPage, currentPage + 16);
-   }*/
 
       if (consulta === 'Buscar'){
         return getProduct().slice(currentPage, currentPage + 16);
-   }
+      }
    
-/*
-   if (state.dataProducts !== null){
-    return JSON.stringify(state.dataProducts);
-  }*/
+      /*
+      if (state.dataProducts == 0){
+         return getProductByCategory(consulta.toUpperCase()).slice(0  ,  16);
+      }
+      */
 
 
       
@@ -184,7 +181,7 @@ const Category = ({ component }) => {
         return getProductByBrands(getProductByCategory(consulta.toUpperCase()).slice(currentPage, currentPage + 16));
       }*/
 
-      return getProductByCategory(consulta.toUpperCase());
+      return getProductByCategory(consulta.toUpperCase()).slice(currentPage, currentPage + 16);
     }
 
     //Marcas
@@ -201,19 +198,32 @@ const Category = ({ component }) => {
     }
 
 
-    const pageSuma = 1;
     //botones de Paginación
     const nextPage = () => {
       //navigate({search:`?Page=${start + pageSuma}`})
       
       setCurrentPage( currentPage + 16 );
-      navigate({search:`?Page=${pagesNext}`} , /*{ state: {dataProducts: filterProducts().slice(0, 10)} }*/ );
+      //navigate({search:`?Page=${pagesNext + 1}`} , { state: {numberPage: 1} } );
       setPagesNext(pagesNext + 1);
+      navigate(`?Page=${pagesNext + 1}`, { state: {numberPage: pagesNext } } );
+      
+
+      console.log('Numero de pagina basic: ' + pagesNext );
       //setCurrentPage( currentPage + 16 );
     }
 
     const prevPage = () => {
+      if (pagesNext == 1){
           setCurrentPage( currentPage - 16 );
+          navigate(`/Category/${consulta}`);
+          setPagesNext(0);
+      }
+      else {
+          setCurrentPage( currentPage - 16 );
+          navigate(`?Page=${pagesNext - 1}`);
+          setPagesNext(pagesNext - 1);
+      }
+          
     }
 
     
@@ -227,18 +237,7 @@ const Category = ({ component }) => {
 
         filterBrands();
         filtersComponent();
-
-        let numbersArr = [1 ,2 ,3 ,4 ,5 ,6 ,7 ,8 ,9 ,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30];
-        numbersArr.forEach((value, index) => {
-          console.log('que paso bro' + numbersArr.slice( index , index + 2));
-        });
-        console.log(filterProducts().slice(0, 10));
-
-
-        /*
-        console.log(filterProducts().slice(0, 10));
-        console.log('soy yo'+ setPruebita(JSON.stringify(state.dataProducts)));
-        console.log('result'+ prueba);*/
+        
     }, [consulta])
 
     useEffect(() => {
@@ -247,12 +246,13 @@ const Category = ({ component }) => {
 
     useEffect(() => {
       getPages();
-      setPagesNext(0);
     },[consulta])
 
     useEffect(() => {
-      filterProducts();
-  }, [search])
+      //getInfo();
+      //filterProducts();
+      console.log('Numero de pagina: ' + state.numberPage );
+  }, [pagesNext])
 
 
   return (
