@@ -14,10 +14,13 @@ import  FiltersBar  from "../Filters/FiltersBar";
 import  FilterSidebar  from "../Filters/FilterSidebar-Movil";
 import { BannerCategory } from 'components/BannerMain/BannerCategory';
 import { imgCasagriLoad } from '../../data/newsData';
+import  PaginationList  from './Pagination';
 import Loader from "components/Loader/Loader";
 //Variables de Entorno
 import { BANNERSCATEGORIA, BANNERS, CATEGORIAS,
           BUSCARCATEGORIA, } from '../../routers/index';
+//Datos para el Carousel NationalMomentum
+import  Paginas  from '../../data/daticos/Paginas.json';
 //Estilos
 import './Category.css';
 //icons
@@ -63,9 +66,11 @@ const Category = ({ component }) => {
 
    //numero de la pagina
    const [pagesNext, setPagesNext] = useState(0);
-   //cantidad de paginados
+   //cantidad de paginas que tiene la consulta
    const [cantPages, setCantPages] = useState(0);
 
+   //Arreglo de numerod e paginas para botones
+   const [paginado, setPaginado] = useState([]);
    
 
 
@@ -301,6 +306,14 @@ const Category = ({ component }) => {
 
       setCantPages((getProductByCategory(consulta.toUpperCase()).length)/17);
 
+      
+      setPaginado(Math.trunc(cantPages));
+
+    
+
+      console.log('holis bebe'+ paginado);
+
+
       console.log((getProductByCategory(consulta.toUpperCase()).length)/17);
       console.log( pagesNext +'-------------'+ cantPages );
       
@@ -490,12 +503,35 @@ const Category = ({ component }) => {
                                     <div>Total Productos: {getProductByCategory(consulta.toUpperCase()).length}</div>
                                     {
                                       Number.isInteger(cantPages) ? (
-                                        <div>Paginas: {pagesNext+1} / {Math.trunc(cantPages)}</div>
+                                        <>
+                                          Paginas: {pagesNext+1} / {Math.trunc(cantPages)}
+                                          <div>
+                                            {/* .filter((item, idx) => idx < 5) */}
+                                            {Paginas?.filter((it, idx) => idx < Math.trunc(cantPages)).map((item, index) => (
+                                              <div key={`paginado-${index}`} >
+                                                {item.pagina}
+                                              </div>
+                                              ))}
+                                          </div>
+                                          <PaginationList cantidadPagina={ Math.trunc(cantPages) } />
+                                        </>
                                       ):
                                       (
+                                        <>
                                         <div>Paginas: {pagesNext+1} / {Math.trunc(cantPages)+1}</div>
+                                        <div>
+                                            {/* .filter((item, idx) => idx < 5) */}
+                                            {Paginas?.filter((it, idx) => idx < Math.trunc(cantPages)+1).map((item, index) => (
+                                              <div key={`paginado-${index}`} >
+                                                {item.pagina}
+                                              </div>
+                                              ))}
+                                          </div>
+                                          <PaginationList cantidadPagina={ Math.trunc(cantPages)+1 } enlace={ consulta } />
+                                        </>
                                       )
                                     }
+                                    <div>Paginado: { paginado } </div>
                                     
                                   </div>
                               </div>
