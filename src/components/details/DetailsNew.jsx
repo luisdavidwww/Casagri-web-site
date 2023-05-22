@@ -18,6 +18,7 @@ export const DetailsNew = (props) => {
   const [data, setData] = useState([]);
   const [img, setImge] = useState([]);
   const [loanding, setLoanding] = useState(false);
+  const [prueba, setPrueba] = useState([]);
   
   // Nombre del Producto por Parametro
   const { nombre } = useParams();
@@ -35,19 +36,25 @@ export const DetailsNew = (props) => {
       setLoanding(true);
 
       //Codigo del producto que viene por parámetro
-      let CodigoProd = from[3];
+      //let CodigoProd = from[3];
 
       //Petición a la api
-      const response = await fetch(`${'http://localhost:8080/api/'}${"productos/nombre/"}${nombre}`);
+      let nombre__Real = nombre.replace(/-/g, " ")
+      const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${"productos/nombreProducto/"}${nombre__Real}`);
       const res = await response.json();
 
+      console.log(nombre__Real)
 
-      if ( res.data == null)
+      
+      if ( res.data !== null)
       {
+        setImge(res.data);
+      }
+      else{
         setImge([]);
       }
 
-      setImge(res.data);
+      
 
       //Estado del Loanding Falso
       setLoanding(false);
@@ -57,23 +64,26 @@ export const DetailsNew = (props) => {
 
 //Obtener Info de productos de los datos estaticos Casagri
   const obtenerInfoProducto = () => {
-      //let InfoProducto = getProductDataByCodigo(nombre);
-      let InfoProducto = getProductDataByName(nombre);
-      console.log(InfoProducto);
+
+      let nombreProducto__Estatico = nombre.replace(/-/g, " ");
+
+      let InfoProducto = getProductDataByName(nombreProducto__Estatico);
       setData(InfoProducto);
+      
   }
 
 
 
   useEffect(() => {
-    //obtenerImagenProducto();
-    obtenerInfoProducto();
-    console.log(nombre)
+    obtenerImagenProducto();
+    //obtenerInfoProducto();
+    //console.log(nombre)
   }, [nombre])
 
   useEffect(() => {
     //console.log(from[3]);
-  }, [])
+    obtenerInfoProducto();
+  }, [nombre])
 
   
 
@@ -109,7 +119,7 @@ export const DetailsNew = (props) => {
               style={{textDecoration:'none', color:'#494949'}}> 
                 <span className='pagesText__Categoria' >
                   <AiOutlineRight style={{marginLeft:'0.5rem', marginRight:'0.5rem'}}/>
-                  {nombre} 
+                  {nombre.replace(/-/g, " ")} 
                 </span>
             </div>
           </div>
@@ -122,7 +132,7 @@ export const DetailsNew = (props) => {
                   <div className=''>
                     {/* Imagen del Producto */}
                     {
-                      img !== null ? 
+                      img.imagen_principal  ? 
                       (<img src={img.imagen_principal} alt='' style={{width:'500px'}}/> )
                       :
                       (<img src={imgL(`./${imgCasagriLoad.imgUrl}`) }  style={{width:'500px'}}/>)
@@ -132,9 +142,7 @@ export const DetailsNew = (props) => {
                   <div className='information__Details'> 
                   
                     <h1 className="text__Details__Title" >{item.Nombre}</h1>
-                    <h3 className="text__Details__Price" >{item.PesoKG}</h3>
-                    <h3 className="text__Details__Brand" >{item.cat5}</h3>
-                    <h3 className="text__Details__Brand" >{item.Marca}</h3>
+                    
                   </div>
 
                 </div>

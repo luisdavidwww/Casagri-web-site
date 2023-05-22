@@ -14,6 +14,7 @@ import  FiltersBar  from "../Filters/FiltersBar";
 import  FilterSidebar  from "../Filters/FilterSidebar-Movil";
 import { BannerCategory } from 'components/BannerMain/BannerCategory';
 import { imgCasagriLoad } from '../../data/newsData';
+import  Holis  from './TablePaginationOnly';
 import  PaginationList  from './Pagination';
 import Loader from "components/Loader/Loader";
 //Variables de Entorno
@@ -23,6 +24,7 @@ import { BANNERSCATEGORIA, BANNERS, CATEGORIAS,
 import  Paginas  from '../../data/daticos/Paginas.json';
 //Estilos
 import './Category.css';
+import './Pagination.css';
 //icons
 import { AiOutlineRight } from "react-icons/ai";
 
@@ -439,102 +441,117 @@ const Category = ({ component }) => {
                       {
                               (  filterProducts !== null  ) 
                               && 
-                              <div className='category__products'>
-                                <div className='cards'>
-                                      <div className='cards__container'>
-                                        <div className='cards__wrapper'> 
-                                          <ul className='cards__items__Container'>
-                                            {filterProducts()?.map((item, index) => (
-                                                <CardItemNew
-                                                key={`${component}-${index}`}
-                                                src={imgCasagriLoad.imgUrl}
-                                                Nombre={item.Nombre}
-                                                Peso={item.PesoKG}
-                                                path={`/DetailsNew/${ item.Nombre.replace(/\s+/g, '').replace(/[^a-zA-Z0-9 ]/g, '') }`}
-                                                price={""}
-                                                CodigoProd={item.CodigoProd}
-                                                Marca={item.Marca}
-                                                ranking={""}
-                                                component={component}
-                                                categoria={""}
-                                                subCategoria={""}
-                                                Linea={""}
-                                                />
-                                            ))}
-                                          </ul>
-                                        </div>
-                                      </div>       
-                                </div>
-                                  
-                                  <div>
-                                    <button 
-                                        className="btn btn-primary"
-                                        onClick={ prevPage }
-                                    >
-                                        Anteriores
-                                    </button>
-                                      {
-                                      (  pagesNext == Math.trunc(cantPages) ) 
-                                        && 
-                                        <>
-                                        </>
-                                      }
-                                      {
-                                      (  pagesNext < Math.trunc(cantPages)  ) 
-                                        && 
-                                        <>
-                                         {
-                                            pagesNext == Math.trunc(cantPages)-1 && Number.isInteger(cantPages) ? (null):(
-                                            <button 
-                                            className="btn btn-primary"
-                                            onClick={ nextPage }
-                                            >
-                                                Siguientes
-                                            </button>
+                              <>
+                                <div className='category__products'>
+                                  <div className='cards'>
+                                        <div className='cards__container'>
+                                          <div className='cards__wrapper'> 
+                                            <ul className='cards__items__Container'>
+                                              {filterProducts()?.map((item, index) => (
+                                                  <CardItemNew
+                                                  key={`${component}-${index}`}
+                                                  src={imgCasagriLoad.imgUrl}
+                                                  Nombre={item.Nombre}
+                                                  Peso={item.PesoKG}
+                                                  elco={item.Nombre}
+                                                  /*path={`/DetailsNew/${ item.Nombre.replace(/\s+/g, '').replace(/[^a-zA-Z0-9 ]/g, '') }`}*/
+                                                  path={`/DetailsNew/${ item.Nombre.replace(/ /g, "-") }`}
+                                                  price={""}
+                                                  CodigoProd={item.CodigoProd}
+                                                  Marca={item.Marca}
+                                                  
+                                                  component={component}
+                                                  categoria={""}
+                                                  subCategoria={""}
+                                                  Linea={""}
+                                                  />
+                                              ))}
+                                            </ul>
+                                          </div>
+                                        </div>       
+                                  </div>
+                                  <div className='Paginado__Category'>
 
-                                          )
-                                        }
-                                        </>
-                                  
+                                      {/* Botones Pagina siguiente y Anterior */}
+                                      <div>
+                                      {
+                                        /*
                                         
-                                      }
+                                        <button 
+                                          className="btn btn-primary"
+                                          onClick={ prevPage }
+                                      >
+                                          Anteriores
+                                      </button>
+                                        {
+                                        (  pagesNext == Math.trunc(cantPages) ) 
+                                          && 
+                                          <>
+                                          </>
+                                        }
+                                        {
+                                        (  pagesNext < Math.trunc(cantPages)  ) 
+                                          && 
+                                          <>
+                                          {
+                                              pagesNext == Math.trunc(cantPages)-1 && Number.isInteger(cantPages) ? (null):(
+                                              <button 
+                                              className="btn btn-primary"
+                                              onClick={ nextPage }
+                                              >
+                                                  Siguientes
+                                              </button>
 
-                                      
-                                    <div>Total Productos: {getProductByCategory(consulta.toUpperCase()).length}</div>
-                                    {
-                                      Number.isInteger(cantPages) ? (
-                                        <>
-                                          Paginas: {pagesNext+1} / {Math.trunc(cantPages)}
-                                          <div>
-                                            {/* .filter((item, idx) => idx < 5) */}
+                                            )
+                                          }
+                                          </>    
+                                        }
+                                        <div>Total Productos: {getProductByCategory(consulta.toUpperCase()).length}</div>
+                                        Paginas: {pagesNext+1} / {Math.trunc(cantPages)}
+                                        <div>Paginado: { paginado } </div>
+
+
+                                        recorrido de las paginas:
+                                        <div>
                                             {Paginas?.filter((it, idx) => idx < Math.trunc(cantPages)).map((item, index) => (
                                               <div key={`paginado-${index}`} >
                                                 {item.pagina}
                                               </div>
-                                              ))}
-                                          </div>
-                                          <PaginationList cantidadPagina={ Math.trunc(cantPages) } />
-                                        </>
-                                      ):
-                                      (
-                                        <>
-                                        <div>Paginas: {pagesNext+1} / {Math.trunc(cantPages)+1}</div>
+                                            ))}
+                                        </div>
+
                                         <div>
-                                            {/* .filter((item, idx) => idx < 5) */}
                                             {Paginas?.filter((it, idx) => idx < Math.trunc(cantPages)+1).map((item, index) => (
                                               <div key={`paginado-${index}`} >
                                                 {item.pagina}
                                               </div>
-                                              ))}
-                                          </div>
-                                          <PaginationList cantidadPagina={ Math.trunc(cantPages)+1 } enlace={ consulta } />
-                                        </>
-                                      )
-                                    }
-                                    <div>Paginado: { paginado } </div>
-                                    
-                                  </div>
-                              </div>
+                                            ))}
+                                        </div>
+                                        
+                                        */
+                                      }
+                                      </div>
+                                      
+                                      {
+                                        Number.isInteger(cantPages) ? (
+                                          <>
+                                            <PaginationList cantidadPagina={ Math.trunc(cantPages) } enlace={`/Category/${consulta}`} />
+                                          </>
+                                        ):
+                                        (
+                                          <>
+                                            <PaginationList cantidadPagina={ Math.trunc(cantPages)+1 } enlace={`/Category/${consulta}`} />
+                                          </>
+                                        )
+                                      }
+                                      
+                                      
+                                </div>
+                                </div>
+
+                                
+                              </>
+                              
       
                       }
                     </>

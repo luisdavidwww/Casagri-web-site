@@ -252,17 +252,18 @@ export const getCategory = (  ) => {
 /*------------------------METODOS DE PRODUCTO------------------------------*/
 
 //Buscar Producto Y Componente Activo
-export const getProductDataByName = ( name = '' ) => {
+export const getProductDataByName = ( name ) => {
 
     if ( name === '' ) {
         return [];
     }
 
-    name = name.toLocaleUpperCase();
-    let nombre = data.filter( products => products.Nombre.includes( name ) );
-    let componente = data.filter( products => products.cat4.includes( name ) );;
-
-    return nombre.concat( componente ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
+    
+    //name = name.toLocaleUpperCase();
+    console.log("Nombre como parametro "+name)
+    console.log("resultado de busqueda "+data.filter( products => products.Nombre.includes( name )))
+    return data.filter( products => products.Nombre.includes( name ) )
+    
 
     //return data.filter( products => products.Nombre.includes( name )  );
 

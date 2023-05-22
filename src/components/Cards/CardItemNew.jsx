@@ -31,7 +31,7 @@ const [btn, setBtn] = useState(false);
 const getProductImage = async () => {
 
   //Petición a la api
-  const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${"productos/nombre/"}${props.CodigoProd}`);
+  const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${"productos/codigo/"}${props.CodigoProd}`);
   const res = await response.json();
 
   //en caso que no tenga imagen el producto

@@ -1,0 +1,14 @@
+/* Paginacion */
+.Paginado__Category{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  padding-bottom: 2rem;
+
+}
+
+.css-19micn4-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+  color: #fff;
+  background-color: #47A01A !important;
+}
