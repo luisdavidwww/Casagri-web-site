@@ -19,6 +19,11 @@ export const DetailsNew = (props) => {
   const [img, setImge] = useState([]);
   const [loanding, setLoanding] = useState(false);
   const [prueba, setPrueba] = useState([]);
+
+
+  const [ nombreProducto, setNombreProducto ] = useState([]);
+  const [ presentacion, setPresentacion ] = useState([]);
+
   
   // Nombre del Producto por Parametro
   const { nombre } = useParams();
@@ -73,6 +78,36 @@ export const DetailsNew = (props) => {
   }
 
 
+  //Obtener Info de productos de los datos estaticos Casagri
+  const DiseñoDeTitulo = (nombre) => {
+
+    const miOracion = nombre.replace(/-/g, " ").toLowerCase();
+    const palabras = miOracion.split(" ");
+
+    for (let i = 0; i < palabras.length; i++) {
+        palabras[i] = palabras[i][0].toUpperCase() + palabras[i].substr(1);
+    }
+
+    setPrueba(palabras.join(" "));
+
+
+    //console.log(nombre.split(nombre.indexOf('X')));
+    console.log(nombre.replace(/-/g, " ").toLowerCase().split("x"));
+    console.log(nombre.indexOf('X'));
+
+
+
+    let arr = nombre.replace(/-/g, " ").toLowerCase().split("x");
+    
+    console.log("Nombre del producto: "+arr[0]);
+    console.log("Presentación "+arr[1]);
+    setNombreProducto(arr[0]);
+    setPresentacion(arr[1]);
+}
+
+
+  
+
 
   useEffect(() => {
     obtenerImagenProducto();
@@ -83,6 +118,7 @@ export const DetailsNew = (props) => {
   useEffect(() => {
     //console.log(from[3]);
     obtenerInfoProducto();
+    DiseñoDeTitulo(nombre);
   }, [nombre])
 
   
@@ -140,15 +176,18 @@ export const DetailsNew = (props) => {
                   </div>
                   
                   <div className='information__Details'> 
-                  
+                    {/*
                     <h1 className="text__Details__Title" >{item.Nombre}</h1>
-                    
+                    <h1 className="text__Details__Title" >{prueba}</h1>    
+                    */} 
+
+                    <h1 className="text__Details__Title" >{nombreProducto}</h1>
+                    <div>Presentación: {presentacion}</div>
+                                  
                   </div>
 
                 </div>
               ))}
-
-              
             </section>
           </article>
           </>
