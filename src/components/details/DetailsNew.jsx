@@ -44,19 +44,22 @@ export const DetailsNew = (props) => {
       //let CodigoProd = from[3];
 
       //Petición a la api
-      let nombre__Real = nombre.replace(/-/g, " ")
+      let nombre__Real = nombre.replace(/-/g, "")
       const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${"productos/nombreProducto/"}${nombre__Real}`);
       const res = await response.json();
 
-      console.log(nombre__Real)
+      
+      //console.log(nombre__Real.replace(/ /g, ""));
 
       
       if ( res.data !== null)
       {
         setImge(res.data);
+        console.log("aqui ta el nombre:"+nombre__Real);
       }
       else{
         setImge([]);
+        console.log("Whatafaaaa:");
       }
 
       

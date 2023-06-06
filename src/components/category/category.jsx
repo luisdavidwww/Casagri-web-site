@@ -170,19 +170,6 @@ const Category = ({ component }) => {
     //Productos
     const filterProducts = ( ) => {
 
-      //cuantas paginas tiene la consulta:
-
-      //let i = 0;
-      //let a = 0;
-      /*
-      while (a < getProductByCategory(consulta.toUpperCase()).length) {
-        console.log("Iteracción: " + i);
-        i++;
-        a = a +16
-
-        let luis = i;
-      }*/
-
       
 
       if (consulta === 'Buscar'){
@@ -193,7 +180,6 @@ const Category = ({ component }) => {
         return getProductByCategory(consulta.toUpperCase()).slice(0  , 16);
       }
 
-      
 
       return getProductByCategory(consulta.toUpperCase()).slice( pagesNext * 17  , (pagesNext * 17) + 16);
     }
@@ -455,7 +441,7 @@ const Category = ({ component }) => {
                                                   Peso={item.PesoKG}
                                                   elco={item.Nombre}
                                                   /*path={`/DetailsNew/${ item.Nombre.replace(/\s+/g, '').replace(/[^a-zA-Z0-9 ]/g, '') }`}*/
-                                                  path={`/DetailsNew/${ item.Nombre.replace(/ /g, "-") }`}
+                                                  path={`/DetailsNew/${ item.Nombre.replace(/ /g, "-").replace(/%/g, "").replace(/[ / ]/g, "_") }`}
                                                   price={""}
                                                   CodigoProd={item.CodigoProd}
                                                   Marca={item.Marca}
