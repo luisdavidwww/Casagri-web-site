@@ -231,7 +231,7 @@ const Category = ({ component }) => {
     }
 
 
-  const CombinarNombreImagenProducto = async () => {
+  const CombinarNombreImagenProducto = () => {
 
 
     if ( products && img !== null ){
