@@ -154,7 +154,7 @@ export const getProductByCategory = ( category = '' ) => {
     }
 
     if ( category === 'MEDICINA VETERINARIA' ) {
-        return data.filter( products => products.cat1.includes( "MEDICINA VETERINARIA" ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));;
+        return data.filter( products => products.cat1.includes( "MEDICINA VETERINARIA" ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
     }
             if ( category === 'ANALGÉSICOS Y ANTI-INFLAMATORIOS' ) {
                 let analgesicos = data.filter( products => products.Cat3.includes( "ANALGESICO Y ANTIINFLAMATORIO") );

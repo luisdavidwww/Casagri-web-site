@@ -97,17 +97,17 @@ const BrandsCarrousel = () => {
               </div>
               <div className="container">
                 <Link to="/marcas/CALBOS">
-                  <img src={imgL(`./${"CALBOS.png"}`)} style={{height:'105px', marginTop:'20px'}} />
+                  <img src={imgL(`./${"calbos.png"}`)} style={{height:'105px', marginTop:'20px'}} />
                 </Link>
               </div>
               <div className="container">
                 <Link to="/marcas/WOLF">
-                  <img src={imgL(`./${"WOLF.png"}`)} style={{height:'100px', marginTop:'25px'}} />
+                  <img src={imgL(`./${"wolf.png"}`)} style={{height:'100px', marginTop:'25px'}} />
                 </Link>
               </div>
               <div className="container">
                 <Link to="/marcas/WESTAR">
-                  <img src={imgL(`./${"WESTAR.png"}`)} style={{height:'150px', marginTop:'5px'}} />
+                  <img src={imgL(`./${"westar.png"}`)} style={{height:'150px', marginTop:'5px'}} />
                 </Link>
               </div>
               <div className="container">
@@ -172,17 +172,17 @@ const BrandsCarrousel = () => {
                 </div>
                 <div className="container-movil">
                   <Link to="/marcas/CALBOS">
-                    <img className='center__Movil' src={imgL(`./${"CALBOS.png"}`)} style={{height:'80px', paddingLeft:'15px', marginTop:'20px'}} />
+                    <img className='center__Movil' src={imgL(`./${"calbos.png"}`)} style={{height:'80px', paddingLeft:'15px', marginTop:'20px'}} />
                   </Link>
                 </div>
                 <div className="container-movil">
                   <Link to="/marcas/WOLF">
-                    <img className='center__Movil' src={imgL(`./${"WOLF.png"}`)} style={{height:'80px', paddingLeft:'10px', marginTop:'20px'}} />
+                    <img className='center__Movil' src={imgL(`./${"wolf.png"}`)} style={{height:'80px', paddingLeft:'10px', marginTop:'20px'}} />
                   </Link>
                 </div>
                 <div className="container-movil">
                   <Link to="/marcas/WESTAR">
-                    <img className='center__Movil' src={imgL(`./${"WESTAR.png"}`)} style={{height:'110px', marginTop:'15px', paddingRight:'5px'}} />
+                    <img className='center__Movil' src={imgL(`./${"westar.png"}`)} style={{height:'110px', marginTop:'15px', paddingRight:'5px'}} />
                   </Link>
                 </div>
             </Slider>

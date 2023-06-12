@@ -2,91 +2,119 @@ import React, { useState, useEffect } from 'react';
 import AOS      from 'aos';
 import Skeleton from 'react-loading-skeleton';
 
+//componentes
+import ErrorMessage from 'components/Loader/ErrorMessage'
+
 // Estilos y diseño
 import './AboutUs.css';
 import 'aos/dist/aos.css';
 
 // Data
-import { ACERCA_DE_CASAGRI } from '../../routers/index'
+import { ACERCA_DE_CASAGRI, PRODUCTOS_MAESTROS, PRODUCTOS_DISPONIBLES, PRODUCTOS_IMAGENES } from '../../routers/index'
 
 const AboutUs = () => {
 
-  const [data, setData] = useState([]);
+  const [data, setDataCasagri] = useState([]);
   const [productos, setProductos] = useState([]);
+  const [error, setError] = useState(false);
+  const [imageUrls, setImageUrls] = useState([]);
+  const [img, setImagen] = useState([]);
 
 
-//Peticion productos casagri
-{/* 
-  const getInfoProducts = async () => {
-
-    const datos = await fetch(`http://csgbqto.dyndns.org:6001/ctDynamicsSL/api/quickQuery/VW_VENTTU_PROD`, {
-      method: "GET",
-      headers: new Headers({
-        "Content-Type": "application/json", 
-        'Authorization': 'Basic REVWRUxPUEVSOkJCRjk5OTM5NDhFMw==',
-        'CpnyID': '0010',
-        'SiteID': 'LIVE'
-      }),
-    });
-
-    const dat = await datos.json();
-    console.log(datos);
-    setInfo(dat);
-   
-  }
-
-
-  fetch('http://csgbqto.dyndns.org:6001/ctDynamicsSL/api/quickQuery/VW_VENTTU_PROD', {
-  method: 'GET',
-  headers: {
-            "Accept": "application/json", 
-            "Authorization": "Basic REVWRUxPUEVSOkJCRjk5OTM5NDhFMw==",
-            "CpnyID": "0010",
-            "SiteID": "LIVE"
-  }
-})
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-
-
-
-  fetch('http://localhost:8080/api/productos/azulito', {
-  method: 'GET',
-})
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-
-*/}
-
+  //Cargamos los datos de la Compañía
   const getInfo = async () => {
     const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${ACERCA_DE_CASAGRI}`);
     const res = await response.json();
-    setData(res.data);
+    setDataCasagri(res.data);
   }
 
-  const getInfoProducts = async () => {
-    const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE__TWO}${"productos/proxy"}`);
-    const res = await response.json();
-    console.log("que paso mi bro");
-    console.log(res.myQueryResults.Table);
-    setProductos(res.myQueryResults.Table);
+
+  //Obtenemos elmaestro de los Productos Casagri
+  const getProductosProxyCasagri = async () => {
+
+    await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE__TWO}${PRODUCTOS_MAESTROS}`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error en la petición');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Procesar los datos si la petición fue exitosa
+      console.log( data.myQueryResults.Table)
+    })
+    .catch(error => {
+      // Manejar el error de la petición
+      console.error('Error:', error.message);
+    })
+
+  
   }
+
+  //Obtenemos los Productos Disponibles
+  const getProductosProxyCasagriDisponibles = async () => {
+
+    await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE__TWO}${PRODUCTOS_DISPONIBLES}`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error en la petición de productos Disponibles');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Procesar los datos si la petición fue exitosa
+      setError(false);
+      setProductos(data.myQueryResults.Table)
+      console.log( data.myQueryResults.Table);
+    })
+    .catch(error => {
+      // Manejar el error de la petición
+      setError(true);
+      console.error('Error:', error.message);
+    })
+
+  
+  }
+
+  //Obtenemos los Productos Disponibles
+  const getImagenProductos = async () => {
+
+    await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE__TWO}${PRODUCTOS_IMAGENES}`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error en la petición');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Procesar los datos si la petición fue exitosa
+      setError(false);
+      setImagen(data.myQueryResults.Table)
+    })
+    .catch(error => {
+      // Manejar el error de la petición
+      setError(true);
+      console.error('Error:', error.message);
+    })
+
+  
+  }
+
+
 
 
 
   useEffect(() => {
+
+
     getInfo();
-    getInfoProducts();
+    //getProductosProxyCasagri();
+    //getProductosProxyCasagriDisponibles();
+    getImagenProductos();
+
+
+    
+
   },[])
 
   AOS.init({
@@ -106,15 +134,38 @@ const AboutUs = () => {
             </div>
 
             <div>
-            {productos?.map((item, index) => (
-            <div className='cards__item-pc' key={`${'luis'}-${index}`} >
-                <a className='cards__item__link-pc' >
-                    <div className='cards__item__info-pc'>
-                        <h5 className='cards__item__text-pc'>{item.Nombre}</h5>
-                    </div> 
-                </a>
+              {
+                error ? (
+                  <ErrorMessage/>
+                ):(
+                  <div>
+                    {/* 
+                    {productos?.map((item, index) => (
+                    <div className='cards__item-pc' key={`${'luis'}-${index}`} >
+                        <a className='cards__item__link-pc' >
+                            <div className='cards__item__info-pc'>
+                                <h5 className='cards__item__text-pc'>{item.Imagen}</h5>
+                                <img key={index} src={url} alt={`Imagen ${index}`} />
+                            </div> 
+                        </a>
+                    </div>
+                   
+                  ))}
+                  */}
+                  </div>
+                )
+              }
+            
             </div>
-          ))}
+            <div>
+
+            {img.filter((element, idx) => idx < 5).map((item, index) => (
+              <div>
+                <img src={`data:image/jpeg;base64,${item.Imagen}`} alt="Imagen" />  
+              </div>
+              
+            ))}
+
             </div>
         </section>
     </>

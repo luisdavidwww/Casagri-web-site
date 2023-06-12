@@ -6,7 +6,7 @@ import { getProductByCategory ,
         getProduct,  
         getBrandsByName,
         getComponentByName, 
-        getProductByBrands } from "../../selectors/getInfoCasagri";
+         } from "../../selectors/getInfoCasagri";
 //componentes
 import CardItemNew from '../Cards/CardItemNew';
 import  SearchForm  from "../Search/SearchForm";
@@ -38,10 +38,8 @@ const Category = ({ component }) => {
     const searchF = search || `?Page=0`;
     const NumbPage = state?.numberPage;
 
-    let start = 0;
 
     const navigate = useNavigate();
-    const location = useLocation();
 
    const [banner, setBanner] = useState([]);
    const [loanding, setLoanding] = useState(false);
@@ -65,7 +63,12 @@ const Category = ({ component }) => {
 
    //Arreglo de numerod e paginas para botones
    const [paginado, setPaginado] = useState([]);
-   
+
+
+   //Productos
+   const [products, setProducts] = useState([]);
+   const [img, setImagen] = useState([]);
+   const [productsComb, setProductsComb] = useState([]);
 
 
   //Peticion el Banner Principal
@@ -159,6 +162,11 @@ const Category = ({ component }) => {
     }
 
 
+
+
+
+
+
     //Productos
     const filterProducts = ( ) => {
 
@@ -167,11 +175,11 @@ const Category = ({ component }) => {
       }
 
       if ( pagesNext == 0){
-        return getProductByCategory(consulta.toUpperCase()).slice(0  , 16);
+        console.log('pruebas' + productsComb);
+        return productsComb.slice( pagesNext * 17  , (pagesNext * 17) + 16);
       }
 
-
-      return getProductosProxyCasagriDisponibles().slice( pagesNext * 17  , (pagesNext * 17) + 16);
+      return productsComb.slice( pagesNext * 17  , (pagesNext * 17) + 16);
     }
 
     //Obtenemos los Productos Disponibles
@@ -186,7 +194,8 @@ const Category = ({ component }) => {
       })
       .then(data => {
         // Procesar los datos si la petición fue exitosa
-        return data.myQueryResults.Table.json();
+        setProducts(data.myQueryResults.Table);
+        console.log('Peticion exitosa,toma los productos bro'+products);
       })
       .catch(error => {
         // Manejar el error de la petición
@@ -199,28 +208,47 @@ const Category = ({ component }) => {
     //Obtenemos los Productos Disponibles
     const getImagenProductos = async () => {
 
-      await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE__TWO}${PRODUCTOS_IMAGENES}`)
-      .then(response => {
+        await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE__TWO}${PRODUCTOS_IMAGENES}`)
+        .then(response => {
         if (!response.ok) {
-          throw new Error('Error en la petición');
+            throw new Error('Error en la petición');
         }
         return response.json();
-      })
-      .then(data => {
+        })
+        .then(data => {
         // Procesar los datos si la petición fue exitosa
-        setError(false);
+        //setError(false);
         setImagen(data.myQueryResults.Table)
-      })
-      .catch(error => {
+        console.log('Peticion exitosa,toma lasimagenes bro',img);
+        })
+        .catch(error => {
         // Manejar el error de la petición
-        setError(true);
+        //setError(true);
         console.error('Error:', error.message);
-      })
+        })
 
     
     }
 
 
+  const CombinarNombreImagenProducto = async () => {
+
+
+    if ( products && img !== null ){
+        const Combinado = products.map(nombre => {
+            const imgProducto = img.find(image => image.IdApi === nombre.IdApi);
+            return {
+                IdApi: nombre.IdApi,
+                Nombre: nombre.Nombre,
+                Imagen: imgProducto ? imgProducto.Imagen : null
+            };
+        });
+        setProductsComb(Combinado);
+    }
+
+    filterProducts();
+  
+  }
 
 
 
@@ -313,10 +341,17 @@ const Category = ({ component }) => {
 
     //use effects general
     useEffect(() => {
+        
+        getProductosProxyCasagriDisponibles();
+        getImagenProductos();
+        CombinarNombreImagenProducto();
+    }, [])
+
+    useEffect(() => {
+
         productsMain();
         
         setCurrentPage(0);
-        filterProducts();
 
         filterBrands();
         filtersComponent();
@@ -335,22 +370,12 @@ const Category = ({ component }) => {
 
       setCantPages((getProductByCategory(consulta.toUpperCase()).length)/17);
 
-      
       setPaginado(Math.trunc(cantPages));
-
-    
-
-      console.log('holis bebe'+ paginado);
-
-
-      console.log((getProductByCategory(consulta.toUpperCase()).length)/17);
-      console.log( pagesNext +'-------------'+ cantPages );
       
     },[consulta, pagesNext ])
 
     useEffect(() => {
       getInfo();
-      filterProducts();
 
       getNumbLink();  
 
@@ -479,9 +504,9 @@ const Category = ({ component }) => {
                                                   key={`${component}-${index}`}
                                                   src={imgCasagriLoad.imgUrl}
                                                   Nombre={item.Nombre}
+                                                  Imagen={item.Imagen}
                                                   Peso={item.PesoKG}
                                                   elco={item.Nombre}
-                                                  /*path={`/DetailsNew/${ item.Nombre.replace(/\s+/g, '').replace(/[^a-zA-Z0-9 ]/g, '') }`}*/
                                                   path={`/DetailsNew/${ item.Nombre.replace(/ /g, "-").replace(/%/g, "").replace(/[ / ]/g, "_") }`}
                                                   price={""}
                                                   CodigoProd={item.CodigoProd}
@@ -498,76 +523,16 @@ const Category = ({ component }) => {
                                         </div>       
                                   </div>
                                   <div className='Paginado__Category'>
-
-                                      {/* Botones Pagina siguiente y Anterior */}
-                                      <div>
-                                      {
-                                        /*
-                                        
-                                        <button 
-                                          className="btn btn-primary"
-                                          onClick={ prevPage }
-                                      >
-                                          Anteriores
-                                      </button>
-                                        {
-                                        (  pagesNext == Math.trunc(cantPages) ) 
-                                          && 
-                                          <>
-                                          </>
-                                        }
-                                        {
-                                        (  pagesNext < Math.trunc(cantPages)  ) 
-                                          && 
-                                          <>
-                                          {
-                                              pagesNext == Math.trunc(cantPages)-1 && Number.isInteger(cantPages) ? (null):(
-                                              <button 
-                                              className="btn btn-primary"
-                                              onClick={ nextPage }
-                                              >
-                                                  Siguientes
-                                              </button>
-
-                                            )
-                                          }
-                                          </>    
-                                        }
-                                        <div>Total Productos: {getProductByCategory(consulta.toUpperCase()).length}</div>
-                                        Paginas: {pagesNext+1} / {Math.trunc(cantPages)}
-                                        <div>Paginado: { paginado } </div>
-
-
-                                        recorrido de las paginas:
-                                        <div>
-                                            {Paginas?.filter((it, idx) => idx < Math.trunc(cantPages)).map((item, index) => (
-                                              <div key={`paginado-${index}`} >
-                                                {item.pagina}
-                                              </div>
-                                            ))}
-                                        </div>
-
-                                        <div>
-                                            {Paginas?.filter((it, idx) => idx < Math.trunc(cantPages)+1).map((item, index) => (
-                                              <div key={`paginado-${index}`} >
-                                                {item.pagina}
-                                              </div>
-                                            ))}
-                                        </div>
-                                        
-                                        */
-                                      }
-                                      </div>
                                       
                                       {
                                         Number.isInteger(cantPages) ? (
                                           <>
-                                            <PaginationList cantidadPagina={ Math.trunc(cantPages) } enlace={`/Category/${consulta}`} />
+                                            <PaginationList cantidadPagina={ Math.trunc(cantPages) } enlace={`/CategoryNew/${consulta}`} />
                                           </>
                                         ):
                                         (
                                           <>
-                                            <PaginationList cantidadPagina={ Math.trunc(cantPages)+1 } enlace={`/Category/${consulta}`} />
+                                            <PaginationList cantidadPagina={ Math.trunc(cantPages)+1 } enlace={`/CategoryNew/${consulta}`} />
                                           </>
                                         )
                                       }

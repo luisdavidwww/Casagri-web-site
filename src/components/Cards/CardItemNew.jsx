@@ -66,7 +66,7 @@ useEffect(() => {
               
               
               >
-            {/* Imagen del Producto */}
+            {/* Imagen del Producto 
             <figure className='cards__item__pic-wrap' >
               {
                 image !== null ?  (
@@ -99,6 +99,25 @@ useEffect(() => {
                 )
               }
             </figure>
+            */}
+
+            {/* Imagen del Producto Nuevo*/}
+            <figure className='cards__item__pic-wrap' >
+                  <img
+                className='cards__item__img'
+                alt={props.Nombre}
+                src={`data:image/jpeg;base64,${props.Imagen}`}
+                layout="fill"
+                        style={{
+                            marginLeft: "auto",
+                            marginRight: "auto",
+                            width: "100%",
+                            height: "5rem"
+                          }}
+                        /> 
+            </figure>
+            
+
 
             {/* Datos del Productos */}
             <div className='cards__item__info-container'>

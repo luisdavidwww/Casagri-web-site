@@ -19,6 +19,12 @@ const CATEGORIAS = "categorias/"
 const BUSCARCATEGORIA = "lineaProductos/buscarCategoria/"
 
 
+//Productos Casagri
+const PRODUCTOS_MAESTROS = "productos/maestrosCasagri"
+const PRODUCTOS_DISPONIBLES = "productos/stockCasagri"
+const PRODUCTOS_IMAGENES = "productos/imagenProductosCasagri"
+
+
 
 
 module.exports = {
@@ -34,4 +40,8 @@ module.exports = {
     //Categorias
     CATEGORIAS,
     BUSCARCATEGORIA,
+    //Productos
+    PRODUCTOS_MAESTROS,
+    PRODUCTOS_DISPONIBLES,
+    PRODUCTOS_IMAGENES,
 }
