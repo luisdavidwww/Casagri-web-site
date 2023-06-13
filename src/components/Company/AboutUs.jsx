@@ -3,7 +3,8 @@ import AOS      from 'aos';
 import Skeleton from 'react-loading-skeleton';
 
 //componentes
-import ErrorMessage from 'components/Loader/ErrorMessage'
+import ErrorMessage from 'components/Loader/ErrorMessage';
+import Loader from 'components/Loader/Loader'
 
 // Estilos y diseño
 import './AboutUs.css';
@@ -158,13 +159,20 @@ const AboutUs = () => {
             
             </div>
             <div>
-
-            {img.filter((element, idx) => idx < 5).map((item, index) => (
-              <div>
-                <img src={`data:image/jpeg;base64,${item.Imagen}`} alt="Imagen" />  
-              </div>
-              
-            ))}
+            {
+                img ? (
+                  <div>
+                    {img.filter((element, idx) => idx < 5).map((item, index) => (
+                      <div>
+                        <img src={`data:image/jpeg;base64,${item.Imagen}`} alt="Imagen" />  
+                      </div>  
+                    ))}
+                  </div>
+                  
+                ):(
+                  <Loader/>
+                )
+              }
 
             </div>
         </section>

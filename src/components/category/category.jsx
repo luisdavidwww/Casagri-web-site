@@ -171,59 +171,8 @@ const Category = ({ component }) => {
       }
 
 
-      return getProductosProxyCasagriDisponibles().slice( pagesNext * 17  , (pagesNext * 17) + 16);
+      return getProductByCategory().slice( pagesNext * 17  , (pagesNext * 17) + 16);
     }
-
-    //Obtenemos los Productos Disponibles
-    const getProductosProxyCasagriDisponibles = async () => {
-
-      await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE__TWO}${PRODUCTOS_DISPONIBLES}`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Error en la petición');
-        }
-        return response.json();
-      })
-      .then(data => {
-        // Procesar los datos si la petición fue exitosa
-        return data.myQueryResults.Table.json();
-      })
-      .catch(error => {
-        // Manejar el error de la petición
-        console.error('Error:', error.message);
-      })
-
-    
-    }
-
-    //Obtenemos los Productos Disponibles
-    const getImagenProductos = async () => {
-
-      await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE__TWO}${PRODUCTOS_IMAGENES}`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Error en la petición');
-        }
-        return response.json();
-      })
-      .then(data => {
-        // Procesar los datos si la petición fue exitosa
-        setError(false);
-        setImagen(data.myQueryResults.Table)
-      })
-      .catch(error => {
-        // Manejar el error de la petición
-        setError(true);
-        console.error('Error:', error.message);
-      })
-
-    
-    }
-
-
-
-
-
 
     //Marcas
     const filterBrands = () => {

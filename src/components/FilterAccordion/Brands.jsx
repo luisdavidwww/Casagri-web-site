@@ -14,7 +14,7 @@ export default function CategoryAccordion({ MarcaLista, Enlace }) {
 
   useEffect(() => {
     //console.log("muestra final"+ MarcaLista.length )
-    console.log("muestrica"+ MarcaLista )
+    //console.log("muestrica"+ MarcaLista )
   }, [MarcaLista])
 
 

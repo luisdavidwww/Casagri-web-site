@@ -68,7 +68,9 @@ const Category = ({ component }) => {
    //Productos
    const [products, setProducts] = useState([]);
    const [img, setImagen] = useState([]);
+   const [masterProd, setMasterProd] = useState([]);
    const [productsComb, setProductsComb] = useState([]);
+   //const [prueba, setPrueba] = useState("");
 
 
   //Peticion el Banner Principal
@@ -149,17 +151,6 @@ const Category = ({ component }) => {
   }
 
 
-    //Productos Principales a Mostrar 
-    const productsMain = () => {
-
-      if (consulta === 'Buscar'){
-
-         return getProduct().slice(currentPage, currentPage + 16);
-		}
-        else {
-          return getProduct().slice(currentPage, currentPage + 16);
-		}
-    }
 
 
 
@@ -167,47 +158,41 @@ const Category = ({ component }) => {
 
 
 
-    //Productos
-    const filterProducts = ( ) => {
-
-      if (consulta === 'Buscar'){
-        return getProduct().slice(currentPage, currentPage + 16);
-      }
-
-      if ( pagesNext == 0){
-        console.log('pruebas' + productsComb);
-        return productsComb.slice( pagesNext * 17  , (pagesNext * 17) + 16);
-      }
-
-      return productsComb.slice( pagesNext * 17  , (pagesNext * 17) + 16);
-    }
-
+    
     //Obtenemos los Productos Disponibles
     const getProductosProxyCasagriDisponibles = async () => {
 
-      await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE__TWO}${PRODUCTOS_DISPONIBLES}`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Error en la petición');
-        }
-        return response.json();
-      })
-      .then(data => {
-        // Procesar los datos si la petición fue exitosa
-        setProducts(data.myQueryResults.Table);
-        console.log('Peticion exitosa,toma los productos bro'+products);
-      })
-      .catch(error => {
-        // Manejar el error de la petición
-        console.error('Error:', error.message);
-      })
+      if ( img.length == 0)
+      {
+        await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE__TWO}${PRODUCTOS_DISPONIBLES}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Error en la petición');
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Procesar los datos si la petición fue exitosa
+          setProducts(data.myQueryResults.Table);
+          //console.log('Peticion exitosa,toma los productos bro'+products);
+        })
+        .catch(error => {
+          // Manejar el error de la petición
+          console.error('Error:', error.message);
+        })
+      }
+      else{
+        console.log('ya esta lleno el vector de imagenes');
+      }
 
-    
     }
 
     //Obtenemos los Productos Disponibles
     const getImagenProductos = async () => {
 
+      if ( img.length == 0)
+      {
+        console.log('el comienzo vamos allenar');
         await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE__TWO}${PRODUCTOS_IMAGENES}`)
         .then(response => {
         if (!response.ok) {
@@ -219,36 +204,151 @@ const Category = ({ component }) => {
         // Procesar los datos si la petición fue exitosa
         //setError(false);
         setImagen(data.myQueryResults.Table)
-        console.log('Peticion exitosa,toma lasimagenes bro',img);
+        //console.log('Peticion exitosa,toma las imagenes bro',img);
         })
         .catch(error => {
         // Manejar el error de la petición
         //setError(true);
         console.error('Error:', error.message);
         })
+      }
+      else{
+        console.log('ya esta lleno el vector de imagenes');
+      }
+
+        
 
     
     }
 
+    //Obtenemos los Productos Maestros
+    const getProductosMaestros = async () => {
 
-  const CombinarNombreImagenProducto = () => {
-
-
-    if ( products && img !== null ){
-        const Combinado = products.map(nombre => {
-            const imgProducto = img.find(image => image.IdApi === nombre.IdApi);
-            return {
-                IdApi: nombre.IdApi,
-                Nombre: nombre.Nombre,
-                Imagen: imgProducto ? imgProducto.Imagen : null
-            };
-        });
-        setProductsComb(Combinado);
+      if ( masterProd.length == 0)
+      {
+        await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE__TWO}${PRODUCTOS_MAESTROS}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Error en la petición');
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Procesar los datos si la petición fue exitosa
+          setMasterProd(data.myQueryResults.Table);
+          //console.log('Peticion exitosa,toma los productos bro'+products);
+        })
+        .catch(error => {
+          // Manejar el error de la petición
+          console.error('Error:', error.message);
+        })
+      }
+      else{
+        console.log('ya esta lleno el vector de imagenes');
+      }
+  
     }
 
-    filterProducts();
+
+
+    const InfoProductsCasagriMaestros = ( ) => {
+
+      getProductosMaestros();
+      getProductosProxyCasagriDisponibles();
   
-  }
+        let Combinado = masterProd.map(master => {
+              let disponible = products.find(disp => disp.IdApi === master.IdApi);
+              return {
+                  IdApi: master.IdApi,
+                  Nombre: master.Nombre,
+                  Marca: disponible ? master.Marca : null,
+                  cat1: disponible ? master.cat1 : null,
+                  cat2: disponible ? master.cat2 : null,
+                  Cat3: disponible ? master.Cat3 : null,
+                  cat4: disponible ? master.cat4 : null,
+                  cat5: disponible ? master.cat5 : null,
+              };
+            });
+        return Combinado;
+  
+    }
+
+    const CombinarNombreImagenProducto = () => {
+
+      if ( products.length !== 0 && img.length !== 0 )
+          {
+              const Combinado = products.map(nombre => {
+                let imgProducto = img.find(image => image.IdApi === nombre.IdApi);
+                return {
+                    IdApi: nombre.IdApi,
+                    Nombre: nombre.Nombre,
+                    Imagen: imgProducto ? imgProducto.Imagen : null
+                };
+              });
+              setProductsComb(Combinado);
+          }
+         
+          //setPrueba(consulta);
+
+    }
+
+
+
+
+
+
+
+    //Productos
+    const filterProducts2 = ( ) => {
+
+      if ( pagesNext == 0){
+          let Combinado = products.map(nombre => {
+              let imgProducto = img.find(image => image.IdApi === nombre.IdApi);
+              return {
+                  IdApi: nombre.IdApi,
+                  Nombre: nombre.Nombre,
+                  Marca: imgProducto ? nombre.Marca : "",
+                  Imagen: imgProducto ? imgProducto.Imagen : null
+              };
+            });
+        return Combinado.slice(0  , 16);
+      }
+      
+        let Combinado = products.map(nombre => {
+              let imgProducto = img.find(image => image.IdApi === nombre.IdApi);
+              return {
+                  IdApi: nombre.IdApi,
+                  Nombre: nombre.Nombre,
+                  Imagen: imgProducto ? imgProducto.Imagen : null
+              };
+            });
+        return Combinado.slice( pagesNext * 17  , (pagesNext * 17) + 16);
+
+    }
+
+    const filterProducts = ( ) => {
+      
+      let Combinado = masterProd.map(master => {
+        let disponible = products.find(disp => disp.IdApi === master.IdApi);
+        return {
+            IdApi: master.IdApi,
+            Nombre: master.Nombre,
+            Marca: disponible ? master.Marca : null,
+            Imagen: disponible ? master.Imagen : null,
+            cat1: disponible ? master.cat1 : null,
+            cat2: disponible ? master.cat2 : null,
+            Cat3: disponible ? master.Cat3 : null,
+            cat4: disponible ? master.cat4 : null,
+            cat5: disponible ? master.cat5 : null,
+        };
+      });
+      if ( consulta.toUpperCase() === 'AGROQUÍMICOS' ) {
+        return Combinado.slice( pagesNext * 17  , (pagesNext * 17) + 16);
+     }
+        return Combinado.slice( pagesNext * 17  , (pagesNext * 17) + 16);
+
+    }
+
 
 
 
@@ -262,36 +362,10 @@ const Category = ({ component }) => {
     //Componentes 
     const filtersComponent = () => {
       setComponentes((getComponentByName(getProductByCategory(consulta.toUpperCase()))));
-      console.log(getComponentByName(getProductByCategory(consulta.toUpperCase())));
+      //console.log(getComponentByName(getProductByCategory(consulta.toUpperCase())));
       return getComponentByName(getProductByCategory(consulta.toUpperCase()));
     }
 
-
-    //botones de Paginación
-    const nextPage = () => {
-      //navigate({search:`?Page=${start + pageSuma}`})
-      
-      //setCurrentPage( currentPage + 16 );
-      //navigate({search:`?Page=${pagesNext + 1}`} , { state: {numberPage: 1} } );
-      setPagesNext(pagesNext + 1);
-      navigate({search:`?Page=${pagesNext + 1}`} , { state: {numberPage: pagesNext + 1 } } );
-      
-      //setCurrentPage( currentPage + 16 );
-    }
-
-    const prevPage = () => {
-      if (pagesNext == 1){
-          setCurrentPage( currentPage - 16 );
-          navigate(`/Category/${consulta}`);
-          setPagesNext(0);
-      }
-      else {
-          setCurrentPage( currentPage - 16 );
-          navigate(`?Page=${pagesNext - 1}`);
-          setPagesNext(pagesNext - 1);
-      }
-          
-    }
 
     //Obtener numero de pagina del enlace
     const getNumbLink = () => {
@@ -315,8 +389,8 @@ const Category = ({ component }) => {
 
           setPagesNext(parseInt(condicion));
 
-          console.log( searchF.match(regex).toString() );
-          console.log( parseInt(condicion) );
+          //console.log( searchF.match(regex).toString() );
+          //console.log( parseInt(condicion) );
       }
       //cuando es la página 0
       else {
@@ -326,43 +400,37 @@ const Category = ({ component }) => {
           
     }
 
-    //Obtener numero de pagina del enlace
-    const arrayPaginado = () => {
-
-      //definimos la regla para detectar en numero de pagina
-      let miarray = new Array(10);
-      miarray.forEach(function(item,index,arr){
-        console.log("Posición " + index + ": " + item);
-    });
-          
-    }
-
     
 
     //use effects general
+
     useEffect(() => {
-        
-        getProductosProxyCasagriDisponibles();
-        getImagenProductos();
-        CombinarNombreImagenProducto();
+      getProductosProxyCasagriDisponibles();
+      getImagenProductos();
+      CombinarNombreImagenProducto();
+
+      InfoProductsCasagriMaestros();
+      filterProducts();
     }, [])
-
+    
     useEffect(() => {
 
-        productsMain();
-        
-        setCurrentPage(0);
+      CombinarNombreImagenProducto();
+      
+      setCurrentPage(0);
 
-        filterBrands();
-        filtersComponent();
+      filterBrands();
+      filtersComponent();
 
-        getInfo();
-        getNumbLink();
+      getInfo();
+      getNumbLink();
         
     }, [consulta])
 
     useEffect(() => {
-      getNumbLink();
+      //searchF es todos los parametros: ?Page=0
+        getNumbLink();
+        CombinarNombreImagenProducto();
     },[searchF])
 
     useEffect(() => {
@@ -372,13 +440,11 @@ const Category = ({ component }) => {
 
       setPaginado(Math.trunc(cantPages));
       
-    },[consulta, pagesNext ])
+    },[consulta, pagesNext])
 
     useEffect(() => {
       getInfo();
-
       getNumbLink();  
-
   }, [pagesNext])
 
 
@@ -494,54 +560,67 @@ const Category = ({ component }) => {
                               (  filterProducts !== null  ) 
                               && 
                               <>
-                                <div className='category__products'>
-                                  <div className='cards'>
-                                        <div className='cards__container'>
-                                          <div className='cards__wrapper'> 
-                                            <ul className='cards__items__Container'>
-                                              {filterProducts()?.map((item, index) => (
-                                                  <CardItemNew
-                                                  key={`${component}-${index}`}
-                                                  src={imgCasagriLoad.imgUrl}
-                                                  Nombre={item.Nombre}
-                                                  Imagen={item.Imagen}
-                                                  Peso={item.PesoKG}
-                                                  elco={item.Nombre}
-                                                  path={`/DetailsNew/${ item.Nombre.replace(/ /g, "-").replace(/%/g, "").replace(/[ / ]/g, "_") }`}
-                                                  price={""}
-                                                  CodigoProd={item.CodigoProd}
-                                                  Marca={item.Nombre}
-                                                  
-                                                  component={component}
-                                                  categoria={""}
-                                                  subCategoria={""}
-                                                  Linea={""}
-                                                  />
-                                              ))}
-                                            </ul>
-                                          </div>
-                                        </div>       
-                                  </div>
-                                  <div className='Paginado__Category'>
-                                      
-                                      {
-                                        Number.isInteger(cantPages) ? (
-                                          <>
-                                            <PaginationList cantidadPagina={ Math.trunc(cantPages) } enlace={`/CategoryNew/${consulta}`} />
-                                          </>
-                                        ):
-                                        (
-                                          <>
-                                            <PaginationList cantidadPagina={ Math.trunc(cantPages)+1 } enlace={`/CategoryNew/${consulta}`} />
-                                          </>
-                                        )
-                                      }
-                                      
-                                      
-                                </div>
-                                </div>
-
-                                
+                              {
+                                  products.length == 0 || img.length == 0  ?
+                                    (
+                                    <> 
+                                      <div className='container__error'>
+                                        <div className="alert alert-danger">
+                                          <p>Cargando Articulos...</p>
+                                        </div>
+                                      </div>
+                                    </>
+                                    ):
+                                    (
+                                    <>
+                                    <div className='category__products'>
+                                      <div className='cards'>
+                                            <div className='cards__container'>
+                                              <div className='cards__wrapper'> 
+                                                <ul className='cards__items__Container'>
+                                                  {filterProducts()?.map((item, index) => (
+                                                          <CardItemNew
+                                                          key={`${component}-${index}`}
+                                                          src={imgCasagriLoad.imgUrl}
+                                                          Nombre={item.Nombre}
+                                                          Imagen={item.Imagen}
+                                                          Peso={item.PesoKG}
+                                                          elco={item.Nombre}
+                                                          path={`/DetailsNew/${ item.Nombre.replace(/ /g, "-").replace(/%/g, "").replace(/[ / ]/g, "_") }`}
+                                                          price={""}
+                                                          CodigoProd={item.CodigoProd}
+                                                          Marca={item.Marca}
+                                                          
+                                                          component={component}
+                                                          categoria={""}
+                                                          subCategoria={""}
+                                                          Linea={""}
+                                                          />
+                                                      ))}
+                                                </ul>
+                                              </div>
+                                            </div>       
+                                      </div>
+                                      <div className='Paginado__Category'>
+                                          
+                                          {
+                                            Number.isInteger(cantPages) ? (
+                                              <>
+                                                <PaginationList cantidadPagina={ Math.trunc(cantPages) } enlace={`/CategoryNew/${consulta}`} />
+                                              </>
+                                            ):
+                                            (
+                                              <>
+                                                <PaginationList cantidadPagina={ Math.trunc(cantPages)+1 } enlace={`/CategoryNew/${consulta}`} />
+                                              </>
+                                            )
+                                          }
+ 
+                                      </div>
+                                    </div>           
+                                    </>
+                                    )        
+                              }
                               </>
                               
       
