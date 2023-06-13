@@ -30,8 +30,8 @@ export const AppRouter = () => {
                     <Route path="/" element={ <Home/> }></Route>;
                     <Route path="/Contact" element={ <Contact/> }></Route>
                     <Route path="/Company" element={ <Company/> }></Route>
-                    <Route path="/Category/:consulta" element={ <Category component={"Category"}/> }></Route>
-                    <Route path="/CategoryNew/:consulta" element={ <CategoryNew component={"Category"}/> }></Route>
+                    <Route path="/CategoryNew/:consulta" element={ <Category component={"Category"}/> }></Route>
+                    <Route path="/Category/:consulta" element={ <CategoryNew component={"Category"}/> }></Route>
                     <Route path="/marcas/:marca" element={ <Marcas component={"Marca"}/> }></Route>
                     <Route path="/component/:composicion" element={ <Componentes component={"Composición"}/> }></Route>
                     <Route path="/search/:query" element={ <Search/> }></Route>

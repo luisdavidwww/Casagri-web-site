@@ -3,7 +3,7 @@ import { useParams,Link, useLocation, useNavigate} from "react-router-dom";
 
 //METODOS FILTRADO
 import { getProductByCategory , 
-        getProduct,  
+        getProductByCategoryApi,  
         getBrandsByName,
         getComponentByName, 
          } from "../../selectors/getInfoCasagri";
@@ -162,7 +162,7 @@ const Category = ({ component }) => {
     //Obtenemos los Productos Disponibles
     const getProductosProxyCasagriDisponibles = async () => {
 
-      if ( img.length == 0)
+      if ( products.length == 0)
       {
         await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE__TWO}${PRODUCTOS_DISPONIBLES}`)
         .then(response => {
@@ -182,17 +182,15 @@ const Category = ({ component }) => {
         })
       }
       else{
-        console.log('ya esta lleno el vector de imagenes');
+
       }
 
     }
 
     //Obtenemos los Productos Disponibles
     const getImagenProductos = async () => {
-
       if ( img.length == 0)
       {
-        console.log('el comienzo vamos allenar');
         await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE__TWO}${PRODUCTOS_IMAGENES}`)
         .then(response => {
         if (!response.ok) {
@@ -203,7 +201,7 @@ const Category = ({ component }) => {
         .then(data => {
         // Procesar los datos si la petición fue exitosa
         //setError(false);
-        setImagen(data.myQueryResults.Table)
+        setImagen(data.myQueryResults.Table);
         //console.log('Peticion exitosa,toma las imagenes bro',img);
         })
         .catch(error => {
@@ -213,7 +211,7 @@ const Category = ({ component }) => {
         })
       }
       else{
-        console.log('ya esta lleno el vector de imagenes');
+
       }
 
         
@@ -244,110 +242,61 @@ const Category = ({ component }) => {
         })
       }
       else{
-        console.log('ya esta lleno el vector de imagenes');
       }
   
     }
 
-
-
-    const InfoProductsCasagriMaestros = ( ) => {
-
-      getProductosMaestros();
-      getProductosProxyCasagriDisponibles();
-  
-        let Combinado = masterProd.map(master => {
-              let disponible = products.find(disp => disp.IdApi === master.IdApi);
-              return {
-                  IdApi: master.IdApi,
-                  Nombre: master.Nombre,
-                  Marca: disponible ? master.Marca : null,
-                  cat1: disponible ? master.cat1 : null,
-                  cat2: disponible ? master.cat2 : null,
-                  Cat3: disponible ? master.Cat3 : null,
-                  cat4: disponible ? master.cat4 : null,
-                  cat5: disponible ? master.cat5 : null,
-              };
-            });
-        return Combinado;
-  
-    }
-
-    const CombinarNombreImagenProducto = () => {
-
-      if ( products.length !== 0 && img.length !== 0 )
-          {
-              const Combinado = products.map(nombre => {
-                let imgProducto = img.find(image => image.IdApi === nombre.IdApi);
-                return {
-                    IdApi: nombre.IdApi,
-                    Nombre: nombre.Nombre,
-                    Imagen: imgProducto ? imgProducto.Imagen : null
-                };
-              });
-              setProductsComb(Combinado);
-          }
-         
-          //setPrueba(consulta);
-
-    }
-
-
-
-
-
-
-
-    //Productos
-    const filterProducts2 = ( ) => {
-
-      if ( pagesNext == 0){
-          let Combinado = products.map(nombre => {
-              let imgProducto = img.find(image => image.IdApi === nombre.IdApi);
-              return {
-                  IdApi: nombre.IdApi,
-                  Nombre: nombre.Nombre,
-                  Marca: imgProducto ? nombre.Marca : "",
-                  Imagen: imgProducto ? imgProducto.Imagen : null
-              };
-            });
-        return Combinado.slice(0  , 16);
-      }
-      
-        let Combinado = products.map(nombre => {
-              let imgProducto = img.find(image => image.IdApi === nombre.IdApi);
-              return {
-                  IdApi: nombre.IdApi,
-                  Nombre: nombre.Nombre,
-                  Imagen: imgProducto ? imgProducto.Imagen : null
-              };
-            });
-        return Combinado.slice( pagesNext * 17  , (pagesNext * 17) + 16);
-
-    }
 
     const filterProducts = ( ) => {
-      
-      let Combinado = masterProd.map(master => {
-        let disponible = products.find(disp => disp.IdApi === master.IdApi);
-        return {
+
+      const Combinado = masterProd.map(master => {
+        let disponible = products.find(disp => disp.Nombre === master.Nombre);
+        if ( typeof disponible !== 'undefined' ){
+          return { 
             IdApi: master.IdApi,
             Nombre: master.Nombre,
-            Marca: disponible ? master.Marca : null,
-            Imagen: disponible ? master.Imagen : null,
-            cat1: disponible ? master.cat1 : null,
-            cat2: disponible ? master.cat2 : null,
-            Cat3: disponible ? master.Cat3 : null,
-            cat4: disponible ? master.cat4 : null,
-            cat5: disponible ? master.cat5 : null,
-        };
+            Marca: master.Marca,
+            Imagen: null,
+            cat1: master.cat1,
+            cat2: master.cat2,
+            Cat3: master.Cat3,
+            cat4: master.cat4,
+            cat5: master.cat5,
+          };
+        }
+        else{
+          return { 
+            IdApi:null,
+          };          
+        }
+      })
+
+      let ProductosDisponibles = Combinado.filter( products => products.IdApi !== null);
+
+      const Productos_Imagenes = ProductosDisponibles.map(item => {
+        let imgProducto = img.find(image => image.IdApi === item.IdApi);
+          return { 
+            IdApi: item.IdApi,
+            Nombre: item.Nombre,
+            Imagen: imgProducto ? imgProducto.Imagen : null,
+            Marca: item.Marca,
+            cat1: item.cat1,
+            cat2: item.cat2,
+            Cat3: item.Cat3,
+            cat4: item.cat4,
+            cat5: item.cat5,
+          };
+
+
       });
-      if ( consulta.toUpperCase() === 'AGROQUÍMICOS' ) {
-        return Combinado.slice( pagesNext * 17  , (pagesNext * 17) + 16);
-     }
-        return Combinado.slice( pagesNext * 17  , (pagesNext * 17) + 16);
+
+      console.log('LosProductos en existencia: ', getProductByCategoryApi( consulta.toUpperCase(), Productos_Imagenes ));
+
+      //Filtro Por Categoria
+      return getProductByCategoryApi( consulta.toUpperCase(), Productos_Imagenes ).slice( pagesNext * 17  , (pagesNext * 17) + 16);
 
     }
+
 
 
 
@@ -402,21 +351,15 @@ const Category = ({ component }) => {
 
     
 
-    //use effects general
 
     useEffect(() => {
-      getProductosProxyCasagriDisponibles();
-      getImagenProductos();
-      CombinarNombreImagenProducto();
 
-      InfoProductsCasagriMaestros();
-      filterProducts();
-    }, [])
-    
-    useEffect(() => {
+       //Peticiones Para la Api Casagri
+       getProductosProxyCasagriDisponibles();
+       getImagenProductos();
+       getProductosMaestros();
+       filterProducts();
 
-      CombinarNombreImagenProducto();
-      
       setCurrentPage(0);
 
       filterBrands();
@@ -430,14 +373,14 @@ const Category = ({ component }) => {
     useEffect(() => {
       //searchF es todos los parametros: ?Page=0
         getNumbLink();
-        CombinarNombreImagenProducto();
     },[searchF])
 
     useEffect(() => {
       getPages();
 
       setCantPages((getProductByCategory(consulta.toUpperCase()).length)/17);
-
+      //setCantPages((getProductByCategoryApi( consulta.toUpperCase(), Final ).length)/17);
+      
       setPaginado(Math.trunc(cantPages));
       
     },[consulta, pagesNext])
@@ -549,7 +492,7 @@ const Category = ({ component }) => {
                               ( filterProducts === null  ) 
                                   && 
                                   <div className='container__error'>
-                                    <div className="alert alert-danger">
+                                    <div className="">
                                       No hay productos disponibles
                                     </div>
                                   </div>
@@ -561,12 +504,12 @@ const Category = ({ component }) => {
                               && 
                               <>
                               {
-                                  products.length == 0 || img.length == 0  ?
+                                  products.length  == 0  ?
                                     (
                                     <> 
                                       <div className='container__error'>
                                         <div className="alert alert-danger">
-                                          <p>Cargando Articulos...</p>
+                                          <Loader/>
                                         </div>
                                       </div>
                                     </>
@@ -606,12 +549,12 @@ const Category = ({ component }) => {
                                           {
                                             Number.isInteger(cantPages) ? (
                                               <>
-                                                <PaginationList cantidadPagina={ Math.trunc(cantPages) } enlace={`/CategoryNew/${consulta}`} />
+                                                <PaginationList cantidadPagina={ Math.trunc(cantPages) } enlace={`/Category/${consulta}`} />
                                               </>
                                             ):
                                             (
                                               <>
-                                                <PaginationList cantidadPagina={ Math.trunc(cantPages)+1 } enlace={`/CategoryNew/${consulta}`} />
+                                                <PaginationList cantidadPagina={ Math.trunc(cantPages)+1 } enlace={`/Category/${consulta}`} />
                                               </>
                                             )
                                           }
