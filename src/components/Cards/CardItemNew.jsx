@@ -50,32 +50,21 @@ useEffect(() => {
 
   return (
     <>
-        <li className='cards__item'
-        /*
-        data-aos="fade-up" 
-        data-aos-once="true" 
-        data-aos-duration="1500"
-        onMouseOver={() => { setBtn(!btn); }} 
-        onMouseLeave={() => { setBtn(btn) }} 
-        */
-        >
+        <li className='cards__item'>
         <div>
           
         <Link className='cards__item__link' to={props.path}  
-              state={ [props.categoria, props.subCategoria, props.Linea, props.CodigoProd] } 
-              
-              
-              >
+              state={ [props.categoria, props.subCategoria, props.Linea, props.CodigoProd] }>
                 
             {/* Imagen del Producto */}
             <figure className='cards__item__pic-wrap' >
               {
                 props.Imagen == null ?  (
-                  <img
-                  className='cards__item__img'
-                  alt={props.Nombre}
-                  src={imgL(`./${props.src}`) }
-                  layout="fill"
+                          <img
+                          className='cards__item__img'
+                          alt={props.Nombre}
+                          src={imgL(`./${props.src}`) }
+                          layout="fill"
                           style={{
                               marginLeft: "auto",
                               marginRight: "auto",
@@ -84,65 +73,38 @@ useEffect(() => {
                             }}
                           />
                 ):(
-                <img
-                className='cards__item__img'
-                alt={props.Nombre}
-                src={`data:image/jpeg;base64,${props.Imagen}`}
-                layout="fill"
-                        style={{
-                            marginLeft: "auto",
-                            marginRight: "auto",
-                            width: "100%",
-                            height: "5rem"
-                          }}
-                        />
+                    <>
+                      {
+                        props.Imagen == "Cargando" ? (
+                          <div>Cargando..</div>
+                        ):(
+                          <img
+                            className='cards__item__img'
+                            alt={props.Nombre}
+                            src={`data:image/jpeg;base64,${props.Imagen}`}
+                            layout="fill"
+                            style={{
+                                marginLeft: "auto",
+                                marginRight: "auto",
+                                width: "100%",
+                                height: "5rem"
+                              }}
+                            />
+                        )
+                      }
+                    </>
                 )
               }
             </figure>
             
 
-            {/* Imagen del Producto Nuevo
-            <figure className='cards__item__pic-wrap' >
-                <img
-                className='cards__item__img'
-                alt={props.Nombre}
-                src={`data:image/jpeg;base64,${props.Imagen}`}
-                layout="fill"
-                        style={{
-                            marginLeft: "auto",
-                            marginRight: "auto",
-                            width: "100%",
-                            height: "5rem"
-                          }}
-                        /> 
-            </figure>
-            
-
-
-            {/* Datos del Productos */}
             <div className='cards__item__info-container'>
-
                 <div className='cards__item__info-title'>
                   <h1 className='cards__item__text-title'>{props.Nombre}</h1>
                 </div>
-
                 <div className='cards__item__info'>
                   <h5 className='cards__item__text-presentation'>{props.Marca}</h5>
                 </div>
-                { /* 
-                <div className='cards__item__info'>
-                  <h5 className='cards__item__text-price'>{props.Peso} kg</h5>
-                </div>
-                <StarRanking className='container__star' ranking={""} card={true} href=''/> 
-                */ }
-                { /*Btn de Funciones 
-
-                    <div className='btn-featuredProducts' data-aos="zoom-in" data-aos-once="true" data-aos-duration="1000">
-                      <button className='btn-outline-featuredProducts-art btn-text-products'
-                        >Ver Producto
-                      </button>
-                    </div>
-                */ }
             </div>
         </Link>
 

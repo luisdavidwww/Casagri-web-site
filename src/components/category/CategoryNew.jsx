@@ -504,11 +504,11 @@ const Category = ({ component }) => {
                               && 
                               <>
                               {
-                                  products.length  == 0  ?
+                                  products.length  == 0  || masterProd.length == 0  ?
                                     (
                                     <> 
                                       <div className='container__error'>
-                                        <div className="alert alert-danger">
+                                        <div className="">
                                           <Loader/>
                                         </div>
                                       </div>
@@ -526,7 +526,8 @@ const Category = ({ component }) => {
                                                           key={`${component}-${index}`}
                                                           src={imgCasagriLoad.imgUrl}
                                                           Nombre={item.Nombre}
-                                                          Imagen={item.Imagen}
+                                                          Imagen={ img.length  == 0 ? "Cargando" : item.Imagen }
+                                                          CargandoImg={ img.length  == 0 ? "Cargando" : " Cargada" }
                                                           Peso={item.PesoKG}
                                                           elco={item.Nombre}
                                                           path={`/DetailsNew/${ item.Nombre.replace(/ /g, "-").replace(/%/g, "").replace(/[ / ]/g, "_") }`}
