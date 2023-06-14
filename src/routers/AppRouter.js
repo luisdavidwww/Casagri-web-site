@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import  Navbar  from 'components/common/Navbar/Navbar';
+//import  Navbar  from 'components/common/Navbar/Navbar';
 import  NavbarNew  from 'components/common/Navbar/NavbarNew';
 import Footer from 'components/common/Footer/Footer'
 
@@ -20,7 +20,6 @@ import { DetailsNew }  from 'components/details/DetailsNew';
 import '../Styles/GlobalStyles.css'
 
 
-
 export const AppRouter = () => {
     return (
         <Router>
@@ -36,7 +35,7 @@ export const AppRouter = () => {
                     <Route path="/component/:composicion" element={ <Componentes component={"Composición"}/> }></Route>
                     <Route path="/search/:query" element={ <Search/> }></Route>
                     <Route path="/Details/:nombre" element={ <Details/> }></Route>
-                    <Route path="/DetailsNew/:nombre" element={ <DetailsNew/> }></Route>
+                    <Route path="/DetailsNew/:nombreProducto" element={ <DetailsNew/> }></Route>
                 </Routes>
                 <Footer/>
             </div>

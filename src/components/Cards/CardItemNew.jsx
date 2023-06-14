@@ -1,19 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import AOS      from 'aos';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-//components
-import StarRanking from "./starRanking";
-
-//diseño
+//Diseño
 import 'aos/dist/aos.css'; 
-
-
-//icons 
-import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
-import { BsCart3, BsCartCheckFill } from "react-icons/bs";
 
 
 //importacion temporal de imagenes
@@ -54,7 +46,7 @@ useEffect(() => {
         <div>
           
         <Link className='cards__item__link' to={props.path}  
-              state={ [props.categoria, props.subCategoria, props.Linea, props.CodigoProd] }>
+              state={ [props.Nombre, props.Imagen, props.Marca] }>
                 
             {/* Imagen del Producto */}
             <figure className='cards__item__pic-wrap' >

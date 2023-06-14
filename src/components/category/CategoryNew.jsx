@@ -7,6 +7,7 @@ import { getProductByCategory ,
         getBrandsByName,
         getComponentByName, 
          } from "../../selectors/getInfoCasagri";
+
 //componentes
 import CardItemNew from '../Cards/CardItemNew';
 import  SearchForm  from "../Search/SearchForm";
@@ -14,17 +15,24 @@ import  FiltersBar  from "../Filters/FiltersBar";
 import  FilterSidebar  from "../Filters/FilterSidebar-Movil";
 import { BannerCategory } from 'components/BannerMain/BannerCategory';
 import { imgCasagriLoad } from '../../data/newsData';
-import  Holis  from './TablePaginationOnly';
 import  PaginationList  from './Pagination';
+
+//Loader Styles
 import Loader from "components/Loader/Loader";
+import LoaderProducts from "components/Loader/LoaderProducts";
+import ErrorMessage from "components/Loader/ErrorMessage";
+import TextLoader from "components/Loader/TextLoader";
+
 //Variables de Entorno
 import { BANNERSCATEGORIA, BANNERS, CATEGORIAS,
-          BUSCARCATEGORIA, } from '../../routers/index';
-// Data
-import { PRODUCTOS_MAESTROS, PRODUCTOS_DISPONIBLES, PRODUCTOS_IMAGENES } from '../../routers/index';
+          BUSCARCATEGORIA, PRODUCTOS_MAESTROS, 
+          PRODUCTOS_DISPONIBLES, PRODUCTOS_IMAGENES } from '../../routers/index';
+
 //Estilos
 import './Category.css';
 import './Pagination.css';
+
+
 //icons
 import { AiOutlineRight } from "react-icons/ai";
 
@@ -69,99 +77,86 @@ const Category = ({ component }) => {
    const [products, setProducts] = useState([]);
    const [img, setImagen] = useState([]);
    const [masterProd, setMasterProd] = useState([]);
-   const [productsComb, setProductsComb] = useState([]);
-   //const [prueba, setPrueba] = useState("");
+   const [error, setError] = useState(false);
 
 
-  //Peticion el Banner Principal
-  const getInfo = async () => {
+    //Peticion el Banner Principal
+    const getInfo = async () => {
 
-    if (consulta === "Buscar"){
-      //Estado del Loanding Verdadero 
-      setLoanding(true);
+      if (consulta === "Buscar"){
+        //Estado del Loanding Verdadero 
+        setLoanding(true);
 
-      //Petición a la api
-      const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${consulta}`);
-      const res = await response.json();
-      setBanner(res.data);
-      //Estado del Loanding Falso
-      setLoanding(false);
-
-    }
-    else{
-      //Estado del Loanding Verdadero 
-      setLoanding(true);
-
-      //Petición a la api
-      const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERSCATEGORIA}${consulta.replace(/\s+/g, '')}`);
-      const res = await response.json();
-
-      //Petición exitosa
-      if ( res.data !== null )
-      {
-        setBanner(res.data);
-        //Estado del Loanding Falso
-        setLoanding(false); 
-      }
-      // En caso que exista un error en la petición del Banner
-      else{
-        //se asigna el banner de la seccion buscar
-        const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${"Buscar"}`);
+        //Petición a la api
+        const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${consulta}`);
         const res = await response.json();
         setBanner(res.data);
-
         //Estado del Loanding Falso
         setLoanding(false);
+
       }
+      else{
+        //Estado del Loanding Verdadero 
+        setLoanding(true);
 
-      
-    }
+        //Petición a la api
+        const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERSCATEGORIA}${consulta.replace(/\s+/g, '')}`);
+        const res = await response.json();
 
-  }
+        //Petición exitosa
+        if ( res.data !== null )
+        {
+          setBanner(res.data);
+          //Estado del Loanding Falso
+          setLoanding(false); 
+        }
+        // En caso que exista un error en la petición del Banner
+        else{
+          //se asigna el banner de la seccion buscar
+          const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${"Buscar"}`);
+          const res = await response.json();
+          setBanner(res.data);
 
-  //Peticion para la secuencia logica del buscador
-  const getPages = async () => {
-
-      setSubCategoria("");
-      setCategoria("");
-      setLinea("");
-
-      //Petición a la api
-      let response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BUSCARCATEGORIA}${consulta.replace(/\s+/g, '')}`);
-      let res = await response.json();
-
-      if (res.data.subcategoria != null){ 
-        setLinea(res.data.nombre);
-        setSubCategoria(res.data.subcategoria.nombre);
-        if (subCategoria){
-          let respon = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${CATEGORIAS}${res.data.subcategoria.categoria}`);
-          let resp = await respon.json();
-          setCategoria(resp.data.nombre);
+          //Estado del Loanding Falso
+          setLoanding(false);
         }
       }
-      if (res.data.categoria  ){
-        setSubCategoria(res.data.nombre);
-        setCategoria(res.data.categoria.nombre);
-      }
-      if (res.data.subcategoria == null && res.data.categoria == null)
-      {
-        setCategoria(res.data.nombre);
-      }
-      
-  }
+    }
+
+    //Peticion para la secuencia logica del buscador
+    const getPages = async () => {
+
+        setSubCategoria("");
+        setCategoria("");
+        setLinea("");
+
+        //Petición a la api
+        let response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BUSCARCATEGORIA}${consulta.replace(/\s+/g, '')}`);
+        let res = await response.json();
+
+        if (res.data.subcategoria != null){ 
+          setLinea(res.data.nombre);
+          setSubCategoria(res.data.subcategoria.nombre);
+          if (subCategoria){
+            let respon = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${CATEGORIAS}${res.data.subcategoria.categoria}`);
+            let resp = await respon.json();
+            setCategoria(resp.data.nombre);
+          }
+        }
+        if (res.data.categoria  ){
+          setSubCategoria(res.data.nombre);
+          setCategoria(res.data.categoria.nombre);
+        }
+        if (res.data.subcategoria == null && res.data.categoria == null)
+        {
+          setCategoria(res.data.nombre);
+        }
+        
+    }
 
 
-
-
-
-
-
-
-
-    
     //Obtenemos los Productos Disponibles
     const getProductosProxyCasagriDisponibles = async () => {
-
       if ( products.length == 0)
       {
         await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE__TWO}${PRODUCTOS_DISPONIBLES}`)
@@ -173,16 +168,17 @@ const Category = ({ component }) => {
         })
         .then(data => {
           // Procesar los datos si la petición fue exitosa
+          setError(false);
           setProducts(data.myQueryResults.Table);
           //console.log('Peticion exitosa,toma los productos bro'+products);
         })
         .catch(error => {
           // Manejar el error de la petición
+          setError(true);
           console.error('Error:', error.message);
         })
       }
       else{
-
       }
 
     }
@@ -200,23 +196,18 @@ const Category = ({ component }) => {
         })
         .then(data => {
         // Procesar los datos si la petición fue exitosa
-        //setError(false);
+        setError(false);
         setImagen(data.myQueryResults.Table);
         //console.log('Peticion exitosa,toma las imagenes bro',img);
         })
         .catch(error => {
         // Manejar el error de la petición
-        //setError(true);
+        setError(true);
         console.error('Error:', error.message);
         })
       }
       else{
-
       }
-
-        
-
-    
     }
 
     //Obtenemos los Productos Maestros
@@ -233,11 +224,13 @@ const Category = ({ component }) => {
         })
         .then(data => {
           // Procesar los datos si la petición fue exitosa
+          setError(false);
           setMasterProd(data.myQueryResults.Table);
           //console.log('Peticion exitosa,toma los productos bro'+products);
         })
         .catch(error => {
           // Manejar el error de la petición
+          setError(true);
           console.error('Error:', error.message);
         })
       }
@@ -246,9 +239,10 @@ const Category = ({ component }) => {
   
     }
 
-
+    //Filtrado General de Productos por Categoria
     const filterProducts = ( ) => {
 
+      //comparamos los Maestos con los Productos Disponibles
       const Combinado = masterProd.map(master => {
         let disponible = products.find(disp => disp.Nombre === master.Nombre);
         if ( typeof disponible !== 'undefined' ){
@@ -271,8 +265,11 @@ const Category = ({ component }) => {
         }
       })
 
+      //Filtramos los productos que si tienen ID,es decir 
+      //aquellos que tienen ID en null,significa que no estan disponibles
       let ProductosDisponibles = Combinado.filter( products => products.IdApi !== null);
 
+      //Obtenemos las Imagenes de los Produtos
       const Productos_Imagenes = ProductosDisponibles.map(item => {
         let imgProducto = img.find(image => image.IdApi === item.IdApi);
           return { 
@@ -286,19 +283,16 @@ const Category = ({ component }) => {
             cat4: item.cat4,
             cat5: item.cat5,
           };
-
-
       });
 
-      console.log('LosProductos en existencia: ', getProductByCategoryApi( consulta.toUpperCase(), Productos_Imagenes ));
+
+      //Obtenemos el Vector Producto por categoria
+      let Productos_Categoria = getProductByCategoryApi( consulta.toUpperCase(), Productos_Imagenes );
 
       //Filtro Por Categoria
-      return getProductByCategoryApi( consulta.toUpperCase(), Productos_Imagenes ).slice( pagesNext * 17  , (pagesNext * 17) + 16);
+      return Productos_Categoria.slice( pagesNext * 17  , (pagesNext * 17) + 16);
 
     }
-
-
-
 
 
 
@@ -330,6 +324,7 @@ const Category = ({ component }) => {
       Lo que nos interesa de esta cadena de caracteres del enlace es el valor 
       numérico: 0,2,3.... etc
       */
+
       //guardamos el numero de pagina como un string
       let condicion = searchF.match(regex).toString();
 
@@ -337,23 +332,18 @@ const Category = ({ component }) => {
       if ( parseInt(condicion) !== 0 ){
 
           setPagesNext(parseInt(condicion));
-
-          //console.log( searchF.match(regex).toString() );
-          //console.log( parseInt(condicion) );
       }
       //cuando es la página 0
       else {
           setPagesNext(0);
-          //filterProducts();
       }
           
     }
 
-    
 
 
     useEffect(() => {
-
+      
        //Peticiones Para la Api Casagri
        getProductosProxyCasagriDisponibles();
        getImagenProductos();
@@ -367,6 +357,8 @@ const Category = ({ component }) => {
 
       getInfo();
       getNumbLink();
+
+      
         
     }, [consulta])
 
@@ -380,7 +372,6 @@ const Category = ({ component }) => {
 
       setCantPages((getProductByCategory(consulta.toUpperCase()).length)/17);
       //setCantPages((getProductByCategoryApi( consulta.toUpperCase(), Final ).length)/17);
-      
       setPaginado(Math.trunc(cantPages));
       
     },[consulta, pagesNext])
@@ -489,27 +480,115 @@ const Category = ({ component }) => {
                   {/* Resultado de Busqueda */}
                   <>
                     { 
-                              ( filterProducts === null  ) 
+                              ( filterProducts == null ) 
                                   && 
                                   <div className='container__error'>
                                     <div className="">
                                       No hay productos disponibles
                                     </div>
-                                  </div>
-                                  
+                                  </div>   
                       }
-      
+
                       {
                               (  filterProducts !== null  ) 
                               && 
                               <>
+                                    {
+                                        products.length  == 0  || masterProd.length == 0  ?
+                                    (
+                                    <> 
+                                      <div className='category__products'>
+                                          <div className='loader_Products'>
+                                            <LoaderProducts />
+                                          </div>
+                                      </div>
+                                    </>
+                                    ):
+                                    (
+                                    <>
+                                      <div className='category__products'>
+                                        <div className='cards'>
+                                              <div className='cards__container'>
+                                                <div className='cards__wrapper'> 
+                                                  <ul className='cards__items__Container'>
+                                                    {filterProducts()?.map((item, index) => (
+                                                            <CardItemNew
+                                                            key={`${component}-${index}`}
+                                                            src={imgCasagriLoad.imgUrl}
+                                                            Nombre={item.Nombre}
+                                                            Imagen={ img.length  == 0 ? "Cargando" : item.Imagen }
+                                                            CargandoImg={ img.length  == 0 ? "Cargando" : " Cargada" }
+                                                            Peso={item.PesoKG}
+                                                            elco={item.Nombre}
+                                                            path={`/DetailsNew/${ item.Nombre.replace(/ /g, "-").replace(/%/g, "").replace(/[ / ]/g, "_") }`}
+                                                            price={""}
+                                                            CodigoProd={item.CodigoProd}
+                                                            Marca={item.Marca}
+                                                            
+                                                            component={component}
+                                                            categoria={""}
+                                                            subCategoria={""}
+                                                            Linea={""}
+                                                            />
+                                                        ))}
+                                                  </ul>
+                                                </div>
+                                              </div>       
+                                        </div>
+                                        <div className='Paginado__Category'> 
+                                            {
+                                              Number.isInteger(cantPages) ? (
+                                                <>
+                                                  <PaginationList cantidadPagina={ Math.trunc(cantPages) } enlace={`/Category/${consulta}`} />
+                                                </>
+                                              ):
+                                              (
+                                                <>
+                                                  <PaginationList cantidadPagina={ Math.trunc(cantPages)+1 } enlace={`/Category/${consulta}`} />
+                                                </>
+                                              )
+                                            }
+                                        </div>
+                                      </div>           
+                                    </>
+                                    )        
+                              }         
+                              </>
+                      }
+                    </>
+                </div>
+    
+        </>
+      )
+    }
+    </div>
+  )
+}
+
+export default Category;
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+<>
                               {
                                   products.length  == 0  || masterProd.length == 0  ?
                                     (
                                     <> 
                                       <div className='container__error'>
                                         <div className="">
-                                          <Loader/>
+                                          Cargando Articulos...
                                         </div>
                                       </div>
                                     </>
@@ -539,6 +618,9 @@ const Category = ({ component }) => {
                                                           categoria={""}
                                                           subCategoria={""}
                                                           Linea={""}
+
+                                                          //NuevosParametros
+                                                          arrayProductosStock={ filterProducts() }
                                                           />
                                                       ))}
                                                 </ul>
@@ -566,17 +648,4 @@ const Category = ({ component }) => {
                                     )        
                               }
                               </>
-                              
-      
-                      }
-                    </>
-                </div>
-    
-        </>
-      )
-    }
-    </div>
-  )
-}
-
-export default Category;
+                              */

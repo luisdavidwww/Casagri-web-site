@@ -10,11 +10,12 @@ import  FeaturedProducts  from '../data/daticos/FeaturedProducts.json';
 
 export const getProductByCategoryApi = ( category , datos ) => {
 
-    //console.log(datos);  
 
     if ( category === '' ) {
         return [];
     }
+
+    /* ----------------------------------------------- CATEGORIAS ------------------------------------------------------- */
 
     //Agroindustrial
     if ( category === 'AGROQUÍMICOS' ) {
@@ -42,7 +43,9 @@ export const getProductByCategoryApi = ( category , datos ) => {
         }
 
     if ( category === 'SEMILLAS' ) {
-        return datos.filter( products => products.cat2.includes( category ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
+        let simillas = data.filter( products => products.cat2.includes( 'SEMILLAS' ) );
+        //let semillas_BolsaVivero = simillas.filter( products => !products.cat4.includes( 'BOLSAS' ) )
+        return simillas.filter( products => !products.cat4.includes( 'BANDEJAS' ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
     }
             if ( category === 'HORTALIZAS' ) {
                  const hibridos = datos.filter( products => products.Cat3.includes( "HORTALIZAS HIBRIDOS" ) );
@@ -56,7 +59,6 @@ export const getProductByCategoryApi = ( category , datos ) => {
                 return datos.filter( products => products.Cat3.includes( "SEMILLAS DE PASTO" ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
             }
             if ( category === 'MAÍZ' ) {
-                //MAIZ AMARILLO MAIZ BLANCO
                 const Amarillo = datos.filter( products => products.cat4.includes( "MAIZ AMARILLO" ) );
                 const Blanco = datos.filter( products => products.cat4.includes( "MAIZ BLANCO" ) );
                 return Amarillo.concat(Blanco).sort((x, y) => x.Nombre.localeCompare(y.Nombre)); 
@@ -154,42 +156,61 @@ export const getProductByCategoryApi = ( category , datos ) => {
     if ( category === 'MEDICINA VETERINARIA' ) {
         return datos.filter( products => products.cat1.includes( "MEDICINA VETERINARIA" ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
     }
-            if ( category === 'ANALGÉSICOS Y ANTI-INFLAMATORIOS' ) {
+            if ( category === 'ANALGÉSICOS Y ANTIINFLAMATORIOS' ) {
                 let analgesicos = datos.filter( products => products.Cat3.includes( "ANALGESICO Y ANTIINFLAMATORIO") );
-                let atidotos = datos.filter( products => products.Cat3.includes( "ANTIDOTOS, ANTITOXICOS Y PARAS" ) );
+                let antidotos = datos.filter( products => products.Cat3.includes( "ANTIDOTOS, ANTITOXICOS Y PARAS" ) );
+                let antitimpanico = datos.filter( products => products.Cat3.includes( "ANTITIMPÀNICO" ) );
 
-                return analgesicos.concat( atidotos ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
+                return analgesicos.concat( antidotos , antitimpanico ).filter( products => !products.cat2.includes( 'MEDICINA MASCOTAS' ) );
             }
             if ( category === 'ANTISEPTICOS Y DESINFECTANTES' ) {
-                return datos.filter( products => products.Cat3.includes( "ANTISEPTICOS-DESINFECTANTES" ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
+                let antisepticos = datos.filter( products => products.Cat3.includes( "ANTISEPTICOS-DESINFECTANTES" ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
+
+                return antisepticos.filter( products => !products.cat2.includes( 'MEDICINA MASCOTAS' ) );
             }
             if ( category === 'ANTIBIÓTICOS' ) {
-                return datos.filter( products => products.Cat3.includes( "ANTIBIOTICOS" ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
-            }
-            if ( category === 'ANTIMASTITICOS' ) {
-                return datos.filter( products => products.Cat3.includes( "ANTIMASTITICOS" ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
-            }
-            if ( category === 'ANTITIMPÁNICO' ) {
-                return datos.filter( products => products.Cat3.includes( "ANTITIMPÀNICO" ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
+                let antibioticos = datos.filter( products => products.Cat3.includes( "ANTIBIOTICOS") ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
+                let antitimastitico = datos.filter( products => products.Cat3.includes( "ANTIMASTITICOS" ) );
+
+                return antibioticos.concat( antitimastitico ).filter( products => !products.cat2.includes( 'MEDICINA MASCOTAS' ) );
             }
             if ( category === 'ANTIDIARREICOS' ) {
-                return datos.filter( products => products.Cat3.includes( "ANTIDIARREICOS" ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
+                let antidiarreicos = datos.filter( products => products.Cat3.includes( "ANTIDIARREICOS" ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
+
+                return antidiarreicos.filter( products => !products.cat2.includes( 'MEDICINA MASCOTAS' ) );
             }
             if ( category === 'BAÑOS, ECTOPARASITARIOS Y MATAGUSANOS' ) {
                 let antiparasitario = datos.filter( products => products.Cat3.includes( "ANTIPARASITARIO EXTERNO (BAÑOS") );
                 let topico = datos.filter( products => products.Cat3.includes( "TOPICO ANTIPARASITARIO" ) );
-
-                return antiparasitario.concat( topico ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
-
+                return antiparasitario.concat( topico ).filter( products => !products.cat2.includes( 'MEDICINA MASCOTAS' ) );
             }
             if ( category === 'BIOLÓGICOS' ) {
-                return datos.filter( products => products.Cat3.includes( "VACUNAS Y BACTERINAS" ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
+                let biologicos = datos.filter( products => products.Cat3.includes( "VACUNAS Y BACTERINAS" ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
+                
+                return biologicos.filter( products => !products.cat2.includes( 'MEDICINA MASCOTAS' ) );
             }
-            if ( category === 'VITAMINAS Y SUPLEMENTOS' ) {
-                let antiparasitarioInterno = datos.filter( products => products.Cat3.includes( "ANTIPARASITARIO INTERNO") );
-                let laxantesPurgantes = datos.filter( products => products.Cat3.includes( "LAXANTES Y PURGANTES" ) );
 
-                return antiparasitarioInterno.concat( laxantesPurgantes ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
+            if ( category === 'HEMOPARASITICIDAS' ) {
+
+                let hemoparasiticidas = datos.filter( products => products.Cat3.includes( "HEMOPARASITICIDA" ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
+                
+                return hemoparasiticidas.filter( products => !products.cat2.includes( 'MEDICINA MASCOTAS' ) );
+            }
+
+            if ( category === 'HORMONALES' ) {
+
+                let hormonales = datos.filter( products => products.Cat3.includes( "HORMONALES PARA REPRODUCCION" ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre))
+             
+                return hormonales.filter( products => !products.cat2.includes( 'MEDICINA MASCOTAS' ) );
+            }
+            
+            //METER ENDECTOCIDAS EN DESPARASITANTES
+
+            if ( category === 'VITAMINAS Y MINERALES' ) {
+                let reconstituyentes = datos.filter( products => products.Cat3.includes( "RECONSTITUYENTES, REHIDRATANTE") ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
+                let vitaminas = datos.filter( products => products.Cat3.includes( "VITAMINAS" ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
+
+                return reconstituyentes.concat( vitaminas ).filter( products => !products.cat2.includes( 'MEDICINA MASCOTAS' ) );
             }
 
 
@@ -204,9 +225,17 @@ export const getProductByCategoryApi = ( category , datos ) => {
         return datos.filter( products => products.Cat3.includes( "MANEJO E IDENTIFICACION" ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
     }
 
-    /*"cat1": "FERRETERIA",
-        "IdCat2": "0601",
-        "cat2": "HERRAMIENTAS AGRICOLAS",*/
+    if ( category === 'ALIMENTO ANIMAL' ) {
+        return datos.filter( products => products.cat2.includes( "ALIMENTOS ANIMALES DE PRODUCCI" ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
+    }
+
+    if ( category === 'MASCOTAS' ) {
+        return datos.filter( products => products.cat2.includes( "MEDICINA MASCOTAS" ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
+    }
+
+
+
+
 
     if ( category === 'FERRETERÍA AGRÍCOLA' ) {
 
@@ -214,9 +243,9 @@ export const getProductByCategoryApi = ( category , datos ) => {
         return ferreteria.filter( products => !products.cat2.includes( "ELECTRICIDAD" ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
     }   
     
-    if ( category === 'ELECTRICIDAD' ) {
-        return datos.filter( products => products.cat2.includes( "ELECTRICIDAD" ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
-    }     
+        if ( category === 'ELECTRICIDAD' ) {
+            return datos.filter( products => products.cat2.includes( "ELECTRICIDAD" ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
+        }     
 
 
     //Salud Pública
@@ -234,6 +263,25 @@ export const getProductByCategoryApi = ( category , datos ) => {
 
 
 }
+
+
+/* ----------------------------------------------- PRODUCTOS ------------------------------------------------------- */
+
+//Buscar Producto por Nombre
+export const getProductByNombreApi = ( nombre, datos ) => {
+
+    let nombreM = nombre.toLocaleUpperCase();
+    //console.log(datos);
+    return datos.filter( products => products.Nombre.includes( nombreM )  );
+
+}
+
+//Buscar Producto por Codigo
+export const getProductByCodigoApi = ( codigo, datos ) => {
+    return datos.filter( products => products.Nombre.includes( codigo )  );
+
+}
+
 
 
 

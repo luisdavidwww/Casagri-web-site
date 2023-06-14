@@ -98,17 +98,14 @@ export const links = [
           { name: "Analgésicos y Antiinflamatorios", link: "/search" },
           { name: "Antisepticos y Desinfectantes", link: "/search" },
           { name: "Antibióticos", link: "/search" },
-          { name: "Antimastiticos", link: "/search" },
-          { name: "Antitimpánico", link: "/search" },
           { name: "Antidiarreicos", link: "/search" },
           /*{ name: "Antiemeticos", link: "/search" },*/
           { name: "Baños, Ectoparasitarios y Matagusanos", link: "/search" },
           { name: "Biológicos", link: "/search" },
           { name: "Desparasitantes", link: "/search" },
-          { name: "Endectocidas", link: "/search" },
-          { name: "Hemoparatisidas", link: "/search" },
+          { name: "Hemoparasiticidas", link: "/search" },
           { name: "Hormonales", link: "/search" },
-          { name: "Vitaminas y Suplementos", link: "/search" },
+          { name: "Vitaminas y Minerales", link: "/search" },
         ],
       },
       {
@@ -117,6 +114,14 @@ export const links = [
       },
       {
         Head: "Manejo e Identificadores",
+        subitem: false,
+      },
+      {
+        Head: "Alimento Animal",
+        subitem: false,
+      },
+      {
+        Head: "Mascotas",
         subitem: false,
       },
     ],

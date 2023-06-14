@@ -445,6 +445,7 @@ font-family: "Gotham Medium";
     margin: 1rem;
     margin: 0px;
     margin-left: 0px;
+    height: 280px
   }
   .cards__item__link:hover{
     border: 1px solid rgb(223, 223, 223);
@@ -469,7 +470,7 @@ font-family: "Gotham Medium";
   /* Datos del Productos */
   .cards__item__info-container{
     background-color: #ffffff;
-    height: 160px;
+    height: 130px !important;
   }
   .cards__item__info-title {
     display: flex;
