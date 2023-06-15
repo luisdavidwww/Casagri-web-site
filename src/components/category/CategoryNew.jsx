@@ -78,6 +78,7 @@ const Category = ({ component }) => {
    const [img, setImagen] = useState([]);
    const [masterProd, setMasterProd] = useState([]);
    const [error, setError] = useState(false);
+   const [final, setFinal] = useState([]);
 
 
     //Peticion el Banner Principal
@@ -179,6 +180,7 @@ const Category = ({ component }) => {
         })
       }
       else{
+        return products;
       }
 
     }
@@ -239,8 +241,11 @@ const Category = ({ component }) => {
   
     }
 
+
+
+
     //Filtrado General de Productos por Categoria
-    const filterProducts = ( ) => {
+    const filterProducts = () => {
 
       //comparamos los Maestos con los Productos Disponibles
       const Combinado = masterProd.map(master => {
@@ -285,22 +290,25 @@ const Category = ({ component }) => {
           };
       });
 
-
       //Obtenemos el Vector Producto por categoria
       let Productos_Categoria = getProductByCategoryApi( consulta.toUpperCase(), Productos_Imagenes );
+      
+
+      //console.log(getBrandsByName(  Productos_Categoria ))
 
       //Filtro Por Categoria
-      return Productos_Categoria.slice( pagesNext * 17  , (pagesNext * 17) + 16);
+      
+      return Productos_Categoria;
+
+    }
+
+    const PaginasPorCategoria = () => {
+      let paginas = getProductByCategoryApi( consulta.toUpperCase(), products )
+      setCantPages(paginas.length/17);
 
     }
 
 
-
-    //Marcas
-    const filterBrands = () => {
-      setMarcas((getBrandsByName(getBrandsByName(getProductByCategory(consulta.toUpperCase())))));
-      return getBrandsByName(getProductByCategory(consulta.toUpperCase()));
-    }
     
     //Componentes 
     const filtersComponent = () => {
@@ -308,7 +316,6 @@ const Category = ({ component }) => {
       //console.log(getComponentByName(getProductByCategory(consulta.toUpperCase())));
       return getComponentByName(getProductByCategory(consulta.toUpperCase()));
     }
-
 
     //Obtener numero de pagina del enlace
     const getNumbLink = () => {
@@ -342,17 +349,53 @@ const Category = ({ component }) => {
 
 
 
+
+
+
+
+
     useEffect(() => {
       
        //Peticiones Para la Api Casagri
-       getProductosProxyCasagriDisponibles();
-       getImagenProductos();
-       getProductosMaestros();
-       filterProducts();
+       //getProductosProxyCasagriDisponibles();
+       //getImagenProductos();
+       //getProductosMaestros();
+
+      const fetchData = async () => {
+        if(img.length  == 0 && products.length  == 0 && masterProd.length  == 0)
+        {
+          try {
+            const response = await  fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE__TWO}${PRODUCTOS_DISPONIBLES}`);
+            const response1 = await  fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE__TWO}${PRODUCTOS_MAESTROS}`);
+            const response2 = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE__TWO}${PRODUCTOS_IMAGENES}`)
+            const jsonData = await response.json();
+            const jsonData1 = await response1.json();
+            const jsonData2 = await response2.json();
+  
+    
+            //setMarcas(jsonData.myQueryResults.Table);
+            setProducts(jsonData.myQueryResults.Table);
+            setMasterProd(jsonData1.myQueryResults.Table);
+            setImagen(jsonData2.myQueryResults.Table);
+
+            setCantPages((filterProducts().length)/17);
+            
+  
+          } catch (error) {
+            console.log('Error fetching data:', error);
+          }
+        }
+        else{
+          setCantPages((filterProducts().length)/17);
+        }
+
+      };
+
+      fetchData();
 
       setCurrentPage(0);
 
-      filterBrands();
+      //filterBrands();
       filtersComponent();
 
       getInfo();
@@ -370,8 +413,8 @@ const Category = ({ component }) => {
     useEffect(() => {
       getPages();
 
-      setCantPages((getProductByCategory(consulta.toUpperCase()).length)/17);
-      //setCantPages((getProductByCategoryApi( consulta.toUpperCase(), Final ).length)/17);
+      //setCantPages((getProductByCategory(consulta.toUpperCase()).length)/17);
+      setCantPages((filterProducts().length)/17);
       setPaginado(Math.trunc(cantPages));
       
     },[consulta, pagesNext])
@@ -465,9 +508,10 @@ const Category = ({ component }) => {
                 {/*Contenido de Sección */}
                 <div className='category__Container'>
                   {/* Filtro */}
-                  <div className='category__filter'>
-                    <FiltersBar Marcas={marcas} Consulta={consulta} Componentes={componentes}/>
-                  </div>
+                      <div className='category__filter'>
+                        <FiltersBar Marcas={getBrandsByName(filterProducts())} Consulta={consulta} Componentes={componentes}/>
+                      </div>
+                  
                   {/* Filtro Movil */}
                   <div className='category__filter__Movil'>
                     <div className='category__Display'>
@@ -494,7 +538,7 @@ const Category = ({ component }) => {
                               && 
                               <>
                                     {
-                                        products.length  == 0  || masterProd.length == 0  ?
+                                        img.length  == 0   ?
                                     (
                                     <> 
                                       <div className='category__products'>
@@ -511,7 +555,7 @@ const Category = ({ component }) => {
                                               <div className='cards__container'>
                                                 <div className='cards__wrapper'> 
                                                   <ul className='cards__items__Container'>
-                                                    {filterProducts()?.map((item, index) => (
+                                                    {filterProducts()?.slice( pagesNext * 17  , (pagesNext * 17) + 16).map((item, index) => (
                                                             <CardItemNew
                                                             key={`${component}-${index}`}
                                                             src={imgCasagriLoad.imgUrl}
@@ -544,7 +588,7 @@ const Category = ({ component }) => {
                                               ):
                                               (
                                                 <>
-                                                  <PaginationList cantidadPagina={ Math.trunc(cantPages)+1 } enlace={`/Category/${consulta}`} />
+                                                  <PaginationList cantidadPagina={ Math.trunc(cantPages) +1 } enlace={`/Category/${consulta}`} />
                                                 </>
                                               )
                                             }

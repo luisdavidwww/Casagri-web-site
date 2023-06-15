@@ -119,6 +119,7 @@ export const getProductByCategoryApi = ( category , datos ) => {
             }
 
     if ( category === 'DESMALEZADORAS' ) {
+        //console.log(datos);
         return datos.filter( products => products.Cat3.includes( "DESMALEZADORAS" ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
     }
 
@@ -140,6 +141,7 @@ export const getProductByCategoryApi = ( category , datos ) => {
             }
 
     if ( category === 'MOTORES' ) {
+        //console.log('muestra' + datos);
         return datos.filter( products => products.Cat3.includes( 'MOTORES' ) ).sort((x, y) => x.Nombre.localeCompare(y.Nombre));
     }
 
@@ -584,6 +586,7 @@ export const getProductDataByCodigo = ( codigo ) => {
 export const getBrandsByName = ( ArregloProducto ) => {
 
     let CasagriBrands =[];
+    
 
     CasagriBrands = ArregloProducto.map( function (item) {
         let brands = { Marca: item.Marca };
@@ -592,7 +595,13 @@ export const getBrandsByName = ( ArregloProducto ) => {
   
       //filtramos las marcas repetidas
       let hash = {};
-      return CasagriBrands.filter(o => hash[o.Marca] ? false : hash[o.Marca] = true).sort((x, y) => x.Marca.localeCompare(y.Marca));
+      return CasagriBrands.filter(o => hash[o.Marca] ? false : hash[o.Marca] = true);
+
+
+    
+    //let datos = getProductByCategoryApi( category, ArregloProducto );
+
+
 }
 
 //Producto por Marca Normal

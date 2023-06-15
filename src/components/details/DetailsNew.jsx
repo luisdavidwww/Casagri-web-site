@@ -81,7 +81,7 @@ const prueba = () => {
                   
                   <div className='information__Details'> 
                     <h1 className="text__Details__Title" >{location.state[0]}</h1>    
-                    <h3 className="text__Details__Title" >{location.state[2]}</h3>              
+                    <h1 className="text__Details__Price" >{location.state[2]}</h1>            
                   </div>
                 </div>
             </section>

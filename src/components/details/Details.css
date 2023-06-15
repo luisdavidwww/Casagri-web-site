@@ -13,23 +13,25 @@
     align-items: start;
     margin: 0px;
     width: 1000px;
+    margin-bottom: 2rem;
 }
 
 .information__Details{
     width: 800px;
-    margin-top: 60px;
+    margin-top: 120px;
+    margin-left: 2rem;
 }
 
 .text__Details__Title{
 font-family: 'Montserrat', sans-serif;
-font-weight: 500;
+font-weight: 600;
 font-size: 29px;
 }
 .text__Details__Price{
 color: #00a86e;
 font-family: 'Lexend', sans-serif;
 font-weight: 500;
-font-size: 25px;
+font-size: 22px;
 }
 .text__Details__Presentation{
 font-size: 14px;
