@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useLocation, Link } from "react-router-dom";
+import Skeleton from 'react-loading-skeleton';
 
 import { fetchData } from "../../selectors/getInfoCasagriApi";
 
@@ -9,13 +10,11 @@ import  SearchForm  from "../Search/SearchForm";
 import  FilterSidebar  from "../Filters/FilterSidebar-Movil";
 import  FiltersBar  from "../Filters/FiltersBar";
 import { BannerCategory } from 'components/BannerMain/BannerCategory';
-import { imgCasagriLoad } from '../../data/newsData';
 import  PaginationList  from './PaginationApi';
+import  Error  from '../../pages/Error404';
 
 //Variables de Entorno
-import { BANNERSCATEGORIA, BANNERS, CATEGORIAS,
-  BUSCARCATEGORIA, PRODUCTOS_MAESTROS, 
-  PRODUCTOS_DISPONIBLES, PRODUCTOS_IMAGENES } from '../../routers/index';
+import { BANNERSCATEGORIA, BANNERS, CATEGORIAS, BUSCARCATEGORIA } from '../../routers/index';
 
 
 //Loader Styles
@@ -37,54 +36,91 @@ const Category = ({ component }) => {
   const { consulta } = useParams();
   let { search, state } = useLocation();
 
+  //Variables del Banner
   const [banner, setBanner] = useState([]);
-  const [loanding, setLoanding] = useState(true);
 
-  //variables para paginado
+  //Variables de Carga
+  const [loanding, setLoanding] = useState(true);
+  const [error, setError] = useState(null);
+  const [loandingBanner, setLoandingBanner] = useState(true);
+
+  //Variables para Paginado
   const [categoria, setCategoria] = useState([]);
   const [subCategoria, setSubCategoria] = useState([]);
   const [linea, setLinea] = useState([]);
 
-  //Productos
+  //Variables para Productos
   const [products, setProducts] = useState([]);
   const [totalPagina, setTotalPagina] = useState(0);
   const [totalProducts, setTotalProducts] = useState(0);
   const [img, setImagen] = useState([]);
 
 
+  //Variables para Marcas
+  const [marcas, setMarcas] = useState([]);
 
-    //Peticion el Banner Principal
-    const getInfo = async () => {
+
+
+  //Peticion el Banner Principal
+  const getInfo = async () => {
 
       if (consulta === "Buscar"){
-
         //Petición a la api
+        setLoandingBanner(true)
         const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${consulta}`);
         const res = await response.json();
         setBanner(res.data);
+        setLoandingBanner(false)
+
+        try {
+          //Petición a la api
+          setLoandingBanner(true)
+          const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${consulta}`);
+          const res = await response.json();
+
+          setBanner(res.data);
+          setLoandingBanner(false)
+
+        } catch (error) {
+          console.log('Error fetching data:', error);
+          setLoandingBanner(false);
+        }
+
 
       }
       else{
-
         //Petición a la api
-        const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERSCATEGORIA}${consulta.replace(/\s+/g, '')}`);
-        const res = await response.json();
-
-        //Petición exitosa
-        if ( res.data !== null )
-        {
-          setBanner(res.data);
-
-        }
-        // En caso que exista un error en la petición del Banner
-        else{
-          //se asigna el banner de la seccion buscar
-          const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${"Buscar"}`);
+        try {
+          setLoandingBanner(true);
+          const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERSCATEGORIA}${consulta.replace(/\s+/g, '')}`);
           const res = await response.json();
 
+          // Procesa la respuesta o realiza otras operaciones necesarias
+          //Petición exitosa
+          if ( res.data !== null )
+          {
+            setBanner(res.data);
+            setLoandingBanner(false)
+          }
+
+          // En caso que exista un error en la petición del Banner
+          else{
+            //se asigna el banner de la seccion buscar
+            const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${"Buscar"}`);
+            const res = await response.json();
+            setBanner(res.data);
+            setLoandingBanner(false)
+          }
+
+        } catch (error) {
+          console.log('Error fetching data:', error);
+          setLoanding(false);
+          setError('Ocurrió un error al obtener los datos. Por favor, inténtalo de nuevo.');
         }
+        
       }
-    }
+  }
+
 
     //Peticion para la secuencia logica del buscador
     const getPages = async () => {
@@ -133,9 +169,14 @@ const Category = ({ component }) => {
           setTotalPagina(response.totalPages);
           setTotalProducts(response.total);
           setProducts(response.productos);
+          setMarcas(response.marcas)
+          setError(null);
           setLoanding(false);
+
         } catch (error) {
           console.log('Error fetching data:', error);
+          setLoanding(false);
+          setError('Ocurrió un error al obtener los datos. Por favor, inténtalo de nuevo.');
         }
       };
     
@@ -150,89 +191,97 @@ const Category = ({ component }) => {
     {
       loanding ?( <Loader/>):(
         <>
+        {
+          error ?( 
+            //Error
+            <Error/>
+            ):
+            (
+              <>
+                {/*Banner de la Categoria */}
                 <div className='categoryBanner__Container'>
-                  <BannerCategory image={banner.banner__desktop} imageMini={banner.banner__movil} consulta={consulta} />
+                  <BannerCategory image={banner.banner__desktop} imageMini={banner.banner__movil} 
+                                  consulta={consulta} loandingBanner={loandingBanner} />
                 </div>
 
                 {/*Seccion Superiror */}
                 <div className='formSearch__Container__Main'>
-                  {/*Secuencia Lógica Categorias*/}
-                  <div className='Pages'> 
-                    <Link to={`/Category/Buscar`} style={{textDecoration:'none', color:'#494949'}}> 
-                        <>Productos</>
-                    </Link>
-                    <Link 
-                      className={consulta === categoria ? 'pagesText__active' : 'pagesText'}
-                      to={`/Category/${categoria}`} 
-                      style={{textDecoration:'none', color:'#494949'}}> 
-                      {categoria != "" ? (
-                        <span className='pagesText__Categoria' >
-                          <AiOutlineRight style={{marginLeft:'0.5rem', marginRight:'0.5rem'}}/>
-                          {categoria}
-                        </span>
-                      ):null
-                    }</Link>
-                    <Link 
-                      className={consulta === subCategoria ? 'pagesText__active' : 'pagesText'}
-                      to={`/Category/${subCategoria}`} 
-                      style={{textDecoration:'none', color:'#494949'}}>
-                    { subCategoria != "" ? (
-                        <span className='pagesText__Categoria'>
-                          <AiOutlineRight style={{marginLeft:'0.5rem', marginRight:'0.5rem'}}/>
-                          {subCategoria}
-                        </span>
-                      ):null
-                    }</Link>
-                    <Link 
-                      className={consulta === linea ? 'pagesText__active' : 'pagesText'}
-                      to={`/Category/${linea}`} 
-                      style={{textDecoration:'none', color:'#494949'}}>
-                    {
-                      linea != "" ? (
-                        <span className='pagesText__Categoria'>
-                          <AiOutlineRight style={{marginLeft:'0.5rem', marginRight:'0.5rem'}}/>
-                          {linea}
-                        </span>
-                      ):null
-                    }
-                    </Link>
-                  </div>
-                  {/*Barra de Busqueda */}
-                  <div className='formSearch__Container'>
-                    <SearchForm/>
-                  </div>
+                    {/*Secuencia Lógica Categorias*/}
+                    <div className='Pages'> 
+                      <Link to={`/Category/Buscar`} style={{textDecoration:'none', color:'#494949'}}> 
+                          <>Productos</>
+                      </Link>
+                      <Link 
+                        className={consulta === categoria ? 'pagesText__active' : 'pagesText'}
+                        to={`/Category/${categoria}`} 
+                        style={{textDecoration:'none', color:'#494949'}}> 
+                        {categoria != "" ? (
+                          <span className='pagesText__Categoria' >
+                            <AiOutlineRight style={{marginLeft:'0.5rem', marginRight:'0.5rem'}}/>
+                            {categoria}
+                          </span>
+                        ):null
+                      }</Link>
+                      <Link 
+                        className={consulta === subCategoria ? 'pagesText__active' : 'pagesText'}
+                        to={`/Category/${subCategoria}`} 
+                        style={{textDecoration:'none', color:'#494949'}}>
+                      { subCategoria != "" ? (
+                          <span className='pagesText__Categoria'>
+                            <AiOutlineRight style={{marginLeft:'0.5rem', marginRight:'0.5rem'}}/>
+                            {subCategoria}
+                          </span>
+                        ):null
+                      }</Link>
+                      <Link 
+                        className={consulta === linea ? 'pagesText__active' : 'pagesText'}
+                        to={`/Category/${linea}`} 
+                        style={{textDecoration:'none', color:'#494949'}}>
+                      {
+                        linea != "" ? (
+                          <span className='pagesText__Categoria'>
+                            <AiOutlineRight style={{marginLeft:'0.5rem', marginRight:'0.5rem'}}/>
+                            {linea}
+                          </span>
+                        ):null
+                      }
+                      </Link>
+                    </div>
+                    {/*Barra de Busqueda */}
+                    <div className='formSearch__Container'>
+                      <SearchForm/>
+                    </div>
                 </div>
-              
 
                 {/*Titulo de Resultado Desktop */}
                 <div className='result__Search__Container' >
-                  {
-                    consulta== "Buscar" ? null:(
-                      <div className='result__Search text__Result__Category'> 
-                        <span style={{fontWeight:'700', fontSize:'29px'}}> {consulta}</span>  
-                      </div>
-                    )
-                  }
-                    
+                    {
+                      consulta== "Buscar" ? null:(
+                        <div className='result__Search text__Result__Category'> 
+                          <span style={{fontWeight:'700', fontSize:'29px'}}> {consulta}</span>  
+                        </div>
+                      )
+                    }
+                      
                 </div>
 
                 {/*Titulo de Resultado Movil */}
                 <div className='result__Category__Container__Movil' >
-                    <div className='result__Category__Movil text__Result__Category__Movil'> 
-                      <>
-                          <p style={{fontWeight:'700', fontSize:'25px', marginBottom:'0rem', textAlign:'center'}}>{consulta}</p> 
-                      </>
-                    </div>
+                      <div className='result__Category__Movil text__Result__Category__Movil'> 
+                        <>
+                            <p style={{fontWeight:'700', fontSize:'25px', marginBottom:'0rem', textAlign:'center'}}>{consulta}</p> 
+                        </>
+                      </div>
                 </div>
-                
-    
+
                 {/*Contenido de Sección */}
                 <div className='category__Container'>
+
                   {/* Filtro */}
                   <div className='category__filter'>
-                    <FiltersBar  Consulta={consulta} />
+                    <FiltersBar Consulta={consulta} Marcas={marcas} />
                   </div>
-                  
+
                   {/* Filtro Movil */}
                   <div className='category__filter__Movil'>
                     <div className='category__Display'>
@@ -240,53 +289,52 @@ const Category = ({ component }) => {
                     </div>
                       <FilterSidebar/>
                   </div>
-                
-    
+
                   {/* Resultado de Busqueda */}
                   <>
-                                    <>
-                                      <div className='category__products'>
-                                        <div className='cards'>
-                                              <div className='cards__container'>
-                                                <div className='cards__wrapper'> 
-                                                  <ul className='cards__items__Container'>
-                                                    {products?.map((item, index) => (
-                                                            <CardItemApi
-                                                            key={`${component}-${index}`}
-                                                            
-                                                            src={ "news02.jpg" }
-                                                            Nombre={item.Nombre}
-                                                            Imagen={  item.Imagen }
-                                                            CargandoImg={ img.length  == 0 ? "Cargando" : " Cargada" }
-                                                            Peso={item.PesoKG}
-                                                            elco={item.Nombre}
-                                                            path={`/DetailsNew/${ item.Nombre.replace(/ /g, "-").replace(/%/g, "").replace(/[ / ]/g, "_") }`}
-                                                            price={""}
-                                                            CodigoProd={item.CodigoProd}
-                                                            Marca={item.Marca}
-                                                            
-                                                            component={component}
-                                                            categoria={""}
-                                                            subCategoria={""}
-                                                            Linea={""}
-                                                            />
-                                                        ))}
-                                                  </ul>
-                                                </div>
-                                              </div>       
-                                        </div>
-                                        <div className='Paginado__Category'> 
-                                            <PaginationList cantidadPagina={ totalPagina } enlace={`/Category/${consulta}`} />
-                                            <div className="content-Top-options-list-link" style={{paddingLeft:'0.5rem',marginTop:'1rem'}}> 
-                                                Total Productos: {totalProducts} 
-                                            </div>
-                                        </div>
-                                      </div>           
-                                    </>
-
+                      <>
+                        <div className='category__products'>
+                          <div className='cards'>
+                                <div className='cards__container'>
+                                  <div className='cards__wrapper'> 
+                                    <ul className='cards__items__Container'>
+                                      {products?.map((item, index) => (
+                                              <CardItemApi
+                                              key={`${component}-${index}`}
+                                              src={ "news02.jpg" }
+                                              Nombre={item.Nombre}
+                                              Imagen={  item.Imagen }
+                                              CargandoImg={ img.length  == 0 ? "Cargando" : " Cargada" }
+                                              Peso={item.PesoKG}
+                                              elco={item.Nombre}
+                                              //path={`/DetailsNew/${ item.Nombre.replace(/ /g, "-").replace(/%/g, "").replace(/[ / ]/g, "_") }`}
+                                              path={`/DetailsNew/${ item.Nombre.replace(/\s+/g, '-').replace(/%/g, "%25").replace(/[ / ]/g, "_") }`}
+                                              price={""}
+                                              CodigoProd={item.CodigoProd}
+                                              Marca={item.Marca}
+                                              component={component}
+                                              categoria={""}
+                                              subCategoria={""}
+                                              Linea={""}
+                                              />
+                                          ))}
+                                    </ul>
+                                  </div>
+                                </div>       
+                          </div>
+                          <div className='Paginado__Category'> 
+                              <PaginationList cantidadPagina={ totalPagina } enlace={`/Category/${consulta}`} />
+                              <div className="content-Top-options-list-link" style={{paddingLeft:'0.5rem',marginTop:'1rem'}}> 
+                                  Total Productos: {totalProducts} 
+                              </div>
+                          </div>
+                        </div>           
+                      </>
                   </>
                 </div>
-    
+              </>
+            ) 
+        }
         </>
       )
     }

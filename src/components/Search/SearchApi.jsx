@@ -3,6 +3,7 @@ import { useParams, useLocation, useNavigate, Link } from "react-router-dom";
 import { useForm } from '../../hooks/useForm';
 //import { getProductByName } from '../../selectors/getProductByName';
 //import  {getProductDataByName}  from "../../selectors/getInfoCasagri";
+import  PaginationList  from '../category/PaginationApi';
 import { getProductDataByName } from "../../selectors/getInfoCasagriApi";
 import queryString from 'query-string';
 import { imgCasagriLoad } from '../../data/newsData';
@@ -10,7 +11,7 @@ import { imgCasagriLoad } from '../../data/newsData';
 import  SearchForm  from "./SearchForm";
 import  FiltersBar  from "../Filters/FiltersBar";
 import  FilterSidebar  from "../Filters/FilterSidebar-Movil";
-import CardItemNew from '../Cards/CardItemNew';
+import CardItemApi from '../Cards/CardItemApi';
 import { BannerCategory } from 'components/BannerMain/BannerCategory';
 import Loader from "components/Loader/Loader";
 //Variables de Entorno
@@ -48,36 +49,21 @@ const Search = () => {
 
     //constantes
     const { query } = useParams();
+    let { search } = useLocation();
     const navigate = useNavigate();
 
-    //variables de estados
-    const [alert, setAlert] = useState("");
+    //Variables del Banner
     const [banner, setBanner] = useState([]);
-    const [products, setProducts] = useState([]);
+
+    //variables de estados
     const [loanding, setLoanding] = useState(false);
+    const [error, setError] = useState(null);
 
 
-    //Peticion el Banner Principal
-  const getInfo = async () => {
-
-      //Estado del Loanding Verdadero 
-      setLoanding(true);
-
-      //Petición a la api
-      const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${'Buscar'}`);
-      const res = await response.json();
-      setBanner(res.data);
-      //Estado del Loanding Falso
-      setLoanding(false);
-
-  }
-
-
-  const buscarProducto = () => {
-    //setProducts(getProductDataByName( query ));
-    return getProductDataByName(query.toUpperCase());
-
-}
+    //Variables para los Productos
+    const [products, setProducts] = useState([]);
+    const [totalPagina, setTotalPagina] = useState(0);
+    const [totalProducts, setTotalProducts] = useState(0);
 
 
 
@@ -91,16 +77,38 @@ const Search = () => {
     const [ formValues, handleInputChange ] = useForm({
             searchText: q
     });
+
     const { searchText } = formValues;
 
-    //getProductByName
-    //const products = useMemo(() => getProductByName( query ));
-    
+
 
     useEffect(() => {
-        getInfo();
-        buscarProducto();
-      },[query])
+
+        const fetchDataAndHandleResponse = async () => {
+
+          try {
+            setLoanding(true);
+            const response = await getProductDataByName(query, search);
+            // Procesa la respuesta o realiza otras operaciones necesarias
+            setTotalPagina(response.totalPages);
+            setTotalProducts(response.total);
+            setProducts(response.productos);
+            setLoanding(false);
+  
+          } catch (error) {
+            console.log('Error fetching data:', error);
+            setLoanding(false);
+            setError('Ocurrió un error al obtener los datos. Por favor, inténtalo de nuevo.');
+          }
+        };
+      
+        fetchDataAndHandleResponse();
+
+        console.log(products);
+
+
+
+      },[ query, search])
 
   return (
     <div style={{backgroundColor:'#F9F9F9', paddingTop:'2rem', paddingBottom:'2rem'}}>
@@ -170,7 +178,7 @@ const Search = () => {
                 {/*Resultado de Busqueda*/}
                 <>
                             { 
-                                     buscarProducto().length == 0  ? 
+                                     products.length == 0  ? 
                                      ( 
                                       <div className='category__products'>
                                           <div className='container__error'>
@@ -187,26 +195,15 @@ const Search = () => {
                                             <div className='cards__container'>
                                               <div className='cards__wrapper'> 
                                                 <ul className='cards__items__Container'>
-                                                  {buscarProducto()?.map((item, index) => (
-                                                                /*<CardItem
-                                                                component={"Categoria"}
-                                                                key={`${'Search'}-${index}`}
-                                                                src={item.imgUrl}
-                                                                title={item.title}
-                                                                label=''
-                                                                path={`/Details/${ item.title }`}
-                                                                price={item.price}
-                                                                presentation={item.presentation}
-                                                                categoria={""}
-                                                                subCategoria={""}
-                                                                Linea={""}
-                                                                />*/
-                                                                <CardItemNew
+                                                  {products?.map((item, index) => (
+                                                                <CardItemApi
                                                                 key={`${"search"}-${index}`}
-                                                                src={imgCasagriLoad.imgUrl}
+                                                                src={"news02.jpg" }
                                                                 Nombre={item.Nombre}
+                                                                Imagen={  item.Imagen }
+                                                                CargandoImg={ img.length  == 0 ? "Cargando" : " Cargada" }
                                                                 Peso={item.PesoKG}
-                                                                path={`/DetailsNew/${ item.Nombre.replace(/\s+/g, '').replace(/[^a-zA-Z0-9 ]/g, '') }`}
+                                                                path={`/DetailsNew/${ item.Nombre.replace(/\s+/g, '-').replace(/%/g, "%25").replace(/[ / ]/g, "_") }`}
                                                                 price={""}
                                                                 CodigoProd={item.CodigoProd}
                                                                 Marca={item.Marca}
@@ -220,6 +217,12 @@ const Search = () => {
                                                 </ul>
                                               </div>
                                             </div>       
+                                        </div>
+                                        <div className='Paginado__Category'> 
+                                            <PaginationList cantidadPagina={ totalPagina } enlace={`/Search/${query}`} />
+                                            <div className="content-Top-options-list-link" style={{paddingLeft:'0.5rem',marginTop:'1rem'}}> 
+                                                Total Productos: {totalProducts} 
+                                            </div>
                                         </div>
                                       </div>
                                      )      
