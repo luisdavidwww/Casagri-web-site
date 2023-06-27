@@ -175,7 +175,7 @@ export default function FiltersBar({Marcas, Consulta, Componentes}) {
           || Consulta === "Analgésicos y Antiinflamatorios" || Consulta === "Antisepticos y Desinfectantes" || Consulta === "Antibióticos" 
           || Consulta === "Antimastiticos" || Consulta === "Antitimpánico"  || Consulta === "Antidiarreicos"  || Consulta === "Desinfectante"
           || Consulta === "Baños, Ectoparasitarios y Matagusanos" || Consulta === "Biológicos" || Consulta === "Desparasitantes"
-          || Consulta === "Endectocidas" || Consulta === "Hemoparatisidas" || Consulta === "Vitaminas y Suplementos" || Consulta === "Control De Plaga"   ? 
+          || Consulta === "Endectocidas" || Consulta === "Hemoparasiticidas" || Consulta === "Vitaminas y Suplementos" || Consulta === "Control De Plaga"   ? 
           (
             <Accordion>
               <AccordionSummary 

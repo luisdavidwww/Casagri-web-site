@@ -60,27 +60,27 @@ const Footer = () => {
                     <div className="footer__info__products"> 
                         <ul className="footer__info__products__list" >
                             <li className='footer__info__products__item'>
-                                <a href='/'>
+                                <a href='/Category/Agroindustrial'>
                                     <span className='footer__span'>Agroindustrial</span>
                                 </a> 
                             </li>
                             <li className='footer__info__products__item'>
-                                <a href='/'>    
+                                <a href='/Category/Maquinarias'>    
                                     <span className='footer__span' >Maquinaria</span>
                                 </a> 
                             </li>
                             <li className='footer__info__products__item'>
-                                <a href='/'>    
+                                <a href='/Category/Salud Animal'>    
                                     <span className='footer__span' >Salud Animal</span>
                                 </a> 
                             </li>
                             <li className='footer__info__products__item'>
-                                <a href='/'>
+                                <a href='/Category/Ferretería'>
                                     <span className='footer__span'>Ferretería</span>
                                 </a> 
                             </li>
                             <li className='footer__info__products__item'>
-                                <a href='/'>
+                                <a href='/Category/Salud Pública'>
                                     <span className='footer__span' >Salud Pública</span> 
                                 </a> 
                             </li>

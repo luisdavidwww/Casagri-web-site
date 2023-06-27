@@ -55,9 +55,11 @@ const Category = ({ component }) => {
   const [totalProducts, setTotalProducts] = useState(0);
   const [img, setImagen] = useState([]);
 
-
   //Variables para Marcas
   const [marcas, setMarcas] = useState([]);
+
+    //Variables para Componentes
+    const [componentesProd, setComponentes] = useState([]);
 
 
 
@@ -169,7 +171,8 @@ const Category = ({ component }) => {
           setTotalPagina(response.totalPages);
           setTotalProducts(response.total);
           setProducts(response.productos);
-          setMarcas(response.marcas)
+          setMarcas(response.marcas);
+          setComponentes(response.componentes);
           setError(null);
           setLoanding(false);
 
@@ -279,7 +282,7 @@ const Category = ({ component }) => {
 
                   {/* Filtro */}
                   <div className='category__filter'>
-                    <FiltersBar Consulta={consulta} Marcas={marcas} />
+                    <FiltersBar Consulta={consulta} Marcas={marcas} Componentes={componentesProd} />
                   </div>
 
                   {/* Filtro Movil */}

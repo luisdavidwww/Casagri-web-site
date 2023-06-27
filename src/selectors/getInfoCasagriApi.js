@@ -26,6 +26,16 @@ export const fetchData = async (category, search) => {
 
     /* ----------------------------------------------- AGROINDUSTRIAL ------------------------------------------------------- */
 
+    if ( category === 'AGROINDUSTRIAL') {
+      try {
+          const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${'articulos/Categoria/AGROINDUSTRIAL'}${search}`);
+          const resp = await response.json();
+          return resp;
+          
+        } catch (error) {
+          console.log('Error fetching data:', error);
+        }
+  }
     //Agroquimicos
     if ( category === 'AGROQUÍMICOS') {
         try {
@@ -160,6 +170,18 @@ export const fetchData = async (category, search) => {
         }
     }
 
+    /* ----------------------------------------------- AGROINDUSTRIAL ------------------------------------------------------- */
+
+    if ( category === 'MAQUINARIAS') {
+      try {
+          const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${'articulos/Categoria/MAQUINARIA E IMPLEMENTOS'}${search}`);
+          const resp = await response.json();
+          return resp;
+          
+        } catch (error) {
+          console.log('Error fetching data:', error);
+        }
+  }
 
     //Maquinarias
     if ( category === 'MAQUINARIAS') {
@@ -327,6 +349,19 @@ export const fetchData = async (category, search) => {
         }
     }
 
+     /* ----------------------------------------------- SALUD ANIMAL ------------------------------------------------------- */
+
+     if ( category === 'SALUD ANIMAL') {
+      try {
+          const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${'articulos/Categoria/MEDICINA VETERINARIA'}${search}`);
+          const resp = await response.json();
+          return resp;
+          
+        } catch (error) {
+          console.log('Error fetching data:', error);
+        }
+  }
+
     //Medicina Veterinaria
     if ( category === 'MEDICINA VETERINARIA') {
       try {
@@ -493,6 +528,18 @@ export const fetchData = async (category, search) => {
         }
     }
 
+/* ----------------------------------------------- FERRETERÍA  ------------------------------------------------------- */
+
+if ( category === 'FERRETERÍA') {
+  try {
+      const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${'articulos/CategoriaA-Z/FERRETERIA'}${search}`);
+      const resp = await response.json();
+      return resp;
+      
+    } catch (error) {
+      console.log('Error fetching data:', error);
+    }
+}
 
     //Ferreteria Agrícola
     if ( category === 'FERRETERÍA AGRÍCOLA') {
@@ -518,6 +565,18 @@ export const fetchData = async (category, search) => {
     }
 
 
+    /* ----------------------------------------------- SALUD PÚBLICA  ------------------------------------------------------- */
+
+    if ( category === 'SALUD PÚBLCA') {
+      try {
+          const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${'articulos/Categoria/SALUD PUBLICA'}${search}`);
+          const resp = await response.json();
+          return resp;
+          
+        } catch (error) {
+          console.log('Error fetching data:', error);
+        }
+    }
     //Salud Pública
     if ( category === 'SALUD PÚBLICA') {
       try {
@@ -556,4 +615,34 @@ export const fetchData = async (category, search) => {
     console.log('Error fetching data:', error);
   }
 };
+
+
+
+
+
+
+
+
+
+export const getBrand = ( searchText, MarcasProductos ) => {
+
+  if ( searchText === '' ) {
+      return [];
+  }
+
+  return MarcasProductos.filter( products => products.Marca.includes( searchText.toLocaleUpperCase() )  );
+
+}
+
+
+
+export const getComponent = ( searchText, ComponentesProductos ) => {
+
+  if ( searchText === '' ) {
+      return [];
+  }
+
+  return ComponentesProductos.filter( products => products.cat4.includes( searchText.toLocaleUpperCase() )  );
+
+}
 

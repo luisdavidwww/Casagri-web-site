@@ -1,7 +1,7 @@
-import React, {  useMemo, useEffect, useState } from 'react';
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useLocation } from "react-router-dom";
 import { useForm } from '../../hooks/useForm';
-import { getBrand } from '../../selectors/getInfoCasagri';
+import { getBrand } from '../../selectors/getInfoCasagriApi';
 import queryString from 'query-string';
 //components
 import Brands from '../FilterAccordion/Brands';
@@ -11,14 +11,10 @@ import './Search.css';
 import { BsSearch } from "react-icons/bs"
 
 const SearchFormBrands = ({ MarcasProductos, Enlace }) => {
-     //constantes
-     const { query } = useParams();
-     const navigate = useNavigate();
+
  
      //variables de estados
-     const [alert, setAlert] = useState("");
      const [marcas, setMarcas] = useState([]);
- 
  
      //constantes
      const location = useLocation();
@@ -53,7 +49,6 @@ const SearchFormBrands = ({ MarcasProductos, Enlace }) => {
             e.preventDefault();
             setMarcas(getBrand( searchText , MarcasProductos ));
             console.log(getBrand( searchText , MarcasProductos ));
-            //console.log("QUE MAS PEUS"+JSON.stringify(marcas));
           }
         
     }
