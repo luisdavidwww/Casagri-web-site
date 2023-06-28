@@ -2,20 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useParams,Link, useLocation, useNavigate} from "react-router-dom";
 
 
-//importacion de datos de productos
-import { featuredProductss } from "../../data/featuredProductss";
-import dataPro from "../../data/daticos/productos.json";
-import { featuredProducts } from "../../data/featuredProducts";
-import { ProductsAll } from "../../data/ProductsAll";
 //METODOS FILTRADO
-import { getProductByCategory , 
-        getProductByCat2,  
+import { getProductByCategory ,  
         getBrandsByName, 
         getProductByBrands } from "../../selectors/getInfoCasagri";
 //componentes
-import CardItem from '../Cards/CardItem';
-import CardItemNew from '../Cards/CardItemNew';
-import  Search  from "../Search/Search";
+import CardItemApi from '../Cards/CardItemApi';
 import  SearchForm  from "../Search/SearchForm";
 import  FiltersBar  from "../Filters/FiltersBar";
 import  FilterSidebar  from "../Filters/FilterSidebar-Movil";
@@ -23,17 +15,10 @@ import { BannerCategory } from 'components/BannerMain/BannerCategory';
 import { imgCasagriLoad } from '../../data/newsData';
 import Loader from "components/Loader/Loader";
 //Variables de Entorno
-import { BANNERSCATEGORIA, BANNERS } from '../../routers/index';
-//Datos para los banners 
-import { BannerData } from '../../data/BannerData';
-import { BannerCategoryImg } from '../../data/BannerData';
-import { links } from "../common/Navbar/Mylinks";
+import { BANNERS } from '../../routers/index';
+
 //icons
 import { AiOutlineRight } from "react-icons/ai";
-
-
-//importacion temporal de imagenes
-const imgL = require.context('../../static/images/brands', true);
 
 
 
@@ -235,7 +220,7 @@ const Marcas = ({ component }) => {
                                       <div className='cards__wrapper'> 
                                         <ul className='cards__items__Container'>
                                           {filterProducts()?.map((item, index) => (
-                                              <CardItemNew
+                                              <CardItemApi
                                               key={`${component}-${index}`}
                                               src={imgCasagriLoad.imgUrl}
                                               Nombre={item.Nombre}

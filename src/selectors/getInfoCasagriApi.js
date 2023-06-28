@@ -621,9 +621,29 @@ if ( category === 'FERRETERÍA') {
 
 
 
+/* ----------------------------------------------- MARCAS ------------------------------------------------------- */
+
+//Buscar Productos por Marca
+export const getProductsBrand = async( marca, search ) => {
+
+  if ( marca === '' ) {
+      return [];
+  }
+  else{
+    try {
+      const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${'articulos/Marca/'}${marca}${search}`);
+      const resp = await response.json();
+      return resp;
+      
+    } catch (error) {
+      console.log('Error fetching data:', error);
+    }
+  }
+
+}
 
 
-
+//Metodo para las marcas en los filtros de Busqueda
 export const getBrand = ( searchText, MarcasProductos ) => {
 
   if ( searchText === '' ) {

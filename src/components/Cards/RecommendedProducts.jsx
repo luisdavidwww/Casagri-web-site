@@ -1,22 +1,18 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 //componentes
-import CardItem from './CardItem';
-import CardItemNew from './CardItemNew';
-
+import CardItemApi from './CardItemApi';
 
 //Estilos y diseño
 import './Cards.css'; 
 import 'aos/dist/aos.css'; 
 
 //Datos para el Carousel
-import { featuredProducts } from '../../data/featuredProducts';
 import  data  from '../../data/daticos/ProducRecomendados.json';
-import { imgCasagriLoad } from '../../data/newsData';
 
 
 
 
-const Cards = ({component}) =>  {
+const Cards = () =>  {
 
 
   
@@ -31,33 +27,6 @@ const Cards = ({component}) =>  {
           </div>
         </div>
         
- 
-      
-
-      { /*Lista de Productos
-      <div className='cards__container'>
-        <div className='cards__wrapper'>
-          <ul className='cards__items'>
-          {featuredProducts?.map((item, index) => (
-              <CardItem
-              key={`${component}-${index}`}
-              src={item.imgUrl}
-              title={item.title}
-              label=''
-              path={`/Details/${ item.title }`}
-              price={item.price}
-              presentation={item.presentation}
-              ranking={item.ranking}
-              categoria={""}
-              subCategoria={""}
-              Linea={""}
-              />
-          ))}
-          </ul>
-        </div>
-      </div>
-      */ }
-
 
 
       { /*Lista de Productos */ }
@@ -66,20 +35,15 @@ const Cards = ({component}) =>  {
           <ul className='cards__items'>
           {data && data.filter((element, idx) => idx < 5).map((item, index) => {
                 return (
-                  <CardItemNew
-                    key={`${component}-${index}`}
-                    src={imgCasagriLoad.imgUrl}
+                  <CardItemApi
+                    key={`${"RecommendedProducts"}-${index}`}
                     Nombre={item.Nombre}
-                    Peso={item.PesoKG}
-                    path={`/DetailsNew/${ item.Nombre }`}
-                    price={""}
-                    CodigoProd={item.CodigoProd}
+                    Imagen={ "" }
+                    src={ "news02.jpg" }
                     Marca={item.Marca}
-                    ranking={""}
-                    component={component}
-                    categoria={""}
-                    subCategoria={""}
-                    Linea={""}
+                    path={`/DetailsNew/${ item.Nombre.replace(/\s+/g, '-')
+                                                      .replace(/%/g, "%25")
+                                                      .replace(/[ / ]/g, "_") }`}
                     />
                   )
             })}

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import CardItem from './CardItem';
+import CardItemApi from './CardItemApi';
 import AOS      from 'aos';
 
 //Estilos y diseño
@@ -40,18 +40,15 @@ const Cards = () =>  {
         <div className='cards__wrapper'>
           <ul className='cards__items'>
           {featuredProducts?.map((item) => (
-              <CardItem
-              key={item.id}
-              src={item.imgUrl}
-              title={item.title}
-              label=''
-              path={`/Details/${ item.title }`}
-              price={item.price}
-              presentation={item.presentation}
-              ranking={item.ranking}
-              categoria={""}
-              subCategoria={""}
-              Linea={""}
+              <CardItemApi
+              key={`${"MostViewedProducts"}-${index}`}
+              Nombre={item.Nombre}
+              Imagen={ "" }
+              src={ "news02.jpg" }
+              Marca={item.Marca}
+              path={`/DetailsNew/${ item.Nombre.replace(/\s+/g, '-')
+                                                .replace(/%/g, "%25")
+                                                .replace(/[ / ]/g, "_") }`}
               />
           ))}
           </ul>

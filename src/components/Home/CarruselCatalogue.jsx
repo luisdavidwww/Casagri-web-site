@@ -1,10 +1,8 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState } from 'react'
 import Slider from "react-slick";
-import AOS  from 'aos';
 
 //componentes
 import CardItemCarrusel from "./CardItemCarrusel";
-
 
 //Datos para el Carousel
 import { Categorys } from '../../data/Categorys';
@@ -26,7 +24,6 @@ export const CarruselCatalogue = ({component}) => {
 
   //creating the ref
   const customeSlider = useRef();
-  const customeSliderMovil = useRef();
 
   // setting slider configurations Desktop
   const [sliderSettings, setSliderSettings] = useState({
@@ -36,15 +33,6 @@ export const CarruselCatalogue = ({component}) => {
     slidesToScroll: 1,
     arrows: false,
   })
-  // setting slider configurations Movil
-  const [sliderSettingsMovil, setSliderSettingsMovil] = useState({
-    infinite: false,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-  })
-
 
   //funciones para desktop
   const gotoNext = () => {
@@ -53,21 +41,6 @@ export const CarruselCatalogue = ({component}) => {
   const gotoPrev = () => {
     customeSlider.current.slickPrev();
   }
-
-  //funciones para Movil
-  const gotoNextMovil = () => {
-    customeSliderMovil.current.slickNext();
-  }
-  const gotoPrevMovil = () => {
-    customeSliderMovil.current.slickPrev();
-  }
-
-
-  const imageLoader = ({ src }) => {
-    return `/images/carrusel/${src}`
-  }
-
-
 
  
 
@@ -128,26 +101,6 @@ export const CarruselCatalogue = ({component}) => {
           </div>  
         </div>
       </div>
-
-      {/* Botones Controladores Movil 
-      <div className='container-Control-Movil'>
-        <div className='container-Control-Block-Movil'>
-        <div className='container-tbn-Movil'>
-          <div className='container-btn-deg' >
-            <button className='btn-deg' onClick={()=>gotoPrevMovil()} >
-              <VscChevronLeft className='btnPrevios'/>
-            </button>
-          </div>
-          <div className='container-btn-deg' >
-            <button className='btn-deg' onClick={()=>gotoNextMovil()}>
-              <VscChevronRight className='btnNext'/>
-            </button>
-          </div>
-        </div>
-          
-        </div>
-      </div>
-      */}
     </section>
     </>
     

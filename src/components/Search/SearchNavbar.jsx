@@ -1,20 +1,11 @@
 import React, {  useMemo, useState, useEffect } from 'react';
-import { useParams, useLocation, useNavigate, HistoryRouterProps } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from '../../hooks/useForm';
 import { getProductByName } from '../../selectors/getProductByName';
 import queryString from 'query-string';
 
-
-//componentes
-//import  ProductContainerNew  from "./ProductContainerNew";
-import CardItem from '../Cards/CardItem'
-
 //Estilos
 import './SearchNavbar.css'
-
-//icons
-import { BsSearch } from "react-icons/bs"
 
 
 const SearchNavbar = ( clickSearch ) => {

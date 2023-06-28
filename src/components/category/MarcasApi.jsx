@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useLocation, Link } from "react-router-dom";
-import Skeleton from 'react-loading-skeleton';
 
-import { fetchData } from "../../selectors/getInfoCasagriApi";
+import { getProductsBrand } from "../../selectors/getInfoCasagriApi";
 
 //componentes 
 import CardItemApi from '../Cards/CardItemApi';
@@ -30,10 +29,10 @@ import './Pagination.css';
 import { AiOutlineRight } from "react-icons/ai";
 
 
-const Category = ({ component }) => {
+const MarcasApi = ({ component }) => {
    
   //query de la url
-  const { consulta } = useParams();
+  const { marca } = useParams();
   let { search } = useLocation();
 
   //Variables del Banner
@@ -41,7 +40,7 @@ const Category = ({ component }) => {
 
   //Variables de Carga
   const [loanding, setLoanding] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(true);
   const [loandingBanner, setLoandingBanner] = useState(true);
 
   //Variables para Paginado
@@ -65,10 +64,10 @@ const Category = ({ component }) => {
   //Peticion el Banner Principal
   const getInfo = async () => {
 
-      if (consulta === "Buscar"){
+      if (marca === "Buscar"){
         //Petición a la api
         setLoandingBanner(true)
-        const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${consulta}`);
+        const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${marca}`);
         const res = await response.json();
         setBanner(res.data);
         setLoandingBanner(false)
@@ -76,7 +75,7 @@ const Category = ({ component }) => {
         try {
           //Petición a la api
           setLoandingBanner(true)
-          const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${consulta}`);
+          const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${marca}`);
           const res = await response.json();
 
           setBanner(res.data);
@@ -93,7 +92,7 @@ const Category = ({ component }) => {
         //Petición a la api
         try {
           setLoandingBanner(true);
-          const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERSCATEGORIA}${consulta.replace(/\s+/g, '')}`);
+          const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERSCATEGORIA}${marca.replace(/\s+/g, '')}`);
           const res = await response.json();
 
           // Procesa la respuesta o realiza otras operaciones necesarias
@@ -123,56 +122,24 @@ const Category = ({ component }) => {
   }
 
 
-    //Peticion para la secuencia logica del buscador
-    const getPages = async () => {
-
-      setSubCategoria("");
-      setCategoria("");
-      setLinea("");
-
-      //Petición a la api
-      let response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BUSCARCATEGORIA}${consulta.replace(/\s+/g, '')}`);
-      let res = await response.json();
-
-      if (res.data.subcategoria != null){ 
-        setLinea(res.data.nombre);
-        setSubCategoria(res.data.subcategoria.nombre);
-        if (subCategoria){
-          let respon = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${CATEGORIAS}${res.data.subcategoria.categoria}`);
-          let resp = await respon.json();
-          setCategoria(resp.data.nombre);
-        }
-      }
-      if (res.data.categoria  ){
-        setSubCategoria(res.data.nombre);
-        setCategoria(res.data.categoria.nombre);
-      }
-      if (res.data.subcategoria == null && res.data.categoria == null)
-      {
-        setCategoria(res.data.nombre);
-      }
-      
-  }
-
 
 
     useEffect(() => {
 
+      console.log(marca);
+
       getInfo();
-      getPages();
 
       const fetchDataAndHandleResponse = async () => {
 
         try {
           setLoanding(true);
-          const response = await fetchData(consulta.toUpperCase(), search);
+          const response = await getProductsBrand(marca.toUpperCase(), search);
           // Procesa la respuesta o realiza otras operaciones necesarias
           setTotalPagina(response.totalPages);
           setTotalProducts(response.total);
           setProducts(response.productos);
-          setMarcas(response.marcas);
-          setComponentes(response.componentes);
-          setError(null);
+          setError(false);
           setLoanding(false);
 
         } catch (error) {
@@ -184,7 +151,7 @@ const Category = ({ component }) => {
     
       fetchDataAndHandleResponse();
 
-     }, [consulta, search])
+     }, [marca, search])
 
 
 
@@ -194,7 +161,7 @@ const Category = ({ component }) => {
       loanding ?( <Loader/>):(
         <>
         {
-          error ?( 
+          error || totalProducts == 0 ?( 
             //Error
             <Error/>
             ):
@@ -203,64 +170,39 @@ const Category = ({ component }) => {
                 {/*Banner de la Categoria */}
                 <div className='categoryBanner__Container'>
                   <BannerCategory image={banner.banner__desktop} imageMini={banner.banner__movil} 
-                                  consulta={consulta} loandingBanner={loandingBanner} />
+                                  consulta={marca} loandingBanner={loandingBanner} />
                 </div>
 
                 {/*Seccion Superiror */}
                 <div className='formSearch__Container__Main'>
-                    {/*Secuencia Lógica Categorias*/}
-                    <div className='Pages'> 
-                      <Link to={`/Category/Buscar`} style={{textDecoration:'none', color:'#494949'}}> 
-                          <>Productos</>
-                      </Link>
-                      <Link 
-                        className={consulta === categoria ? 'pagesText__active' : 'pagesText'}
-                        to={`/Category/${categoria}`} 
-                        style={{textDecoration:'none', color:'#494949'}}> 
-                        {categoria != "" ? (
-                          <span className='pagesText__Categoria' >
-                            <AiOutlineRight style={{marginLeft:'0.5rem', marginRight:'0.5rem'}}/>
-                            {categoria}
-                          </span>
-                        ):null
-                      }</Link>
-                      <Link 
-                        className={consulta === subCategoria ? 'pagesText__active' : 'pagesText'}
-                        to={`/Category/${subCategoria}`} 
-                        style={{textDecoration:'none', color:'#494949'}}>
-                      { subCategoria != "" ? (
-                          <span className='pagesText__Categoria'>
-                            <AiOutlineRight style={{marginLeft:'0.5rem', marginRight:'0.5rem'}}/>
-                            {subCategoria}
-                          </span>
-                        ):null
-                      }</Link>
-                      <Link 
-                        className={consulta === linea ? 'pagesText__active' : 'pagesText'}
-                        to={`/Category/${linea}`} 
-                        style={{textDecoration:'none', color:'#494949'}}>
-                      {
-                        linea != "" ? (
-                          <span className='pagesText__Categoria'>
-                            <AiOutlineRight style={{marginLeft:'0.5rem', marginRight:'0.5rem'}}/>
-                            {linea}
-                          </span>
-                        ):null
-                      }
-                      </Link>
+                  {/*Secuencia Lógica Categorias   */}
+                  <div className='Pages'> 
+                    <Link to={'/'} style={{textDecoration:'none', color:'#494949'}}>
+                      <div>Incio</div>
+                    </Link>
+                    <div style={{textDecoration:'none', color:'#494949'}}> 
+                        <AiOutlineRight style={{marginLeft:'0.5rem', marginRight:'0.5rem'}}/>
+                        <>Marcas</>
                     </div>
-                    {/*Barra de Busqueda */}
-                    <div className='formSearch__Container'>
-                      <SearchForm/>
+                    <div className='pagesText__active' style={{textDecoration:'none', color:'#494949'}}> 
+                        <AiOutlineRight style={{marginLeft:'0.5rem', marginRight:'0.5rem'}}/>
+                        <>{marca}</>
                     </div>
+                  </div>
+
+                  {/*Barra de Busqueda */}
+                  <div className='formSearch__Container'>
+                    <SearchForm/>
+                  </div>
+                  
                 </div>
 
                 {/*Titulo de Resultado Desktop */}
                 <div className='result__Search__Container' >
                     {
-                      consulta== "Buscar" ? null:(
+                      marca== "Buscar" ? null:(
                         <div className='result__Search text__Result__Category'> 
-                          <span style={{fontWeight:'700', fontSize:'29px'}}> {consulta}</span>  
+                          <span style={{fontWeight:'700', fontSize:'29px'}}> {marca}</span>  
                         </div>
                       )
                     }
@@ -271,7 +213,7 @@ const Category = ({ component }) => {
                 <div className='result__Category__Container__Movil' >
                       <div className='result__Category__Movil text__Result__Category__Movil'> 
                         <>
-                            <p style={{fontWeight:'700', fontSize:'25px', marginBottom:'0rem', textAlign:'center'}}>{consulta}</p> 
+                            <p style={{fontWeight:'700', fontSize:'25px', marginBottom:'0rem', textAlign:'center'}}>{marca}</p> 
                         </>
                       </div>
                 </div>
@@ -281,7 +223,7 @@ const Category = ({ component }) => {
 
                   {/* Filtro */}
                   <div className='category__filter'>
-                    <FiltersBar Consulta={consulta} Marcas={marcas} Componentes={componentesProd} />
+                    <FiltersBar Consulta={marca} Marcas={marcas} Componentes={componentesProd} />
                   </div>
 
                   {/* Filtro Movil */}
@@ -317,7 +259,7 @@ const Category = ({ component }) => {
                                 </div>       
                           </div>
                           <div className='Paginado__Category'> 
-                              <PaginationList cantidadPagina={ totalPagina } enlace={`/Category/${consulta}`} />
+                              <PaginationList cantidadPagina={ totalPagina } enlace={`/marcas/${marca}`} />
                               <div className="content-Top-options-list-link" style={{paddingLeft:'0.5rem',marginTop:'1rem'}}> 
                                   Total Productos: {totalProducts} 
                               </div>
@@ -336,4 +278,10 @@ const Category = ({ component }) => {
   )
 }
 
-export default Category;
+export default MarcasApi;
+
+
+
+
+
+

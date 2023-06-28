@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { BannerMain } from 'components/BannerMain/BannerMain';
-import Location  from 'components/Contact/Location';
 import Loader from "components/Loader/Loader";
 import ContactSection from 'components/Home/Contact/ContactSection';
 import Companys from 'components/Contact/Companys';

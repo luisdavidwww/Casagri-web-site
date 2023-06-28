@@ -1,26 +1,21 @@
 import React, {useEffect, Suspense} from 'react';
-import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { Link } from 'react-router-dom';
 //componentes
-import CardItem from './CardItem';
-import CardItemNew from './CardItemNew';
+import CardItemApi from './CardItemApi';
 import Loader from "components/Loader/Loader";
-import AOS      from 'aos';
 
 //Estilos y diseño
 import './Cards.css'; 
 import 'aos/dist/aos.css'; 
 
 //Datos para el Carousel
-import { featuredProducts } from '../../data/featuredProducts';
 import  data  from '../../data/daticos/FeaturedProducts.json';
-import { imgCasagriLoad } from '../../data/newsData';
 
 
 
 
-const Cards = ({component}) =>  {
+const Cards = () =>  {
 
   useEffect(() => {
   }, [])
@@ -61,7 +56,6 @@ const Cards = ({component}) =>  {
 }
 
 function ProfileDetails() {
-  // Try to read user info, although it might not have loaded yet
   return (
     <>
     { /*Lista de Productos */ }
@@ -70,20 +64,15 @@ function ProfileDetails() {
           <ul className='cards__items'>
           {data && data.filter((element, idx) => idx < 5).map((item, index) => {
                 return (
-                  <CardItemNew
+                    <CardItemApi
                     key={`${"FeaturedProducts"}-${index}`}
-                    src={imgCasagriLoad.imgUrl}
                     Nombre={item.Nombre}
-                    Peso={item.PesoKG}
-                    path={`/DetailsNew/${ item.Nombre }`}
-                    price={""}
-                    CodigoProd={item.CodigoProd}
+                    Imagen={ "" }
+                    src={ "news02.jpg" }
                     Marca={item.Marca}
-                    ranking={""}
-                    component={"FeaturedProducts"}
-                    categoria={""}
-                    subCategoria={""}
-                    Linea={""}
+                    path={`/DetailsNew/${ item.Nombre.replace(/\s+/g, '-')
+                                                      .replace(/%/g, "%25")
+                                                      .replace(/[ / ]/g, "_") }`}
                     />
                   )
             })}

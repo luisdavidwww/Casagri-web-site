@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
 
 //componentes 
 import  FeaturedProducts  from 'components/Cards/FeaturedProducts';
@@ -7,33 +7,12 @@ import  AboutUsHome  from 'components/Home/AboutUsHome';
 import { CarruselCatalogue } from 'components/Home/CarruselCatalogue';
 import  NewSection  from 'components/NewsCards/NewSection';
 import  BannerCarrousel  from 'components/BannerMain/BannerCarrousel';
-import  CarruselMain  from 'components/CarruselDiscover/CarruselMain';
+import  CarruselMain  from 'components/CarruselHomeMain/CarruselMain';
 import Loader from "components/Loader/Loader";
 import ContactSection from 'components/Home/Contact/ContactSection';
 
 // Data
 import { BANNERSPUBLICIDAD, BANNERSHOME } from '../routers/index';
-
-
-{/* 
-import { BannerData } from '../data/BannerData';
-
-
-// Valor del Banner Principal
-const listaDatos = BannerData.filter(element => element.id === 'SaludAnimalF');
-//Img del banner principal  
-const bannerImg =  listaDatos.map(item => item.img);
-//Img del banner principal  
-const bannerMiniImg =  listaDatos.map(item => item.miniimg);
-//Titulo del banner principal  
-const bannerTitle =  listaDatos.map(item => item.title);
-//Titulo del banner principal  
-const href =  listaDatos.map(item => item.href);
-//Convertimos a strings para las props
-const img =  bannerImg.toString();
-const imageMini =  bannerMiniImg.toString();
-const tit =  bannerTitle.toString();
-*/}
 
 
 
