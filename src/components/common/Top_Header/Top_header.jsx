@@ -80,9 +80,9 @@ const Top_header = () => {
                         */}
                         <div className='content-Top-options-list-icons' >
                             <div className='content-Top-options-list-link' style={{ textDecoration: 'none', fontSize: '18px'}}>
-                                <Link to={`/Category/${allCategories}`}>
+                                {/*<Link to={`/Category/${allCategories}`}>
                                     <BsSearch className='content-top__icon' />
-                                </Link>
+                                </Link>*/}
                             </div> 
                         </div>
                     </div>

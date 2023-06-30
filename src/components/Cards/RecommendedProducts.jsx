@@ -38,7 +38,7 @@ const Cards = () =>  {
                   <CardItemApi
                     key={`${"RecommendedProducts"}-${index}`}
                     Nombre={item.Nombre}
-                    Imagen={ "" }
+                    Imagen={ item.Imagen  }
                     src={ "news02.jpg" }
                     Marca={item.Marca}
                     path={`/DetailsNew/${ item.Nombre.replace(/\s+/g, '-')
