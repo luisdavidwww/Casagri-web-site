@@ -37,6 +37,10 @@
       margin-left: 3rem;
     }
 
+    .navbar-logo-movil{
+      display: none
+    }
+
     .Link-Top-Header {
         color: rgb(255, 255, 255);
         text-decoration: none;
@@ -138,8 +142,12 @@
           padding-right: 2rem;
         }
 
+        .navbar-logo {
+          display: none;
+        }
+    
 
-      .navbar-logo {
+      .navbar-logo-movil{
         display: block;
         position: absolute;
         margin-top: 0.9rem;

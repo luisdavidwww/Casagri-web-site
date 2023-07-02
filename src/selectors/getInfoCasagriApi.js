@@ -1,4 +1,8 @@
 
+
+/* ----------------------------------------------- PRODUCTOS ------------------------------------------------------- */
+
+//Busqueda de productos con el Buscador
 export const getProductDataByName = async ( name, search ) => {
 
   if ( name === '' ) {
@@ -15,6 +19,45 @@ export const getProductDataByName = async ( name, search ) => {
   }
 
 }
+
+//Busqueda de producto detalles
+export const getProductDetails = async ( name ) => {
+
+  if ( name === '' ) {
+      return [];
+  }
+
+  try {
+    const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${'articulos/BuscarDetalle/'}${name}`);
+    const resp = await response.json();
+    return resp;
+    
+  } catch (error) {
+    console.log('Error fetching data:', error);
+  }
+
+}
+
+
+//Busqueda de productos Recomendados
+export const getProductRecomend = async ( name ) => {
+
+  if ( name === '' ) {
+      return [];
+  }
+
+  try {
+    const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${'articulos/BuscarRecomendado/'}${name}`);
+    const resp = await response.json();
+    return resp;
+    
+  } catch (error) {
+    console.log('Error fetching data:', error);
+  }
+
+}
+
+/* ----------------------------------------------- CATEGORIES ------------------------------------------------------- */
 
 export const fetchData = async (category, search) => {
   try {
@@ -654,6 +697,9 @@ export const getBrand = ( searchText, MarcasProductos ) => {
 
 }
 
+
+
+/* ----------------------------------------------- Componentes ------------------------------------------------------- */
 
 
 export const getComponent = ( searchText, ComponentesProductos ) => {

@@ -147,7 +147,7 @@ const Search = () => {
                     </div>
             </div>
             {/*Titulo de Resultado Movil */}
-            <div className='result__Category__Container__Movil' >
+            <div className='result__Category__Container__Movil' style={{marginTop:'80px'}} >
                     <div className='result__Category__Movil text__Result__Category__Movil'> 
                       <>
                           <p style={{fontWeight:'700', fontSize:'25px', marginBottom:'0rem', textAlign:'center'}}>Resultado de Búsqueda: <>&nbsp;</>
@@ -203,7 +203,7 @@ const Search = () => {
                                                                 Imagen={  item.Imagen }
                                                                 CargandoImg={ img.length  == 0 ? "Cargando" : " Cargada" }
                                                                 Peso={item.PesoKG}
-                                                                path={`/DetailsNew/${ item.Nombre.replace(/\s+/g, '-').replace(/%/g, "%25").replace(/[ / ]/g, "_") }`}
+                                                                path={`/Details/${ item.Nombre_interno }`}
                                                                 price={""}
                                                                 CodigoProd={item.CodigoProd}
                                                                 Marca={item.Marca}

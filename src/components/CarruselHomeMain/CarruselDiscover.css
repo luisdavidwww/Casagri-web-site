@@ -27,6 +27,12 @@
   }
 
 
+  .img__Banner-Main{
+    display: block;
+    height: 25vh;
+  }
+
+
 
 /*---------------------------Elementos del carousel-------------------*/
   .slick-list{

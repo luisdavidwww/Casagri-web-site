@@ -24,13 +24,16 @@ export const BannerCategory = (props) => {
         {
           loandingBanner ? (
           <div style={{ height:'25vh' }}>
-            <Skeleton width="100%" height="100%" />   
+            <Skeleton />   
           </div>
           ):(
             <div className='container-Category-Main'>
                 <img className='banner-img' 
                   src={image}
-                  alt={consulta}>
+                  alt={consulta}
+                  
+                  >
+                  
                 </img>
                 <div className='container-Category-Main-Content'>
                   <h1 className='container-Banner-Category-Content-title Gothan-Font w500'>{title}</h1>

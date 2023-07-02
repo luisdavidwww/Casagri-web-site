@@ -16,6 +16,7 @@ import MarcasApi  from 'components/category/MarcasApi';
 import Componentes  from 'components/category/Componentes';
 import { Details }  from 'components/details/Details';
 import { DetailsNew }  from 'components/details/DetailsNew';
+import { DetailsApi }  from 'components/details/DetailsApi';
 
 
 
@@ -37,7 +38,7 @@ export const AppRouter = () => {
                         <Route path="/marcas/:marca" element={ <MarcasApi component={"Marca"}/> }></Route>
                         <Route path="/component/:composicion" element={ <Componentes component={"Composición"}/> }></Route>
                         <Route path="/search/:query" element={ <Search/> }></Route>
-                        <Route path="/Details/:nombre" element={ <Details/> }></Route>
+                        <Route path="/Details/:nombreProducto" element={ <DetailsApi/> }></Route>
                         <Route path="/DetailsNew/:nombreProducto" element={ <DetailsNew/> }></Route>    
                     </Routes>
                     <Footer/>

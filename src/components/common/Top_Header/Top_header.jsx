@@ -35,10 +35,19 @@ const Top_header = () => {
             <div className='ContainerHeader'>
                 <div className='content-Top'>
                         <Link to='/' className='Link-Top-Header'>
+                            {/* Desktop */}
                             <div className='navbar-logo' >
                                 {
                                     LogoCasagri != null ? 
-                                    (<img src={ LogoCasagri } alt="Casagri" />):
+                                    (<img src={ LogoCasagri } width={80} height={80} alt="Casagri" />):
+                                    (<Skeleton variant="rectangular" width={64} height={64} />)
+                                } 
+                            </div> 
+                             {/* Movil */}
+                            <div className='navbar-logo-movil' >
+                                {
+                                    LogoCasagri != null ? 
+                                    (<img src={ LogoCasagri } width={58} height={58} alt="Casagri" />):
                                     (<Skeleton variant="rectangular" width={64} height={64} />)
                                 } 
                             </div> 

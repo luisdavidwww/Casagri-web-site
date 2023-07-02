@@ -13,7 +13,7 @@ const CarruselMain = ({banner, component}) => {
                 { banner.banner__desktop ? (
                     <>
                         <img
-                        className="d-block w-100 img__Banner"
+                        className="d-block w-100 img__Banner-Main"
                         src={banner.banner__desktop}
                         alt="First slide"
                         />
@@ -22,7 +22,7 @@ const CarruselMain = ({banner, component}) => {
                         </Carousel.Caption>
                     </>
                 )
-                :(<Skeleton variant="rectangular" width={'100%'} height={400} />)
+                :(<Skeleton variant="rectangular" width={'100%'} height={"25vh"} />)
                 }
             
           </Carousel.Item>

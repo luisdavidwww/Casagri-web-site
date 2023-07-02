@@ -16,6 +16,10 @@
     margin-bottom: 2rem;
 }
 
+.Details__container__Img{
+    display: flex;
+}
+
 .information__Details{
     width: 800px;
     margin-top: 120px;
@@ -33,6 +37,7 @@ font-family: 'Lexend', sans-serif;
 font-weight: 500;
 font-size: 22px;
 }
+
 .text__Details__Presentation{
 font-size: 14px;
 line-height: 22px;
@@ -44,6 +49,36 @@ padding-right: 1.5rem;
 text-align: center;
 }
 
+.us-container__Details-movil{
+    display: none;
+}
+
 @media only screen and (min-width: 1400px) {
+
+}
+
+
+@media only screen and (max-width: 960px) {
+
+    .formSearch__Container__Main{
+        display: none;
+    }
+
+    .us-container__Details-movil {
+        display: flex !important;
+        justify-content: center !important;
+        flex-direction: column !important;
+        margin: 0rem !important;
+        width: 100% !important;
+    }
+
+    .text__Details__Title{
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 23px;
+        margin: 2rem;
+        }
+
 
 }

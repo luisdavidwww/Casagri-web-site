@@ -48,7 +48,9 @@ export const CarruselCatalogue = ({component}) => {
     <>
     <section className='CarruselCatalogue__main'>
       <div className='title-container-two'>
-          <h1 className='title-basic-center-two'>Categorias</h1>
+          <h1 className='title-basic-center-two' data-aos="fade-up" data-aos-once="true" >
+            Categorias
+          </h1>
       </div>
 
       {/* Carrusel Desktop */}

@@ -36,7 +36,7 @@ function CardItemCarrusel(props) {
 
 
   return (
-    <div data-aos="fade-right" data-aos-once="true" data-aos-duration="1500">
+    <div data-aos="fade-right" data-aos-once="true" data-aos-duration="1700">
       <li className='cards__item-two'
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}

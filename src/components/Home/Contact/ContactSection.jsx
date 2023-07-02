@@ -122,7 +122,7 @@ export default function ContactSection() {
     { /*Titulo de Sección*/ }
       <div className='title-container'>
         <div className='title-container-main'>
-          <h1 className='title-basic-center' data-aos="fade-right" data-aos-once="true" data-aos-duration="1500" >Contáctanos</h1>
+          <h1 className='title-basic-center' data-aos="fade-up" data-aos-once="true" data-aos-duration="1500" >Contáctanos</h1>
         </div>
       </div>
       <div className="container__Contact__Main">

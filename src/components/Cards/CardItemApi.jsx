@@ -8,13 +8,15 @@ import 'aos/dist/aos.css';
 
 function CardItemApi(props) {
 
-
   return (
     <>
-      <li className='cards__item'>
+      <li className='cards__item' 
+        data-aos={ props.Index == null ? null : "zoom-in" }
+        data-aos-once={ props.Index == null ? null : "true" }
+        data-aos-duration={ props.Index == null ? null : props.Index }>
         <div>     
           <Link className='cards__item__link' to={props.path}  
-                state={ [props.Nombre, props.Imagen, props.Marca] }> 
+                /*state={ [props.Nombre, props.Imagen, props.Marca] }*/ > 
               <figure className='cards__item__pic-wrap' >
                 {/* Si no hay Imagen del Producto, se carga una imagen de no Disponbile */}
                 { 

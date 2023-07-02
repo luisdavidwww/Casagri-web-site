@@ -71,7 +71,7 @@ export default function ContactForm() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   return (
-    <div className='container__Form' data-aos="fade-left" data-aos-once="true" data-aos-duration="1500">
+    <div className='container__Form' data-aos="fade-up" data-aos-once="true" data-aos-duration="1500">
       <FormStyle>
         <div className="form-group">
           <label htmlFor="name">
