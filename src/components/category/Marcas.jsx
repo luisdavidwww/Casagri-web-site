@@ -229,6 +229,7 @@ const Marcas = ({ component }) => {
                                               price={""}
                                               CodigoProd={item.CodigoProd}
                                               Marca={item.Marca}
+                                              StockActual={item.StockActual}
                                               ranking={""}
                                               component={component}
                                               categoria={""}

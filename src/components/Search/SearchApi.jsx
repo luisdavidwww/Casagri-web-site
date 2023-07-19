@@ -205,6 +205,7 @@ const Search = () => {
                                                                 Peso={item.PesoKG}
                                                                 path={`/Details/${ item.Nombre_interno }`}
                                                                 price={""}
+                                                                StockActual={item.StockActual}
                                                                 CodigoProd={item.CodigoProd}
                                                                 Marca={item.Marca}
                                                                 ranking={""}

@@ -45,6 +45,28 @@ cursor: pointer;
 }
 
 
+/*No disponible*/
+.no__Disponible{
+  background-color: #ec3b3b;
+  border-radius: 0.5rem;
+  border-color: 2px #a10b0b;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  margin-left: 0rem;
+}
+
+.disponible__box{
+  color: #ffffff;
+  border-radius: 0.5rem;
+  font-family: "Montserrat";
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 30px;
+  letter-spacing: 0px;
+}
+
 /* Icon Heart */
 .icon-heart{
   display: flex;

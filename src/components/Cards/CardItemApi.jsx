@@ -17,6 +17,14 @@ function CardItemApi(props) {
         <div>     
           <Link className='cards__item__link' to={props.path}  
                 /*state={ [props.Nombre, props.Imagen, props.Marca] }*/ > 
+                { props.StockActual == 0 ? (
+                <div className='no__Disponible' >
+                  <div className='disponible__box'>
+                    No disponible
+                  </div>
+                </div>):(null) 
+                }
+                
               <figure className='cards__item__pic-wrap' >
                 {/* Si no hay Imagen del Producto, se carga una imagen de no Disponbile */}
                 { 
@@ -57,6 +65,7 @@ function CardItemApi(props) {
               <div className='cards__item__info-container'>
                   <div className='cards__item__info-title'>
                     <h1 className='cards__item__text-title'>{props.Nombre}</h1>
+                    
                   </div>
                   <div className='cards__item__info'>
                     <h5 className='cards__item__text-presentation'>{props.Marca}</h5>

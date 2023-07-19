@@ -17,6 +17,7 @@ import Componentes  from 'components/category/Componentes';
 import { Details }  from 'components/details/Details';
 import { DetailsNew }  from 'components/details/DetailsNew';
 import { DetailsApi }  from 'components/details/DetailsApi';
+import  Error  from '../pages/Error404';
 
 
 
@@ -39,7 +40,9 @@ export const AppRouter = () => {
                         <Route path="/component/:composicion" element={ <Componentes component={"Composición"}/> }></Route>
                         <Route path="/search/:query" element={ <Search/> }></Route>
                         <Route path="/Details/:nombreProducto" element={ <DetailsApi/> }></Route>
-                        <Route path="/DetailsNew/:nombreProducto" element={ <DetailsNew/> }></Route>    
+                        <Route path="/DetailsNew/:nombreProducto" element={ <DetailsNew/> }></Route>   
+
+                        <Route path="*" element={ <Error/> }></Route>   
                     </Routes>
                     <Footer/>
             </div> 

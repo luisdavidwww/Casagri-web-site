@@ -12,12 +12,31 @@ import 'aos/dist/aos.css';
 
 // Data
 import { ACERCA_DE_CASAGRI } from '../../routers/index'
+import { MdHeight } from 'react-icons/md';
 
 const AboutUs = () => {
 
   const [data, setDataCasagri] = useState([]);
   const [img, setImagen] = useState([]);
 
+  const [expandido, setExpandido] = useState(false);
+
+
+
+  const toggleExpandido = () => {
+    setExpandido(!expandido);
+  };
+
+  const mostrarBoton = () => {
+    const elemento = document.getElementById("texto");
+    if (elemento && elemento.scrollHeight > elemento.clientHeight) {
+      return (
+        <button onClick={toggleExpandido}>
+          {expandido ? "Mostrar menos" : "Mostrar más"}
+        </button>
+      );
+    }
+  };
 
   //Cargamos los datos de la Compañía
   const getInfo = async () => {
@@ -39,6 +58,7 @@ const AboutUs = () => {
 
   return (
     <>
+    
         <section className='AboutUs__main' data-aos="fade-up" data-aos-once="true" data-aos-duration="1500">
             {/* Ttitulo Principal */}
             <div className='AboutUs__title__Container'>
@@ -64,6 +84,17 @@ const AboutUs = () => {
                 )
               }
             </div>
+
+           <div>
+      <div
+        id="texto"
+        className={ expandido ? 'david': 'luis'}
+      >
+        luis david autoprefixer: start value has mixed support, consider using flex-start insteadautoprefixer: start value has mixed support, luis david autoprefixer: start value has mixed support, consider using flex-start insteadautoprefixer: start value has mixed support, luis david autoprefixer: start value has mixed support, consider using flex-start insteadautoprefixer: start value has mixed support, luis david autoprefixer: start value has mixed support, consider using flex-start insteadautoprefixer: start value has mixed support, luis david autoprefixer: start value has mixed support, consider using flex-start insteadautoprefixer: start value has mixed support, s
+      </div>
+      {mostrarBoton()}
+    </div>
+
         </section>
     </>
   )

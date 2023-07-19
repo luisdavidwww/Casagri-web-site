@@ -96,6 +96,7 @@ function ProfileDetails() {
                     Imagen={ item.Imagen }
                     src={ "news02.jpg" }
                     Marca={item.Marca}
+                    StockActual={item.StockActual}
                     path={`/Details/${ item.Nombre_interno }`}
                     />
                   )
