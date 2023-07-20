@@ -9,6 +9,7 @@ import queryString from 'query-string';
 import { imgCasagriLoad } from '../../data/newsData';
 //componentes
 import  SearchForm  from "./SearchForm";
+import  SearchFormAutoComplete  from "./SearchFormAutoComplete";
 import  FiltersBar  from "../Filters/FiltersBar";
 import  FilterSidebar  from "../Filters/FilterSidebar-Movil";
 import CardItemApi from '../Cards/CardItemApi';
@@ -137,6 +138,7 @@ const Search = () => {
                   {/*Barra de Busqueda */}
                   <div className='formSearch__Container'>
                     <SearchForm/>
+                   
                   </div>
             </div>
 

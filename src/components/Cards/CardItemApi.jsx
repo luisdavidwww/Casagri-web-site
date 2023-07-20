@@ -20,7 +20,7 @@ function CardItemApi(props) {
                 { props.StockActual == 0 ? (
                 <div className='no__Disponible' >
                   <div className='disponible__box'>
-                    No disponible
+                    Agotado
                   </div>
                 </div>):(null) 
                 }

@@ -3,6 +3,7 @@ import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from '../../hooks/useForm';
 import { getProductByName } from '../../selectors/getProductByName';
 import queryString from 'query-string';
+import  data  from '../../data/daticos/ProductosNew.json';
 //Estilos
 import './Search.css';
 //icons
@@ -17,6 +18,8 @@ const SearchForm = ({ history }) => {
 
     //variables de estados
     const [alert, setAlert] = useState("");
+    const [showAllSuggestions, setShowAllSuggestions] = useState(false);
+    const maxSuggestions = 5; // Número máximo de sugerencias a mostrar inicialmente
 
 
     //constantes
@@ -63,14 +66,32 @@ const SearchForm = ({ history }) => {
                                 autoComplete="off"
                                 value={ searchText }
                                 onChange={ handleInputChange } 
+                                list="suggestionsList"
                                 
                             />
                             <BsSearch className='icon__Search'/>
+                            <datalist id="suggestionsList">
+                              {searchText.length >= 3 ? (
+                                <div style={{ position: "relative" }}>
+                                  {data
+                                    .slice(0, showAllSuggestions ? data.length : maxSuggestions)
+                                    .map((item, index) => (
+                                      <option
+                                        key={index}
+                                        value={`${item.Nombre.toLowerCase()}`}
+                                      />
+                                    ))}
+                                    <button onClick={() => setShowAllSuggestions(true)}>Ver todas</button>
+                                    {showAllSuggestions && (
+                                      <button onClick={() => setShowAllSuggestions(false)}>Ver menos</button>
+                                    )}
+                                </div>
+                              ) : null}
+                            </datalist>
                           
                     </form>
             </div>
         </div>
-
     </div>
 
   )

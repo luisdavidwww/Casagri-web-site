@@ -141,6 +141,13 @@ const Navbar = ({component}) => {
     }
   };
 
+
+  const cerrarVentanaDesplegable = () =>{
+    setSubHeading("");
+    setSubLineHeading("");
+    setDropdown(false);
+  }
+
    //Constante Auxiliar
    const refOne = useRef(undefined);
 
@@ -209,7 +216,7 @@ const Navbar = ({component}) => {
               <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} key={`${component}-${index}`} >
 
                   {/* Lineas de Producto en el Navbar */}
-                  <div className={heading == link.name && hover ? 'desktopNav__container-line' : 'desktopNav__container-line' }>
+                  <div className={heading == link.name && hover  ? 'desktopNav__container-line' : 'desktopNav__container-line' }>
                     <div /*to={`/Category/${link.name}`}*/  style={{textDecoration:'none'}}>
                       <div
                           className={ 'desktopNav__container-line-title' }
@@ -246,6 +253,7 @@ const Navbar = ({component}) => {
                                           <Link className="desktopNav__SubLines-two" 
                                                 onMouseOver={() => { setSubHeading(mysublinks.Head); }} 
                                                 onMouseLeave={() => {setSubHeading("");}} 
+                                                onClick={() => { cerrarVentanaDesplegable() }}
                                                 key={`${component}-${'Sub-category'}-${index}`} 
                                                 to={`/Category/${mysublinks.Head}`}
                                                 style={{textDecoration:'none'}}
@@ -269,7 +277,9 @@ const Navbar = ({component}) => {
                                                             <div className="desktopNav__Container-Lines-subLines-one" onMouseLeave={() => {setSubHeading("");}} >
                                                               {mysublinks.sublink.map((slink, index) => (   
                                                                   <Link className='desktopNav__Container-Lines-subLines-tol-one' 
-                                                                      onMouseOver={() => { setSubLineHeading(slink.name); }} onMouseLeave={() => {setSubLineHeading("");}}
+                                                                      onMouseOver={() => { setSubLineHeading(slink.name); }} 
+                                                                      onMouseLeave={() => {setSubLineHeading("");}}
+                                                                      onClick={() => { cerrarVentanaDesplegable() }}
                                                                       key={`${component}-${'category-Act'}-${index}`}
                                                                       to={`/Category/${slink.name}`}
                                                                       style={{textDecoration:'none'}}
