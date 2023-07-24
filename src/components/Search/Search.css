@@ -193,6 +193,9 @@
 
 /*Auto complete */
 
+.datalist{
+  width: 100%
+}
 
 .sugerencia{
   padding: 5px;

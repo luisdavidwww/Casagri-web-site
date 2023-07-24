@@ -69,12 +69,14 @@ const SearchForm = ({ history }) => {
                                 list="suggestionsList"
                                 
                             />
-                            <BsSearch className='icon__Search'/>
-                            <datalist id="suggestionsList">
-                              {searchText.length >= 3 ? (
-                                <div style={{ position: "relative" }}>
+                            {/*<BsSearch className='icon__Search'/>*/}
+                          
+                    </form>
+                    <datalist id="suggestionsList" >
+                              {searchText.length >= 4 ? (
+                                <div>
                                   {data
-                                    .slice(0, showAllSuggestions ? data.length : maxSuggestions)
+                                    .slice( showAllSuggestions ? data.length : maxSuggestions)
                                     .map((item, index) => (
                                       <option
                                         key={index}
@@ -87,9 +89,7 @@ const SearchForm = ({ history }) => {
                                     )}
                                 </div>
                               ) : null}
-                            </datalist>
-                          
-                    </form>
+                      </datalist>
             </div>
         </div>
     </div>
