@@ -3,9 +3,10 @@ import { useParams, useLocation, Link } from "react-router-dom";
 
 import { getProductsBrand } from "../../selectors/getInfoCasagriApi";
 
-//componentes 
+//componentes  
 import CardItemApi from '../Cards/CardItemApi';
 import  SearchForm  from "../Search/SearchForm";
+import  SearchFormMovil  from "../Search/SearchFormMovil";
 import  FilterSidebar  from "../Filters/FilterSidebar-Movil";
 import  FiltersBar  from "../Filters/FiltersBar";
 import { BannerCategory } from 'components/BannerMain/BannerCategory';
@@ -216,6 +217,13 @@ const MarcasApi = ({ component }) => {
                             <p style={{fontWeight:'700', fontSize:'25px', marginBottom:'0rem', textAlign:'center'}}>{marca}</p> 
                         </>
                       </div>
+                </div>
+
+                {/*Barra de Busqueda Movil*/}
+                <div className='us-container__Details-movil'  >
+                  <div className='formSearch__Container'>
+                    <SearchFormMovil/>
+                  </div>
                 </div>
 
                 {/*Contenido de Sección */}

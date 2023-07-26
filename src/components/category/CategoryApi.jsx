@@ -7,6 +7,7 @@ import { fetchData } from "../../selectors/getInfoCasagriApi";
 //componentes 
 import CardItemApi from '../Cards/CardItemApi';
 import  SearchForm  from "../Search/SearchForm";
+import  SearchFormMovil  from "../Search/SearchFormMovil";
 import  FilterSidebar  from "../Filters/FilterSidebar-Movil";
 import  FiltersBar  from "../Filters/FiltersBar";
 import { BannerCategory } from 'components/BannerMain/BannerCategory';
@@ -275,6 +276,13 @@ const Category = ({ component }) => {
                         </>
                       </div>
                 </div>
+                {/*Barra de Busqueda Movil*/}
+                <div className='us-container__Details-movil'  >
+                  <div className='formSearch__Container'>
+                    <SearchFormMovil/>
+                  </div>
+                </div>
+                
 
                 {/*Contenido de Sección */}
                 <div className='category__Container'>

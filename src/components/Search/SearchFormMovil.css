@@ -1,0 +1,84 @@
+.Search__form--Movil{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+}
+
+.Search__imput--Movil{
+    width:320px;
+    margin: auto;
+    line-height: 30px;
+    border-radius: 4px;
+    border: 1px solid #e7e3e3;
+    margin: 0px;
+    font-family: "Montserrat";
+    font-size: 13px;
+    font-weight: 500;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    letter-spacing: 0.1px;
+    transition: 0.4s;
+}
+
+.Search__imput--Movil:focus {
+    outline: none;
+  }
+  
+  .Search__imput--Movil:focus-within {
+    border: 1.9px solid #47A01A;
+    transition: 0.4s;
+  }
+
+
+
+   /*Completado Sugerencia*/
+
+  .autocomplete__container--Movil{
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    background: rgb(255, 255, 255);
+    border-bottom: 1.9px solid #dbdbdb;
+    border-left: 1.9px solid #dbdbdb;
+    border-right: 1.9px solid #dbdbdb;
+    box-shadow: 0px 5px 5px rgb(0, 0, 0, 0.1);
+    z-index: 100;
+    opacity: 1;
+    margin-top: 0.11rem;
+  }
+  .autocomplete__List--Movil{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 0px;
+  }
+  
+  .autocomplete__List--Scroll--Movil{
+    width: 100%;
+    padding-top: 0px;
+    overflow-y: scroll;
+    height: 35vh;
+  }
+  .autocomplete__List--Scroll--Movil--Nombre{
+    width: 100%;
+    padding-top: 0px;
+    overflow-y: scroll;
+    height: 50vh;
+  }
+
+  .autocomplete__item--Movil{
+    display: flex;
+    width: 320px;
+    padding-top: 16px;
+    padding-bottom: 2px;
+    padding-left: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.1px;
+    line-height: 20px;
+    text-align: start !important;
+    z-index: 200;
+    opacity: 1;
+  }

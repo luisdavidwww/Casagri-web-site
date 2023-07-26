@@ -40,7 +40,7 @@ const BrandsCarrousel = () => {
     arrows: false,
     infinite: true,
     slidesToShow: 3,
-    slidesToScroll: 1,
+    slidesToScroll: 3,
     autoplay: false,
     speed: 700,
     autoplaySpeed: 3000,

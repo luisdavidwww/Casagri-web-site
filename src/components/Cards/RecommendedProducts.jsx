@@ -80,7 +80,7 @@ const Cards = () =>  {
 
       { /*Btn de Funciones */ }
       <div className='btn-featuredProducts' data-aos="zoom-in" data-aos-once="true" data-aos-duration="1000">
-        <a href={`/Category/Buscar`} style={{textDecoration:'none'}}>
+        <a href={`/Category/Medicina Veterinaria`} style={{textDecoration:'none'}}>
           <button className='btn-outline-featuredProducts btn-text'
             >Ver todos
           </button>

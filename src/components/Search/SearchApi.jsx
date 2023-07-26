@@ -15,6 +15,7 @@ import  FilterSidebar  from "../Filters/FilterSidebar-Movil";
 import CardItemApi from '../Cards/CardItemApi';
 import { BannerCategory } from 'components/BannerMain/BannerCategory';
 import Loader from "components/Loader/Loader";
+import SearchFormMovil from "./SearchFormMovil";
 //Variables de Entorno
 import { BANNERSCATEGORIA, BANNERS } from '../../routers/index';
 //Datos para los banners 
@@ -85,6 +86,8 @@ const Search = () => {
 
     useEffect(() => {
 
+      console.log(query);
+      
         const fetchDataAndHandleResponse = async () => {
 
           try {
@@ -161,6 +164,13 @@ const Search = () => {
                     </div>
             </div>
 
+            {/*Barra de Busqueda Movil*/}
+            <div className='us-container__Details-movil'  >
+              <div className='formSearch__Container'>
+                <SearchFormMovil/>
+              </div>
+            </div>
+
             {/*Contenido de Sección */}
             <div className='category__Container'>
 
@@ -180,7 +190,7 @@ const Search = () => {
                 {/*Resultado de Busqueda*/}
                 <>
                             { 
-                                     products.length == 0  ? 
+                                     products.length == 0 && !loanding ? 
                                      ( 
                                       <div className='category__products'>
                                           <div className='container__error'>

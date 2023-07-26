@@ -84,17 +84,6 @@ const AboutUs = () => {
                 )
               }
             </div>
-
-           <div>
-      <div
-        id="texto"
-        className={ expandido ? 'david': 'luis'}
-      >
-        luis david autoprefixer: start value has mixed support, consider using flex-start insteadautoprefixer: start value has mixed support, luis david autoprefixer: start value has mixed support, consider using flex-start insteadautoprefixer: start value has mixed support, luis david autoprefixer: start value has mixed support, consider using flex-start insteadautoprefixer: start value has mixed support, luis david autoprefixer: start value has mixed support, consider using flex-start insteadautoprefixer: start value has mixed support, luis david autoprefixer: start value has mixed support, consider using flex-start insteadautoprefixer: start value has mixed support, s
-      </div>
-      {mostrarBoton()}
-    </div>
-
         </section>
     </>
   )

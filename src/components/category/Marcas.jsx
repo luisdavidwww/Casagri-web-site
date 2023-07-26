@@ -6,9 +6,10 @@ import { useParams,Link, useLocation, useNavigate} from "react-router-dom";
 import { getProductByCategory ,  
         getBrandsByName, 
         getProductByBrands } from "../../selectors/getInfoCasagri";
-//componentes
+//componentes 
 import CardItemApi from '../Cards/CardItemApi';
 import  SearchForm  from "../Search/SearchForm";
+import  SearchFormMovil  from "../Search/SearchFormMovil";
 import  FiltersBar  from "../Filters/FiltersBar";
 import  FilterSidebar  from "../Filters/FilterSidebar-Movil";
 import { BannerCategory } from 'components/BannerMain/BannerCategory';
@@ -179,6 +180,8 @@ const Marcas = ({ component }) => {
                       </>
                     </div>
                 </div>
+
+                
                 
                 
     

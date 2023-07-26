@@ -3,8 +3,11 @@ import { useParams, useNavigate, useLocation, Link } from "react-router-dom";
 
 //componentes de Error y Carga 
 import  RecommendedProductsDetails  from './RecommendedProductsDetails';
+import  Description  from './Description';
 import  Error  from '../../pages/Error404';
 import  Loader from "components/Loader/Loader";
+import SearchForm from "../Search/SearchForm";
+import SearchFormMovil from "../Search/SearchFormMovil";
 
 //Variable para Imagen
 import  img  from '../../static/images/news/news011.jpg';
@@ -18,6 +21,7 @@ import './Details.css';
 
 //icons
 import { AiOutlineRight } from "react-icons/ai";
+import { BsFillTagFill } from "react-icons/bs";
 
 
 //importacion temporal de imagenes
@@ -70,7 +74,9 @@ const [products, setProducts] = useState([]);
                 <>
                 {/* ----------- DESKTOP ----------------*/}
 
-                <div className='formSearch__Container__Main'>
+                
+
+                <div className='formSearch__Container__Main' >
 
                     {/* Paginacion */}
                     <div className='Pages'> 
@@ -86,10 +92,14 @@ const [products, setProducts] = useState([]);
                               </span>
                           </div>
                     </div>
+                    {/*Barra de Busqueda */}
+                    <div className='formSearch__Container'>
+                      <SearchForm/>
+                    </div>
                     {/* Informacion del Producto */}
-                    <article >
-                          <section className="Details__main">
-                              <div className='Details__container' key={`${"ImagenProducts"}`} >
+                    <article style={{marginTop:'3rem'}}>
+                          <section className="Details__main" >
+                              <div className='Details__container'  key={`${"ImagenProducts"}`} >
                                 <div className='Details__container__Img'>
                                   {/* Imagen del Producto */}
                                   {
@@ -103,7 +113,22 @@ const [products, setProducts] = useState([]);
                                 </div>
                                 <div className='information__Details'> 
                                   <h1 className="text__Details__Title" >{products.Nombre}</h1>    
-                                  <h1 className="text__Details__Price" >{products.Marca}</h1>            
+                                  <h1 className="text__Details__Price" ><BsFillTagFill style={{marginRight:"1rem"}}/>{products.Marca}</h1>   
+
+
+                                  { products.StockActual == 0 ? (
+                                    <div className='no__Disponible__Container--Details' >
+                                      <div className='no__Disponible--Details'>
+                                        Agotado
+                                      </div>
+                                    </div>):(
+                                      <div className='Disponible__Container--Details' >
+                                        <div className='Disponible--Details'>
+                                          Disponible
+                                        </div>
+                                      </div>
+                                    ) 
+                                    }        
                                 </div>
                               </div>
                           </section>
@@ -130,6 +155,10 @@ const [products, setProducts] = useState([]);
                                   </span>
                               </div>
                         </div>
+                        {/*Barra de Busqueda */}
+                        <div className='formSearch__Container'>
+                          <SearchFormMovil/>
+                        </div>
 
                         <a className='us-wrap__trayectory' >
                             {/* Imagen del Producto */}
@@ -144,10 +173,27 @@ const [products, setProducts] = useState([]);
                           
                         <div className='us-wrap-Info-Movil' >
                           <h1 className="text__Details__Title" style={{marginTop:'1rem'}} >{products.Nombre}</h1>    
-                          <h1 className="text__Details__Price" style={{marginTop:'1rem'}} >{products.Marca}</h1> 
+                          <h1 className="text__Details__Price" style={{marginTop:'1rem'}} >
+                            <BsFillTagFill style={{marginRight:"0.2rem"}}/>
+                            {products.Marca}</h1> 
+                          { products.StockActual == 0 ? (
+                                    <div className='no__Disponible__Container--Details' >
+                                      <div className='no__Disponible--Details'>
+                                        Agotado
+                                      </div>
+                                    </div>):(
+                                      <div className='Disponible__Container--Details' >
+                                        <div className='Disponible--Details'>
+                                          Disponible
+                                        </div>
+                                      </div>
+                                    ) 
+                              }   
                         </div>
                       </div>
                 </div>
+
+                <Description Descripcion={products.Descripcion} cat2={products.cat2} ComponenteActivo={products.cat4} />
 
                 <div style={{backgroundColor:'#F9F9F9'}} >
                   <RecommendedProductsDetails nombreProducto={nombreProducto}/>

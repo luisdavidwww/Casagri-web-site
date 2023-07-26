@@ -11,6 +11,7 @@ import 'aos/dist/aos.css';
 //componentes
 import Top_header from '../Top_Header/Top_header';
 import  SearchNavbar  from "../../Search/SearchNavbar";
+import  SearchForm  from "../../Search/SearchForm";
 import Dropdown from '../Dropdown/Dropdown';
 //icons 
 import { IoCloseOutline, IoMenuOutline } from "react-icons/io5";
@@ -159,6 +160,8 @@ const Navbar = ({component}) => {
      } else{
      }
    }
+
+   
 
 
    //constante para parametros de redirección
