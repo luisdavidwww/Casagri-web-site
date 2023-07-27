@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import Slider from "react-slick";
 
 //componentes
@@ -13,6 +13,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import 'aos/dist/aos.css'; 
 
+// Data
+import { CATEGORIAS } from '../../routers/index';
+
 //Icons 
 import { VscChevronRight } from "react-icons/vsc";
 import { VscChevronLeft } from "react-icons/vsc";
@@ -20,7 +23,30 @@ import { VscChevronLeft } from "react-icons/vsc";
 
 
 
+
 export const CarruselCatalogue = ({component}) => {
+
+
+
+  const [loanding, setLoanding] = useState(false);
+  const [bannerCategory, setBannerCategory] = useState([]);
+
+  //Peticion Para los banners delas categorias
+  const getInfo = async () => {
+
+    //Estado del Loanding Verdadero
+    setLoanding(true);
+
+    //Banner Publicidad -- Peticion a la api
+    const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${CATEGORIAS}`);
+    const res = await response.json();
+    setBannerCategory(res.data);
+
+    //Estado del Loanding Falso
+    setLoanding(false);
+
+  }
+
 
   //creating the ref
   const customeSlider = useRef();
@@ -42,7 +68,11 @@ export const CarruselCatalogue = ({component}) => {
     customeSlider.current.slickPrev();
   }
 
- 
+
+  useEffect(() => {
+    getInfo();
+  },[])
+
 
   return (
     <>
@@ -57,13 +87,12 @@ export const CarruselCatalogue = ({component}) => {
       <div className="main-Container">
         <div className='container-Slick'>
               <Slider {...sliderSettings} ref={customeSlider}>
-                {Categorys?.map((item, index) => (
+                {bannerCategory?.map((item, index) => (
                   <CardItemCarrusel
                     key={`${component}-${index}`}
-                    text={item.text}
-                    src={item.img}
-                    label={item.label}
-                    href={item.href}
+                    text={item.nombre}
+                    src={item.imagen_principal}
+                    href={`${"/Category/"}${item.nombre}`}
                   />
                   ))}
               </Slider>
@@ -73,13 +102,12 @@ export const CarruselCatalogue = ({component}) => {
       {/* Categorias Movil */}
       <div className="main-Container-Movil">
         <div className='container-Slick' >
-          {Categorys?.map((item, index) => (
+          {bannerCategory?.map((item, index) => (
                   <CardItemCarrusel
-                    key={`${component}-${index}`}
-                    text={item.text}
-                    src={item.img}
-                    label={item.label}
-                    href={item.href}
+                  key={`${component}-${index}`}
+                  text={item.nombre}
+                  src={item.imagen_principal}
+                  href={`${"/Category/"}-${item.nombre}`}
                   />
                   ))}
               

@@ -9,7 +9,7 @@ const CarruselMain = ({banner, component}) => {
     <section className='Carrousel__Banner__Desktop'>
       <Carousel fade indicators={false}>
           {banner?.map((banner, index) => (
-            <Carousel.Item interval={4000}  key={`${component}-${'desktop'}-${index}`} >
+            <Carousel.Item interval={3000}  key={`${component}-${'desktop'}-${index}`} >
                 { banner.banner__desktop ? (
                     <>
                         <img

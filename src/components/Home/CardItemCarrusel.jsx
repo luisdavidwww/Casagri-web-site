@@ -46,7 +46,8 @@ function CardItemCarrusel(props) {
               <img 
               className='cards__item__img-two'
               alt={props.text}
-              src={imgL(`./${props.src}`)}
+              //src={imgL(`./${props.src}`)}
+              src={props.src}
                       
                       />
           </figure>

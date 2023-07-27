@@ -258,9 +258,7 @@ const MarcasApi = ({ component }) => {
                                               src={ "news02.jpg" }
                                               Marca={item.Marca}
                                               StockActual={item.StockActual}
-                                              path={`/DetailsNew/${ item.Nombre.replace(/\s+/g, '-')
-                                                                               .replace(/%/g, "%25")
-                                                                               .replace(/[ / ]/g, "_") }`}
+                                              path={`/Details/${ item.Nombre_interno }`}
                                               />
                                           ))}
                                     </ul>
