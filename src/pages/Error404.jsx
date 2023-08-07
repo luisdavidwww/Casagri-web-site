@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 //componentes 
 import { BannerCategory } from 'components/BannerMain/BannerCategory';
 
+//Imagenes
+import  Movil  from '../static/images/404/Not Found 404 Movil.webp';
+import  Desktop  from '../static/images/404/Not Found 404.webp';
+
 //Variables de Entorno
 import { BANNERS } from '../routers/index';
 
@@ -17,7 +21,6 @@ const Error = () => {
     const [banner, setBanner] = useState([]);
     const [loandingBanner, setLoandingBanner] = useState(true);
 
-    //Peticion el Banner Principal
     //Peticion el Banner Principal
     const getInfo = async () => {
 
@@ -55,7 +58,7 @@ const Error = () => {
         <>
                 {/*Banner de la Categoria */}
                 <div className='categoryBanner__Container'>
-                  <BannerCategory image={banner.banner__desktop} imageMini={banner.banner__movil} 
+                  <BannerCategory image={Desktop} imageMini={Movil} 
                                     consulta={"Buscar"} loandingBanner={loandingBanner} />
                 </div>
 
@@ -83,12 +86,13 @@ const Error = () => {
                         No encontramos la página que estás buscando.
                         Por favor, inténtalo de nuevo.
                       </div>
-                      <div style={{ display:'block', height:'10vh', justifyContent:'center', textAlign:'center', marginTop:'3rem' }}>
+                      
+                  </>
+                </div>
+                <div style={{ display:'block', height:'10vh', justifyContent:'center', textAlign:'center', marginTop:'3rem', fontWeight:'bold' }}>
                         <Link to={`/`} style={{textDecoration:'none', color:'#494949'}}> 
                           <AiOutlineArrowLeft/> <>Volver al Inicio</>
                         </Link>
-                      </div>
-                  </>
                 </div>
               </>
     </div>

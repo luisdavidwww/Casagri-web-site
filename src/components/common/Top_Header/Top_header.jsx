@@ -3,7 +3,7 @@ import { useLocation, Link } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
 
 //components
-import  SearchNavbar  from "../../Search/SearchNavbar";
+import  SearchFormTopHeader  from "../../Search/SearchFormTopHeader";
 
 //logo
 import LogoCasagri from "static/casagri-logo-01.svg"
@@ -77,23 +77,22 @@ const Top_header = () => {
                             </div>        
                         </div>
                         
-
-                        {/* Opcones de Icons 
                         <div className='content-Top-options-list-icons-set'>
                             <div className='content-Top-options-list-link' style={{ textDecoration: 'none', fontSize: '18.6px'}}>
-                                <Link to='/'>
-                                    <BsCart3 className='content-top__icon' />
-                                </Link> 
+                                {/*Barra de Busqueda */}
                             </div>
                         </div>
-                        */}
+
                         <div className='content-Top-options-list-icons' >
+                            
+                             {/* <SearchFormTopHeader/> */}
                             <div className='content-Top-options-list-link' style={{ textDecoration: 'none', fontSize: '18px'}}>
-                                {/*<Link to={`/Category/${allCategories}`}>
+                                <Link to={`/Category/${allCategories}`}>
                                     <BsSearch className='content-top__icon' />
-                                </Link>*/}
+                                </Link>
                             </div> 
                         </div>
+
                     </div>
                 </div> 
             </div>    

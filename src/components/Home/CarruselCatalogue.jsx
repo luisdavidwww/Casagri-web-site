@@ -4,9 +4,6 @@ import Slider from "react-slick";
 //componentes
 import CardItemCarrusel from "./CardItemCarrusel";
 
-//Datos para el Carousel
-import { Categorys } from '../../data/Categorys';
-
 //Estilos y diseño
 import './CarruselCatalogue.css'
 import "slick-carousel/slick/slick.css";
@@ -38,7 +35,7 @@ export const CarruselCatalogue = ({component}) => {
     setLoanding(true);
 
     //Banner Publicidad -- Peticion a la api
-    const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${CATEGORIAS}`);
+    const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE__TWO}${CATEGORIAS}`);
     const res = await response.json();
     setBannerCategory(res.data);
 
