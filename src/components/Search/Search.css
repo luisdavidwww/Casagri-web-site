@@ -12,6 +12,16 @@
     width: 100%;
     /*background-color: #f6f7f9;*/
 }
+
+.Search__container__Active-TopHeader{
+  display: inline-block;
+  position: relative;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 0px;
+  width: 100%;
+  /*background-color: #f6f7f9;*/
+}
 .Search__Brand__container__Active{
   display: inline-block;
   position: relative;
@@ -110,6 +120,34 @@
 .icon__Search:hover{
   cursor: pointer;
   color: rgb(199, 194, 194);
+}
+
+
+
+
+
+
+
+
+.Search__imput__Top-Header{
+  width:0px;
+  margin: auto;
+  line-height: 30px;
+  border-radius: 4px;
+  border: 1px solid #e7e3e3;
+  margin: 0px;
+  font-family: "Montserrat";
+  font-size: 13px;
+  font-weight: 500;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  letter-spacing: 0.1px;
+  transition: 0.4s;
+}
+
+.Search__imput__Top-Header:focus-within {
+  border: 1.9px solid #47A01A;
+  width:300px;
+  transition: 0.4s;
 }
 
 

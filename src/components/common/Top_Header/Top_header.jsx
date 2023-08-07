@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef } from 'react'
 import { useLocation, Link } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
 
@@ -22,8 +22,29 @@ const Top_header = () => {
     //Constantes de todas las categorias
     const allCategories = 'Buscar';
 
+    const [click, setClick] = useState(false);
+
     //hook que utilizo para llevar el scroll a la parte superior en cada Router
     let location = useLocation();
+
+    //Metodo click
+    const handleClick = () => {
+        if(click == false){
+            setClick(true);
+            console.log("Se muestra la barra")
+          }
+          if(click == true){
+            setClick(false);
+            console.log("se hace la busqueda")
+          }
+    }
+
+
+    useEffect(() => {
+        //document.addEventListener("click", handleclickOutside, true);
+    }, []);
+
+
     useEffect(() => {
     window.scrollTo({ top: 0 });
   }, [location]);
@@ -80,16 +101,17 @@ const Top_header = () => {
                         <div className='content-Top-options-list-icons-set'>
                             <div className='content-Top-options-list-link' style={{ textDecoration: 'none', fontSize: '18.6px'}}>
                                 {/*Barra de Busqueda */}
+                                <SearchFormTopHeader activacion={ click }/> 
                             </div>
                         </div>
 
                         <div className='content-Top-options-list-icons' >
                             
                              {/* <SearchFormTopHeader/> */}
-                            <div className='content-Top-options-list-link' style={{ textDecoration: 'none', fontSize: '18px'}}>
-                                <Link to={`/Category/${allCategories}`}>
-                                    <BsSearch className='content-top__icon' />
-                                </Link>
+                            <div className='content-Top-options-list-link' style={{ textDecoration: 'none', fontSize: '16px'}} onClick={ () => { handleClick(); }} >
+                                <div to={`/Category/${allCategories}`} >
+                                    <BsSearch className='content-top__icon'  />
+                                </div>
                             </div> 
                         </div>
 

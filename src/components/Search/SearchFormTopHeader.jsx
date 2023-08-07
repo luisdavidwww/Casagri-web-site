@@ -14,7 +14,7 @@ import { SiMoleculer } from "react-icons/si";
 
 
 
-const SearchFormTopHeader = ({ history }) => {
+const SearchFormTopHeader = ({ activacion }) => {
 
     //constantes
     const { query } = useParams();
@@ -25,6 +25,7 @@ const SearchFormTopHeader = ({ history }) => {
     //variables de estados
     const [alert, setAlert] = useState("");
     const [click, setClick] = useState(false);
+    const [activationForm, setActivacionForm] = useState(activacion);
     const [showAllSuggestions, setShowAllSuggestions] = useState(false);
     const maxSuggestions = 5; // Número máximo de sugerencias a mostrar inicialmente
     
@@ -37,7 +38,6 @@ const SearchFormTopHeader = ({ history }) => {
     const { searchText } = formValues;
 
 
-    const heroesFiltered = useMemo(() => getProductByName( query ))
 
 
     //Metodos para busqueda de producto
@@ -64,10 +64,12 @@ const SearchFormTopHeader = ({ history }) => {
      //Metododos para el autocompletado y sugerencias del buscador
      const refOne = useRef(undefined);
 
+     const inputRef = useRef(null);
+
      //Escucha cualquier click en el documento para cerrarla ventana de sugerencia del buscador
      const handleclickOutside = (e) => {
        if (!refOne?.current?.contains(e.target)){
-        setClick(false)
+        setClick(false);
        } else{
        }
      }
@@ -101,30 +103,39 @@ const SearchFormTopHeader = ({ history }) => {
       document.addEventListener("click", handleclickOutside, true);
       }, []);
 
+      useEffect(() => {
+        setActivacionForm(activacion)
+        if (activacion) {
+          inputRef.current.focus();
+        }
+        }, [activacion]);
 
+      
 
   return (
     <div>
         {/* Formulario de Busqueda */}
-        <div className='Search__container__Active'>
+        <div className='Search__container__Active-TopHeader'>
             <div className="container__Search__Active">
-                
-                    <form onSubmit={ handleSearch } className='Search__form' onClick={ () => { handleClick(); }}>
-                            <input 
-                                type="text"
-                                placeholder="Buscar productos"
-                                className='Search__imput'
-                                name="searchText"
-                                autoComplete="off"
-                                value={ searchText }
-                                onChange={ handleInputChange } 
-                                list="suggestionsList"
-                            />
-                            <BsSearch className='icon__Search'/>
-                    </form>
-
+                                    {
+                                      activacion ? ( 
+                                      <form onSubmit={ handleSearch } className='Search__form' >
+                                        <input 
+                                        ref={inputRef} 
+                                        type="text"
+                                        placeholder="Buscar productos"
+                                        className='Search__imput__Top-Header'
+                                        name="searchText"
+                                        autoComplete="off"
+                                        value={ searchText }
+                                        onChange={ handleInputChange } 
+                                        list="suggestionsList"
+                                        />
+                                        </form>)
+                                        :(null)
+                                    }
                     <div >
-                      { searchText.length >= 4 && click ? (
+                      { searchText.length >= 4 && activationForm ? (
                         <div className='autocomplete__container' >
                         
                           {/* Sugerencias para Nombre de Productos*/}

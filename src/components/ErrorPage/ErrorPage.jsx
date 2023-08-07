@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 import { BannerCategory } from 'components/BannerMain/BannerCategory';
 
 //Imagenes
-import  Movil  from '../../static/images/404/Not Found 404 Movil.webp';
-import  Desktop  from '../../static/images/404/Not Found 404.webp';
+import  Movil  from '../../static/images/404/Error Conexion Movil.webp';
+import  Desktop  from '../../static/images/404/Error Conexion.webp';
 
 const ErrorPage = ({message}) => {
 
