@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react"
 import { useParams, useNavigate, useLocation, Link } from "react-router-dom";
 
-//componentes de Error y Carga 
+//componentes
 import  RecommendedProductsDetails  from './RecommendedProductsDetails';
 import  Description  from './Description';
-import  Error  from '../../pages/Error404';
-import  Loader from "components/Loader/Loader";
 import SearchForm from "../Search/SearchForm";
 import SearchFormMovil from "../Search/SearchFormMovil";
+
+//Manejo de Carga y Error
+import Loader from "components/Loader/Loader";
+import  ErrorPage  from 'components/ErrorPage/ErrorPage';
 
 //Variable para Imagen
 import  img  from '../../static/images/news/news011.jpg';
@@ -42,9 +44,20 @@ const [error, setError] = useState(null);
 //Variables de Productos
 const [products, setProducts] = useState([]);
 
+//FormatoParatitulo de Página
+function formatTitle(title) {
+  let productoNombre = title.toLocaleLowerCase()
+  const words = productoNombre.split('-').map(word => {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+  });
+  return words.join('-');
+}
+
 
   useEffect(() => {
 
+    document.title=`${ formatTitle(nombreProducto) }  |  ${"Casagri"}`
+    
     const BuscarProducto = async () => {
       try {
         setLoanding(true);
@@ -69,12 +82,10 @@ const [products, setProducts] = useState([]);
       {
         loanding ?( <Loader/>):(
           <>
-          { error ? ( <Error/> ):
+          { error ? ( <ErrorPage/> ):
               (
                 <>
                 {/* ----------- DESKTOP ----------------*/}
-
-                
 
                 <div className='formSearch__Container__Main' >
 
@@ -112,8 +123,10 @@ const [products, setProducts] = useState([]);
                                   
                                 </div>
                                 <div className='information__Details'> 
-                                  <h1 className="text__Details__Title" >{products.Nombre}</h1>    
-                                  <h1 className="text__Details__Price" ><BsFillTagFill style={{marginRight:"1rem"}}/>{products.Marca}</h1>   
+                                  {/*Nombre del Producto*/}
+                                  <h1 className="text__Details__Title" >{products.Nombre}</h1>
+                                  {/*Marca*/}    
+                                  <h1 className="text__Details__Price" ><BsFillTagFill style={{marginRight:"1rem"}}/>Marca: {products.Marca}</h1>   
 
 
                                   { products.StockActual == 0 ? (

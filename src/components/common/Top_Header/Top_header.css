@@ -18,6 +18,8 @@
       }
   
     .content-Top{
+      display: flex;
+      z-index: 25 !important;
       text-align: start;
       text-decoration: none;
       font-size: 13px;
@@ -31,9 +33,10 @@
 
 
     .navbar-logo {
+      display: flex;
       margin-top: 1rem;
-      height: 1.8rem;
-      width: 4.5rem;
+      height: 80px;
+      width: 80px;
       margin-left: 3rem;
     }
 
@@ -42,9 +45,12 @@
     }
 
     .Link-Top-Header {
-        color: rgb(255, 255, 255);
-        text-decoration: none;
-
+      display: flex;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      color: rgb(255, 255, 255);
+      text-decoration: none;
       }
 
     .Linea {
@@ -114,7 +120,9 @@
       display: flex;
       justify-content: center;
       position: absolute;
-      margin-left: 10px;
+      margin-left: 1%;
+      padding-left: 0.1%;
+      margin-top: 0.1%;
       height: 20px;
       right: 7%;
       color: rgb(148, 145, 145);

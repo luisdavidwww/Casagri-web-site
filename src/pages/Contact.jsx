@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react'
+
+//Componentes
 import { BannerMain } from 'components/BannerMain/BannerMain';
-import Loader from "components/Loader/Loader";
 import ContactSection from 'components/Home/Contact/ContactSection';
 import Companys from 'components/Contact/Companys';
 
+//Manejo de Carga y Error
+import Loader     from "components/Loader/Loader";
+import ErrorPage  from "components/ErrorPage/ErrorPage"; 
 
-//Datos para los banners
+//Peticiones
 import { BANNERS } from '../routers/index';
 
 
@@ -17,40 +21,61 @@ export const Contact = () => {
   const [banner, setBanner] = useState([]);
 
 
-    //Peticion del Banner Principal
-    const getInfo = async () => {
+  const getBannerContact = async () => {
+    try {
 
-    //Estado del Loanding Verdadero
-    setLoanding(true);
+      //Se inicializa elcomponente "Cargando"
+      setLoanding(true);
 
-    //Petición a la api
-    const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${'Contácto'}`);
-    const res = await response.json();
-    setBanner(res.data);
+      // Banner Home -- Petición a la api
+      const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${'Contácto'}`);
+      const responseData = await response.json();
+      // Verificar si la respuesta contiene un error
+      if (responseData.error) {
+        throw new Error(responseData.error);
+      }
+      //Se carga el Banner Home
+      setBanner(responseData.data);
 
-    //Estado del Loanding Falso
-    setLoanding(false);
-  }
+      //Desactiva el componente "Cargando" y no se carga ningún error 
+      setLoanding(false);
+      setError(null);
+
+    } catch (error) {
+      setLoanding(false);
+      if (error.message) {
+        setError(`${error.message}`);
+      } else if (error.request) {
+        setError('No se pudo conectar con el servidor');
+      } else {
+        setError('Error desconocido');
+      }
+    }
+  };
+
 
   useEffect(() => {
-    getInfo();
+    document.title= `Contacto - Casagri`
+    getBannerContact();
   },[])
 
 
   return (
     <>
-      <div style={{backgroundColor:'#F9F9F9'}}>
-      {
-          loanding ?( <Loader/>):(
-            <>
-              <BannerMain image={ banner.banner__desktop } imageMini={ banner.banner__movil } /> 
-              {/*<Location/>*/}
-              <Companys/>
-              <ContactSection/>
-            </>
-          )
-        }
-      </div>
+      <div style={{ backgroundColor: '#F9F9F9' }}>
+      {loanding ? (
+        <Loader />
+      ) : error ? (
+        <ErrorPage message={error} />
+      ) : (
+        <>
+          <BannerMain image={ banner.banner__desktop } imageMini={ banner.banner__movil } /> 
+          {/*<Location/>*/}
+          <Companys/>
+          <ContactSection/>
+        </>
+      )}
+    </div>
     </>
   )
 }

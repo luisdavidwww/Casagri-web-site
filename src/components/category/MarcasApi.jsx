@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useLocation, Link } from "react-router-dom";
 
-import { getProductsBrand } from "../../selectors/getInfoCasagriApi";
-
 //componentes  
 import CardItemApi from '../Cards/CardItemApi';
 import  SearchForm  from "../Search/SearchForm";
@@ -11,23 +9,25 @@ import  FilterSidebar  from "../Filters/FilterSidebar-Movil";
 import  FiltersBar  from "../Filters/FiltersBar";
 import { BannerCategory } from 'components/BannerMain/BannerCategory';
 import  PaginationList  from './PaginationApi';
-import  Error  from '../../pages/Error404';
+
+//Hook para Peticiones
+import { getProductsBrand } from "../../selectors/getInfoCasagriApi";
 
 //Variables de Entorno
 import { BANNERSCATEGORIA, BANNERS, CATEGORIAS, BUSCARCATEGORIA } from '../../routers/index';
 
-
-//Loader Styles
+//Manejo de Carga y Error
 import Loader from "components/Loader/Loader";
-
+import  ErrorPage  from '../../components/ErrorPage/ErrorPage';
 
 //Estilos
 import './Category.css';
 import './Pagination.css';
 
-
 //icons
 import { AiOutlineRight } from "react-icons/ai";
+
+
 
 
 const MarcasApi = ({ component }) => {
@@ -164,7 +164,7 @@ const MarcasApi = ({ component }) => {
         {
           error || totalProducts == 0 ?( 
             //Error
-            <Error/>
+            <ErrorPage />
             ):
             (
               <>

@@ -70,7 +70,8 @@ const Top_header = () => {
                             <div className='navbar-logo' >
                                 {
                                     LogoCasagri != null ? 
-                                    (<img src={ LogoCasagri } width={80} height={80} alt="Casagri" />):
+                                    (<img src={ LogoCasagri } width={"80px"} height={"80px"} alt="Casagri" />
+                                ):
                                     (<Skeleton variant="rectangular" width={64} height={64} />)
                                 } 
                             </div> 
@@ -119,7 +120,9 @@ const Top_header = () => {
                             
                              {/* <SearchFormTopHeader/> */}
                             <div className='content-Top-options-list-link' style={{ textDecoration: 'none', fontSize: '19px', marginLeft:'0.7rem'}} onClick={ () => { handleClick(); }} >
-                                        <BsSearch className='content-top__icon'  />
+                                {
+                                    click ? (null):(<BsSearch className='content-top__icon'  />)
+                                }
                             </div> 
                         </div>
 

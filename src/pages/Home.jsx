@@ -15,7 +15,7 @@ import Loader     from "components/Loader/Loader";
 import ErrorPage  from "components/ErrorPage/ErrorPage"; 
 
 // Peticiones
-import { BANNERSPUBLICIDAD, BANNERSHOME } from '../routers/index';
+import { BANNERSHOME } from '../routers/index';
 
 
 
@@ -64,8 +64,10 @@ export const Home = () => {
   
 
   useEffect(() => {
+    document.title= `Casagri`;
     getBannerHome();
   },[])
+
 
 
   return (

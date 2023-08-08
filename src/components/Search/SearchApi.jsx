@@ -1,27 +1,30 @@
 import React, {  useMemo, useState, useEffect } from 'react';
 import { useParams, useLocation, useNavigate, Link } from "react-router-dom";
-import { useForm } from '../../hooks/useForm';
-//import { getProductByName } from '../../selectors/getProductByName';
-//import  {getProductDataByName}  from "../../selectors/getInfoCasagri";
-import  PaginationList  from '../category/PaginationApi';
-import { getProductDataByName } from "../../selectors/getInfoCasagriApi";
 import queryString from 'query-string';
-import { imgCasagriLoad } from '../../data/newsData';
+
 //componentes
 import  SearchForm  from "./SearchForm";
-import  SearchFormAutoComplete  from "./SearchFormAutoComplete";
 import  FiltersBar  from "../Filters/FiltersBar";
 import  FilterSidebar  from "../Filters/FilterSidebar-Movil";
 import CardItemApi from '../Cards/CardItemApi';
-import { BannerCategory } from 'components/BannerMain/BannerCategory';
-import Loader from "components/Loader/Loader";
 import SearchFormMovil from "./SearchFormMovil";
-//Variables de Entorno
-import { BANNERSCATEGORIA, BANNERS } from '../../routers/index';
+import  PaginationList  from '../category/PaginationApi';
+
+//Hooks
+import { useForm } from '../../hooks/useForm';
+import { getProductDataByName } from "../../selectors/getInfoCasagriApi";
+
+//Manejo de Carga y Error
+import Loader from "components/Loader/Loader";
+import  ErrorPage  from 'components/ErrorPage/ErrorPage';
+
+
 //Datos para los banners 
 import { BannerSearch } from '../../data/BannerData';
+
 //Estilos
 import './Search.css';
+
 //icons
 import { AiOutlineRight } from "react-icons/ai";
 
@@ -86,7 +89,7 @@ const Search = () => {
 
     useEffect(() => {
 
-
+        document.title=`${query} | ${"Casagri"}`
       
         const fetchDataAndHandleResponse = async () => {
 
@@ -100,14 +103,12 @@ const Search = () => {
             setLoanding(false);
   
           } catch (error) {
-
             setLoanding(false);
             setError('Ocurrió un error al obtener los datos. Por favor, inténtalo de nuevo.');
           }
         };
       
         fetchDataAndHandleResponse();
-
 
 
       },[ query, search])
@@ -118,131 +119,136 @@ const Search = () => {
     {
       loanding ?( <Loader/>):(
         <>
-        
-            {/*<BannerCategory image={banner.banner__desktop} imageMini={banner.banner__movil}  consulta={tit}/>*/}
+        {
+          error ? (<ErrorPage />):(
+            <>
+              {/*<BannerCategory image={banner.banner__desktop} imageMini={banner.banner__movil}  consulta={tit}/>*/}
 
-            {/*Seccion Superiror */}
-            <div className='formSearch__Container__Main'>
-                  {/*Paginacion*/}
-                  <div className='Pages__Search'> 
-                    <Link to={`/`} style={{textDecoration:'none', color:'#494949'}}> 
-                        <>Inicio</>
-                    </Link>
-                    <>
-                      <AiOutlineRight style={{marginTop:'0.6rem', marginLeft:'0.5rem', marginRight:'0.5rem'}}/>
-                        <span className='pagesText__Search pagesText__active' >
-                        Resultado de búsqueda:
-                          '{query}'
-                        </span>
-                    </>
-                  </div>
-                  {/*Barra de Busqueda */}
-                  <div className='formSearch__Container'>
-                    <SearchForm/>
-                   
-                  </div>
-            </div>
-
-            {/*Titulo de Resultado Desktop */}
-            <div className='result__Search__Container' >
-                    <div className='result__Search text__Result__Category'> 
-                        <span style={{fontWeight:'700', fontSize:'29px'}}> Resultado de Búsqueda: <>&nbsp;</> '{query}'</span>  
-                    </div>
-            </div>
-            {/*Titulo de Resultado Movil */}
-            <div className='result__Category__Container__Movil' style={{marginTop:'80px'}} >
-                    <div className='result__Category__Movil text__Result__Category__Movil'> 
+              {/*Seccion Superiror */}
+              <div className='formSearch__Container__Main'>
+                    {/*Paginacion*/}
+                    <div className='Pages__Search'> 
+                      <Link to={`/`} style={{textDecoration:'none', color:'#494949'}}> 
+                          <>Inicio</>
+                      </Link>
                       <>
-                          <p style={{fontWeight:'700', fontSize:'25px', marginBottom:'0rem', textAlign:'center'}}>Resultado de Búsqueda: <>&nbsp;</>
-                          <span style={{fontWeight:'700', fontSize:'25px', marginBottom:'0rem', textAlign:'center', color:'#47A01A'}}>'{query}'</span> 
-                          </p> 
-                          
-                            {/*<BsXLg className='iconResult__Category'/>*/}
+                        <AiOutlineRight style={{marginTop:'0.6rem', marginLeft:'0.5rem', marginRight:'0.5rem'}}/>
+                          <span className='pagesText__Search pagesText__active' >
+                          Resultado de búsqueda:
+                            '{query}'
+                          </span>
                       </>
                     </div>
-            </div>
-
-            {/*Barra de Busqueda Movil*/}
-            <div className='us-container__Details-movil'  >
-              <div className='formSearch__Container'>
-                <SearchFormMovil/>
-              </div>
-            </div>
-
-            {/*Contenido de Sección */}
-            <div className='category__Container'>
-
-                  {/* Filtro */}
-                  <div className='category__filter'>
-                    <FiltersBar/>
-                  </div>
-                  {/* Filtro Movil */}
-                  <div className='category__filter__Movil'>
-                    <div className='category__Display'>
-                      Display 
+                    {/*Barra de Busqueda */}
+                    <div className='formSearch__Container'>
+                      <SearchForm/>
+                    
                     </div>
-                      <FilterSidebar/>
-                  </div>
-            
+              </div>
 
-                {/*Resultado de Busqueda*/}
-                <>
-                            { 
-                                     products.length == 0 && !loanding ? 
-                                     ( 
-                                      <div className='category__products'>
-                                          <div className='container__error'>
-                                            <div className="alert alert-danger" style={{textAlign:'center', width:'300px'}}>
-                                                La búsqueda: '{query}' no ha devuelto ningún resultado
+              {/*Titulo de Resultado Desktop */}
+              <div className='result__Search__Container' >
+                      <div className='result__Search text__Result__Category'> 
+                          <span style={{fontWeight:'700', fontSize:'29px'}}> Resultado de Búsqueda: <>&nbsp;</> '{query}'</span>  
+                      </div>
+              </div>
+              {/*Titulo de Resultado Movil */}
+              <div className='result__Category__Container__Movil' style={{marginTop:'80px'}} >
+                      <div className='result__Category__Movil text__Result__Category__Movil'> 
+                        <>
+                            <p style={{fontWeight:'700', fontSize:'25px', marginBottom:'0rem', textAlign:'center'}}>Resultado de Búsqueda: <>&nbsp;</>
+                            <span style={{fontWeight:'700', fontSize:'25px', marginBottom:'0rem', textAlign:'center', color:'#47A01A'}}>'{query}'</span> 
+                            </p> 
+                            
+                              {/*<BsXLg className='iconResult__Category'/>*/}
+                        </>
+                      </div>
+              </div>
+
+              {/*Barra de Busqueda Movil*/}
+              <div className='us-container__Details-movil'  >
+                <div className='formSearch__Container'>
+                  <SearchFormMovil/>
+                </div>
+              </div>
+
+              {/*Contenido de Sección */}
+              <div className='category__Container'>
+
+                    {/* Filtro */}
+                    <div className='category__filter'>
+                      <FiltersBar/>
+                    </div>
+                    {/* Filtro Movil */}
+                    <div className='category__filter__Movil'>
+                      <div className='category__Display'>
+                        Display 
+                      </div>
+                        <FilterSidebar/>
+                    </div>
+              
+
+                  {/*Resultado de Busqueda*/}
+                  <>
+                              { 
+                                      products.length == 0 && !loanding ? 
+                                      ( 
+                                        <div className='category__products'>
+                                            <div className='container__error'>
+                                              <div className="alert alert-danger" style={{textAlign:'center', width:'300px'}}>
+                                                  La búsqueda: '{query}' no ha devuelto ningún resultado
+                                                </div>
+                                            </div>
+                                          </div>
+                                      ):
+                                      (
+                                        <div className='category__products'>
+                                        {/*--------------------- Busqueda Exitosa -------------------------*/}
+                                          <div className='cards'>
+                                              <div className='cards__container'>
+                                                <div className='cards__wrapper'> 
+                                                  <ul className='cards__items__Container'>
+                                                    {products?.map((item, index) => (
+                                                                  <CardItemApi
+                                                                  key={`${"search"}-${index}`}
+                                                                  src={"news02.jpg" }
+                                                                  Nombre={item.Nombre}
+                                                                  Imagen={  item.Imagen }
+                                                                  CargandoImg={ img.length  == 0 ? "Cargando" : " Cargada" }
+                                                                  Peso={item.PesoKG}
+                                                                  path={`/Details/${ item.Nombre_interno }`}
+                                                                  price={""}
+                                                                  StockActual={item.StockActual}
+                                                                  CodigoProd={item.CodigoProd}
+                                                                  Marca={item.Marca}
+                                                                  ranking={""}
+                                                                  component={"search"}
+                                                                  categoria={""}
+                                                                  subCategoria={""}
+                                                                  Linea={""}
+                                                                  />
+                                                              ))}
+                                                  </ul>
+                                                </div>
+                                              </div>       
+                                          </div>
+                                          <div className='Paginado__Category'> 
+                                              <PaginationList cantidadPagina={ totalPagina } enlace={`/Search/${query}`} />
+                                              <div className="content-Top-options-list-link" style={{paddingLeft:'0.5rem',marginTop:'1rem'}}> 
+                                                  Total Productos: {totalProducts} 
                                               </div>
                                           </div>
                                         </div>
-                                     ):
-                                     (
-                                      <div className='category__products'>
-                                      {/*--------------------- Busqueda Exitosa -------------------------*/}
-                                        <div className='cards'>
-                                            <div className='cards__container'>
-                                              <div className='cards__wrapper'> 
-                                                <ul className='cards__items__Container'>
-                                                  {products?.map((item, index) => (
-                                                                <CardItemApi
-                                                                key={`${"search"}-${index}`}
-                                                                src={"news02.jpg" }
-                                                                Nombre={item.Nombre}
-                                                                Imagen={  item.Imagen }
-                                                                CargandoImg={ img.length  == 0 ? "Cargando" : " Cargada" }
-                                                                Peso={item.PesoKG}
-                                                                path={`/Details/${ item.Nombre_interno }`}
-                                                                price={""}
-                                                                StockActual={item.StockActual}
-                                                                CodigoProd={item.CodigoProd}
-                                                                Marca={item.Marca}
-                                                                ranking={""}
-                                                                component={"search"}
-                                                                categoria={""}
-                                                                subCategoria={""}
-                                                                Linea={""}
-                                                                />
-                                                            ))}
-                                                </ul>
-                                              </div>
-                                            </div>       
-                                        </div>
-                                        <div className='Paginado__Category'> 
-                                            <PaginationList cantidadPagina={ totalPagina } enlace={`/Search/${query}`} />
-                                            <div className="content-Top-options-list-link" style={{paddingLeft:'0.5rem',marginTop:'1rem'}}> 
-                                                Total Productos: {totalProducts} 
-                                            </div>
-                                        </div>
-                                      </div>
-                                     )      
-                                          
-                            }
-                </>
-            
-            </div>
-
+                                      )      
+                                            
+                              }
+                  </>
+              
+              </div>
+            </>
+          )
+        }
+        
         </>
       )
     }

@@ -125,7 +125,7 @@ const SearchFormTopHeader = ({ activacion }) => {
                                         onChange={ handleInputChange } 
                                         list="suggestionsList"
                                         />
-                                        {/*<BsSearch className='icon__Search'/>*/}
+                                        <BsSearch className='icon__Search'/>
                                       </form>)
                                         :(
                                         <form onSubmit={ handleSearch } className='Search__form-false' >

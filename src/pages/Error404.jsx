@@ -48,6 +48,7 @@ const Error = () => {
   }
 
     useEffect(() => {
+      document.title= `Error 404`
       getInfo();
      }, [])
 
