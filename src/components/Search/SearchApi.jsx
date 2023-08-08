@@ -86,7 +86,7 @@ const Search = () => {
 
     useEffect(() => {
 
-      console.log(query);
+
       
         const fetchDataAndHandleResponse = async () => {
 
@@ -100,15 +100,13 @@ const Search = () => {
             setLoanding(false);
   
           } catch (error) {
-            console.log('Error fetching data:', error);
+
             setLoanding(false);
             setError('Ocurrió un error al obtener los datos. Por favor, inténtalo de nuevo.');
           }
         };
       
         fetchDataAndHandleResponse();
-
-        console.log(products);
 
 
 

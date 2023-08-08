@@ -83,6 +83,11 @@
       margin-left: 15px;
       padding: 10px;
     }
+    .content-Top-options-list-searchform-set{
+      margin-top: 1.7rem;
+      margin-left: 15px;
+      padding: 10px;
+    }
 
     .content-Top-options-list-icons{
       margin-top: 2.5rem;
@@ -106,7 +111,13 @@
     }
 
     .content-top__icon{
-      color: #121312;
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      margin-left: 10px;
+      height: 20px;
+      right: 7%;
+      color: rgb(148, 145, 145);
       transition: all .25s ease-in-out;
     }
     .content-top__icon:hover{

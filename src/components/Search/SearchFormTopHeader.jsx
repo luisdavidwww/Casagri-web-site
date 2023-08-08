@@ -48,13 +48,14 @@ const SearchFormTopHeader = ({ activacion }) => {
           }  
           else{
             e.preventDefault();
+            setClick(false);
             navigate(`/search/${ searchText }`);
-            //setAlert(searchText);
           }
         
     }
 
     const searchClick = ( props ) => {
+        setActivacionForm(false);
         navigate(`/search/${ props }`);
     }
 
@@ -84,7 +85,7 @@ const SearchFormTopHeader = ({ activacion }) => {
       }
       
       }
-  
+
 
 
 
@@ -103,13 +104,6 @@ const SearchFormTopHeader = ({ activacion }) => {
       document.addEventListener("click", handleclickOutside, true);
       }, []);
 
-      useEffect(() => {
-        setActivacionForm(activacion)
-        if (activacion) {
-          inputRef.current.focus();
-        }
-        }, [activacion]);
-
       
 
   return (
@@ -118,10 +112,10 @@ const SearchFormTopHeader = ({ activacion }) => {
         <div className='Search__container__Active-TopHeader'>
             <div className="container__Search__Active">
                                     {
-                                      activacion ? ( 
-                                      <form onSubmit={ handleSearch } className='Search__form' >
+                                      activacion  ? ( 
+                                      <form onSubmit={ handleSearch } className='Search__form' onClick={ () => { handleClick(); }} >
                                         <input 
-                                        ref={inputRef} 
+                                        //ref={inputRef} 
                                         type="text"
                                         placeholder="Buscar productos"
                                         className='Search__imput__Top-Header'
@@ -131,12 +125,25 @@ const SearchFormTopHeader = ({ activacion }) => {
                                         onChange={ handleInputChange } 
                                         list="suggestionsList"
                                         />
+                                        {/*<BsSearch className='icon__Search'/>*/}
+                                      </form>)
+                                        :(
+                                        <form onSubmit={ handleSearch } className='Search__form-false' >
+                                          <input 
+                                          type="text"
+                                          placeholder="Buscar productos"
+                                          className='Search__imput__Top-Header-false'
+                                          name="searchText"
+                                          autoComplete="off"
+                                          value={ searchText }
+                                          onChange={ handleInputChange } 
+                                          list="suggestionsList"
+                                          />
                                         </form>)
-                                        :(null)
                                     }
                     <div >
-                      { searchText.length >= 4 && activationForm ? (
-                        <div className='autocomplete__container' >
+                      { searchText.length >= 4 && click ? (
+                        <div className='autocomplete__container-TopHeader' >
                         
                           {/* Sugerencias para Nombre de Productos*/}
                           <div

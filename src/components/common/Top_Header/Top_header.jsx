@@ -27,27 +27,37 @@ const Top_header = () => {
     //hook que utilizo para llevar el scroll a la parte superior en cada Router
     let location = useLocation();
 
+    const refOne = useRef(undefined);
+    const refInput = useRef(null);
+
     //Metodo click
     const handleClick = () => {
         if(click == false){
             setClick(true);
-            console.log("Se muestra la barra")
           }
           if(click == true){
             setClick(false);
-            console.log("se hace la busqueda")
           }
     }
 
+     //Escucha cualquier click en el documento para cerrarla ventana de sugerencia del buscador
+     const handleclickOutside = (e) => {
+        if (!refOne?.current?.contains(e.target) && !refInput?.current?.contains(e.target)) {
+          setClick(false);
+        }
+      };
+
+      useEffect(() => {
+        document.addEventListener("click", handleclickOutside, true);
+        return () => {
+          document.removeEventListener("click", handleclickOutside, true);
+        };
+      }, []);
+
 
     useEffect(() => {
-        //document.addEventListener("click", handleclickOutside, true);
-    }, []);
-
-
-    useEffect(() => {
-    window.scrollTo({ top: 0 });
-  }, [location]);
+        window.scrollTo({ top: 0 });
+    }, [location]);
 
 
   return (
@@ -98,20 +108,18 @@ const Top_header = () => {
                             </div>        
                         </div>
                         
-                        <div className='content-Top-options-list-icons-set'>
-                            <div className='content-Top-options-list-link' style={{ textDecoration: 'none', fontSize: '18.6px'}}>
+                        <div className='content-Top-options-list-searchform-set' ref={ refInput } >
+                            <div className='content-Top-options-list-link' style={{ textDecoration: 'none', fontSize: '18.6px',}}>
                                 {/*Barra de Busqueda */}
-                                <SearchFormTopHeader activacion={ click }/> 
+                                <SearchFormTopHeader activacion={ click }  /> 
                             </div>
                         </div>
 
-                        <div className='content-Top-options-list-icons' >
+                        <div className='content-Top-options-list' >
                             
                              {/* <SearchFormTopHeader/> */}
-                            <div className='content-Top-options-list-link' style={{ textDecoration: 'none', fontSize: '16px'}} onClick={ () => { handleClick(); }} >
-                                <div to={`/Category/${allCategories}`} >
-                                    <BsSearch className='content-top__icon'  />
-                                </div>
+                            <div className='content-Top-options-list-link' style={{ textDecoration: 'none', fontSize: '19px', marginLeft:'0.7rem'}} onClick={ () => { handleClick(); }} >
+                                        <BsSearch className='content-top__icon'  />
                             </div> 
                         </div>
 
