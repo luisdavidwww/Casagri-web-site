@@ -125,8 +125,15 @@ function formatTitle(title) {
                                 <div className='information__Details'> 
                                   {/*Nombre del Producto*/}
                                   <h1 className="text__Details__Title" >{products.Nombre}</h1>
+                                  
+                                  {/*Informacion del producto*/}
+                                  <div style={{marginTop:'0rem', width:'80%'}}>
+                                    <h5 className="text__Details__Presentation" >{`${formatTitle(products.cat2)}, ${formatTitle(products.Cat3)}, ${formatTitle(products.cat4)}`}</h5>
+                                  </div>
+
                                   {/*Marca*/}    
-                                  <h1 className="text__Details__Price" ><BsFillTagFill style={{marginRight:"1rem"}}/>Marca: {products.Marca}</h1>   
+                                  <h1 className="text__Details__Price" style={{marginTop:'2.2rem'}} ><BsFillTagFill style={{marginRight:"1rem"}}/>Marca: {products.Marca}</h1>   
+                                  
 
 
                                   { products.StockActual == 0 ? (
@@ -185,10 +192,16 @@ function formatTitle(title) {
                         </a>
                           
                         <div className='us-wrap-Info-Movil' >
-                          <h1 className="text__Details__Title" style={{marginTop:'1rem'}} >{products.Nombre}</h1>    
-                          <h1 className="text__Details__Price" style={{marginTop:'1rem'}} >
+                          <h1 className="text__Details__Title" style={{marginTop:'1rem'}} >{products.Nombre}</h1> 
+                          {/*Informacion del producto*/}
+                          <div style={{marginTop:'0rem'}}>
+                              <h5 className="text__Details__Presentation-Movil" >
+                                {`${formatTitle(products.cat2)}, ${formatTitle(products.Cat3)}, ${formatTitle(products.cat4)}`}
+                              </h5>
+                          </div>   
+                          <h1 className="text__Details__Price" style={{marginTop:'3rem'}} >
                             <BsFillTagFill style={{marginRight:"0.2rem"}}/>
-                            {products.Marca}</h1> 
+                            Marca: {products.Marca}</h1> 
                           { products.StockActual == 0 ? (
                                     <div className='no__Disponible__Container--Details' >
                                       <div className='no__Disponible--Details'>

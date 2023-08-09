@@ -483,6 +483,17 @@ export const fetchData = async (category, search) => {
             }
         }
 
+        if ( category === 'DESPARASITANTES') {
+          try {
+              const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${'articulos/CategoriaBuscar/desparasitantes'}${search}`);
+              const resp = await response.json();
+              return resp;
+              
+            } catch (error) {
+              console.log('Error fetching data:', error);
+            }
+        }
+
         if ( category === 'HEMOPARASITICIDAS') {
           try {
               const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${'articulos/CategoriaBuscar/hemoparasiticidas'}${search}`);

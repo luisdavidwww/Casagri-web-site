@@ -141,7 +141,7 @@ export const links = [
     name: "Salud Pública",
     submenu: true,
     sublinks: [
-      { Head: "Control De Plaga", subitem: false, },
+      { Head: "Control De Plagas", subitem: false, },
       { Head: "Desinfectante", subitem: false },
     ],
   },

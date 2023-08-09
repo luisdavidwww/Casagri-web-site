@@ -39,16 +39,26 @@ font-size: 17px;
 margin-top: 1rem;
 }
 
-.text__Details__Presentation{
-font-size: 14px;
+.text__Details__Presentation-Movil{
+font-size: 13px;
 line-height: 22px;
 font-family: "Poppins Regular";
-color: black;
-padding-top: 0.4rem;
-padding-left: 1.5rem;
-padding-right: 1.5rem;
+color: rgb(104, 96, 96);
+padding-left: 2.5rem;
+padding-right: 2.5rem;
 text-align: center;
 }
+
+.text__Details__Presentation{
+  font-size: 13px;
+  line-height: 22px;
+  font-family: "Poppins Regular";
+  color: rgb(104, 96, 96);
+  padding-top: 0rem;
+  padding-left: 0rem;
+  padding-right: 1.5rem;
+  text-align: start;
+  }
 
 .us-container__Details-movil{
     display: none;
