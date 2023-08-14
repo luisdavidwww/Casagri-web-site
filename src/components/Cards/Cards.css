@@ -302,6 +302,11 @@ cursor: pointer;
   margin-right: 20px;
   padding-bottom: 0rem;
   margin: 0px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 /*  Fuentes del Precio del Producton  */
 .cards__item__text-price {

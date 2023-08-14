@@ -104,7 +104,7 @@ export const CarruselCatalogue = ({component}) => {
                   key={`${component}-${index}`}
                   text={item.nombre}
                   src={item.imagen_principal}
-                  href={`${"/Category/"}-${item.nombre}`}
+                  href={`${"/Category/"}${item.nombre}`}
                   />
                   ))}
               

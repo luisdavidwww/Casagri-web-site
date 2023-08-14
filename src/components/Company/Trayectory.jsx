@@ -2,8 +2,8 @@ import React, { useRef, useState, useEffect } from 'react';
 import Slider from "react-slick";
 
 //imagenes
-import Tecnología from 'static/images/Trayectory/InnovasionTecnologica.jpg';
-import Trayectoria from 'static/images/Trayectory/Trayectoria.jpg';
+import Tecnología from 'static/images/Trayectory/InnovasionTecnologica.webp';
+import Trayectoria from 'static/images/Trayectory/Trayectoria.webp';
 //Diseño y estilos
 import './Trayectory.css';
 //Estilos y diseño

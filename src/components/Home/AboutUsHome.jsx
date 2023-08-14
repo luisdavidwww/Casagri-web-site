@@ -1,7 +1,7 @@
 import React from 'react';
 
 //imagenes
-import nosotros from 'static/images/home/aboutUsHome.jpg';
+import nosotros from 'static/images/home/aboutUsHome.webp';
 
 //Estilos y diseño
 import './AboutUsHome.css'

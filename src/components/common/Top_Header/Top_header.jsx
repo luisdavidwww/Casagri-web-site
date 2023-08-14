@@ -65,7 +65,7 @@ const Top_header = () => {
         <div className='Top_header-Container-Copy'>
             <div className='ContainerHeader'>
                 <div className='content-Top'>
-                        <Link to='/' className='Link-Top-Header'>
+                        <Link to='/cw_site/1/' className='Link-Top-Header'>
                             {/* Desktop */}
                             <div className='navbar-logo' >
                                 {
@@ -89,7 +89,7 @@ const Top_header = () => {
                     <div className='content-Top-options'>
                         <div className='content-Top-options-list'>
                             <div className='content-Top-options-list-link'>
-                                <Link to='/' className='content-Top-options-list-link' style={{ textDecoration: 'none'}}>
+                                <Link to='/cw_site/1/' className='content-Top-options-list-link' style={{ textDecoration: 'none'}}>
                                     Inicio
                                 </Link> 
                             </div>  

@@ -1,12 +1,17 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+//Hooks
+import { getBrandCategoryApi } from "../../selectors/getBrandsCasagri";
 //Variable para Imagen
 import  img  from '../../static/images/news/news02.jpg';
 //Diseño
 import 'aos/dist/aos.css'; 
-
+//icons
+import { BsFillTagFill } from "react-icons/bs";
 
 function CardItemApi(props) {
+
+  const imgL = require.context('../../static/images/brands/brands-c', true);
 
   return (
     <>
@@ -65,10 +70,19 @@ function CardItemApi(props) {
               <div className='cards__item__info-container'>
                   <div className='cards__item__info-title'>
                     <h1 className='cards__item__text-title'>{props.Nombre}</h1>
-                    
                   </div>
                   <div className='cards__item__info'>
-                    <h5 className='cards__item__text-presentation'>{props.Marca}</h5>
+                    {
+                      getBrandCategoryApi(props.Marca) == false ? (
+                        <h5 className='cards__item__text-presentation'>
+                          <BsFillTagFill style={{marginRight:'0.5rem', color:'#939996'}}/>{props.Marca}
+                        </h5>)
+                      :(<h5 className='cards__item__text-presentation'>
+                          <img src={imgL(`./${props.Marca}.webp`)} style={{height:'23px', width:'23px', marginTop:'0px', marginRight:'0.5rem'}} />
+                          {props.Marca}
+                        </h5>)
+                    }
+
                   </div>
               </div>
           </Link>

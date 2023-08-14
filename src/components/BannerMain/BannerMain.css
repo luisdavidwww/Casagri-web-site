@@ -2,7 +2,7 @@
     display:none;
 }
 .container-Banner-Main{
-    display:flex
+    display:flex;
 }
 
 @media screen and (max-width: 960px) {

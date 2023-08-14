@@ -91,7 +91,7 @@ const Error = () => {
                   </>
                 </div>
                 <div style={{ display:'block', height:'10vh', justifyContent:'center', textAlign:'center', marginTop:'3rem', fontWeight:'bold' }}>
-                        <Link to={`/`} style={{textDecoration:'none', color:'#494949'}}> 
+                        <Link to={`/cw_site/1/`} style={{textDecoration:'none', color:'#494949'}}> 
                           <AiOutlineArrowLeft/> <>Volver al Inicio</>
                         </Link>
                 </div>

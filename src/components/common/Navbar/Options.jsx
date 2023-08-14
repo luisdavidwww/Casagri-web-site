@@ -3,7 +3,7 @@ export const op = [
     id:1,
     option: "Inicio",
     value: true,
-    href:'/',
+    href:'/cw_site/1/',
     icon:'BsCart3'
   },
   {

@@ -31,7 +31,7 @@ export const AppRouter = () => {
             <div style={{  display:'block' }}>
                     <NavbarNew component="Navbar"/>        
                     <Routes>  
-                        <Route path="/" element={ <Home/> }></Route>;
+                        <Route path="/cw_site/1/" element={ <Home/> }></Route>;
                         <Route path="/Contact" element={ <Contact/> }></Route>
                         <Route path="/Company" element={ <Company/> }></Route>
                         <Route path="/Category/:consulta" element={ <CategoryApi component={"Category"}/> }></Route>

@@ -23,6 +23,9 @@ const BrandsCarrousel = () => {
   const customeSlider = useRef();
   const customeSliderMovil = useRef();
 
+  const [updateCount, setUpdateCount] = useState(0);
+
+
   const settings = {
     dots: false,
     arrows: false,
@@ -84,51 +87,52 @@ const BrandsCarrousel = () => {
           <Slider {...settings} ref={customeSlider}>
               <div className="container">
                 <Link to="/marcas/BAYER - AGROQUIMICOS">
-                 <img src={imgL(`./${"BAYER - AGROQUIMICOS.png"}`)} style={{height:'100px', marginTop:'20px'}} />
+                 <img src={imgL(`./${"BAYER - AGROQUIMICOS.webp"}`)} style={{height:'100px', marginTop:'20px'}} />
                 </Link>
               </div>
               <div className="container">
                 <Link to="/marcas/BAYER - DEKALB">
-                  <img src={imgL(`./${"BAYER - DEKALB.png"}`)} style={{height:'130px'}} />
+                  <img src={imgL(`./${"BAYER - DEKALB.webp"}`)} style={{height:'130px'}} />
                 </Link>
               </div>
               <div className="container">
-                <img src={imgL(`./${"icl.png"}`)} style={{height:'150px'}} />
+                <Link to="/marcas/ICL">
+                  <img src={imgL(`./${"icl.webp"}`)} style={{height:'150px'}} />
+                </Link>
               </div>
               <div className="container">
                 <Link to="/marcas/CALBOS">
-                  <img src={imgL(`./${"calbos.png"}`)} style={{height:'105px', marginTop:'20px'}} />
+                  <img src={imgL(`./${"calbos.webp"}`)} style={{height:'105px', marginTop:'20px'}} />
                 </Link>
               </div>
               <div className="container">
                 <Link to="/marcas/WOLF">
-                  <img src={imgL(`./${"wolf.png"}`)} style={{height:'100px', marginTop:'25px'}} />
+                  <img src={imgL(`./${"wolf.webp"}`)} style={{height:'100px', marginTop:'25px'}} />
                 </Link>
               </div>
               <div className="container">
                 <Link to="/marcas/WESTAR">
-                  <img src={imgL(`./${"westar.png"}`)} style={{height:'150px', marginTop:'5px'}} />
+                  <img src={imgL(`./${"westar.webp"}`)} style={{height:'150px', marginTop:'5px'}} />
                 </Link>
               </div>
               <div className="container">
                 <Link to="/marcas/ALPINA">
-                  <img src={imgL(`./${"ALPINA.png"}`)} style={{height:'150px', marginTop:'5px'}} />
+                  <img src={imgL(`./${"ALPINA.webp"}`)} style={{height:'150px', marginTop:'5px'}} />
                 </Link>
               </div>
               <div className="container">
                 <Link to="/marcas/STIGA">
-                  <img src={imgL(`./${"STIGA.png"}`)} style={{height:'150px', marginTop:'5px'}} />
+                  <img src={imgL(`./${"STIGA.webp"}`)} style={{height:'150px', marginTop:'5px'}} />
                 </Link>
               </div>
               <div className="container">
                 <Link to="/marcas/DAL DEGAN">
-                  <img src={imgL(`./${"DAL DEGAN.png"}`)} style={{height:'150px', marginTop:'0px'}} />
+                  <img src={imgL(`./${"DAL DEGAN.webp"}`)} style={{height:'150px', marginTop:'0px'}} />
                 </Link>
               </div>
           </Slider>
         </div>
       </div>
-      
         
 
         {/* Botones Controladores Desktop */}
@@ -159,30 +163,30 @@ const BrandsCarrousel = () => {
             <Slider {...settingsMovil} ref={customeSliderMovil}>
                 <div className="container-movil" >
                   <Link to="/marcas/BAYER - AGROQUIMICOS">
-                      <img className='center__Movil' src={imgL(`./${"BAYER - AGROQUIMICOS.png"}`)} style={{height:'80px', marginTop:'20px', paddingLeft:'10px'}} />
+                      <img className='center__Movil' src={imgL(`./${"BAYER - AGROQUIMICOS.webp"}`)} style={{height:'80px', marginTop:'20px', paddingLeft:'10px'}} />
                   </Link>
                 </div>
                 <div className="container-movil">
                   <Link to="/marcas/BAYER - DEKALB">
-                    <img className='center__Movil' src={imgL(`./${"BAYER - DEKALB.png"}`)} style={{height:'100px', paddingLeft:'0px', marginTop:'7px'}} />
+                    <img className='center__Movil' src={imgL(`./${"BAYER - DEKALB.webp"}`)} style={{height:'100px', paddingLeft:'0px', marginTop:'7px'}} />
                   </Link>
                 </div>
                 <div className="container-movil">
-                  <img className='center__Movil' src={imgL(`./${"icl.png"}`)} style={{height:'105px', paddingLeft:'7px', marginTop:'5px'}} />
+                  <img className='center__Movil' src={imgL(`./${"icl.webp"}`)} style={{height:'105px', paddingLeft:'7px', marginTop:'5px'}} />
                 </div>
                 <div className="container-movil">
                   <Link to="/marcas/CALBOS">
-                    <img className='center__Movil' src={imgL(`./${"calbos.png"}`)} style={{height:'80px', paddingLeft:'15px', marginTop:'20px'}} />
+                    <img className='center__Movil' src={imgL(`./${"calbos.webp"}`)} style={{height:'80px', paddingLeft:'15px', marginTop:'20px'}} />
                   </Link>
                 </div>
                 <div className="container-movil">
                   <Link to="/marcas/WOLF">
-                    <img className='center__Movil' src={imgL(`./${"wolf.png"}`)} style={{height:'80px', paddingLeft:'10px', marginTop:'20px'}} />
+                    <img className='center__Movil' src={imgL(`./${"wolf.webp"}`)} style={{height:'80px', paddingLeft:'10px', marginTop:'20px'}} />
                   </Link>
                 </div>
                 <div className="container-movil">
                   <Link to="/marcas/WESTAR">
-                    <img className='center__Movil' src={imgL(`./${"westar.png"}`)} style={{height:'110px', marginTop:'15px', paddingRight:'5px'}} />
+                    <img className='center__Movil' src={imgL(`./${"westar.webp"}`)} style={{height:'110px', marginTop:'15px', paddingRight:'5px'}} />
                   </Link>
                 </div>
             </Slider>
