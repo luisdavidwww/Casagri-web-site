@@ -73,11 +73,15 @@ function CardItemApi(props) {
                   </div>
                   <div className='cards__item__info'>
                     {
+                      /* Evaluamos si la marca tiene una imagen registrada */
                       getBrandCategoryApi(props.Marca) == false ? (
+                        /* No tiene Imagen */
                         <h5 className='cards__item__text-presentation'>
                           <BsFillTagFill style={{marginRight:'0.5rem', color:'#939996'}}/>{props.Marca}
                         </h5>)
-                      :(<h5 className='cards__item__text-presentation'>
+                      :(
+                        /* Si tiene Imagen */
+                        <h5 className='cards__item__text-presentation'>
                           <img src={imgL(`./${props.Marca}.webp`)} style={{height:'23px', width:'23px', marginTop:'0px', marginRight:'0.5rem'}} />
                           {props.Marca}
                         </h5>)

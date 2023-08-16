@@ -65,7 +65,7 @@ const Top_header = () => {
         <div className='Top_header-Container-Copy'>
             <div className='ContainerHeader'>
                 <div className='content-Top'>
-                        <Link to='/cw_site/1/' className='Link-Top-Header'>
+                        <Link to='/' className='Link-Top-Header'>
                             {/* Desktop */}
                             <div className='navbar-logo' >
                                 {
@@ -89,7 +89,7 @@ const Top_header = () => {
                     <div className='content-Top-options'>
                         <div className='content-Top-options-list'>
                             <div className='content-Top-options-list-link'>
-                                <Link to='/cw_site/1/' className='content-Top-options-list-link' style={{ textDecoration: 'none'}}>
+                                <Link to='/' className='content-Top-options-list-link' style={{ textDecoration: 'none'}}>
                                     Inicio
                                 </Link> 
                             </div>  
@@ -111,14 +111,14 @@ const Top_header = () => {
                         
                         <div className='content-Top-options-list-searchform-set' ref={ refInput } >
                             <div className='content-Top-options-list-link' style={{ textDecoration: 'none', fontSize: '18.6px',}}>
-                                {/*Barra de Busqueda */}
+                                {/* Barra de Busqueda Desplegable */}
                                 <SearchFormTopHeader activacion={ click }  /> 
                             </div>
                         </div>
 
                         <div className='content-Top-options-list' >
                             
-                             {/* <SearchFormTopHeader/> */}
+                             {/* Icono de Busqueda para Buscar */}
                             <div className='content-Top-options-list-link' style={{ textDecoration: 'none', fontSize: '19px', marginLeft:'0.7rem'}} onClick={ () => { handleClick(); }} >
                                 {
                                     click ? (null):(<BsSearch className='content-top__icon'  />)

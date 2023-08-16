@@ -99,6 +99,7 @@
 
   .btn-outline{
     display: flex;
+    z-index: 100;
     background-color: transparent;
     padding: 0.7rem 3rem;
     border: 1px solid #47A01A;

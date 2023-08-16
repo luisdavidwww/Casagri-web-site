@@ -15,8 +15,8 @@ import  ErrorPage  from 'components/ErrorPage/ErrorPage';
 import  img  from '../../static/images/news/news011.jpg';
 
 //Metodos de Filtrados
-import { getProductDetails,
-          } from "../../selectors/getInfoCasagriApi";
+import { getProductDetails } from "../../selectors/getInfoCasagriApi";
+import { getBrandCategoryApi } from "../../selectors/getBrandsCasagri";
 
 //Estilos
 import './Details.css';
@@ -43,6 +43,9 @@ const [error, setError] = useState(null);
 
 //Variables de Productos
 const [products, setProducts] = useState([]);
+
+//Formato Imagen
+const imgL = require.context('../../static/images/brands/brands-c', true);
 
 //FormatoParatitulo de Página
 function formatTitle(title) {
@@ -131,9 +134,27 @@ function formatTitle(title) {
                                     <h5 className="text__Details__Presentation" >{`${formatTitle(products.cat2)}, ${formatTitle(products.Cat3)}, ${formatTitle(products.cat4)}`}</h5>
                                   </div>
 
-                                  {/*Marca*/}    
-                                  <h1 className="text__Details__Price" style={{marginTop:'2.2rem'}} ><BsFillTagFill style={{marginRight:"1rem"}}/>Marca: {products.Marca}</h1>   
-                                  
+                                  {/*Marca */}
+                                  <div>
+                                  {
+                                    /* Evaluamos si la marca tiene una imagen registrada */
+                                    getBrandCategoryApi(products.Marca) == false ? (
+                                      /* No tiene Imagen */
+                                      <h1 className="text__Details__Price" style={{marginTop:'2.2rem'}} >
+                                        Marca: <BsFillTagFill style={{marginRight:"0.2rem",marginLeft:'0.5rem'}}/>{products.Marca}
+                                      </h1>  
+                                      ):(
+                                      /* Si tiene Imagen */
+                                      <div>
+                                        <h1 className="text__Details__Price" style={{marginTop:'2.2rem',marginLeft:'0.2rem'}} >
+                                        Marca: 
+                                      </h1>  
+                                      <img src={imgL(`./${products.Marca}.webp`)} style={{ marginTop:'0px', marginLeft:'0rem' ,marginRight:'0.5rem'}} />
+                                     
+                                      </div>
+                                     )
+                                  }
+                                  </div>
 
 
                                   { products.StockActual == 0 ? (

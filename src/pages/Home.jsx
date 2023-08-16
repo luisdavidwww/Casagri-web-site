@@ -86,7 +86,7 @@ export const Home = () => {
             <RecommendedProducts component="RecommendedProducts"/>
             <NewSection component="NewSection"/>
             <ContactSection/>
-            </>
+        </>
       )}
     </div>
   )

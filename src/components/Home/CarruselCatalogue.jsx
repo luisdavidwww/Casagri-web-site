@@ -25,7 +25,11 @@ export const CarruselCatalogue = ({component}) => {
 
 
 
+  //Variables de Carga
   const [loanding, setLoanding] = useState(false);
+  const [error, setError] = useState(null); 
+
+  //Variables de Banners
   const [bannerCategory, setBannerCategory] = useState([]);
 
   //Peticion Para los banners delas categorias

@@ -112,7 +112,7 @@ const SearchForm = ({ history }) => {
                             <input 
                                 type="text"
                                 placeholder="Buscar productos"
-                                className='Search__imput'
+                                className='Search__imput form-control-two'
                                 name="searchText"
                                 autoComplete="off"
                                 value={ searchText }

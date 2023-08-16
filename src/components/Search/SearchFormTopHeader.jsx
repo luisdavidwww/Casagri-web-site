@@ -100,9 +100,16 @@ const SearchFormTopHeader = ({ activacion }) => {
       }
 
 
+      
      useEffect(() => {
       document.addEventListener("click", handleclickOutside, true);
       }, []);
+
+      useEffect(() => {
+        if (activacion) {
+          inputRef.current.focus(); // Enfocar el input cuando activacion es verdadero
+        }
+      }, [activacion]);
 
       
 
@@ -115,12 +122,13 @@ const SearchFormTopHeader = ({ activacion }) => {
                                       activacion  ? ( 
                                       <form onSubmit={ handleSearch } className='Search__form' onClick={ () => { handleClick(); }} >
                                         <input 
-                                        //ref={inputRef} 
+                                        ref={inputRef} 
                                         type="text"
                                         placeholder="Buscar productos"
-                                        className='Search__imput__Top-Header'
+                                        className='Search__imput__Top-Header form-control-two'
                                         name="searchText"
                                         autoComplete="off"
+                                        clear="off"
                                         value={ searchText }
                                         onChange={ handleInputChange } 
                                         list="suggestionsList"

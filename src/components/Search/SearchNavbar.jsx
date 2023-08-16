@@ -105,6 +105,13 @@ const SearchNavbar = ( clickSearch ) => {
     }, []);
 
 
+    useEffect(() => {
+      if (clickSearch) {
+        refOne.current.focus(); // Enfocar el input cuando activacion es verdadero
+      }
+    }, [clickSearch]);
+
+
 
 
   return (
@@ -116,6 +123,7 @@ const SearchNavbar = ( clickSearch ) => {
                 <form onSubmit={ handleSearch } className='Search__form__Navbar' onClick={ () => { handleClick(); }}>
                         <input 
                             type="text"
+                            ref={refOne} 
                             placeholder="Busca un producto"
                             className='Search__imput__Navbar'
                             name="searchText"

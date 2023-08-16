@@ -654,7 +654,7 @@ if ( category === 'FERRETERÍA') {
         }
     }
 
-    if ( category === 'CONTROL DE PLAGA') {
+    if ( category === 'CONTROL DE PLAGAS') {
       try {
           const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${'articulos/CategoriaBuscar/controlDePlaga'}${search}`);
           const resp = await response.json();
