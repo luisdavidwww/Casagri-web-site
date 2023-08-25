@@ -12,6 +12,8 @@ import { op } from "./Options";
 import "./Navbar.css"
 import 'aos/dist/aos.css'; 
 
+//logo
+import LogoCasagri from "static/casagri-logo-01.svg"
 
 //componentes
 import Top_header from '../Top_Header/Top_header';
@@ -151,6 +153,8 @@ const Navbar = ({component}) => {
    };
    const [subCategory, setSubCategory] = useState("SubCategory");
 
+
+
   useEffect(() => {
     showButton();
     }, []);
@@ -160,6 +164,26 @@ const Navbar = ({component}) => {
   useEffect(() => { 
     AOS.init({duration:800});
     },[]);
+
+
+
+    const [isLogoVisible, setIsLogoVisible] = useState(true);
+
+  const handleScroll = () => {
+    if (window.scrollY > 70 ) {
+      setIsLogoVisible(false);
+    } else {
+      setIsLogoVisible(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   
 
 
@@ -195,6 +219,13 @@ const Navbar = ({component}) => {
           <section id="desktopNav__container">
             <div className='desktopNav__lower'>
 
+            {
+                    isLogoVisible  ? 
+                      (<img src={ LogoCasagri } width={"80px"} height={"80px"} alt="Casagri" />
+                      ):null
+                } 
+
+
               {/* Recorrido de la lista: LINEAS DE PRODUCTOS CASAGRI*/}
               {links.map((link, index) => ( 
               <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} key={`${component}-${index}`} >
@@ -208,7 +239,7 @@ const Navbar = ({component}) => {
                             setHover(true);
                           }}
                       >
-                          {link.name}
+                          {link.name} aaaaaaaaaaaaaa
                       </h1>
                     </a>    
                   </div>
@@ -282,8 +313,6 @@ const Navbar = ({component}) => {
 
 
               </div>
-
-              
 
               ))}
 

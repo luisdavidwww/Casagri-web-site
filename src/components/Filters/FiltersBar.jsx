@@ -43,7 +43,7 @@ import { AiOutlineDown, AiOutlineRight } from "react-icons/ai";
 
 //click
 
-export default function FiltersBar({Marcas, Consulta, Componentes}) {
+export default function FiltersBar({Marcas, Path, Consulta, Componentes, Search, fetchDataAndHandleResponse }) {
 
 
     const [clickClasificacion, setClickClasificacion] = useState(false);
@@ -119,7 +119,7 @@ export default function FiltersBar({Marcas, Consulta, Componentes}) {
             <BsChevronDown className='iconOptionFilters'/>
           </AccordionSummary>
           <AccordionDetails>
-            <Clasification />
+            <Clasification Path={ Path } Consulta ={ Consulta } fetchDataAndHandleResponse={ fetchDataAndHandleResponse } Search ={ Search }/>
           </AccordionDetails>
         </Accordion>
         
@@ -135,13 +135,13 @@ export default function FiltersBar({Marcas, Consulta, Componentes}) {
           </AccordionDetails>
         </Accordion>
 
-        {/*Precios*/}
+        {/*Precios
         <Accordion>
           <AccordionSummary 
             aria-controls="panel1d-content" 
             id="panel1d-header" 
             //onClick={() => { setClickPrice(!clickPrice)}}
-            /*expandIcon={clickClasificacion ? <AiOutlineDown />:<AiOutlineDown />}*/>
+            >
             <div className='title__Filter' >  
                 Precio 
             </div> <BsChevronDown className='iconOptionFilters'/>
@@ -150,6 +150,7 @@ export default function FiltersBar({Marcas, Consulta, Componentes}) {
             <FormTextFields/>
           </AccordionDetails>
         </Accordion>
+      */}
 
         {/*Marcas*/}
         <Accordion>

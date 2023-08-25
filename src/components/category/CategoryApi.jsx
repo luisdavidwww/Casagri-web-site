@@ -11,7 +11,7 @@ import { BannerCategory } from 'components/BannerMain/BannerCategory';
 import  PaginationList  from './PaginationApi';
 
 //Hook para Peticiones
-import { fetchData } from "../../selectors/getInfoCasagriApi";
+import { fetchDataTwo } from "../../selectors/getInfoCasagriApi";
 
 //Variables de Entorno
 import { BANNERSCATEGORIA, BANNERS, CATEGORIAS, BUSCARCATEGORIA } from '../../routers/index';
@@ -35,7 +35,7 @@ const Category = ({ component }) => {
    
   //query de la url
   const { consulta } = useParams();
-  let { search } = useLocation();
+  let { search  } = useLocation();
 
   //Variables del Banner
   const [banner, setBanner] = useState([]);
@@ -63,65 +63,65 @@ const Category = ({ component }) => {
 
 
 
-  //Peticion el Banner Principal
-  const getInfo = async () => {
+      //Peticion el Banner Principal
+    const getInfo = async () => {
 
-      if (consulta === "Buscar"){
-        //Petición a la api
-        setLoandingBanner(true)
-        const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${consulta}`);
-        const res = await response.json();
-        setBanner(res.data);
-        setLoandingBanner(false)
-
-        try {
-          //Petición a la api
-          setLoandingBanner(true)
-          const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${consulta}`);
-          const res = await response.json();
-
-          setBanner(res.data);
-          setLoandingBanner(false)
-
-        } catch (error) {
-          console.log('Error fetching data:', error);
-          setLoandingBanner(false);
-        }
-
-
-      }
-      else{
-        //Petición a la api
-        try {
-          setLoandingBanner(true);
-          const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERSCATEGORIA}${consulta.replace(/\s+/g, '')}`);
-          const res = await response.json();
-
-          // Procesa la respuesta o realiza otras operaciones necesarias
-          //Petición exitosa
-          if ( res.data !== null )
-          {
-            setBanner(res.data);
-            setLoandingBanner(false)
-          }
-
-          // En caso que exista un error en la petición del Banner
-          else{
-            //se asigna el banner de la seccion buscar
-            const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${"Buscar"}`);
+          if (consulta === "Buscar"){
+            //Petición a la api
+            setLoandingBanner(true)
+            const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${consulta}`);
             const res = await response.json();
             setBanner(res.data);
             setLoandingBanner(false)
-          }
 
-        } catch (error) {
-          console.log('Error fetching data:', error);
-          setLoanding(false);
-          setError('Ocurrió un error al obtener los datos. Por favor, inténtalo de nuevo.');
-        }
-        
-      }
-  }
+            try {
+              //Petición a la api
+              setLoandingBanner(true)
+              const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${consulta}`);
+              const res = await response.json();
+
+              setBanner(res.data);
+              setLoandingBanner(false)
+
+            } catch (error) {
+              console.log('Error fetching data:', error);
+              setLoandingBanner(false);
+            }
+
+
+          }
+          else{
+            //Petición a la api
+            try {
+              setLoandingBanner(true);
+              const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERSCATEGORIA}${consulta.replace(/\s+/g, '')}`);
+              const res = await response.json();
+
+              // Procesa la respuesta o realiza otras operaciones necesarias
+              //Petición exitosa
+              if ( res.data !== null )
+              {
+                setBanner(res.data);
+                setLoandingBanner(false)
+              }
+
+              // En caso que exista un error en la petición del Banner
+              else{
+                //se asigna el banner de la seccion buscar
+                const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${"Buscar"}`);
+                const res = await response.json();
+                setBanner(res.data);
+                setLoandingBanner(false)
+              }
+
+            } catch (error) {
+              console.log('Error fetching data:', error);
+              setLoanding(false);
+              setError('Ocurrió un error al obtener los datos. Por favor, inténtalo de nuevo.');
+            }
+            
+          }
+    }
 
 
     //Peticion para la secuencia logica del buscador
@@ -153,41 +153,43 @@ const Category = ({ component }) => {
         setCategoria(res.data.nombre);
       }
       
-  }
+    }
+
+    //Peticion Principal: Buscar Productos por Categoria
+    const fetchDataAndHandleResponse = async ( ) => {
+
+      try {
+        setLoanding(true);
+
+        const response = await fetchDataTwo(consulta.toUpperCase(), search );
+        // Procesa la respuesta o realiza otras operaciones necesarias
+        setTotalPagina(response.totalPages);
+        setTotalProducts(response.total);
+        setProducts(response.productos);
+        setMarcas(response.marcas);
+        setComponentes(response.componentes);
+        setError(null);
+        setLoanding(false);
 
 
+      } catch (error) {
+        console.log('Error fetching data:', error);
+        setLoanding(false);
+        setError('Ocurrió un error al obtener los datos. Por favor, inténtalo de nuevo.');
+      }
+    };
+    
 
     useEffect(() => {
-
       document.title=`${consulta}  |  ${"Casagri"}`
-
       getInfo();
       getPages();
 
-      const fetchDataAndHandleResponse = async () => {
 
-        try {
-          setLoanding(true);
-          const response = await fetchData(consulta.toUpperCase(), search);
-          // Procesa la respuesta o realiza otras operaciones necesarias
-          setTotalPagina(response.totalPages);
-          setTotalProducts(response.total);
-          setProducts(response.productos);
-          setMarcas(response.marcas);
-          setComponentes(response.componentes);
-          setError(null);
-          setLoanding(false);
-
-        } catch (error) {
-          console.log('Error fetching data:', error);
-          setLoanding(false);
-          setError('Ocurrió un error al obtener los datos. Por favor, inténtalo de nuevo.');
-        }
-      };
-    
       fetchDataAndHandleResponse();
 
      }, [consulta, search])
+     
 
 
 
@@ -291,7 +293,13 @@ const Category = ({ component }) => {
 
                   {/* Filtro */}
                   <div className='category__filter'>
-                    <FiltersBar Consulta={consulta} Marcas={marcas} Componentes={componentesProd} />
+                    <FiltersBar 
+                      Path={"Category"} //Base URL
+                      Consulta={consulta} //Parametro Consulta
+                      Marcas={marcas} //Listado de Marcas que están en la categoria 
+                      Componentes={componentesProd} //Listado de Componentes que están en la categoria 
+                      Search={ search === "" ? '?page=1' : search} //Ubicación de la Pagina
+                      fetchDataAndHandleResponse={fetchDataAndHandleResponse}/* Metodo para Actualizar el Orden de las Categorias */ />
                   </div>
 
                   {/* Filtro Movil */}

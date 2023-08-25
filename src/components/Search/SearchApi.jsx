@@ -85,28 +85,27 @@ const Search = () => {
 
     const { searchText } = formValues;
 
+    //Peticion Principal: Buscar Productos por Nombre
+    const fetchDataAndHandleResponse = async () => {
 
+      try {
+        setLoanding(true);
+        const response = await getProductDataByName(query, search);
+        // Procesa la respuesta o realiza otras operaciones necesarias
+        setTotalPagina(response.totalPages);
+        setTotalProducts(response.total);
+        setProducts(response.productos);
+        setLoanding(false);
+
+      } catch (error) {
+        setLoanding(false);
+        setError('Ocurrió un error al obtener los datos. Por favor, inténtalo de nuevo.');
+      }
+    };
 
     useEffect(() => {
 
         document.title=`${query} | ${"Casagri"}`
-      
-        const fetchDataAndHandleResponse = async () => {
-
-          try {
-            setLoanding(true);
-            const response = await getProductDataByName(query, search);
-            // Procesa la respuesta o realiza otras operaciones necesarias
-            setTotalPagina(response.totalPages);
-            setTotalProducts(response.total);
-            setProducts(response.productos);
-            setLoanding(false);
-  
-          } catch (error) {
-            setLoanding(false);
-            setError('Ocurrió un error al obtener los datos. Por favor, inténtalo de nuevo.');
-          }
-        };
       
         fetchDataAndHandleResponse();
 
@@ -177,7 +176,12 @@ const Search = () => {
 
                     {/* Filtro */}
                     <div className='category__filter'>
-                      <FiltersBar/>
+                      <FiltersBar 
+                      Path={"Search"} //Base URL
+                      Consulta={query} //Parametro Consulta
+                      Search={ search === "" ? '?page=1' : search} //Ubicación de la Pagina
+                      fetchDataAndHandleResponse={fetchDataAndHandleResponse}/* Metodo para Actualizar el Orden de las Categorias */
+                      />
                     </div>
                     {/* Filtro Movil */}
                     <div className='category__filter__Movil'>

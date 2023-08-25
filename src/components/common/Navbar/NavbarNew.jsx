@@ -22,6 +22,9 @@ import {  BsChevronDown,
           BsHouseDoorFill
        } from "react-icons/bs";
 
+//logo
+import LogoCasagri from "static/casagri-logo-01.svg"
+
 
 
 const Navbar = ({component}) => {
@@ -184,6 +187,25 @@ const Navbar = ({component}) => {
   
 
 
+   const [isLogoVisible, setIsLogoVisible] = useState(false);
+
+  const handleScroll = () => {
+    if (window.scrollY > 100 ) {
+      setIsLogoVisible(true);
+    } else {
+      setIsLogoVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+
+
   return (
     <>
 
@@ -213,6 +235,13 @@ const Navbar = ({component}) => {
           {/*------------------------------Navbar Escritorio------------------------------------*/}
           <section id="desktopNav__container">
             <div className='desktopNav__lower'>
+
+               {/*
+                    isLogoVisible  ? 
+                      (<img data-aos="fade-left" src={ LogoCasagri } width={"40px"} height={"40px"} alt="Casagri" />
+                      ):null
+                  */} 
+
 
               {/* Recorrido de la lista: LINEAS DE PRODUCTOS CASAGRI*/}
               {links.map((link, index) => ( 

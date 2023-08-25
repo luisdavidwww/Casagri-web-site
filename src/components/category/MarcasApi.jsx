@@ -231,7 +231,13 @@ const MarcasApi = ({ component }) => {
 
                   {/* Filtro */}
                   <div className='category__filter'>
-                    <FiltersBar Consulta={marca} Marcas={marcas} Componentes={componentesProd} />
+                    <FiltersBar   
+                    Path={"marcas"} //Base URL
+                    Consulta={marca} //Parametro Consulta
+                    Marcas={marcas} //Listado de Marcas que están en la categoria 
+                    Componentes={componentesProd} //Listado de Componentes que están en la categoria 
+                    Search={ search === "" ? '?page=1' : search} //Ubicación de la Pagina
+                    />
                   </div>
 
                   {/* Filtro Movil */}
