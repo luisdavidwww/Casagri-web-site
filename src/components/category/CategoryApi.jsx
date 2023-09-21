@@ -307,7 +307,14 @@ const Category = ({ component }) => {
                     <div className='category__Display'>
                       Display 
                     </div>
-                      <FilterSidebar/>
+                      <FilterSidebar
+                      Path={"Category"} //Base URL
+                      Consulta={consulta} //Parametro Consulta
+                      Marcas={marcas} //Listado de Marcas que están en la categoria 
+                      Componentes={componentesProd} //Listado de Componentes que están en la categoria 
+                      Search={ search === "" ? '?page=1' : search} //Ubicación de la Pagina
+                      fetchDataAndHandleResponse={fetchDataAndHandleResponse}/* Metodo para Actualizar el Orden de las Categorias */
+                      />
                   </div>
 
                   {/* Resultado de Busqueda */}

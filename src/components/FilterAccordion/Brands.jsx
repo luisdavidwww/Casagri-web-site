@@ -12,10 +12,9 @@ export default function CategoryAccordion({ MarcaLista, Enlace }) {
   //MarcasProductos.filter((idx) => idx > 20);
   const [marcas, setMarcas] = useState();
 
-  useEffect(() => {
-    //console.log("muestra final"+ MarcaLista.length )
-    //console.log("muestrica"+ MarcaLista )
-  }, [MarcaLista])
+  /*useEffect(() => {
+    console.log("muestrica"+ MarcaLista )
+  }, [MarcaLista])*/
 
 
 

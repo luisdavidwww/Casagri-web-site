@@ -8,7 +8,8 @@ export const getProductDataByName = async ( name, search ) => {
   if ( name === '' ) {
       return [];
   }
-
+  //let Nombre_interno = name.replace(/-fiporif-/g, '%');
+  console.log()
   try {
     const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${'articulos/Buscar/'}${name}${search}`);
     const resp = await response.json();

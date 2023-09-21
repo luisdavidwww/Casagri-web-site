@@ -48,14 +48,21 @@ const SearchForm = ({ history }) => {
           }  
           else{
             e.preventDefault();
-            navigate(`/search/${ searchText }`);
-            //setAlert(searchText);
+            let paramBusqueda = searchText
+                                .replace(/\s+/g, '-')
+                                .replace(/%/g, '-fiporif-')
+                                .replace(/[ / ]/g, "_");
+            navigate(`/search/${ paramBusqueda }`);
           }
         
     }
 
     const searchClick = ( props ) => {
-        navigate(`/search/${ props }`);
+        let paramBusqueda = props
+                                .replace(/\s+/g, '-')
+                                .replace(/%/g, '-fiporif-')
+                                .replace(/[ / ]/g, "_");
+        navigate(`/search/${ paramBusqueda }`);
     }
 
     

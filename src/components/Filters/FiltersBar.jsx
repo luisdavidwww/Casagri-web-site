@@ -119,7 +119,12 @@ export default function FiltersBar({Marcas, Path, Consulta, Componentes, Search,
             <BsChevronDown className='iconOptionFilters'/>
           </AccordionSummary>
           <AccordionDetails>
-            <Clasification Path={ Path } Consulta ={ Consulta } fetchDataAndHandleResponse={ fetchDataAndHandleResponse } Search ={ Search }/>
+            <Clasification
+            Path={ Path } 
+            Consulta ={ Consulta } 
+            fetchDataAndHandleResponse={ fetchDataAndHandleResponse } 
+            Search ={ Search }
+            />
           </AccordionDetails>
         </Accordion>
         
@@ -130,7 +135,14 @@ export default function FiltersBar({Marcas, Path, Consulta, Componentes, Search,
             <div className='title__Filter' >Categorias</div> <BsChevronDown className='iconOptionFilters'/>
           </AccordionSummary>
           <AccordionDetails>
-            <Category/>
+            <Category
+            //Componentes
+            Accordion={ Accordion }
+            AccordionSummary={ AccordionSummary }
+            AccordionDetails={ AccordionDetails }
+            //ICONS
+            BsChevronDown={ BsChevronDown }
+            />
             {/*<CategoryAccordion/>*/}
           </AccordionDetails>
         </Accordion>

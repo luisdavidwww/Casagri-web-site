@@ -30,13 +30,11 @@ const SearchFormBrands = ({ MarcasProductos, Enlace }) => {
  
      useEffect(() => {
 
-      if ( searchText == "" )
+      if ( searchText !== "" )
       {
-        setMarcas([]);
-      }
-      else{
         setMarcas(getBrand( searchText , MarcasProductos ));
       }
+
   }, [searchText])
 
      //metodo para busqueda de producto

@@ -17,7 +17,7 @@ import CategoryAccordion from './CategoryAccordion';
 
 
 
-export default function FilterSidebar() {
+export default function FilterSidebar({ Consulta, Path, Marcas, Componentes, Search, fetchDataAndHandleResponse }) {
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -29,6 +29,8 @@ export default function FilterSidebar() {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
+
+    
 
     setState({ ...state, [anchor]: open });
   };
@@ -72,7 +74,14 @@ export default function FilterSidebar() {
                 
             >
                 <div style={{marginTop:'2rem'}}>
-                   <FiltersBar/>
+                   <FiltersBar
+                   Path={Path} //Base URL
+                   Consulta={Consulta} //Parametro Consulta
+                   Marcas={Marcas} //Listado de Marcas que están en la categoria 
+                   Componentes={Componentes} //Listado de Componentes que están en la categoria 
+                   Search={ Search } //Ubicación de la Pagina
+                   fetchDataAndHandleResponse={fetchDataAndHandleResponse}/* Metodo para Actualizar el Orden de las Categorias */
+                   />
                   {/* <FilterBarNew/> */}
                 </div>
                 

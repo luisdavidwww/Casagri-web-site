@@ -45,7 +45,7 @@ const Navbar = ({component}) => {
 
   //Acción Click  
   const handleClick = () => setClick(!click);
-  const actionSearch = () => SetclickSearch(!clickSearch);
+  const actionSearch = () => { SetclickSearch(!clickSearch)};
   const actionSearchFalse = () => SetclickSearch(false);
 
 
@@ -383,7 +383,7 @@ const Navbar = ({component}) => {
                   exit={{x: 0, y: -50, scale: 1, rotate: 0,  opacity:1 }}    
                   >
                   <div className='content-top-search-div' >
-                      <SearchNavbar clickSearch={ clickSearch }/>
+                      <SearchNavbar clickSearch={ clickSearch } />
                       <div className='content-top-search-cancel' onClick={ actionSearch } > 
                           <div data-aos="fade-left" className='content-top-search-cancela' > Cancelar </div>
                       </div>
@@ -422,11 +422,11 @@ const Navbar = ({component}) => {
               <div className='movilNav__container-line-top'></div>
 
               {/* Barra de Busqueda */}
-              <div className='content-Top-search' >
-                    <div className='content-top-search-div' onClick={ actionSearch } >
+              <div className='content-Top-search' onClick={ actionSearch }>
+                    <div className='content-top-search-div'  >
                         <SearchNavbar clickSearch={ clickSearch }  />
                     </div>
-                    <div className='content-top-search-icon'onClick={ actionSearch } >
+                    <div className='content-top-search-icon'>
                       <BsSearch className='search__icon' />
                     </div> 
               </div>

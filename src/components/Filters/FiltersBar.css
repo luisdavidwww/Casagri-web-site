@@ -285,7 +285,7 @@
   .containerFilter__Basic{
     display: flex;
     justify-content: flex-start;
-    width: 100px;
+    width: 150px;
     margin-left: 20px;
     margin-bottom: 0.8rem;
 }

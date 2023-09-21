@@ -1,6 +1,6 @@
 import React from 'react';
-//icons clickCategory
-import {  BsFilter, BsDashLg, BsPlusLg } from "react-icons/bs";
+//icons
+import { MdFilterAlt } from "react-icons/md";
 
 const FilterTilter = ({component}) => {
   return (
@@ -8,13 +8,13 @@ const FilterTilter = ({component}) => {
     {
       component==="Sidebar" ? (
         <div className='containerFilter__Sidebar'>
-            
-            <div className='title__Filter-Main'>Otras Opciones</div>
+            { /* Version Movil */}
+            <div className='title__Filter-Main'> <MdFilterAlt style={{  marginRight:'0.3rem', fontSize:'15px' }}/> Otras Opciones</div>
         </div>
       ):(
         <div className='containerFilter__Basic'>
-           
-            <div className='title__Filter-Main'>Otras Opciones</div>
+            { /* Version Web */}
+            <div className='title__Filter-Main'> <MdFilterAlt style={{ marginRight:'0.5rem', fontSize:'15px' }}/>Otras Opciones</div>
         </div>
       )
     }

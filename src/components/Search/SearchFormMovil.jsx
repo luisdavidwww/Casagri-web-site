@@ -45,18 +45,22 @@ const SearchFormMovil = ( clickSearch ) => {
             e.preventDefault();
           }  
           else{
-            //e.preventDefault();
-            navigate(`/search/${ searchText }`);
-            //navigate(0);
-            //setAlert(searchText);
+            let paramBusqueda = searchText
+                                .replace(/\s+/g, '-')
+                                .replace(/%/g, '-fiporif-')
+                                .replace(/[ / ]/g, "_");
+            navigate(`/search/${ paramBusqueda }`);
           }
         
     }
 
 
     const searchClick = ( props ) => {
-      //navigate(0);
-      navigate(`/search/${ props }`);
+      let paramBusqueda = props
+                                .replace(/\s+/g, '-')
+                                .replace(/%/g, '-fiporif-')
+                                .replace(/[ / ]/g, "_");
+      navigate(`/search/${ paramBusqueda }`);
   }
 
   

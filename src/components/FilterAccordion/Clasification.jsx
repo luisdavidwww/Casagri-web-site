@@ -19,15 +19,15 @@ export default function Clasification({ Path, Consulta, fetchDataAndHandleRespon
   //Existe el parametro de Numero de Pagina: "?page=0"
   if (Search !== "" ){
     //No tiene definido parametro de Orden: "&orderBy"
-    if ( searchParams.get('orderBy') === null ){
+    if ( searchParams.get('orderBy') === null || searchParams.get('orderBy') === "null"){
       setActiveIcon("ASC");
     }
     //Si tiene definido parametro de Orden: "&orderBy"
-    if ( searchParams.get('orderBy') !== null ){
+    if ( searchParams.get('orderBy') === "desc" ){
       setActiveIcon("DESC");
     }
     //Si tiene definido parametro de Marca: "&marca"
-    if ( searchParams.get('marca') !== null ){
+    if ( searchParams.get('marca') === "si" ){
       setActiveIcon("MARCA");
     }
   }

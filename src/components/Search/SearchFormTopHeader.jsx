@@ -23,7 +23,7 @@ const SearchFormTopHeader = ({ activacion }) => {
     const { q = '' } = queryString.parse( location.search );
 
     //variables de estados
-    const [alert, setAlert] = useState("");
+    const [animationSuggestions, setAnimationSuggestions] = useState(false);
     const [click, setClick] = useState(false);
     const [activationForm, setActivacionForm] = useState(activacion);
     const [showAllSuggestions, setShowAllSuggestions] = useState(false);
@@ -49,14 +49,21 @@ const SearchFormTopHeader = ({ activacion }) => {
           else{
             e.preventDefault();
             setClick(false);
-            navigate(`/search/${ searchText }`);
+            let paramBusqueda = searchText
+                                .replace(/\s+/g, '-')
+                                .replace(/%/g, '-fiporif-')
+                                .replace(/[ / ]/g, "_");
+            navigate(`/search/${ paramBusqueda }`);
           }
-        
     }
 
     const searchClick = ( props ) => {
         setActivacionForm(false);
-        navigate(`/search/${ props }`);
+        let paramBusqueda = props
+                                .replace(/\s+/g, '-')
+                                .replace(/%/g, '-fiporif-')
+                                .replace(/[ / ]/g, "_");
+        navigate(`/search/${ paramBusqueda }`);
     }
 
     
@@ -77,11 +84,13 @@ const SearchFormTopHeader = ({ activacion }) => {
 
      //Despliega o cierra la ventana de sugerencia del buscador
      const handleClick = () => {
-      if(click == false){
+      if(click == false){      
         setClick(true)
+        setAnimationSuggestions(false);
       }
       else{
-        setClick(false)
+        setClick(false);
+        setAnimationSuggestions(true);
       }
       
       }
@@ -108,6 +117,7 @@ const SearchFormTopHeader = ({ activacion }) => {
       useEffect(() => {
         if (activacion) {
           inputRef.current.focus(); // Enfocar el input cuando activacion es verdadero
+          setClick(true);
         }
       }, [activacion]);
 
@@ -150,10 +160,10 @@ const SearchFormTopHeader = ({ activacion }) => {
                                         </form>)
                                     }
                     <div >
-                      { searchText.length >= 4 && click ? (
-                        <div className='autocomplete__container-TopHeader' >
+                      { searchText.length >= 4 && click && activacion ? (
+                        <div className='autocomplete__container-TopHeader' data-aos={ animationSuggestions ? "fade-left" : null} >
                         
-                          {/* Sugerencias para Nombre de Productos*/}
+                          {/* Sugerencias para Nombre de Productos "fade-left"*/}
                           <div
                             className={  
                               data.filter((product) => product.Nombre.toLowerCase() 

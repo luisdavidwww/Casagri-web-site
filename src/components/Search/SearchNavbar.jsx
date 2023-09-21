@@ -12,7 +12,7 @@ import {  BsSearch } from "react-icons/bs";
 import { SiMoleculer } from "react-icons/si";
 
 
-const SearchNavbar = ( clickSearch ) => {
+const SearchNavbar = ( {clickSearch} ) => {
 
 
     //constantes
@@ -193,9 +193,6 @@ const SearchNavbar = ( clickSearch ) => {
                           </div> 
                         ) : null}
                   </>
-
-
-                
 
 
 
