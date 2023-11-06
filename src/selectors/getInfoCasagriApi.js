@@ -132,8 +132,6 @@ export const fetchDataTwo = async (category, search ) => {
 
     /* ----------------------------------------------- AGROINDUSTRIAL ------------------------------------------------------- */
 
-    /* ----------------------------------------------- AGROINDUSTRIAL ------------------------------------------------------- */
-
     if ( category === 'AGROINDUSTRIAL') {
       try {
           const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${'articulos/Categoria/AGROINDUSTRIAL'}${(DefinirParametrosTwo(search))}`);

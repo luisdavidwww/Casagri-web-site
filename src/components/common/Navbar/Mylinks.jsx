@@ -116,10 +116,10 @@ export const links = [
         Head: "Manejo e Identificadores",
         subitem: false,
       },
-      {
+      /*
         Head: "Alimento Animal",
         subitem: false,
-      },
+    */
       {
         Head: "Mascotas",
         subitem: false,

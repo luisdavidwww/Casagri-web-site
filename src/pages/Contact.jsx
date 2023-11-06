@@ -71,7 +71,7 @@ export const Contact = () => {
         <>
           <BannerMain image={ banner.banner__desktop } imageMini={ banner.banner__movil } /> 
           {/*<Location/>*/}
-          <Companys/>
+          <Companys Loanding={ loanding }/>
           <ContactSection/>
         </>
       )}

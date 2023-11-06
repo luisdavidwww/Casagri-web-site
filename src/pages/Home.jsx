@@ -84,7 +84,7 @@ export const Home = () => {
             <FeaturedProducts component="FeaturedProducts"/>
             <BannerCarrousel  component={"BannerCarrousel"} />
             <RecommendedProducts component="RecommendedProducts"/>
-            <NewSection component="NewSection"/>
+            {/*<NewSection component="NewSection"/>*/}
             <ContactSection/>
         </>
       )}

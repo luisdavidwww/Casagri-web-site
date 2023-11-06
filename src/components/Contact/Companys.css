@@ -44,6 +44,49 @@
   }
 
 
+
+
+
+
+
+  .container__main__sede{
+    display:flex ;
+    justify-content: center;
+    flex-direction: row;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+
+  .title_sede{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 500px;
+  }
+
+
+  .maps_Container{
+    display: flex;
+    justify-content: center;
+  }
+
+
+  .maps_center{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 400px;
+    margin-top: 0rem;
+  }
+
+
+
+
+  
+
 @media only screen and (max-width: 960px){
 
     .text-basic__company {
@@ -54,5 +97,30 @@
         margin-top: 1.7rem;
         font-family: "Poppins";
     }
+
+    .container__main__sede{
+      display:flex ;
+      justify-content: center;
+      flex-direction: column;
+      padding-top: 5rem;
+      padding-bottom: 2rem;
+    }
+
+    .title_sede{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .maps_center{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100% !important;
+      height: 300px;
+      margin-top: 3rem;
+    }
+
 }
 
