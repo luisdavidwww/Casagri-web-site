@@ -4,7 +4,7 @@ import City from '../../data/daticos/State.json';
 //Estilos
 import './DropdownOptions.css';
 
-const DropdownOptions = ({ Data, ChangeState }) => {
+const DropdownOptions = ({ Data, ChangeState, DeleteVar }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const [filterText, setFilterText] = useState('');
@@ -36,6 +36,15 @@ const DropdownOptions = ({ Data, ChangeState }) => {
     item.estado.toLowerCase().includes(filterText.toLowerCase())
   )
 
+
+
+  useEffect(() => {
+    if (DeleteVar) {
+      // Restablece el valor generico de la lista de Opciones
+      setSelectedOption(null);
+    } 
+  }, [DeleteVar]);
+
   useEffect(() => {
     document.addEventListener('click', handleclickOutside, true);
   }, []);
@@ -54,17 +63,7 @@ const DropdownOptions = ({ Data, ChangeState }) => {
         <div className="container__Options_Scroll">
           
           <ul className="dropdown-options">
-          {/*
-            <div className='container__Input__Search'>
-              <input
-              type="text"
-              placeholder="Buscar..."
-              value={filterText}
-              onChange={(e) => setFilterText(e.target.value)}
-              className="Input__Form-Search"
-              />
-            </div>
-          */}
+
           
             {filteredData.map((item, index) => (
               <div

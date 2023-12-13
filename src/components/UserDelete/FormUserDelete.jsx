@@ -23,7 +23,7 @@ function isValidEmail(email) {
   return emailRegex.test(email);
 }
 
-function FormUserDelete({ onOpen }) {
+function FormUserDelete({ onOpen, Delete }) {
 
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
@@ -101,6 +101,16 @@ function FormUserDelete({ onOpen }) {
     checkFormValidity();
   }, [email, password, option]);
 
+
+
+  useEffect(() => {
+    if (Delete) {
+      // Restablece los campos del formulario a sus valores iniciales o vacíos
+      onChange('', 'email','emailValidator');
+      onChange('', 'password');
+    } 
+  }, [Delete]);
+
   return (
     <>
       <div>
@@ -136,7 +146,7 @@ function FormUserDelete({ onOpen }) {
                     className={errorTrim && messageEmail ? 'Input__Form-Error':'Input__Form'}
                     id="email"
                     placeholder="Ingrese su correo electrónico"
-                    value={email}
+                    value={ email}
                     onChange={(e) => onChange(e.target.value, 'email', 'emailValidator')}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter') {
@@ -193,7 +203,7 @@ function FormUserDelete({ onOpen }) {
                   <div className='Label__Form'>
                     ¿Porque quieres eliminar tu Cuenta?
                   </div>
-                  <DropdownOptions Data={ State } ChangeState={ setOption } />
+                  <DropdownOptions Data={ State } ChangeState={ setOption } DeleteVar={ Delete } />
                 </div>
 
                 {/* Boton */}

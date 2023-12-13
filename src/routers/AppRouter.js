@@ -48,7 +48,7 @@ export const AppRouter = () => {
                         <Route path="/search/:query" element={ <Search/> }></Route>
                         <Route path="/Details/:nombreProducto" element={ <DetailsApi/> }></Route>
                         <Route path="/DetailsNew/:nombreProducto" element={ <DetailsNew/> }></Route> 
-                        <Route path="/UserDelete" element={ <UserDelete/> }></Route> 
+                        <Route path="/EliminarUsuario" element={ <UserDelete/> }></Route> 
 
                         <Route path="*" element={ <Error/> }></Route>   
                     </Routes>

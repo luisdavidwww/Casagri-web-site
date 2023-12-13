@@ -6,7 +6,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-export default function AlertDialog({ open, onClose, onLogout }) {
+export default function AlertDialog({ open, onClose, SetDeleting }) {
 
   useEffect(() => {
     // Cuando la prop 'open' cambia, actualiza el estado local 'isOpen'
@@ -23,7 +23,9 @@ export default function AlertDialog({ open, onClose, onLogout }) {
 
   const handleLogout = () => {
     setIsOpen(false);
-    window.location.reload(); // Llama a la función de retorno onLogout del padre
+    SetDeleting(true);
+    setIsOpen(false);
+    //window.location.reload(); // Llama a la función de retorno onLogout del padre
   };
 
   return (
