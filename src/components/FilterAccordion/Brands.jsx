@@ -1,27 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Divider from '@mui/material/Divider';
 
-//componentes
-import SearchFormBrands from '../Search/SearchFormBrands';
 
 
-export default function CategoryAccordion({ MarcaLista, Enlace }) {
+export default function CategoryAccordion({ MarcaLista, Enlace, SearchCondition }) {
 
-  //let rediret = Enlace.replace(/\s+/g, '');
-  //MarcasProductos.filter((idx) => idx > 20);
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.SearchCondition);
+
+
   const [marcas, setMarcas] = useState();
-
-  /*useEffect(() => {
-    console.log("muestrica"+ MarcaLista )
-  }, [MarcaLista])*/
 
 
 
   return (
     <>
 
-    {/*<SearchFormBrands MarcasProductos={MarcasProductos} />*/}
     <div className={ MarcaLista?.length > 23 ? 'filter__container__Main__Arcodion': 'filter__container__Main'}>
       <ul style={{paddingLeft:'0rem'}}>
         {
@@ -30,6 +25,7 @@ export default function CategoryAccordion({ MarcaLista, Enlace }) {
             <div>
               <Link 
               className='subtitle__Filter'
+              /* to={`${"/marcas/"}${item.Marca}`}  */
               to={`${"/marcas/"}${item.Marca}`} 
               style={{textDecoration:'none'}}
               state={[Enlace]}

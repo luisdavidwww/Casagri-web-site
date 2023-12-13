@@ -59,7 +59,7 @@ const ErrorPage = ({message}) => {
                         <div style={{ display:'inline-block', height:'10vh', justifyContent:'center', textAlign:'center', marginTop:'7rem', marginBottom:'10rem' }} data-aos="zoom-in" data-aos-once="true" >
                             No pudimos acceder a la página.  <br />
                             <span style={{fontWeight:'700', marginTop:'3rem'}}  >  
-                              Por favor, inténtalo de nuevo.
+                              Por favor, inténtalo de nuevo. {message}
                             </span> 
                         </div>
                         

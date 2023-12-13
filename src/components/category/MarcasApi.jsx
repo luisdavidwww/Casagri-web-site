@@ -14,7 +14,7 @@ import  PaginationList  from './PaginationApi';
 import { getProductsBrand } from "../../selectors/getInfoCasagriApi";
 
 //Variables de Entorno
-import { BANNERSCATEGORIA, BANNERS, CATEGORIAS, BUSCARCATEGORIA } from '../../routers/index';
+import { BANNERSCATEGORIA, BANNERS } from '../../routers/index';
 
 //Manejo de Carga y Error
 import Loader from "components/Loader/Loader";
@@ -43,11 +43,6 @@ const MarcasApi = ({ component }) => {
   const [loanding, setLoanding] = useState(true);
   const [error, setError] = useState(true);
   const [loandingBanner, setLoandingBanner] = useState(true);
-
-  //Variables para Paginado
-  const [categoria, setCategoria] = useState([]);
-  const [subCategoria, setSubCategoria] = useState([]);
-  const [linea, setLinea] = useState([]);
 
   //Variables para Productos
   const [products, setProducts] = useState([]);
@@ -123,19 +118,15 @@ const MarcasApi = ({ component }) => {
   }
 
 
-
-
     useEffect(() => {
-
-      console.log(marca);
-
+      //Peticion el Banner Principal
       getInfo();
 
       const fetchDataAndHandleResponse = async () => {
-
         try {
           setLoanding(true);
           const response = await getProductsBrand(marca.toUpperCase(), search);
+
           // Procesa la respuesta o realiza otras operaciones necesarias
           setTotalPagina(response.totalPages);
           setTotalProducts(response.total);
@@ -214,7 +205,7 @@ const MarcasApi = ({ component }) => {
                 <div className='result__Category__Container__Movil' >
                       <div className='result__Category__Movil text__Result__Category__Movil'> 
                         <>
-                            <p style={{fontWeight:'700', fontSize:'25px', marginBottom:'0rem', textAlign:'center'}}>{marca}</p> 
+                          <p style={{fontWeight:'700', fontSize:'25px', marginBottom:'0rem', textAlign:'center'}}>{marca}</p> 
                         </>
                       </div>
                 </div>

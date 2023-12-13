@@ -140,18 +140,23 @@ function formatTitle(title) {
                                     /* Evaluamos si la marca tiene una imagen registrada */
                                     getBrandCategoryApi(products.Marca) == false ? (
                                       /* No tiene Imagen */
-                                      <h1 className="text__Details__Price" style={{marginTop:'2.2rem'}} >
-                                        Marca: <BsFillTagFill style={{marginRight:"0.2rem",marginLeft:'0.5rem'}}/>{products.Marca}
-                                      </h1>  
+                                      <Link to={`/marcas/${products.Marca}`} style={{ textDecoration:'none' }} >
+                                        <h1 className="text__Details__Price" style={{marginTop:'2.2rem'}} >
+                                          Marca: <BsFillTagFill style={{marginRight:"0.2rem",marginLeft:'0.5rem'}}/>{products.Marca}
+                                        </h1> 
+                                      </Link>
+                                       
                                       ):(
                                       /* Si tiene Imagen */
-                                      <div>
+                                      <>
                                         <h1 className="text__Details__Price" style={{marginTop:'2.2rem',marginLeft:'0.2rem'}} >
-                                        Marca: 
-                                      </h1>  
-                                      <img src={imgL(`./${products.Marca}.webp`)} style={{ marginTop:'0px', marginLeft:'0rem' ,marginRight:'0.5rem'}} />
-                                     
-                                      </div>
+                                          Marca: 
+                                        </h1>  
+                                        <Link to={`/marcas/${products.Marca}`} style={{ textDecoration:'none' }} >
+                                          <img src={imgL(`./${products.Marca}.webp`)} style={{ marginTop:'0px', marginLeft:'0rem' ,marginRight:'0.5rem'}} />                                   
+                                        </Link>
+                                      </>
+                                        
                                      )
                                   }
                                   </div>
@@ -220,9 +225,33 @@ function formatTitle(title) {
                                 {`${formatTitle(products.cat2)}, ${formatTitle(products.Cat3)}, ${formatTitle(products.cat4)}`}
                               </h5>
                           </div>   
-                          <h1 className="text__Details__Price" style={{marginTop:'3rem'}} >
-                            <BsFillTagFill style={{marginRight:"0.2rem"}}/>
-                            Marca: {products.Marca}</h1> 
+                            {/*Marca */}
+                            <div>
+                                  {
+                                    /* Evaluamos si la marca tiene una imagen registrada */
+                                    getBrandCategoryApi(products.Marca) == false ? (
+                                      /* No tiene Imagen */
+                                      <Link to={`/marcas/${products.Marca}`} style={{ textDecoration:'none' }} >
+                                        <h1 className="text__Details__Price" style={{marginTop:'3rem'}} >
+                                          Marca: <BsFillTagFill style={{marginRight:"0.2rem",marginLeft:'0.5rem'}}/>{products.Marca}
+                                        </h1> 
+                                      </Link>
+                                       
+                                      ):(
+                                      /* Si tiene Imagen */
+                                      <>
+                                        <h1 className="text__Details__Price" style={{marginTop:'3rem',marginLeft:'0rem'}} >
+                                          Marca: 
+                                        </h1>  
+                                        <Link to={`/marcas/${products.Marca}`} style={{ textDecoration:'none' }} >
+                                          <img src={imgL(`./${products.Marca}.webp`)} style={{ marginTop:'0px', marginLeft:'0rem' ,marginRight:'0.5rem'}} />                                   
+                                        </Link>
+                                      </>
+                                        
+                                     )
+                                  }
+                                  </div>
+
                           { products.StockActual == 0 ? (
                                     <div className='no__Disponible__Container--Details' >
                                       <div className='no__Disponible--Details'>

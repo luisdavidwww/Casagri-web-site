@@ -3,6 +3,7 @@ import Slider from "react-slick";
 
 //componentes
 import CardItemCarrusel from "./CardItemCarrusel";
+import CardItemCategory from "./CardItemCategory";
 
 //Estilos y diseño
 import './CarruselCatalogue.css'
@@ -101,7 +102,22 @@ export const CarruselCatalogue = ({component}) => {
       </div>
 
       {/* Categorias Movil */}
-      <div className="main-Container-Movil">
+      <div className="main-Container-Movil-Category">
+        <div className='container-Slick-Category' >
+          <div className='cards__category__wrapper'>
+            <ul className='cards__category__Container'>
+          {bannerCategory?.map((item, index) => (
+                  <CardItemCategory
+                  key={`${component}-${index}`}
+                  text={item.nombre}
+                  src={item.imagen_principal}
+                  href={`${"/Category/"}${item.nombre}`}
+                  />
+                  ))}
+              </ul>
+            </div>
+        </div>
+        {/*
         <div className='container-Slick' >
           {bannerCategory?.map((item, index) => (
                   <CardItemCarrusel
@@ -110,9 +126,9 @@ export const CarruselCatalogue = ({component}) => {
                   src={item.imagen_principal}
                   href={`${"/Category/"}${item.nombre}`}
                   />
-                  ))}
-              
+          ))}
         </div>
+      */}
       </div>
 
       {/* Botones Controladores Desktop */}

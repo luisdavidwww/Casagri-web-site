@@ -31,12 +31,12 @@ const CorporatePolicy = ({component}) => {
         </div>
 
 
-    <div className='cards__container'>
-        <div className='cards__wrapper'>
-          <ul className='cards__items-container'>
+    <div className='news_container-main'>
+        <div className='news_wrapper'>
+          <ul className='news__items'>
           {nosotros?.map((item, index) => (
-            <li className='cards__item-pc' key={`${component}-${index}`} data-aos="fade-up" data-aos-once="true" data-aos-duration="1500">
-                <a className='cards__item__link-pc' >
+            <li className='news__item' key={`${component}-${index}`} data-aos="fade-up" data-aos-once="true" data-aos-duration="1500">
+                <a className='news__item__link' >
                   {  item ?
                       <img 
                       className='cards__item__img-pc'

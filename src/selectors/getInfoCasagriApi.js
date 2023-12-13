@@ -1400,6 +1400,29 @@ export const getBrand = ( searchText, MarcasProductos ) => {
 /* ----------------------------------------------- Componentes ------------------------------------------------------- */
 
 
+//Buscar Productos por Componente
+export const getProductsComponent = async( component, search ) => {
+
+
+  if ( component === '' ) {
+      return [];
+  }
+  else{
+    try {
+      const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${'articulos/Componente/'}${component}${search}`);
+      const resp = await response.json();
+      return resp;
+      
+    } catch (error) {
+      console.log('Error fetching data:', error);
+    }
+  }
+
+}
+
+
+
+
 export const getComponent = ( searchText, ComponentesProductos ) => {
 
   if ( searchText === '' ) {

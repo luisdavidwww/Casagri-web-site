@@ -15,7 +15,6 @@ function NewItem(props) {
     <div data-aos="fade-up" data-aos-once="true" data-aos-duration="1500">
       <li className='news__item' >
         <a className='news__item__link' href={props.url} >
-
           {/* Imagen del Producto */}
           <figure className='news__item__pic-wrap'>
               <img

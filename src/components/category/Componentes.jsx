@@ -1,144 +1,134 @@
 import React, { useEffect, useState } from 'react';
-import { useParams,Link, useLocation, useNavigate} from "react-router-dom";
+import { useParams, useLocation, Link } from "react-router-dom";
 
-
-
-//METODOS FILTRADO
-import { getProductByCategory ,
-        getBrandsByName, 
-        getComponentList } from "../../selectors/getInfoCasagri";
-//componentes
-
+//componentes  
 import CardItemApi from '../Cards/CardItemApi';
-
 import  SearchForm  from "../Search/SearchForm";
-import  FiltersBar  from "../Filters/FiltersBar";
+import  SearchFormMovil  from "../Search/SearchFormMovil";
 import  FilterSidebar  from "../Filters/FilterSidebar-Movil";
+import  FiltersBar  from "../Filters/FiltersBar";
 import { BannerCategory } from 'components/BannerMain/BannerCategory';
-import { imgCasagriLoad } from '../../data/newsData';
-import Loader from "components/Loader/Loader";
+import  PaginationList  from './PaginationApi';
+
+//Hook para Peticiones
+import { getProductsComponent } from "../../selectors/getInfoCasagriApi";
+
 //Variables de Entorno
-import { BANNERS } from '../../routers/index';
+import { BANNERSCATEGORIA, BANNERS } from '../../routers/index';
+
+//Manejo de Carga y Error
+import Loader from "components/Loader/Loader";
+import  ErrorPage  from '../../components/ErrorPage/ErrorPage';
+
+//Estilos
+import './Category.css';
+import './Pagination.css';
+
 //icons
 import { AiOutlineRight } from "react-icons/ai";
 
 
 
+const Componentes = ({ componentParam }) => {
 
+  //query de la url
+  const { component } = useParams();
+  let { search } = useLocation();
 
+  //Variables del Banner
+  const [banner, setBanner] = useState([]);
 
-const Componentes = ({ component }) => {
-   
-    //query de la url
-    const { composicion } = useParams();
-    let { search } = useLocation();
-    let query = new URLSearchParams(search);
+  //Variables de Carga
+  const [loanding, setLoanding] = useState(true);
+  const [error, setError] = useState(true);
+  const [loandingBanner, setLoandingBanner] = useState(true);
 
-    let start = 0;
-    let end = query.get("fin");
+  //Variables para Productos
+  const [products, setProducts] = useState([]);
+  const [totalPagina, setTotalPagina] = useState(0);
+  const [totalProducts, setTotalProducts] = useState(0);
 
+  //Variables para Marcas
+  const [marcas, setMarcas] = useState([]);
 
-    const navigate = useNavigate();
-    const location = useLocation()
-    const  consultaParaLeerComponente  = location.state;
-  
-   const [imgBanner, setImgBanner] = useState('');
-   const [imgMiniBanner, setImgMiniBanner] = useState('');
-   const [banner, setBanner] = useState([]);
-   const [loanding, setLoanding] = useState(false);
-   const [ currentPage, setCurrentPage ] = useState(0);
-   const [ buscar, setBuscar ] = useState('');
+  //Variables para Componentes
+  const [componentesProd, setComponentes] = useState([]);
 
-   //Productos
-   const [products, setProducts] = useState([]);
-
-   //Filtros
-   const [marcas, setMarcas] = useState([]);
-
-   //variables para paginado
-   const [categoria, setCategoria] = useState([]);
-   const [subCategoria, setSubCategoria] = useState([]);
-   const [linea, setLinea] = useState([]);
-   
 
 
   //Peticion el Banner Principal
-  const getBanner = async () => {
-      //Estado del Loanding Verdadero 
-      setLoanding(true);
+  const getInfo = async () => {
 
+    if (component === "Buscar"){
       //Petición a la api
-      const response = await fetch(`${'http://localhost:8080/api/'}${BANNERS}${"Buscar"}`);
-      const res = await response.json();
-      setBanner(res.data);
-      //Estado del Loanding Falso
-      setLoanding(false);
+      setLoandingBanner(true)
+
+      try {
+        //Petición a la api
+        const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${BANNERS}${component}`);
+        const res = await response.json();
+
+        setBanner(res.data);
+        setLoandingBanner(false)
+
+      } catch (error) {
+        console.log('Error fetching data:', error);
+        setLoandingBanner(false);
+      }
+
+    }
 
   }
 
 
+  useEffect(() => {
+    //Peticion el Banner Principal
+    getInfo();
+
+    const fetchDataAndHandleResponse = async () => {
+      try {
+        setLoanding(true);
+        const response = await getProductsComponent(component.toUpperCase(), search);
+
+        // Procesa la respuesta o realiza otras operaciones necesarias
+        setTotalPagina(response.totalPages);
+        setTotalProducts(response.total);
+        setProducts(response.productos);
+        setError(false);
+        setLoanding(false);
+
+      } catch (error) {
+        console.log('Error fetching data:', error);
+        setLoanding(false);
+        setError('Ocurrió un error al obtener los datos. Por favor, inténtalo de nuevo.');
+      }
+    };
+  
+    fetchDataAndHandleResponse();
+
+   }, [component, search])
 
 
-    //Productos
-    const filterProducts = () => {
-        return getComponentList( consultaParaLeerComponente.toString() ).slice(currentPage, currentPage + 16 );
-        //getProductByCategory(consultaParaLeerMarcas.toString().toUpperCase());
-    }
-
-    //Leer Todas las marcas de la categoría
-    const filterBrands = () => {
-      setMarcas((getBrandsByName(getBrandsByName(getProductByCategory(consultaParaLeerComponente.toString().toUpperCase())))));
-      return getBrandsByName(getProductByCategory(consultaParaLeerComponente.toString().toUpperCase()));
-    }
-
-
-    const pageSuma = 1;
-    //botones de Paginación
-    const nextPage = () => {
-      navigate({search:`?Page=${start + pageSuma}`})
-      setCurrentPage( currentPage + 16 );
-    }
-
-    const prevPage = () => {
-          setCurrentPage( currentPage - 16 );
-    }
-
-    
-
- 
-
-
-    //use effects general
-    useEffect(() => {
-        
-        setCurrentPage(0);
-        filterProducts();
-
-        //filterBrands();
-        console.log("aquiiiiiiiiiiiiiiiiiii"+consultaParaLeerComponente.toString().toUpperCase());
-    }, [composicion])
-
-    useEffect(() => {
-      getBanner();
-    },[composicion])
-
-
-    useEffect(() => {
-      filterProducts();
-  }, [])
-
+   
 
   return (
     <div style={{backgroundColor:'#F9F9F9'}}>
     {
       loanding ?( <Loader/>):(
         <>
-
-
+        {
+          error || totalProducts == 0 ?( 
+            //Error
+            <ErrorPage />
+            ):
+            (
+              <>
+                {/*Banner de la Categoria */}
                 <div className='categoryBanner__Container'>
-                  <BannerCategory image={banner.banner__desktop} imageMini={banner.banner__movil} consulta={consultaParaLeerComponente} />
+                  <BannerCategory image={banner.banner__desktop} imageMini={banner.banner__movil} 
+                                  consulta={component} loandingBanner={loandingBanner} />
                 </div>
-              
+
                 {/*Seccion Superiror */}
                 <div className='formSearch__Container__Main'>
                   {/*Secuencia Lógica Categorias   */}
@@ -148,44 +138,63 @@ const Componentes = ({ component }) => {
                     </Link>
                     <div style={{textDecoration:'none', color:'#494949'}}> 
                         <AiOutlineRight style={{marginLeft:'0.5rem', marginRight:'0.5rem'}}/>
-                        <>Composición</>
+                        <>Marcas</>
                     </div>
                     <div className='pagesText__active' style={{textDecoration:'none', color:'#494949'}}> 
                         <AiOutlineRight style={{marginLeft:'0.5rem', marginRight:'0.5rem'}}/>
-                        <>{composicion}</>
+                        <>{component}</>
                     </div>
                   </div>
+
                   {/*Barra de Busqueda */}
                   <div className='formSearch__Container'>
                     <SearchForm/>
                   </div>
+                  
                 </div>
 
                 {/*Titulo de Resultado Desktop */}
                 <div className='result__Search__Container' >
-                      <div className='result__Search text__Result__Category'> 
-                        <span style={{fontWeight:'500', fontSize:'23px', marginTop:'0.4rem', marginLeft:'0.1rem'}}>Composición:</span>  
-                        <span style={{fontWeight:'700', fontSize:'29px', marginLeft:'0.5rem' }}>{/* <>&nbsp;</> */}  {composicion}</span>  
-                      </div>
+                    {
+                      component== "Buscar" ? null:(
+                        <div className='result__Search text__Result__Category'> 
+                          <span style={{fontWeight:'700', fontSize:'29px'}}> {component}</span>  
+                        </div>
+                      )
+                    }
+                      
                 </div>
 
                 {/*Titulo de Resultado Movil */}
                 <div className='result__Category__Container__Movil' >
-                    <div className='result__Category__Movil text__Result__Category__Movil'> 
-                      <>
-                          <p style={{fontWeight:'700', fontSize:'25px', marginBottom:'0rem', textAlign:'center'}}>Composición: {composicion}</p> 
-                      </>
-                    </div>
+                      <div className='result__Category__Movil text__Result__Category__Movil'> 
+                        <>
+                          <p style={{fontWeight:'700', fontSize:'25px', marginBottom:'0rem', textAlign:'center'}}>{component}</p> 
+                        </>
+                      </div>
                 </div>
-                
-                
-    
+
+                {/*Barra de Busqueda Movil*/}
+                <div className='us-container__Details-movil'  >
+                  <div className='formSearch__Container'>
+                    <SearchFormMovil/>
+                  </div>
+                </div>
+
                 {/*Contenido de Sección */}
                 <div className='category__Container'>
+
                   {/* Filtro */}
                   <div className='category__filter'>
-                    <FiltersBar Marcas={marcas} Consulta={consultaParaLeerComponente}/>
+                    <FiltersBar   
+                    Path={"marcas"} //Base URL
+                    Consulta={component} //Parametro Consulta
+                    Marcas={marcas} //Listado de Marcas que están en la categoria 
+                    Componentes={componentesProd} //Listado de Componentes que están en la categoria 
+                    Search={ search === "" ? '?page=1' : search} //Ubicación de la Pagina
+                    />
                   </div>
+
                   {/* Filtro Movil */}
                   <div className='category__filter__Movil'>
                     <div className='category__Display'>
@@ -193,73 +202,43 @@ const Componentes = ({ component }) => {
                     </div>
                       <FilterSidebar/>
                   </div>
-                
-    
+
                   {/* Resultado de Busqueda */}
                   <>
-                  { 
-                            ( filterProducts === null  ) 
-                                && 
-                                <div className='container__error'>
-                                  <div className="alert alert-danger">
-                                    No hay productos disponibles
-                                  </div>
-                                </div>
-                                
-                    }
-    
-                    {
-                            (  filterProducts !== null  ) 
-                            && 
-                            <div className='category__products'>
-                              <div className='cards'>
-                                    <div className='cards__container'>
-                                      <div className='cards__wrapper'> 
-                                        <ul className='cards__items__Container'>
-                                          {filterProducts()?.map((item, index) => (
+                      <>
+                        <div className='category__products'>
+                          <div className='cards'>
+                                <div className='cards__container'>
+                                  <div className='cards__wrapper'> 
+                                    <ul className='cards__items__Container'>
+                                      {products?.map((item, index) => (
                                               <CardItemApi
-                                              key={`${component}-${index}`}
-                                              src={imgCasagriLoad.imgUrl}
+                                              key={`${componentParam}-${index}`} 
                                               Nombre={item.Nombre}
-                                              Peso={item.PesoKG}
-                                              path={`/DetailsNew/${ item.Nombre.replace(/\s+/g, '').replace(/[^a-zA-Z0-9 ]/g, '') }`}
-                                              price={""}
-                                              CodigoProd={item.CodigoProd}
+                                              Imagen={  item.Imagen }
+                                              src={ "news02.jpg" }
                                               Marca={item.Marca}
-                                              ranking={""}
-                                              component={component}
-                                              categoria={""}
-                                              subCategoria={""}
-                                              Linea={""}
+                                              StockActual={item.StockActual}
+                                              path={`/Details/${ item.Nombre_interno }`}
                                               />
                                           ))}
-                                        </ul>
-                                      </div>
-                                    </div>       
-                                </div>
-                                
-                                <div>
-                                  <button 
-                                      className="btn btn-primary"
-                                      onClick={ prevPage }
-                                  >
-                                      Anteriores
-                                  </button>
-                                    <button 
-                                      className="btn btn-primary"
-                                      onClick={ nextPage }
-                                  >
-                                      Siguientes
-                                  </button>
-                                  <div>Total Productos: {getComponentList(composicion.toUpperCase()).length}</div>
-                                </div>
-                            </div>
-                            
-                                
-                        }
+                                    </ul>
+                                  </div>
+                                </div>       
+                          </div>
+                          <div className='Paginado__Category'> 
+                              <PaginationList cantidadPagina={ totalPagina } enlace={`/marcas/${component}`} />
+                              <div className="content-Top-options-list-link" style={{paddingLeft:'0.5rem',marginTop:'1rem'}}> 
+                                  Total Productos: {totalProducts} 
+                              </div>
+                          </div>
+                        </div>           
+                      </>
                   </>
                 </div>
-    
+              </>
+            ) 
+        }
         </>
       )
     }

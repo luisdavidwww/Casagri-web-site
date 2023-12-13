@@ -46,6 +46,21 @@
   height: 400px;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Tarjeta Principal*/
 .cards__item-two{
     width: 260px;
@@ -233,7 +248,9 @@
   }
   
 
-
+  .main-Container-Movil-Category{
+    display: none;
+  }
 
 
   @media only screen and (max-width: 960px) {
@@ -304,6 +321,9 @@
   margin: 0px;
   box-shadow: 0px 10px 10px rgb(0 0 0 / 7%);
 }
+
+
+
 .cards__item__img-two{
   width: 360px;
 }
@@ -430,4 +450,100 @@
     display:none;
   }
 
+
+
+
+.main-Container-Movil-Category{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    width: 100%;
+}
+
+.container-Slick-Category{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0.3rem;
+}
+
+
+  .cards__category__wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
   }
+
+  .cards__category__Container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0px;
+  }
+
+  .cards__item__category{
+    display: inline-block;
+    width: 175px;
+    margin-left: 0.5rem !important;
+    margin-right: 0.5rem !important;
+    margin: 0px;
+    margin-bottom: 15px;
+  }
+
+
+  .cards__item__img__category{
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    object-fit: cover;
+    transition: all 0.5s ease-in-out;
+    width: 360px;
+  }
+
+
+  .cards__item__category__link{
+    display: flex;
+    flex-flow: column;
+    border-radius: 0px;
+    overflow: hidden;
+    text-decoration: none;
+    padding: 0rem;
+    border: 0px solid transparent;
+    background-color: #ffffff;
+    margin: 0px;
+    margin-left: 0px;
+    height: 210px;
+    border-radius: 5px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease-in-out;
+  }
+
+
+  .cards__item__category__wrap {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    height: 150px;
+  }
+
+  .cards__item__text__category {
+    display: flex;
+    justify-content: center;
+    color:#070707;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0px;
+    cursor: pointer;
+    margin-top: 0.4rem;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+  }
+
+
+
+}

@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "estado": "Problemas de Carga"
+    },
+    {
+      "id": 2,
+      "estado": "Falta de Seguridad"
+    },
+    {
+      "id": 3,
+      "estado": "Violación de Privacidad"
+    },
+    {
+      "id": 4,
+      "estado": "Cambios Constantes y Desconcierto"
+    },
+    {
+      "id": 5,
+      "estado": "Falta de Actualizaciones o Soporte"
+    },
+    {
+      "id": 6,
+      "estado": "Otros Motivos"
+    }
+  ]
+  

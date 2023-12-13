@@ -32,6 +32,10 @@
     height: 25vh;
   }
 
+  .img__Banner-Main:hover{
+    transform: scale(1.1);
+  }
+
 
 
 /*---------------------------Elementos del carousel-------------------*/

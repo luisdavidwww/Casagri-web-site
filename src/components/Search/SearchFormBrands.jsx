@@ -10,7 +10,7 @@ import './Search.css';
 //icons
 import { BsSearch } from "react-icons/bs"
 
-const SearchFormBrands = ({ MarcasProductos, Enlace }) => {
+const SearchFormBrands = ({ MarcasProductos, Enlace, SearchCondition }) => {
 
  
      //variables de estados
@@ -28,7 +28,7 @@ const SearchFormBrands = ({ MarcasProductos, Enlace }) => {
      const { searchText } = formValues;
  
  
-     useEffect(() => {
+  useEffect(() => {
 
       if ( searchText !== "" )
       {
@@ -65,7 +65,6 @@ const SearchFormBrands = ({ MarcasProductos, Enlace }) => {
                                 autoComplete="off"
                                 value={ searchText }
                                 onChange={ handleInputChange } 
-                                
                             />
                             <BsSearch className='icon__Search'/>
                           
@@ -79,7 +78,7 @@ const SearchFormBrands = ({ MarcasProductos, Enlace }) => {
             <div>
               {
                 marcas.length !== 0 ? (
-                  <Brands MarcaLista={marcas} Enlace={Enlace} />
+                  <Brands MarcaLista={marcas} Enlace={Enlace} SearchCondition={SearchCondition} />
                 ):
                 (
                   <div className='result__Filter'>sin resultados para: "{ searchText }"</div>
@@ -90,7 +89,7 @@ const SearchFormBrands = ({ MarcasProductos, Enlace }) => {
             ):
             (
               <div>
-                <Brands MarcaLista={MarcasProductos} Enlace={Enlace} />
+                <Brands MarcaLista={MarcasProductos} Enlace={Enlace} SearchCondition={SearchCondition} />
               </div>
             )
 

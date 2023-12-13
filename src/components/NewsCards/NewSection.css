@@ -67,12 +67,12 @@
     margin-bottom: 0.7rem;
     border: 1px solid rgb(223, 223, 223);
     box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
-    transition: all 0.3s ease-in-out;
+    transition: all 0.02s ease-in-out;
   }
   .news__item:hover {
     cursor: pointer;
     margin-top: 0rem;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.02s ease-in-out;
     box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.15);
   }
   

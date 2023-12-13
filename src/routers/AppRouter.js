@@ -8,6 +8,7 @@ import Footer from 'components/common/Footer/Footer'
 import { Home } from 'pages/Home';
 import { Contact } from 'pages/Contact';
 import { Company } from 'pages/Company';
+import  UserDelete  from 'pages/UserDelete';
 import Search  from 'components/Search/SearchApi';
 import CategoryApi  from 'components/category/CategoryApi';
 import Marcas  from 'components/category/Marcas';
@@ -26,9 +27,13 @@ import '../Styles/GlobalStyles.css'
 
 export const AppRouter = () => {
 
+
     return (
         <Router>
             <div style={{  display:'block' }}>
+                {/* Condición para renderizar o no el Navbar 
+                {navigate().location.pathname !== '/UserDelete' && <NavbarNew component="Navbar" />}*/}
+        
                     <NavbarNew component="Navbar"/>        
                     <Routes>
                         <Route path="/" element={ <Home/> }></Route>;
@@ -39,14 +44,16 @@ export const AppRouter = () => {
                         <Route path="/Category/:consulta" element={ <CategoryApi component={"Category"}/> }></Route>
                         {/*<Route path="/marcas/:marca" element={ <Marcas component={"Marca"}/> }></Route>*/}
                         <Route path="/marcas/:marca" element={ <MarcasApi component={"Marca"}/> }></Route>
-                        <Route path="/component/:composicion" element={ <Componentes component={"Composición"}/> }></Route>
+                        <Route path="/component/:composicion" element={ <Componentes componentParam={"Composición"}/> }></Route>
                         <Route path="/search/:query" element={ <Search/> }></Route>
                         <Route path="/Details/:nombreProducto" element={ <DetailsApi/> }></Route>
-                        <Route path="/DetailsNew/:nombreProducto" element={ <DetailsNew/> }></Route>   
+                        <Route path="/DetailsNew/:nombreProducto" element={ <DetailsNew/> }></Route> 
+                        <Route path="/UserDelete" element={ <UserDelete/> }></Route> 
 
                         <Route path="*" element={ <Error/> }></Route>   
                     </Routes>
                     <Footer/>
+
             </div> 
         </Router>
     )
