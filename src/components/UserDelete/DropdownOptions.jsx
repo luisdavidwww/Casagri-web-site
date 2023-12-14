@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 //Data
 import City from '../../data/daticos/State.json';
 //Estilos
-import './DropdownOptions.css';
+import './DropdownOptionsUser.css';
 
 const DropdownOptions = ({ Data, ChangeState, DeleteVar }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,7 +54,7 @@ const DropdownOptions = ({ Data, ChangeState, DeleteVar }) => {
   
 
   return (
-    <div className="container_Dropdown_Options" ref={refOne}>
+    <div className="container_Dropdown_Options-vertion" ref={refOne}>
       <button className="btn_options" type="button"  onClick={toggleDropdown}>
         {selectedOption || 'Seleccionar una opción'}
         {isOpen ? ' ▲' : ' ▼'}

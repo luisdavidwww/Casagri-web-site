@@ -58,6 +58,8 @@
     text-align: center;
     justify-content: center;
     width: 100%;
+    padding-right: 0rem;
+    padding-left: 0rem;
   }
 
 
@@ -315,6 +317,24 @@
   
 
   @media screen and (max-width: 768px) {
+
+    .containerForm{
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+      justify-content: center;
+      width: 100%;
+      padding-right: 0rem;
+      padding-left: 0rem;
+    }
+
+    .Container__Form{
+      display: flex;
+      flex-direction: column;
+      width: 350px;
+  }
+
+    
     .delete__text{
         display: flex;
         padding: 1.5rem;
