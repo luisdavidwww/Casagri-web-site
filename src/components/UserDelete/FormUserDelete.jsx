@@ -122,7 +122,7 @@ function FormUserDelete({ onOpen, Delete }) {
 
               {/* Titulo */}
                 <div className='Title__Container'>
-                  <h2 className='AboutUs__title '>Eliminar Usuario</h2>
+                  <h2 className='AboutUs__title-Delete '>Eliminar Usuario</h2>
                 </div>
 
                 <div className='delete__text'>
