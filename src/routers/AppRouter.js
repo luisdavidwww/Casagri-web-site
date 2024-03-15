@@ -9,6 +9,7 @@ import { Home } from 'pages/Home';
 import { Contact } from 'pages/Contact';
 import { Company } from 'pages/Company';
 import  UserDelete  from 'pages/UserDelete';
+import  PrivacyPolicy  from 'pages/PrivacyPolicy';
 import Search  from 'components/Search/SearchApi';
 import CategoryApi  from 'components/category/CategoryApi';
 import Marcas  from 'components/category/Marcas';
@@ -49,6 +50,7 @@ export const AppRouter = () => {
                         <Route path="/Details/:nombreProducto" element={ <DetailsApi/> }></Route>
                         <Route path="/DetailsNew/:nombreProducto" element={ <DetailsNew/> }></Route> 
                         <Route path="/EliminarUsuario" element={ <UserDelete/> }></Route> 
+                        <Route path="/privacy-policy" element={ <PrivacyPolicy/> }></Route> 
 
                         <Route path="*" element={ <Error/> }></Route>   
                     </Routes>

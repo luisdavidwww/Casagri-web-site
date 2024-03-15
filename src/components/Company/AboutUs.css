@@ -37,7 +37,14 @@
     line-height: 23px;
     font-family: "Poppins";
   }
-
+  
+  .text__PrivacyPolicy{
+    text-justify: auto;
+    text-align: justify;
+    font-size: 15px;
+    line-height: 23px;
+    font-family: "Poppins";
+  }
 
   .luis{
     display: -webkit-box;
@@ -74,6 +81,24 @@
       line-height: 26px;
       font-family: "Poppins";
     }
+
+    .AboutUs__title__Container{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      padding: 1.5rem;
+      padding-top: 3rem;
+      padding-bottom: 1.5rem;
+    }
+    
+    .text__PrivacyPolicy{
+      text-justify: auto;
+      text-align: start;
+      font-size: 15px;
+      line-height: 23px;
+      font-family: "Poppins";
+    }
+  
     
 
   }
