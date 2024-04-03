@@ -254,7 +254,7 @@ const Category = ({ component }) => {
                       }
                       </Link>
                     </div>
-                    {/*Barra de Busqueda */}
+                    {/*Barra de Busqueda Desktop*/}
                     <div className='formSearch__Container'>
                       <SearchForm/>
                     </div>
@@ -280,6 +280,7 @@ const Category = ({ component }) => {
                         </>
                       </div>
                 </div>
+
                 {/*Barra de Busqueda Movil*/}
                 <div className='us-container__Details-movil'  >
                   <div className='formSearch__Container'>
