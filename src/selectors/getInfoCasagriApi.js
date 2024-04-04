@@ -1433,3 +1433,41 @@ export const getComponent = ( searchText, ComponentesProductos ) => {
 
 }
 
+
+
+
+
+/* ----------------------------------------------- Sugerencia de Busqueda ------------------------------------------------------- */
+
+
+
+export const getProductDataByNameSuggestion = async ( name, search ) => {
+
+  if ( name === '' ) {
+      return [];
+  }
+
+  try {
+
+    const response = getProductDataByName(name, search);
+
+    if ( response.length == 0 ) {
+      return [];
+    }
+
+    try {
+
+        return response.filter( products => products.Nombre.toLowerCase().indexOf(name.toLowerCase()) !== -1);
+      
+    } catch (error) {
+      console.log('Error fetching data:', error);
+    }
+
+
+    
+  } catch (error) {
+    console.log('Error fetching data:', error);
+  }
+
+}
+

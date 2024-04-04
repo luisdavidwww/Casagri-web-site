@@ -10,9 +10,10 @@ import { Contact } from 'pages/Contact';
 import { Company } from 'pages/Company';
 import  UserDelete  from 'pages/UserDelete';
 import  PrivacyPolicy  from 'pages/PrivacyPolicy';
+import  CalbosDocuments  from 'pages/CalbosDocuments';
 import Search  from 'components/Search/SearchApi';
 import CategoryApi  from 'components/category/CategoryApi';
-import Marcas  from 'components/category/Marcas';
+import Marcas       from 'components/category/Marcas';
 //MarcasApi
 import MarcasApi  from 'components/category/MarcasApi';
 import Componentes  from 'components/category/Componentes';
@@ -33,7 +34,7 @@ export const AppRouter = () => {
         <Router>
             <div style={{  display:'block' }}>
                 {/* Condición para renderizar o no el Navbar 
-                {navigate().location.pathname !== '/UserDelete' && <NavbarNew component="Navbar" />}*/}
+                {navigate().location.pathname !== '/UserDelete' && <NavbarNew component="Navbar"  />}*/}
         
                     <NavbarNew component="Navbar"/>        
                     <Routes>
@@ -51,6 +52,7 @@ export const AppRouter = () => {
                         <Route path="/DetailsNew/:nombreProducto" element={ <DetailsNew/> }></Route> 
                         <Route path="/EliminarUsuario" element={ <UserDelete/> }></Route> 
                         <Route path="/privacy-policy" element={ <PrivacyPolicy/> }></Route> 
+                        <Route path="/informacion-calbo" element={ <CalbosDocuments /> }></Route>
 
                         <Route path="*" element={ <Error/> }></Route>   
                     </Routes>

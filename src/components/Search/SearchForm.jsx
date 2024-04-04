@@ -1,9 +1,10 @@
 import React, {  useMemo, useState, useEffect, useRef  } from 'react';
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from '../../hooks/useForm';
-import { getProductByName } from '../../selectors/getProductByName';
+import { getProductDataByNameSuggestion } from '../../selectors/getInfoCasagriApi';
 import queryString from 'query-string';
 import  data  from '../../data/daticos/ProductosNew.json';
+
 //Estilos
 import './Search.css';
 //icons
@@ -25,6 +26,7 @@ const SearchForm = ({ history }) => {
     //variables de estados
     const [alert, setAlert] = useState("");
     const [click, setClick] = useState(false);
+    const [productsSuggestions, setProductsSuggestions] = useState([]);
     const [showAllSuggestions, setShowAllSuggestions] = useState(false);
     const maxSuggestions = 5; // Número máximo de sugerencias a mostrar inicialmente
     
@@ -37,7 +39,7 @@ const SearchForm = ({ history }) => {
     const { searchText } = formValues;
 
 
-    const heroesFiltered = useMemo(() => getProductByName( query ))
+    //const heroesFiltered = useMemo(() => getProductDataByName( query ))
 
 
     //Metodos para busqueda de producto
@@ -103,10 +105,33 @@ const SearchForm = ({ history }) => {
       }
 
 
-     useEffect(() => {
-      document.addEventListener("click", handleclickOutside, true);
-      }, []);
 
+      //Peticion Principal: Buscar Productos por Nombre
+      const ProductDataByNameSuggestion = async () => {
+        try {
+          // setLoanding(true);
+          const response = await getProductDataByNameSuggestion(searchText.toLowerCase());
+          // Procesa la respuesta o realiza otras operaciones necesarias
+          setProductsSuggestions(response.productos);
+
+        } catch (error) {
+        }
+      };
+
+
+
+    useEffect(() => {
+      document.addEventListener("click", handleclickOutside, true);
+    }, []);
+
+
+
+    useEffect(() => {
+      ProductDataByNameSuggestion();
+      console.log(productsSuggestions)
+    }, [searchText]);
+
+      
 
 
   return (
@@ -132,6 +157,23 @@ const SearchForm = ({ history }) => {
                     <div >
                       { searchText.length >= 4 && click ? (
                         <div className='autocomplete__container' >
+
+
+                          <div>
+                          {/*productsSuggestions.map((filteredProduct, index) => (
+                                      <div 
+                                        key={`${filteredProduct.id}-${index}`} 
+                                        className='autocomplete__item'
+                                        onMouseDown={ () => { 
+                                                      searchClick(filteredProduct.Nombre);
+                                                    }}>
+                                                      <BsSearch className='icon__SearchForm'/>
+                                                  <p>{filteredProduct.Nombre.toLowerCase()}</p>
+                                      </div>
+                                                  ))*/}
+                          </div>
+
+
                         
                           {/* Sugerencias para Nombre de Productos*/}
                           <div

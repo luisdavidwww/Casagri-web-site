@@ -109,8 +109,11 @@ const Search = () => {
       
         fetchDataAndHandleResponse();
 
+        console.log(search)
+
 
       },[ query, search])
+
 
   return (
     <div style={{backgroundColor:'#F9F9F9', paddingTop:'2rem', paddingBottom:'2rem'}}>
