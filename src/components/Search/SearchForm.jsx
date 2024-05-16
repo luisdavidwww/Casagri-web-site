@@ -128,7 +128,6 @@ const SearchForm = ({ history }) => {
 
     useEffect(() => {
       ProductDataByNameSuggestion();
-      console.log(productsSuggestions)
     }, [searchText]);
 
       

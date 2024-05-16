@@ -1,0 +1,98 @@
+.Document__title__Container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 4rem;
+    padding-bottom: 3.5rem;
+}
+
+.title-basic-Catalogo {
+    text-align: center;
+    align-items: center;
+    color: #000000;
+    font-size: 42px;
+    line-height: 55px;
+    font-family: "Montserrat";
+    font-weight: 600;
+    text-decoration-color: #00ff00;
+}
+
+
+.Document__Catalogo__container {
+    display: flex;
+    justify-content: center;/* Espacio entre elementos */
+    align-items: center;
+  }
+
+  .Document__Catalogo__container .cards__item-document {
+    width: calc(20% - 10px); /* Ajustar el ancho para que haya 5 elementos por fila */
+    margin: 2rem;
+    box-sizing: border-box; /* Incluir padding y border en el ancho */
+  }
+  
+  .cards__item-document {
+    width: 200px !important; /* Ancho de cada elemento */
+    height: 300px !important;
+  }
+  
+  .cards__item-document > div {
+    border: 1px solid #ccc; /* Borde alrededor de cada elemento */
+    padding: 10px; /* Espaciado interno */
+  }
+  
+  .cards__item-document img {
+    width: 100%; /* Ajustar la imagen al ancho del contenedor */
+    height: auto; /* Mantener la relación de aspecto */
+  }
+  
+  .AboutUs__title {
+    margin-bottom: 20px; /* Espacio inferior para el título */
+  }
+
+
+  /* Boton de Catalogos */
+  .btn-outline-Catalogos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid #47A01A;
+    transition: all 0.3s ease-out;
+    border-radius: 4px;
+    text-decoration-line: none;
+    outline: none;
+    cursor: pointer;
+    margin-top: 1rem;  
+    transition: all .25s ease-in-out;
+  }
+  
+  .btn-outline-Catalogos:hover{
+  color: rgb(255, 255, 255);
+  transform: scale(1.03);
+  background-color: #47A01A;
+  border: 1px solid #47A01A;
+  font-family: "Montserrat";
+  }
+
+
+  .btn-text-Catalogo{
+    font-family: "Montserrat"; 
+    font-weight: 400;
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+    line-height: 20px;
+    color: #47A01A;
+  }
+  
+  @media only screen and (max-width: 960px) {
+
+    .Document__title__Container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding-top: 8rem;
+        padding-bottom: 1.5rem;
+    }
+  }

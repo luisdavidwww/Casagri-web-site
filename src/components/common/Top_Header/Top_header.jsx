@@ -4,6 +4,7 @@ import Skeleton from 'react-loading-skeleton';
 
 //components
 import  SearchFormTopHeader  from "../../Search/SearchFormTopHeader";
+import  Dropdown  from "../Dropdown/Dropdown";
 
 //logo
 import LogoCasagri from "static/casagri-logo-01.svg"
@@ -12,7 +13,9 @@ import LogoCasagri from "static/casagri-logo-01.svg"
 import './Top_header.css'
 
 //icons
-import { BsCart3,  BsSearch } from "react-icons/bs"
+import { BsChevronDown, BsChevronUp,  BsSearch } from "react-icons/bs"
+
+
 
 
 
@@ -23,6 +26,7 @@ const Top_header = () => {
     const allCategories = 'Buscar';
 
     const [click, setClick] = useState(false);
+    const [clickDrop, setClickDrop] = useState(false);
 
     //hook que utilizo para llevar el scroll a la parte superior en cada Router
     let location = useLocation();
@@ -40,12 +44,19 @@ const Top_header = () => {
           }
     }
 
+
      //Escucha cualquier click en el documento para cerrarla ventana de sugerencia del buscador
      const handleclickOutside = (e) => {
         if (!refOne?.current?.contains(e.target) && !refInput?.current?.contains(e.target)) {
-          setClick(false);
+            setClickDrop(false);
         }
       };
+
+      //abrir Ventana Desplegable
+      const abrirVentanaDesplegable = () =>{
+        setClickDrop(!clickDrop);
+      }
+    
 
       useEffect(() => {
         document.addEventListener("click", handleclickOutside, true);
@@ -66,7 +77,7 @@ const Top_header = () => {
 
   return (
     <>
-        <div className='Top_header-Container-Copy'>
+        <div className='Top_header-Container-Copy' ref={refOne} >
             <div className='ContainerHeader'>
                 <div className='content-Top'>
                         <Link to='/' className='Link-Top-Header'>
@@ -101,10 +112,20 @@ const Top_header = () => {
                         <div className='content-Top-options-list'>
                             <div className='content-Top-options-list-link'>
                                 <Link  to='/company' className='content-Top-options-list-link' style={{ textDecoration: 'none'}}>
-                                    Empresa
+                                    Compañía
                                 </Link> 
                             </div>
                         </div>
+
+                        <div className='content-Top-options-list'>
+                            <div className='content-Top-options-list-link'>
+                                <div className='content-Top-options-list-link' onClick={() => { abrirVentanaDesplegable() }}>
+                                    Acerca de  <BsChevronDown style={{marginLeft:"0.5rem"}}/>
+                                </div>
+                            </div>  
+                            <Dropdown ClickDrop={ clickDrop } />      
+                        </div>
+
                         <div className='content-Top-options-list'>
                             <div className='content-Top-options-list-link'>
                                 <Link to="/contact" className='content-Top-options-list-link' style={{ textDecoration: 'none'}}>

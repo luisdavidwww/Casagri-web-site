@@ -8,8 +8,10 @@ import { FaCheckCircle } from "react-icons/fa";
 
 export default function Clasification({ Path, Consulta, fetchDataAndHandleResponse, Search }) {
 
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
+  const searchParams = new URLSearchParams(Search);
+  //Aqui obtenemos el nombre del filtro: MARCA o COMPONENTE
+  const componenteEnlace = searchParams.get('componente');
+  const marcaEnlace = searchParams.get('marca');
 
   const [activeIcon, setActiveIcon] = useState("");
 
@@ -41,6 +43,7 @@ export default function Clasification({ Path, Consulta, fetchDataAndHandleRespon
 
   useEffect(() => {
     activeIconResponse();
+
   }, []);
 
   return (
@@ -52,7 +55,7 @@ export default function Clasification({ Path, Consulta, fetchDataAndHandleRespon
           <li style={{textDecoration:'none', paddingLeft:'0.2rem', paddingRight:'1.7rem', paddingTop:'0.7rem'}}>
             <Link 
             className='subtitle__Filter'
-            to={`/${Path}/${Consulta}`}
+            to={`/${Path}/${Consulta}${"?page=1"}&marca=${marcaEnlace}&componente=${componenteEnlace}`}
             >
               { activeIcon === "ASC" ? 
               (
@@ -71,7 +74,7 @@ export default function Clasification({ Path, Consulta, fetchDataAndHandleRespon
           <li style={{textDecoration:'none', paddingLeft:'0.5rem', paddingRight:'1.7rem', paddingTop:'0.7rem'}}>
             <Link 
             className='subtitle__Filter'
-            to={`/${Path}/${Consulta}${"?page=1"}&orderBy=${"desc"}`}
+            to={`/${Path}/${Consulta}${"?page=1"}&marca=${marcaEnlace}&componente=${componenteEnlace}&orderBy=${"desc"}`}
             >
               { activeIcon === "DESC" ? 
               (
@@ -84,22 +87,6 @@ export default function Clasification({ Path, Consulta, fetchDataAndHandleRespon
             <Divider component="li" style={{marginTop:'0.5rem', opacity:'0.4' }}/> 
           </li>
 
-          {/* ORDENAR POR MARCA */}
-          <li style={{textDecoration:'none', paddingLeft:'0.5rem', paddingRight:'1.7rem', paddingTop:'0.7rem'}}>
-            <Link 
-            className='subtitle__Filter'
-            to={`/${Path}/${Consulta}${"?page=1"}&marca=si`}
-            >
-              { activeIcon === "MARCA" ? 
-              (
-              <div style={{color:'#000000', fontWeight:'bold', marginLeft:'0rem'}}> 
-                Marca
-                <FaCheckCircle style={{ marginLeft:'0.9rem', fontSize:'15px'}}/> 
-              </div>)
-              :(<>Marca</>)}
-            </Link> 
-            <Divider component="li" style={{marginTop:'0.5rem', opacity:'0.4' }}/> 
-          </li>
       </ul>
     </div>
   );

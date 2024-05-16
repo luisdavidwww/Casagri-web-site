@@ -101,6 +101,27 @@
     border: 1px solid #959596;
     transition: all 0.3s ease-out;
   }
+
+
+
+
+
+
+  .result__Search__filter{
+    display: flex;
+    justify-content: flex-start;
+    color: rgb(24, 24, 24);
+    padding: 0rem 0rem;
+    margin-bottom: 2rem;
+    text-decoration-line: none;
+    cursor: pointer;
+    margin-top: 1.8rem;  
+    transition: all .25s ease-in-out;
+    background-color: #D4D4D8;
+  }
+
+
+
   .text__Category{
     font-family: 'Montserrat', sans-serif;
     font-weight: 700px;
@@ -111,6 +132,7 @@
     font-weight: 700px;
     font-size: 19px;
   }
+
   .iconResult__Category{
     display: flex;
     justify-content: center;
@@ -191,6 +213,75 @@
     text-overflow: ellipsis;
     margin: 0px;
   }
+
+
+
+
+
+
+
+
+
+  .tagf_filter__Componente{
+    text-align: center;
+    background-color: #ceddf8;
+    font-weight: 400;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 10px;
+    margin-right: 10px;
+    padding: 5px;
+  }
+
+  .tagf_filter__Componente:hover{
+    text-align: center;
+    color: #ceddf8 !important;
+    background-color: #275dc4;
+    transition: all 0.3s;
+  }
+
+  .tagf_filter__Marca{
+    text-align: center;
+    font-weight: 400;
+    background-color: #daf5da;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 10px;
+    margin-right: 10px;
+    padding: 5px;
+  }
+
+  .tagf_filter__Marca:hover{
+    text-align: center;
+    color: #ceddf8 ;
+    background-color: #0e6b0e;
+    transition: all 0.3s;
+  }
+
+
+
+
+  .tag__iconFilter__Marca{
+    position: relative;
+    font-size: 19px;
+    color: #063b06 ;
+  }
+  .tag__iconFilter__Marca:hover{
+    transition: all 0.3s;
+    color: #ffffff ;
+  }
+
+  .tag__iconFilter__Componente{
+    position: relative;
+    font-size: 19px;
+    color: #021c4b ;
+  }
+  .tag__iconFilter__Componente:hover{
+    transition: all 0.3s;
+    color: #ffffff ;
+  }
+
+
 
   @media only screen and (min-width: 1400px) {
     .category__products{

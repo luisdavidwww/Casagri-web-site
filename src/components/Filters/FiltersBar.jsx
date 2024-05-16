@@ -177,6 +177,7 @@ export default function FiltersBar({Marcas, Path, Consulta, Componentes, Search,
           </AccordionSummary>
           <AccordionDetails>
             <SearchFormBrands 
+              Path={ Path } 
               MarcasProductos={Marcas} 
               Enlace={Consulta}
               SearchCondition ={ Search }
@@ -205,7 +206,12 @@ export default function FiltersBar({Marcas, Path, Consulta, Componentes, Search,
                 </div> <BsChevronDown className='iconOptionFilters'/>
               </AccordionSummary>
               <AccordionDetails>
-                <SearchFormComposition ComponentesProductos={Componentes} Enlace={Consulta} />
+                <SearchFormComposition 
+                  Path={ Path } 
+                  ComponentesProductos={Componentes} 
+                  Enlace={Consulta} 
+                  SearchCondition ={ Search }
+                  />
                 {/*<ComponentsProducts ComponentesProductos={Componentes} Enlace={Consulta} />*/}
               </AccordionDetails>
             </Accordion>

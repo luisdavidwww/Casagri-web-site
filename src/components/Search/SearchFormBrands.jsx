@@ -10,7 +10,7 @@ import './Search.css';
 //icons
 import { BsSearch } from "react-icons/bs"
 
-const SearchFormBrands = ({ MarcasProductos, Enlace, SearchCondition }) => {
+const SearchFormBrands = ({ Path, MarcasProductos, Enlace, SearchCondition }) => {
 
  
      //variables de estados
@@ -78,7 +78,7 @@ const SearchFormBrands = ({ MarcasProductos, Enlace, SearchCondition }) => {
             <div>
               {
                 marcas.length !== 0 ? (
-                  <Brands MarcaLista={marcas} Enlace={Enlace} SearchCondition={SearchCondition} />
+                  <Brands Path={ Path } MarcaLista={marcas} Consulta={Enlace} SearchCondition={SearchCondition} />
                 ):
                 (
                   <div className='result__Filter'>sin resultados para: "{ searchText }"</div>
@@ -89,7 +89,7 @@ const SearchFormBrands = ({ MarcasProductos, Enlace, SearchCondition }) => {
             ):
             (
               <div>
-                <Brands MarcaLista={MarcasProductos} Enlace={Enlace} SearchCondition={SearchCondition} />
+                <Brands Path={ Path } MarcaLista={MarcasProductos} Consulta={Enlace} SearchCondition={SearchCondition} />
               </div>
             )
 

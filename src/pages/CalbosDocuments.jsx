@@ -1,6 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
 
+//components
+import DocumentoCalbos     from "components/Document/DocumentoCalbos";
+
 //Manejo de Carga y Error
 import Loader     from "components/Loader/Loader";
 import ErrorPage  from "components/ErrorPage/ErrorPage"; 
@@ -50,31 +53,30 @@ const CalbosDocuments = () => {
     };
 
 
-    useEffect(() => {
-        document.title= `Información Calbos - Casagri`;
-        getDocuments();
-      },[])
+  useEffect(() => {
+    document.title= `Información Calbos - Casagri`;
+    getDocuments();
+  },[])
+
+
+  
 
 
 
     return (
         <>
-            <div className='CorporatePolicy__container'>
-                <div className='AboutUs__title__Container'>
-                    <h1 className='AboutUs__title'> Descargables <span style={{color:'#489B1E'}}> Calbos </span> </h1>
-                </div>
-
-                {banner?.map((item, index) => (
-                    <li className='cards__item-pc' key={`${"component"}-${index}`}>
-                        <div className=''  >
-                            <div className='' data-aos="flip-right" data-aos-once="true" data-aos-duration="1200">
-                                <h1>{item.nombre}</h1>
-                                <a href={item.enlaceDescarga}> Descargar </a>
-                            </div>  
-                        </div>
-                    </li>
-                ))}
-            </div>
+         <div style={{ backgroundColor: '#F9F9F9' }}>
+            {loanding ? (
+              <Loader />
+            ) : error ? (
+              <ErrorPage message={error} />
+            ) : (
+              <>
+                <DocumentoCalbos DocumentosCalbos={ banner  }/>
+              </>
+            )}
+         </div>
+            
         </>
     );
 };

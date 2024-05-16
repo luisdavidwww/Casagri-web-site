@@ -21,6 +21,9 @@ import {  BsChevronDown,
           BsSearch,
           BsHouseDoorFill
        } from "react-icons/bs";
+       //icons
+
+
 
 //logo
 import LogoCasagri from "static/casagri-logo-01.svg"
@@ -42,6 +45,7 @@ const Navbar = ({component}) => {
   const [clickSearch, SetclickSearch] = useState(false);
   const [line, setline] = useState("");
   const [button, setButton] = useState(true);
+  const [clickDrop, setClickDrop] = useState(false);
 
   //Acción Click  
   const handleClick = () => setClick(!click);
@@ -164,6 +168,11 @@ const Navbar = ({component}) => {
      }
    }
 
+
+   //abrir Ventana Desplegable
+   const abrirVentanaDesplegable = () =>{
+    setClickDrop(!clickDrop);
+  }
    
 
 
@@ -400,18 +409,56 @@ const Navbar = ({component}) => {
             
             {/*Opciones de politica de la empresa*/}
             <div className='movilNav-option-main'>
-              {op.map((option, index) => (
-                    <div className='movilNav-option-container' key={`${component}-${'option'}-${index}`}>
-                      <Link 
-                      to={option.href}  
-                      className='movilNav-option-text' 
-                      style={{ textDecoration: 'none', textAlign:'center'}}
-                      onClick={() => { setClick(false) }}
-                      >
-                        {option.option} 
-                      </Link>
-                    </div>
-              ))}
+              <div className='movilNav-option-container' key={`${component}-${'option'}-`}>
+                {op.map((option, index) => (
+                        <Link 
+                        to={option.href}  
+                        className='movilNav-option-text' 
+                        style={{ textDecoration: 'none', textAlign:'center'}}
+                        onClick={() => { setClick(false) }}
+                        >
+                          {option.option} 
+                        </Link>
+                ))}
+                        <div 
+                        className='movilNav-option-text' 
+                        style={{ textDecoration: 'none', textAlign:'center'}}
+                        onClick={() => { abrirVentanaDesplegable() }}
+                        >
+                          Acerca <BsChevronDown/>
+                        </div>
+              </div>    
+            </div>
+           
+            <div className={clickDrop ? 'movilNav-option-drop active': "movilNav-option-drop"}>
+              <div className='movilNav-option-container'>
+                      <div 
+                        className={clickDrop ? 'movilNav-option-text': 'movilNav-option-text desactive'}
+                        style={{ textDecoration: 'none', textAlign:'center'}}
+                        >
+                          <Link 
+                            to="" 
+                            className='movilNav-option-text' 
+                            style={{ textDecoration: 'none', textAlign:'center'}}
+                            >
+                            Catalogo
+                          </Link> 
+                          <Link 
+                            to="" 
+                            className='movilNav-option-text' 
+                            style={{ textDecoration: 'none', textAlign:'center'}}
+                            >
+                            Marcas
+                          </Link> 
+                          <Link 
+                            to="" 
+                            className='movilNav-option-text' 
+                            style={{ textDecoration: 'none', textAlign:'center'}}
+                            >
+                            Noticia
+                          </Link> 
+                      </div>
+              </div>   
             </div>
 
                 

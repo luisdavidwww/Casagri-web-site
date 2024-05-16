@@ -3,9 +3,15 @@ import { Link, useLocation } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
 import PaginationItem from '@mui/material/PaginationItem';
 
-export default function PaginationList({ cantidadPagina, enlace }) {
+export default function PaginationList({ cantidadPagina, enlace, Path, Consulta, Search }) {
   const location = useLocation();
-  const Search = location.search;
+  //const Search = location.search;
+  const searchParamsConsulta = new URLSearchParams(Search);
+  //Aqui obtenemos el nombre del filtro: MARCA o COMPONENTE
+  const componenteEnlace = searchParamsConsulta.get('componente');
+  const marcaEnlace = searchParamsConsulta.get('marca');
+
+
   const query = new URLSearchParams(location.search);
   const page = parseInt(query.get('page') || '1');
 
@@ -24,11 +30,11 @@ export default function PaginationList({ cantidadPagina, enlace }) {
       if ( searchParams.get('orderBy') === null ){
         searchParam = "";
       }
-      if ( searchParams.get('marca') !== null ){
+     /* if ( searchParams.get('marca') !== null ){
 
         const marcaByParam = searchParams.get('marca' ||  '' )
         searchParam = `&marca=${marcaByParam}`;
-      }
+      }*/
       //Si tiene definido parametro de Orden: "&orderBy"
       else{
         const orderByParam = searchParams.get('orderBy' ||  '' )
@@ -61,7 +67,8 @@ export default function PaginationList({ cantidadPagina, enlace }) {
           renderItem={(item) => (
             <PaginationItem
               component={Link}
-              to={`${enlace}${item.page === 1 ? `?page=1${DefinirParametros(Search)}` : `?page=${item.page}${DefinirParametros(Search)}`}`}
+              //to={`${enlace}${item.page === 1 ? `?page=1${DefinirParametros(Search)}` : `?page=${item.page}${DefinirParametros(Search)}`}`}
+              to={`/${Path}/${Consulta}${item.page === 1 ? `?page=1${DefinirParametros(Search)}` : `?page=${item.page}${DefinirParametros(Search)}`}&marca=${marcaEnlace}&componente=${componenteEnlace}`}
               {...item}
             />
           )}
@@ -74,7 +81,8 @@ export default function PaginationList({ cantidadPagina, enlace }) {
           renderItem={(item) => (
             <PaginationItem
               component={Link}
-              to={`${enlace}${item.page === 1 ? `?page=1${DefinirParametros(Search)}` : `?page=${item.page}${DefinirParametros(Search)}`}`}
+              //to={`${enlace}${item.page === 1 ? `?page=1${DefinirParametros(Search)}` : `?page=${item.page}${DefinirParametros(Search)}`}`}
+              to={`/${Path}/${Consulta}${item.page === 1 ? `?page=1${DefinirParametros(Search)}` : `?page=${item.page}${DefinirParametros(Search)}`}&marca=${marcaEnlace}&componente=${componenteEnlace}`}
               {...item}
             />
           )}

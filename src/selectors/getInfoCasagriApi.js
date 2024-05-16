@@ -11,8 +11,10 @@ export const getProductDataByName = async ( name, search ) => {
   //let Nombre_interno = name.replace(/-fiporif-/g, '%');
   console.log()
   try {
+    console.log('Aqui va:', process.env.REACT_APP_MY_ENV_VARIABLE  );
     const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${'articulos/Buscar/'}${name}${search}`);
     const resp = await response.json();
+   // console.log('Aqui va la respuesta de la busqueda:',resp  );
     return resp;
     
   } catch (error) {
@@ -475,7 +477,7 @@ export const fetchDataTwo = async (category, search ) => {
     //Medicina Veterinaria
     if ( category === 'MEDICINA VETERINARIA') {
       try {
-          const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${'articulos/CategoriaA-Z/MEDICINA VETERINARIA'}${(DefinirParametrosTwo(search))}`);
+          const response = await fetch(`${process.env.REACT_APP_MY_ENV_VARIABLE}${'articulos/Categoria/MEDICINA VETERINARIA'}${(DefinirParametrosTwo(search))}`);
           const resp = await response.json();
           return resp;
           
@@ -1448,7 +1450,7 @@ export const getProductDataByNameSuggestion = async ( name, search ) => {
   }
 
   try {
-
+    console.log("AQUÍ VA EL NOMBRE"+name);
     const response = getProductDataByName(name, search);
 
     if ( response.length == 0 ) {

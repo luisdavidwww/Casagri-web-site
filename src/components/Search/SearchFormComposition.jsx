@@ -10,7 +10,7 @@ import ComponentsProducts from '../FilterAccordion/Components';
 import './Search.css';
 
 
-const SearchFormComposition = ({ ComponentesProductos, Enlace }) => {
+const SearchFormComposition = ({ Path, ComponentesProductos, Enlace, SearchCondition }) => {
 
      //variables de estados
      const [componentes, setComponentes] = useState([]);
@@ -63,8 +63,6 @@ const SearchFormComposition = ({ ComponentesProductos, Enlace }) => {
                                 onChange={ handleInputChange } 
                                 
                             />
-                            
-                          
                     </form>
             </div>
         </div>
@@ -75,7 +73,7 @@ const SearchFormComposition = ({ ComponentesProductos, Enlace }) => {
             <div>
               {
                 componentes?.length !== 0 ? (
-                  <ComponentsProducts ComponentesProductos={componentes} Enlace={Enlace} />
+                  <ComponentsProducts Path={Path} ComponentesProductos={componentes} Enlace={Enlace} SearchCondition={SearchCondition} />
                 ):
                 (
                   <div className='result__Filter'>sin resultados para: "{ searchText }"</div>
@@ -86,7 +84,7 @@ const SearchFormComposition = ({ ComponentesProductos, Enlace }) => {
             ):
             (
               <div>
-                <ComponentsProducts ComponentesProductos={ComponentesProductos} Enlace={Enlace} />
+                <ComponentsProducts Path={Path} ComponentesProductos={ComponentesProductos} Enlace={Enlace} SearchCondition={SearchCondition} />
               </div>
             )
 

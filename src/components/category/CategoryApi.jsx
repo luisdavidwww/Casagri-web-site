@@ -28,7 +28,7 @@ import './Pagination.css';
 
 
 //icons
-import { AiOutlineRight } from "react-icons/ai";
+import { AiOutlineRight, AiFillCloseCircle, AiOutlineCloseCircle  } from "react-icons/ai";
 
 
 const Category = ({ component }) => {
@@ -36,6 +36,12 @@ const Category = ({ component }) => {
   //query de la url
   const { consulta } = useParams();
   let { search  } = useLocation();
+
+  const searchParams = new URLSearchParams(search);
+  //aqui obtenemos el nombre del filtro: MARCA o COMPONENTE
+  const componenteEnlace = searchParams.get('componente');
+  const marcaEnlace = searchParams.get('marca');
+
 
   //Variables del Banner
   const [banner, setBanner] = useState([]);
@@ -185,6 +191,7 @@ const Category = ({ component }) => {
       getInfo();
       getPages();
 
+      console.log(marcaEnlace);
 
       fetchDataAndHandleResponse();
 
@@ -264,13 +271,58 @@ const Category = ({ component }) => {
                 <div className='result__Search__Container' >
                     {
                       consulta== "Buscar" ? null:(
-                        <div className='result__Search text__Result__Category'> 
+                        <>
+                        <div className='result__Search text__Result__Category' style={{ marginBottom:'0.5rem'}}> 
                           <span style={{fontWeight:'700', fontSize:'29px'}}> {consulta}</span>  
-                        </div>
+                        </div>                 
+                        </>
+                        
                       )
                     }
-                      
                 </div>
+
+
+                {/*Etiquetas de filtros de busqueda */}
+                <div className='result__Search__Container'>
+                  <div className='result__Search text__Result__Category' style={{marginTop:'0rem', marginBottom:'0rem'}}> 
+                    {marcaEnlace && marcaEnlace !== "null" ? (
+                      <div style={{marginRight:'10px'}}> 
+                        <p 
+                          style={{ fontSize:'14px', letterSpacing:'0.5px'}}
+                          className='tagf_filter__Marca'
+                        >
+                          {marcaEnlace.charAt(0).toUpperCase() + marcaEnlace.slice(1).toLowerCase() }
+                          <span style={{ marginLeft:'6px'}}>
+                            <Link 
+                              className='tag__iconFilter__Marca'
+                              to={`/Category/${consulta}${"?page=1"}&marca=${"null"}&componente=${componenteEnlace}`}>
+                              < AiFillCloseCircle />
+                            </Link> 
+                          </span>
+                        </p>
+                      </div>
+                    ) : null}
+                    {componenteEnlace && componenteEnlace !== "null" ? (
+                      <div style={{marginRight:'10px'}}> 
+                        <p 
+                          style={{ fontSize:'14px', letterSpacing:'0.5px'}}
+                          className='tagf_filter__Componente'
+                        >
+                          {componenteEnlace.charAt(0).toUpperCase() + componenteEnlace.slice(1).toLowerCase() }
+                          <span style={{ marginLeft:'6px'}}>
+                          <Link 
+                            className='tag__iconFilter__Componente'
+                            to={`/Category/${consulta}${"?page=1"}&marca=${marcaEnlace}&componente=${"null"}`}>
+                            < AiFillCloseCircle />
+                          </Link> 
+                          </span>
+                        </p>
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+
+                
 
                 {/*Titulo de Resultado Movil */}
                 <div className='result__Category__Container__Movil' >
@@ -318,38 +370,66 @@ const Category = ({ component }) => {
                       />
                   </div>
 
-                  {/* Resultado de Busqueda */}
                   <>
-                      <>
-                        <div className='category__products'>
-                          <div className='cards'>
-                                <div className='cards__container'>
-                                  <div className='cards__wrapper'> 
-                                    <ul className='cards__items__Container'>
-                                      {products?.map((item, index) => (
-                                              <CardItemApi
-                                              key={`${component}-${index}`} 
-                                              Nombre={item.Nombre}
-                                              Imagen={  item.Imagen }
-                                              src={ "news02.jpg" }
-                                              Marca={item.Marca}
-                                              StockActual={item.StockActual}
-                                              path={`/Details/${ item.Nombre_interno }`}
+                              { 
+                                      products.length == 0 && !loanding ? 
+                                      ( 
+                                        <div className='category__products'>
+                                            <div className='container__error'>
+                                              <div className="alert alert-danger" style={{textAlign:'center', width:'300px'}}>
+                                                  No se encontraron productos con esos filtros 🥺
+                                                </div>
+                                            </div>
+                                          </div>
+                                      ):
+                                      (
+                                        <div className='category__products'>
+                                          <div className='cards'>
+                                                <div className='cards__container'>
+                                                  <div className='cards__wrapper'> 
+                                                    <ul className='cards__items__Container'>
+                                                      {products?.map((item, index) => (
+                                                              <CardItemApi
+                                                              key={`${component}-${index}`} 
+                                                              Nombre={item.Nombre}
+                                                              Imagen={  item.Imagen }
+                                                              src={ "news02.jpg" }
+                                                              Marca={item.Marca}
+                                                              StockActual={item.StockActual}
+                                                              path={`/Details/${ item.Nombre_interno }`}
+                                                              />
+                                                          ))}
+                                                    </ul>
+                                                  </div>
+                                                </div>       
+                                          </div>
+                                          <div className='Paginado__Category'> 
+                                              <PaginationList 
+                                              cantidadPagina={ totalPagina } 
+                                              Path={"Category"} //Base URL
+                                              Consulta={consulta} //Parametro Consulta
+                                              Search={search} //Ubicación de la Pagina
+                                              enlace={`/Category/${consulta}`} 
                                               />
-                                          ))}
-                                    </ul>
-                                  </div>
-                                </div>       
-                          </div>
-                          <div className='Paginado__Category'> 
-                              <PaginationList cantidadPagina={ totalPagina } enlace={`/Category/${consulta}`} />
-                              <div className="content-Top-options-list-link" style={{paddingLeft:'0.5rem',marginTop:'1rem'}}> 
-                                  Total Productos: {totalProducts} 
-                              </div>
-                          </div>
-                        </div>           
-                      </>
+                                              <div className="content-Top-options-list-link" style={{paddingLeft:'0.5rem',marginTop:'1rem'}}> 
+                                                  Total Productos: {totalProducts} 
+                                              </div>
+                                          </div>
+                                        </div>    
+                                      )      
+                                            
+                              }
                   </>
+
+
+                
+
+
+
+
+
+
+
                 </div>
               </>
             ) 
