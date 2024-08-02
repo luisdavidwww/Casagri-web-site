@@ -192,8 +192,8 @@ export default function FiltersBar({Marcas, Path, Consulta, Componentes, Search,
           || Consulta === "Fungicidas" || Consulta === "Otros"  || Consulta === "Salud Animal Veterinaria" || Consulta === "Medicina Veterinaria"
           || Consulta === "Analgésicos y Antiinflamatorios" || Consulta === "Antisepticos y Desinfectantes" || Consulta === "Antibióticos" 
           || Consulta === "Antimastiticos" || Consulta === "Antitimpánico"  || Consulta === "Antidiarreicos"  || Consulta === "Desinfectante"
-          || Consulta === "Baños, Ectoparasitarios y Matagusanos" || Consulta === "Biológicos" || Consulta === "Desparasitantes"
-          || Consulta === "Endectocidas" || Consulta === "Hemoparasiticidas" || Consulta === "Vitaminas y Suplementos" || Consulta === "Control De Plaga"   ? 
+          || Consulta === "Baños, Ectoparasitarios y Matagusanos" || Consulta === "Biológicos" || Consulta === "Desparasitantes" || Consulta === "Mascotas"
+          || Consulta === "Endectocidas" || Consulta === "Hemoparasiticidas" || Consulta === "Hormonales" || Consulta === "Vitaminas y Minerales" || Consulta === "Control De Plagas"   ? 
           (
             <Accordion>
               <AccordionSummary 

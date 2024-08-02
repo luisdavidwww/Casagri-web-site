@@ -259,11 +259,11 @@ a{
 
 
 .desktopNav__container-line-hover {
-  color: #47A01A;
+  color: #ffffff;
   text-decoration: none;
   transition: 0.1s;
   height: 2.1rem;
-  border-bottom: 4px solid  #47A01A;
+  border-bottom: 4px solid  #ffffff;
   margin-left: 15px;
   margin-right: 15px;
 }

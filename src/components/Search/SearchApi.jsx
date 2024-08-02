@@ -240,7 +240,13 @@ const Search = () => {
                                               </div>       
                                           </div>
                                           <div className='Paginado__Category'> 
-                                              <PaginationList cantidadPagina={ totalPagina } enlace={`/Search/${query}`} />
+                                              <PaginationList 
+                                              cantidadPagina={ totalPagina } 
+                                              Path={"Search"} //Base URL
+                                              Consulta={query} //Parametro Consulta
+                                              Search={search} //Ubicación de la Pagina
+                                              enlace={`/Search/${query}`} 
+                                              />
                                               <div className="content-Top-options-list-link" style={{paddingLeft:'0.5rem',marginTop:'1rem'}}> 
                                                   Total Productos: {totalProducts} 
                                               </div>

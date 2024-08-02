@@ -287,7 +287,10 @@ cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 0px;
+  position: relative;
+  z-index: 50;
 }
+
 /*  Fuentes de la presentación del Producto   */
 .cards__item__text-presentation {
   color: #23263b;

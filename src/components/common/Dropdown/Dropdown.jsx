@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation, Link } from 'react-router-dom';
 import "./Dropdown.css";
 
 //list Options
@@ -40,9 +41,9 @@ function Dropdown({ ClickDrop }) {
           onMouseEnter={() => handleItemHover(index)}
           onMouseLeave={() => handleItemNull(null)}
           >
-          <div className={ClickDrop ? (hoveredItem == index ? "content-dropdown-list-hover" : "content-dropdown-list") : "content-dropdown-list desactive"}>
-            {link.name}
-          </div>
+          <Link to={link.href} className={ClickDrop ? (hoveredItem == index ? "content-dropdown-list-hover" : "content-dropdown-list") : "content-dropdown-list desactive"}>
+              {link.name}
+          </Link>
         </div>
       ))}
     </div>

@@ -173,7 +173,8 @@ const Navbar = ({component}) => {
    const abrirVentanaDesplegable = () =>{
     setClickDrop(!clickDrop);
   }
-   
+
+
 
 
    //constante para parametros de redirección
@@ -183,6 +184,11 @@ const Navbar = ({component}) => {
     timestamp: Date.now(),
    };
    const [subCategory, setSubCategory] = useState("SubCategory");
+
+
+
+
+
 
   useEffect(() => {
     showButton();
@@ -198,6 +204,13 @@ const Navbar = ({component}) => {
 
    const [isLogoVisible, setIsLogoVisible] = useState(false);
 
+
+
+
+
+
+
+
   const handleScroll = () => {
     if (window.scrollY > 100 ) {
       setIsLogoVisible(true);
@@ -205,6 +218,7 @@ const Navbar = ({component}) => {
       setIsLogoVisible(false);
     }
   };
+
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -257,7 +271,7 @@ const Navbar = ({component}) => {
               <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} key={`${component}-${index}`} >
 
                   {/* Lineas de Producto en el Navbar */}
-                  <div className={heading == link.name && hover  ? 'desktopNav__container-line' : 'desktopNav__container-line' }>
+                  <div className={heading == link.name && hover  ? 'desktopNav__container-line-hover' : 'desktopNav__container-line' }>
                     <div /*to={`/Category/${link.name}`}*/  style={{textDecoration:'none'}}>
                       <div
                           className={ 'desktopNav__container-line-title' }
@@ -379,187 +393,187 @@ const Navbar = ({component}) => {
 
           {/*---------------------------------Navbar Movil--------------------------------------*/}
 
-{
-  clickSearch ?
-  ( /* Sección de busqueda */
-    <section>
-              {/* Barra de Busqueda */}
-              <AnimatePresence>
-              <div className='content-Top-search' >
-                <motion.div
-                  initial={{x: 0, y: 43, scale: 1, rotate: 0,  opacity:1 }}      
-                  animate={{x: 0, y: 0, scale: 1, rotate: 0, transition:{duration:"0.40"}, opacity:1 }} 
-                  exit={{x: 0, y: -50, scale: 1, rotate: 0,  opacity:1 }}    
-                  >
-                  <div className='content-top-search-div' >
-                      <SearchNavbar clickSearch={ clickSearch } />
-                      <div className='content-top-search-cancel' onClick={ actionSearch } > 
-                          <div data-aos="fade-left" className='content-top-search-cancela' > Cancelar </div>
-                      </div>
-                  </div> 
-                                
-                </motion.div>
-              </div>
-              </AnimatePresence>
-              
-    </section>
-  ):
-  ( /*Sección del Navbar con categorias */
-    <section id="movilNav__container">
-            
-            {/*Opciones de politica de la empresa*/}
-            <div className='movilNav-option-main'>
-              <div className='movilNav-option-container' key={`${component}-${'option'}-`}>
-                {op.map((option, index) => (
-                        <Link 
-                        to={option.href}  
-                        className='movilNav-option-text' 
-                        style={{ textDecoration: 'none', textAlign:'center'}}
-                        onClick={() => { setClick(false) }}
-                        >
-                          {option.option} 
-                        </Link>
-                ))}
-                        <div 
-                        className='movilNav-option-text' 
-                        style={{ textDecoration: 'none', textAlign:'center'}}
-                        onClick={() => { abrirVentanaDesplegable() }}
-                        >
-                          Acerca <BsChevronDown/>
+          {
+            clickSearch ?
+            ( /* Sección de busqueda */
+              <section>
+                        {/* Barra de Busqueda */}
+                        <AnimatePresence>
+                        <div className='content-Top-search' >
+                          <motion.div
+                            initial={{x: 0, y: 43, scale: 1, rotate: 0,  opacity:1 }}      
+                            animate={{x: 0, y: 0, scale: 1, rotate: 0, transition:{duration:"0.40"}, opacity:1 }} 
+                            exit={{x: 0, y: -50, scale: 1, rotate: 0,  opacity:1 }}    
+                            >
+                            <div className='content-top-search-div' >
+                                <SearchNavbar clickSearch={ clickSearch } />
+                                <div className='content-top-search-cancel' onClick={ actionSearch } > 
+                                    <div data-aos="fade-left" className='content-top-search-cancela' > Cancelar </div>
+                                </div>
+                            </div> 
+                                          
+                          </motion.div>
                         </div>
-              </div>    
-            </div>
-           
-            <div className={clickDrop ? 'movilNav-option-drop active': "movilNav-option-drop"}>
-              <div className='movilNav-option-container'>
-                      <div 
-                        className={clickDrop ? 'movilNav-option-text': 'movilNav-option-text desactive'}
-                        style={{ textDecoration: 'none', textAlign:'center'}}
-                        >
-                          <Link 
-                            to="" 
-                            className='movilNav-option-text' 
-                            style={{ textDecoration: 'none', textAlign:'center'}}
-                            >
-                            Catalogo
-                          </Link> 
-                          <Link 
-                            to="" 
-                            className='movilNav-option-text' 
-                            style={{ textDecoration: 'none', textAlign:'center'}}
-                            >
-                            Marcas
-                          </Link> 
-                          <Link 
-                            to="" 
-                            className='movilNav-option-text' 
-                            style={{ textDecoration: 'none', textAlign:'center'}}
-                            >
-                            Noticia
-                          </Link> 
-                      </div>
-              </div>   
-            </div>
-
-                
-
-            <div className='movilNav__lower'>
-              {/* Recorrido de la lista: LINEAS DE PRODUCTOS CASAGRI*/}
-
-              <div className='movilNav__container-line-top'></div>
-
-              {/* Barra de Busqueda */}
-              <div className='content-Top-search' onClick={ actionSearch }>
-                    <div className='content-top-search-div'  >
-                        <SearchNavbar clickSearch={ clickSearch }  />
-                    </div>
-                    <div className='content-top-search-icon'>
-                      <BsSearch className='search__icon' />
-                    </div> 
-              </div>
-
-              <div className='movilNav__container-line-top'></div>
-              
-              {/* Desplegable De Categorias */}
-              {links.map((link, index) => (
-              <div key={`${component}-${'category-movil'}-${index}`}>
-                  {/* Condicional para hover de las líneas */}
-                  { heading == link.name && line == link.name ? 
-                    (
-                      <a className='movilNav__container-line-hover'
-                          onClick={() => { dropdownBoxMovil(link.name); }}
-                        >
-                          {/* Lineas de Producto en el Navbar hover*/}
-                              <div>
-                                    <h1 className='movilNav__container-line-title'>
-                                        {link.name} 
-                                          { heading == link.name && line == link.name ? 
-                                          (  <BsChevronDown style={{marginLeft:'10px', paddingTop:'2px', display:'inline-flex'}}/>  )
-                                          : 
-                                          (  <BsChevronUp style={{marginLeft:'10px', paddingTop:'2px', display:'inline-flex'}}/>  )
-                                          }
-                                    </h1>             
-                                </div> 
-                      </a>
-                    )
-                    : 
-                    (   
-                      <a className='movilNav__container-line'
-                          onClick={() => { dropdownBoxMovil(link.name); }}
-                          style={{textDecoration:'none'}}
-                        >
-                          {/* Lineas de Producto en el Navbar*/}
-                              <div>
-                                    <h1 className='movilNav__container-line-title'>
-                                        {link.name} 
-                                          { heading == link.name && line == link.name ? 
-                                          (  <BsChevronDown style={{marginLeft:'10px', paddingTop:'2px', display:'inline-flex'}}/> )
-                                          : 
-                                          (  <BsChevronUp style={{marginLeft:'10px', paddingTop:'2px', display:'inline-flex'}}/>  )
-                                          }
-                                    </h1>             
-                                </div>  
-                      </a>
-                    )
-                  }
-                      {/* SubLíneas de Productos*/}
-                      <AnimatePresence>
-                      {dropdownMovil && link.submenu && heading == link.name && erclick && (
-                          <div className='movilNav-drop'>
-                            <motion.div
-                          /*
-                            initial={{x: 50, y: 0, scale: 1, rotate: 0,  opacity:0 }}      
-                            animate={{x: 0, y: 0, scale: 1, rotate: 0, transition:{duration:"0.10"}, opacity:1 }}  
-                          */
-                            >
-                              {link.sublinks.map((mysublinks, index) => {
-                                  return (
-                                    <div key={`${component}-${'sub-category-movil'}-${index}`}>
-                                      <Link
-                                        className='movilNav-SubLines'
-                                        to={`/Category/${mysublinks.Head}`}
-                                        style={{textDecoration:'none'}}
-                                        onClick={() => { handleClick()}}
-                                      >
-                                        <div className='movilNav-SubLines-title-nav'>
-                                            {mysublinks.Head}
-                                        </div>
-                                      </Link>
-                                    </div>
-                                  );
-                                })}
-
-                            </motion.div>                              
-                          </div> 
-                        )} 
-                      </AnimatePresence>
+                        </AnimatePresence>
                         
-              </div>
-              ))}
-            </div>
-    </section>
-  )
-}
+              </section>
+            ):
+            ( /*Sección del Navbar con categorias */
+              <section id="movilNav__container">
+                      
+                      {/*Opciones de politica de la empresa*/}
+                      <div className='movilNav-option-main'>
+                        <div className='movilNav-option-container' key={`${component}-${'option'}-`}>
+                          {op.map((option, index) => (
+                                  <Link 
+                                  to={option.href}  
+                                  className='movilNav-option-text' 
+                                  style={{ textDecoration: 'none', textAlign:'center'}}
+                                  onClick={() => { setClick(false) }}
+                                  >
+                                    {option.option} 
+                                  </Link>
+                          ))}
+                                  <div 
+                                  className='movilNav-option-text' 
+                                  style={{ textDecoration: 'none', textAlign:'center'}}
+                                  onClick={() => { abrirVentanaDesplegable() }}
+                                  >
+                                    Acerca <BsChevronDown/>
+                                  </div>
+                        </div>    
+                      </div>
+                    
+                      <div className={clickDrop ? 'movilNav-option-drop active': "movilNav-option-drop"}>
+                        <div className='movilNav-option-container'>
+                                <div 
+                                  className={clickDrop ? 'movilNav-option-text': 'movilNav-option-text desactive'}
+                                  style={{ textDecoration: 'none', textAlign:'center'}}
+                                  >
+                                    <Link 
+                                      to="" 
+                                      className='movilNav-option-text' 
+                                      style={{ textDecoration: 'none', textAlign:'center'}}
+                                      >
+                                      Catalogo
+                                    </Link> 
+                                    <Link 
+                                      to="" 
+                                      className='movilNav-option-text' 
+                                      style={{ textDecoration: 'none', textAlign:'center'}}
+                                      >
+                                      Marcas
+                                    </Link> 
+                                    <Link 
+                                      to="" 
+                                      className='movilNav-option-text' 
+                                      style={{ textDecoration: 'none', textAlign:'center'}}
+                                      >
+                                      Noticia
+                                    </Link> 
+                                </div>
+                        </div>   
+                      </div>
+
+                          
+
+                      <div className='movilNav__lower'>
+                        {/* Recorrido de la lista: LINEAS DE PRODUCTOS CASAGRI*/}
+
+                        <div className='movilNav__container-line-top'></div>
+
+                        {/* Barra de Busqueda */}
+                        <div className='content-Top-search' onClick={ actionSearch }>
+                              <div className='content-top-search-div'  >
+                                  <SearchNavbar clickSearch={ clickSearch }  />
+                              </div>
+                              <div className='content-top-search-icon'>
+                                <BsSearch className='search__icon' />
+                              </div> 
+                        </div>
+
+                        <div className='movilNav__container-line-top'></div>
+                        
+                        {/* Desplegable De Categorias */}
+                        {links.map((link, index) => (
+                        <div key={`${component}-${'category-movil'}-${index}`}>
+                            {/* Condicional para hover de las líneas */}
+                            { heading == link.name && line == link.name ? 
+                              (
+                                <a className='movilNav__container-line-hover'
+                                    onClick={() => { dropdownBoxMovil(link.name); }}
+                                  >
+                                    {/* Lineas de Producto en el Navbar hover*/}
+                                        <div>
+                                              <h1 className='movilNav__container-line-title'>
+                                                  {link.name} 
+                                                    { heading == link.name && line == link.name ? 
+                                                    (  <BsChevronDown style={{marginLeft:'10px', paddingTop:'2px', display:'inline-flex'}}/>  )
+                                                    : 
+                                                    (  <BsChevronUp style={{marginLeft:'10px', paddingTop:'2px', display:'inline-flex'}}/>  )
+                                                    }
+                                              </h1>             
+                                          </div> 
+                                </a>
+                              )
+                              : 
+                              (   
+                                <a className='movilNav__container-line'
+                                    onClick={() => { dropdownBoxMovil(link.name); }}
+                                    style={{textDecoration:'none'}}
+                                  >
+                                    {/* Lineas de Producto en el Navbar*/}
+                                        <div>
+                                              <h1 className='movilNav__container-line-title'>
+                                                  {link.name} 
+                                                    { heading == link.name && line == link.name ? 
+                                                    (  <BsChevronDown style={{marginLeft:'10px', paddingTop:'2px', display:'inline-flex'}}/> )
+                                                    : 
+                                                    (  <BsChevronUp style={{marginLeft:'10px', paddingTop:'2px', display:'inline-flex'}}/>  )
+                                                    }
+                                              </h1>             
+                                          </div>  
+                                </a>
+                              )
+                            }
+                                {/* SubLíneas de Productos*/}
+                                <AnimatePresence>
+                                {dropdownMovil && link.submenu && heading == link.name && erclick && (
+                                    <div className='movilNav-drop'>
+                                      <motion.div
+                                    /*
+                                      initial={{x: 50, y: 0, scale: 1, rotate: 0,  opacity:0 }}      
+                                      animate={{x: 0, y: 0, scale: 1, rotate: 0, transition:{duration:"0.10"}, opacity:1 }}  
+                                    */
+                                      >
+                                        {link.sublinks.map((mysublinks, index) => {
+                                            return (
+                                              <div key={`${component}-${'sub-category-movil'}-${index}`}>
+                                                <Link
+                                                  className='movilNav-SubLines'
+                                                  to={`/Category/${mysublinks.Head}`}
+                                                  style={{textDecoration:'none'}}
+                                                  onClick={() => { handleClick()}}
+                                                >
+                                                  <div className='movilNav-SubLines-title-nav'>
+                                                      {mysublinks.Head}
+                                                  </div>
+                                                </Link>
+                                              </div>
+                                            );
+                                          })}
+
+                                      </motion.div>                              
+                                    </div> 
+                                  )} 
+                                </AnimatePresence>
+                                  
+                        </div>
+                        ))}
+                      </div>
+              </section>
+            )
+          }
           
         </div>
       
